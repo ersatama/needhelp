@@ -82,7 +82,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'ru',
 
     /*
     |--------------------------------------------------------------------------
@@ -95,7 +95,7 @@ return [
     |
     */
 
-    'fallback_locale' => 'en',
+    'fallback_locale' => 'ru',
 
     /*
     |--------------------------------------------------------------------------
@@ -195,6 +195,10 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        App\Providers\Repositories\UserRepositoryProvider::class,
+        App\Providers\Repositories\LanguageRepositoryProvider::class,
+        App\Providers\Repositories\CountryRepositoryProvider::class,
+        App\Providers\Repositories\RegionRepositoryProvider::class,
     ],
 
     /*

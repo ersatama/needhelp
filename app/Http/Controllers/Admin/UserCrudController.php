@@ -39,9 +39,24 @@ class UserCrudController extends CrudController
      */
     protected function setupListOperation()
     {
+        CRUD::column('language_id');
+        CRUD::column('city_id');
         CRUD::column('name');
+        CRUD::column('surname');
+        CRUD::column('last_name');
+        CRUD::column('gender');
+        CRUD::column('birthdate');
+        CRUD::column('phone');
+        CRUD::column('phone_code');
+        CRUD::column('phone_verified_at');
         CRUD::column('email');
+        CRUD::column('email_code');
+        CRUD::column('email_verified_at');
         CRUD::column('password');
+        CRUD::column('remember_token');
+        CRUD::column('push_notification');
+        CRUD::column('blocked_at');
+        CRUD::column('blocked_reason');
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:
@@ -60,9 +75,24 @@ class UserCrudController extends CrudController
     {
         CRUD::setValidation(UserRequest::class);
 
+        CRUD::field('language_id');
+        CRUD::field('city_id');
         CRUD::field('name');
+        CRUD::field('surname');
+        CRUD::field('last_name');
+        CRUD::field('gender');
+        CRUD::field('birthdate');
+        CRUD::field('phone');
+        CRUD::field('phone_code');
+        CRUD::field('phone_verified_at');
         CRUD::field('email');
+        CRUD::field('email_code');
+        CRUD::field('email_verified_at');
         CRUD::field('password');
+        CRUD::field('remember_token');
+        CRUD::field('push_notification');
+        CRUD::field('blocked_at');
+        CRUD::field('blocked_reason');
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:
