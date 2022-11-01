@@ -14,3 +14,5 @@
 <li class="nav-item"><a class="nav-link" href="{{ backpack_url('notification-history') }}"><i class="nav-icon las la-bell"></i> История уведомлении</a></li>
 
 <li class="nav-item"><a class="nav-link" href="{{ backpack_url('request') }}"><i class="nav-icon las la-arrow-circle-right"></i> Запросы</a></li>
+
+<li class="nav-item"><a class="nav-link" href="{{ backpack_url('language') }}"><i class="nav-icon las la-language"></i> Языки</a></li>
