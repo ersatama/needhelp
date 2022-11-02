@@ -16,17 +16,17 @@ class LanguageSeeder extends Seeder
      */
     public function run(): void
     {
-        Language::factory()->create([
+        Language::create([
             Contract::TITLE =>  'Русский',
             Contract::TITLE_KZ  =>  'Орысша',
             Contract::TITLE_EN  =>  'Russian',
         ]);
-        Language::factory()->create([
+        Language::create([
             Contract::TITLE =>  'Английский',
             Contract::TITLE_KZ  =>  'Ағылшынша',
             Contract::TITLE_EN  =>  'English',
         ]);
-        Language::factory()->create([
+        Language::create([
             Contract::TITLE =>  'Казахский',
             Contract::TITLE_KZ  =>  'Қазақша',
             Contract::TITLE_EN  =>  'Kazakh',
