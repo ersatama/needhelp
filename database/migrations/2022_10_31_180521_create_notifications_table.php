@@ -1,5 +1,7 @@
 <?php
 
+use App\Domain\Contracts\Contract;
+use App\Domain\Contracts\NotificationContract;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -11,11 +13,17 @@ return new class extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('notifications', function (Blueprint $table) {
+        Schema::create(NotificationContract::TABLE, function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger(Contract::USER_ID)->nullable();
+            $table->string(Contract::TITLE)->nullable();
+            $table->text(Contract::DESCRIPTION)->nullable();
+            $table->boolean(Contract::IS_IMPORTANT)->default(false)->nullable();
+            $table->boolean(Contract::IS_PAID)->default(false)->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -24,8 +32,8 @@ return new class extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
-        Schema::dropIfExists('notifications');
+        Schema::dropIfExists(NotificationContract::TABLE);
     }
 };

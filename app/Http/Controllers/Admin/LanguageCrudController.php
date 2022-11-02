@@ -7,17 +7,9 @@ use App\Http\Requests\LanguageRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
-/**
- * Class LanguageCrudController
- * @package App\Http\Controllers\Admin
- * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
- */
 class LanguageCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
 
     /**
@@ -25,11 +17,11 @@ class LanguageCrudController extends CrudController
      *
      * @return void
      */
-    public function setup()
+    public function setup(): void
     {
         CRUD::setModel(\App\Models\Language::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/language');
-        CRUD::setEntityNameStrings('language', 'languages');
+        CRUD::setEntityNameStrings('Язык', 'Языки');
     }
 
     /**
@@ -38,17 +30,11 @@ class LanguageCrudController extends CrudController
      * @see  https://backpackforlaravel.com/docs/crud-operation-list-entries
      * @return void
      */
-    protected function setupListOperation()
+    protected function setupListOperation(): void
     {
         CRUD::column(Contract::TITLE)->label('Название');
         CRUD::column(Contract::TITLE_KZ)->label('Название (Каз)');
         CRUD::column(Contract::TITLE_EN)->label('Название (Анг)');
-
-        /**
-         * Columns can be defined using the fluent syntax or array syntax:
-         * - CRUD::column('price')->type('number');
-         * - CRUD::addColumn(['name' => 'price', 'type' => 'number']);
-         */
     }
 
     /**
@@ -57,19 +43,13 @@ class LanguageCrudController extends CrudController
      * @see https://backpackforlaravel.com/docs/crud-operation-create
      * @return void
      */
-    protected function setupCreateOperation()
+    protected function setupCreateOperation(): void
     {
         CRUD::setValidation(LanguageRequest::class);
 
-        CRUD::field('title');
-        CRUD::field('title_kz');
-        CRUD::field('title_en');
-
-        /**
-         * Fields can be defined using the fluent syntax or array syntax:
-         * - CRUD::field('price')->type('number');
-         * - CRUD::addField(['name' => 'price', 'type' => 'number']));
-         */
+        CRUD::field(Contract::TITLE)->label('Название');
+        CRUD::field(Contract::TITLE_KZ)->label('Название (Каз)');
+        CRUD::field(Contract::TITLE_EN)->label('Название (Анг)');
     }
 
     /**
@@ -78,7 +58,7 @@ class LanguageCrudController extends CrudController
      * @see https://backpackforlaravel.com/docs/crud-operation-update
      * @return void
      */
-    protected function setupUpdateOperation()
+    protected function setupUpdateOperation(): void
     {
         $this->setupCreateOperation();
     }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Domain\Contracts\Contract;
 use Illuminate\Foundation\Http\FormRequest;
 
 class NotificationRequest extends FormRequest
@@ -22,9 +23,10 @@ class NotificationRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
+            Contract::USER_ID   =>  'required|exists:users,id',
             // 'name' => 'required|min:5|max:255'
         ];
     }

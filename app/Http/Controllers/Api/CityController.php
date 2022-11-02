@@ -15,6 +15,11 @@ class CityController extends Controller
         $this->cityService  =   $cityService;
     }
 
+    /**
+     * getByRegionId - City
+     *
+     * @group City
+     */
     public function getByRegionId($countryId): CityCollection
     {
         return new CityCollection($this->cityService->cityRepository->getByRegionId($countryId));

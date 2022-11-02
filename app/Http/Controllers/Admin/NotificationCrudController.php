@@ -2,79 +2,96 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Domain\Contracts\Contract;
 use App\Http\Requests\NotificationRequest;
+use App\Models\Notification;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
-/**
- * Class NotificationCrudController
- * @package App\Http\Controllers\Admin
- * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
- */
 class NotificationCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
 
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
-     * 
+     *
      * @return void
      */
-    public function setup()
+    public function setup(): void
     {
-        CRUD::setModel(\App\Models\Notification::class);
+        CRUD::setModel(Notification::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/notification');
-        CRUD::setEntityNameStrings('notification', 'notifications');
+        CRUD::setEntityNameStrings('Уведомление', 'Уведомлении');
     }
 
-    /**
-     * Define what happens when the List operation is loaded.
-     * 
-     * @see  https://backpackforlaravel.com/docs/crud-operation-list-entries
-     * @return void
-     */
-    protected function setupListOperation()
+    protected function setupShowOperation(): void
     {
-        
+        $this->extracted();
+    }
 
-        /**
-         * Columns can be defined using the fluent syntax or array syntax:
-         * - CRUD::column('price')->type('number');
-         * - CRUD::addColumn(['name' => 'price', 'type' => 'number']); 
-         */
+
+    protected function setupListOperation(): void
+    {
+
+        $this->extracted();
     }
 
     /**
      * Define what happens when the Create operation is loaded.
-     * 
+     *
      * @see https://backpackforlaravel.com/docs/crud-operation-create
      * @return void
      */
-    protected function setupCreateOperation()
+    protected function setupCreateOperation(): void
     {
         CRUD::setValidation(NotificationRequest::class);
-
-        
-
-        /**
-         * Fields can be defined using the fluent syntax or array syntax:
-         * - CRUD::field('price')->type('number');
-         * - CRUD::addField(['name' => 'price', 'type' => 'number'])); 
-         */
+        CRUD::field(Contract::USER_ID)->label('ID пользователя');
+        CRUD::field(Contract::TITLE)->label('Заголовок');
+        CRUD::field(Contract::DESCRIPTION)->label('Описание');
+        CRUD::field(Contract::IS_IMPORTANT)->type('select_from_array')
+            ->label('Срочный вопрос')->options([
+                false   =>  'Нет',
+                true    =>  'Да'
+            ])->default(false);
+        CRUD::field(Contract::IS_PAID)->type('select_from_array')
+            ->label('Оплачено')->options([
+                false   =>  'Нет',
+                true    =>  'Да'
+            ])->default(false);
     }
 
     /**
      * Define what happens when the Update operation is loaded.
-     * 
+     *
      * @see https://backpackforlaravel.com/docs/crud-operation-update
      * @return void
      */
-    protected function setupUpdateOperation()
+    protected function setupUpdateOperation(): void
     {
         $this->setupCreateOperation();
+    }
+
+    /**
+     * @return void
+     */
+    protected function extracted(): void
+    {
+        CRUD::column(Contract::ID)->label('ID');
+        CRUD::column(Contract::USER_ID)->label('ID пользователя');
+        CRUD::column(Contract::TITLE)->label('Заголовок');
+        CRUD::column(Contract::DESCRIPTION)->label('Описание');
+        CRUD::column(Contract::IS_IMPORTANT)->type('select_from_array')
+            ->label('Срочный вопрос')->options([
+                false => 'Нет',
+                true => 'Да'
+            ]);
+        CRUD::column(Contract::IS_PAID)->type('select_from_array')
+            ->label('Оплачено')->options([
+                false => 'Нет',
+                true => 'Да'
+            ]);
     }
 }

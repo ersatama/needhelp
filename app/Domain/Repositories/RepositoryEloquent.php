@@ -6,6 +6,12 @@ use App\Domain\Contracts\Contract;
 
 trait RepositoryEloquent
 {
+
+    public function getByNotificationId($notificationId)
+    {
+        return $this->model::where(Contract::NOTIFICATION_ID,$notificationId)->get();
+    }
+
     public function firstById($id)
     {
         return $this->model::where(Contract::ID,$id)->first();

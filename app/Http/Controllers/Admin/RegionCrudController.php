@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Domain\Contracts\Contract;
 use App\Http\Requests\RegionRequest;
+use App\Models\Region;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
@@ -24,11 +25,11 @@ class RegionCrudController extends CrudController
      *
      * @return void
      */
-    public function setup()
+    public function setup(): void
     {
-        CRUD::setModel(\App\Models\Region::class);
+        CRUD::setModel(Region::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/region');
-        CRUD::setEntityNameStrings('region', 'regions');
+        CRUD::setEntityNameStrings('Регион', 'Регионы');
     }
 
     /**
@@ -37,9 +38,9 @@ class RegionCrudController extends CrudController
      * @see  https://backpackforlaravel.com/docs/crud-operation-list-entries
      * @return void
      */
-    protected function setupListOperation()
+    protected function setupListOperation(): void
     {
-        CRUD::column('country_id');
+        CRUD::column(Contract::COUNTRY_ID)->labe('Страна');
         CRUD::column(Contract::TITLE)->label('Название');
         CRUD::column(Contract::TITLE_KZ)->label('Название (Каз)');
         CRUD::column(Contract::TITLE_EN)->label('Название (Анг)');
@@ -57,14 +58,14 @@ class RegionCrudController extends CrudController
      * @see https://backpackforlaravel.com/docs/crud-operation-create
      * @return void
      */
-    protected function setupCreateOperation()
+    protected function setupCreateOperation(): void
     {
         CRUD::setValidation(RegionRequest::class);
 
-        CRUD::field('country_id');
-        CRUD::field('title');
-        CRUD::field('title_kz');
-        CRUD::field('title_en');
+        CRUD::field(Contract::COUNTRY_ID)->labe('Страна');
+        CRUD::field(Contract::TITLE)->label('Название');
+        CRUD::field(Contract::TITLE_KZ)->label('Название (Каз)');
+        CRUD::field(Contract::TITLE_EN)->label('Название (Анг)');
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:
@@ -79,7 +80,7 @@ class RegionCrudController extends CrudController
      * @see https://backpackforlaravel.com/docs/crud-operation-update
      * @return void
      */
-    protected function setupUpdateOperation()
+    protected function setupUpdateOperation(): void
     {
         $this->setupCreateOperation();
     }

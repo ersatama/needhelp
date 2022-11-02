@@ -15,6 +15,11 @@ class LanguageController extends Controller
         $this->languageService  =   $languageService;
     }
 
+    /**
+     * get - Language
+     *
+     * @group Language
+     */
     public function get(): LanguageCollection
     {
         return new LanguageCollection($this->languageService->languageRepository->get());

@@ -15,6 +15,11 @@ class CountryController extends Controller
         $this->countryService   =   $countryService;
     }
 
+    /**
+     * get - Country
+     *
+     * @group Country
+     */
     public function get(): CountryCollection
     {
         return new CountryCollection($this->countryService->countryRepository->get());

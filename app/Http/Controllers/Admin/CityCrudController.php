@@ -7,17 +7,11 @@ use App\Http\Requests\CityRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
-/**
- * Class CityCrudController
- * @package App\Http\Controllers\Admin
- * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
- */
 class CityCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
 
     /**
@@ -38,9 +32,9 @@ class CityCrudController extends CrudController
      * @see  https://backpackforlaravel.com/docs/crud-operation-list-entries
      * @return void
      */
-    protected function setupListOperation()
+    protected function setupListOperation(): void
     {
-        CRUD::column('region_id');
+        CRUD::column(Contract::REGION)->label('Регион');
         CRUD::column(Contract::TITLE)->label('Название');
         CRUD::column(Contract::TITLE_KZ)->label('Название (Каз)');
         CRUD::column(Contract::TITLE_EN)->label('Название (Анг)');
@@ -58,14 +52,14 @@ class CityCrudController extends CrudController
      * @see https://backpackforlaravel.com/docs/crud-operation-create
      * @return void
      */
-    protected function setupCreateOperation()
+    protected function setupCreateOperation(): void
     {
         CRUD::setValidation(CityRequest::class);
 
-        CRUD::field('region_id');
-        CRUD::field('title');
-        CRUD::field('title_kz');
-        CRUD::field('title_en');
+        CRUD::field(Contract::REGION)->label('Регион');
+        CRUD::field(Contract::TITLE)->label('Название');
+        CRUD::field(Contract::TITLE_KZ)->label('Название (Каз)');
+        CRUD::field(Contract::TITLE_EN)->label('Название (Анг)');
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:
@@ -80,7 +74,7 @@ class CityCrudController extends CrudController
      * @see https://backpackforlaravel.com/docs/crud-operation-update
      * @return void
      */
-    protected function setupUpdateOperation()
+    protected function setupUpdateOperation(): void
     {
         $this->setupCreateOperation();
     }

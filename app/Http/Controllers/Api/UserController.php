@@ -19,6 +19,11 @@ class UserController extends Controller
         $this->userService  =   $userService;
     }
 
+    /**
+     * firstById - User
+     *
+     * @group User
+     */
     public function firstById($id): Response|Application|ResponseFactory|UserResource
     {
         if ($user = $this->userService->userRepository->firstById($id)) {

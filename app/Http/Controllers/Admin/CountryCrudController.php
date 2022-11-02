@@ -18,7 +18,7 @@ class CountryCrudController extends CrudController
     {
         CRUD::setModel(\App\Models\Country::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/country');
-        CRUD::setEntityNameStrings('country', 'countries');
+        CRUD::setEntityNameStrings('Страна', 'Страны');
     }
 
     /**
@@ -27,7 +27,7 @@ class CountryCrudController extends CrudController
      * @see  https://backpackforlaravel.com/docs/crud-operation-list-entries
      * @return void
      */
-    protected function setupListOperation()
+    protected function setupListOperation(): void
     {
         CRUD::column(Contract::TITLE)->label('Название');
         CRUD::column(Contract::TITLE_KZ)->label('Название (Каз)');
@@ -46,13 +46,13 @@ class CountryCrudController extends CrudController
      * @see https://backpackforlaravel.com/docs/crud-operation-create
      * @return void
      */
-    protected function setupCreateOperation()
+    protected function setupCreateOperation(): void
     {
         CRUD::setValidation(CountryRequest::class);
 
-        CRUD::field('title');
-        CRUD::field('title_kz');
-        CRUD::field('title_en');
+        CRUD::column(Contract::TITLE)->label('Название');
+        CRUD::column(Contract::TITLE_KZ)->label('Название (Каз)');
+        CRUD::column(Contract::TITLE_EN)->label('Название (Анг)');
 
         /**
          * Fields can be defined using the fluent syntax or array syntax:
@@ -67,7 +67,7 @@ class CountryCrudController extends CrudController
      * @see https://backpackforlaravel.com/docs/crud-operation-update
      * @return void
      */
-    protected function setupUpdateOperation()
+    protected function setupUpdateOperation(): void
     {
         $this->setupCreateOperation();
     }

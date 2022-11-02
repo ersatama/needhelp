@@ -4,9 +4,16 @@ namespace App\Domain\Contracts;
 
 abstract class Contract
 {
+    const VIEW  =   'view';
+    const NOTIFICATION_ID   =   'notification_id';
+    const IS_PAID   =   'is_paid';
+    const IS_IMPORTANT  =   'is_important';
+    const STATUS    =   'status';
+    const DESCRIPTION   =   'description';
     const REGION_ID =   'region_id';
     const COUNTRY_ID    =   'country_id';
     const TITLE =   'title';
+    const REGION    =   'region';
     const TITLE_KZ  =   'title_kz';
     const TITLE_EN  =   'title_en';
     const CITY_ID   =   'city_id';
