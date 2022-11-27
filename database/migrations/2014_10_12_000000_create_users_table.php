@@ -19,6 +19,7 @@ return new class extends Migration
             $table->id();
             $table->enum(Contract::ROLE, [
                 Contract::ADMIN,
+                Contract::LAWYER,
                 Contract::MANAGER,
                 Contract::USER
             ])->default(Contract::USER);

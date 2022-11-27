@@ -20,6 +20,7 @@ Route::group([
     Route::crud('notification-history', 'NotificationHistoryCrudController');
     Route::crud('request', 'RequestCrudController');
     Route::crud('user', 'UserCrudController');
+    Route::crud('lawyer', 'UserCrudController');
     Route::crud('country', 'CountryCrudController');
     Route::crud('city', 'CityCrudController');
     Route::crud('region', 'RegionCrudController');

@@ -29,6 +29,7 @@ abstract class Contract
     const NAME  =   'name';
     const ROLE  =   'role';
     const ADMIN =   'admin';
+    const LAWYER    =   'lawyer';
     const MANAGER   =   'manager';
     const USER  =   'user';
     const SURNAME   =   'surname';
