@@ -5,8 +5,7 @@
     <li class="nav-title">Местоположение</li>
 
     <li class="nav-item"><a class="nav-link" href="{{ backpack_url('country') }}"><i class="nav-icon las la-globe"></i> Страны</a></li>
-    <li class="nav-item"><a class="nav-link" href="{{ backpack_url('region') }}"><i class="nav-icon las la-globe-americas"></i> Регионы</a></li>
-    <li class="nav-item"><a class="nav-link" href="{{ backpack_url('city') }}"><i class="nav-icon las la-globe-africa"></i> Города</a></li>
+    <li class="nav-item"><a class="nav-link" href="{{ backpack_url('region') }}"><i class="nav-icon las la-globe-americas"></i> Области</a></li>
 
     <li class="nav-title">Основное</li>
 

@@ -30,4 +30,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo(City::class);
     }
+
+    public function region(): BelongsTo
+    {
+        return $this->belongsTo(Region::class);
+    }
 }

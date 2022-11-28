@@ -4,12 +4,15 @@ namespace App\Domain\Contracts;
 
 abstract class Contract
 {
+    const SELECT_FROM_ARRAY =   'select_from_array';
     const VIEW  =   'view';
     const NOTIFICATION_ID   =   'notification_id';
     const IS_PAID   =   'is_paid';
     const IS_IMPORTANT  =   'is_important';
     const STATUS    =   'status';
     const DESCRIPTION   =   'description';
+    const CURRENCY_ID   =   'currency_id';
+    const PRICE =   'price';
     const REGION_ID =   'region_id';
     const COUNTRY_ID    =   'country_id';
     const TITLE =   'title';
@@ -22,6 +25,7 @@ abstract class Contract
     const CREATED_AT    =   'created_at';
     const BLOCKED_AT    =   'blocked_at';
     const BLOCKED_REASON    =   'blocked_reason';
+    const LAST_AUTH =   'last_auth';
     const MESSAGE   =   'message';
     const ID    =   'id';
     const USER_ID   =   'user_id';

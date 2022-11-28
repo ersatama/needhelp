@@ -18,10 +18,13 @@ return new class extends Migration
         Schema::create(NotificationContract::TABLE, function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger(Contract::USER_ID)->nullable();
+            $table->unsignedInteger(Contract::CURRENCY_ID)->default(1);
+            $table->bigInteger(Contract::PRICE)->nullable()->default(0);
             $table->string(Contract::TITLE)->nullable();
             $table->text(Contract::DESCRIPTION)->nullable();
             $table->boolean(Contract::IS_IMPORTANT)->default(false)->nullable();
             $table->boolean(Contract::IS_PAID)->default(false)->nullable();
+            $table->tinyInteger(Contract::STATUS)->default(1);
             $table->timestamps();
             $table->softDeletes();
         });

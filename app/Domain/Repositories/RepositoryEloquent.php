@@ -6,6 +6,11 @@ use App\Domain\Contracts\Contract;
 
 trait RepositoryEloquent
 {
+    public function count($where)
+    {
+        return $this->model::where($where)
+            ->count();
+    }
 
     public function getByNotificationId($notificationId)
     {

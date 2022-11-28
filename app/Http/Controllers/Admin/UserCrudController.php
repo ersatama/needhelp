@@ -10,120 +10,132 @@ use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 
-/**
- * Class UserCrudController
- * @package App\Http\Controllers\Admin
- * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
- */
 class UserCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
 
-    /**
-     * Configure the CrudPanel object. Apply settings to all operations.
-     *
-     * @return void
-     */
     public function setup(): void
     {
         CRUD::setModel(User::class);
-        Log::info('route',[Route::currentRouteName()]);
+
         if (Route::currentRouteName() === 'lawyer.index' || Route::currentRouteName() === 'lawyer.search') {
 
             CRUD::setRoute(config('backpack.base.route_prefix') . '/lawyer');
             CRUD::setEntityNameStrings('Юрист', 'Юристы');
             CRUD::denyAccess('create');
-            $this->crud->addClause('where', 'role', 'lawyer');
+            $this->crud->addClause('where', Contract::ROLE, Contract::LAWYER);
 
         } else {
             CRUD::setRoute(config('backpack.base.route_prefix') . '/user');
-            CRUD::setEntityNameStrings('user', 'users');
+            CRUD::setEntityNameStrings('Пользователь', 'Пользователи');
         }
 
-
     }
 
-    /**
-     * Define what happens when the List operation is loaded.
-     *
-     * @see  https://backpackforlaravel.com/docs/crud-operation-list-entries
-     * @return void
-     */
+    protected function autoSetupShowOperation()
+    {
+        CRUD::column(Contract::ID)->label('ID');
+        CRUD::column(Contract::LANGUAGE_ID)->label('Язык');
+        CRUD::column(Contract::REGION_ID)->label('Область');
+        CRUD::column(Contract::CITY_ID)->label('Город');
+        CRUD::column(Contract::ROLE)->label('Роль')
+            ->type(Contract::SELECT_FROM_ARRAY)
+            ->options([
+                Contract::ADMIN     =>  'Администратор',
+                Contract::LAWYER    =>  'Адвокат',
+                Contract::MANAGER   =>  'менеджер',
+                Contract::USER      =>  'Пользователь'
+            ]);
+        CRUD::column(Contract::NAME)->label('Имя');
+        CRUD::column(Contract::SURNAME)->label('Фамилия');
+        CRUD::column(Contract::LAST_NAME)->label('Отчество');
+        CRUD::column(Contract::GENDER)
+            ->label('Пол')
+            ->type(Contract::SELECT_FROM_ARRAY)
+            ->options([
+                Contract::MALE      =>  'Муж',
+                Contract::FEMALE    =>  'Жен',
+            ])
+            ->default(Contract::MALE);;
+        CRUD::column(Contract::BIRTHDATE)->label('Дата рождения')->type('date');
+        CRUD::column(Contract::PHONE)->label('Телефон номер');
+        CRUD::column(Contract::EMAIL)->label('Эл. почта');
+        CRUD::column(Contract::PASSWORD)->label('Пароль')->type('password');
+        CRUD::column(Contract::PUSH_NOTIFICATION)
+            ->label('Пуш уведомление')
+            ->type(Contract::SELECT_FROM_ARRAY)
+            ->options([
+                true    =>  'Включить',
+                false   =>  'Отключить',
+            ])
+            ->default(false);
+        CRUD::column(Contract::BLOCKED_AT)->label('Дата блокирования')->type('date');
+    }
+
     protected function setupListOperation(): void
     {
-        CRUD::column('language_id');
-        CRUD::column('city_id');
-        CRUD::column('name');
-        CRUD::column('surname');
-        CRUD::column('last_name');
-        CRUD::column('gender');
-        CRUD::column('birthdate');
-        CRUD::column('phone');
-        CRUD::column('phone_code');
-        CRUD::column('phone_verified_at');
-        CRUD::column('email');
-        CRUD::column('email_code');
-        CRUD::column('email_verified_at');
-        CRUD::column('password');
-        CRUD::column('remember_token');
-        CRUD::column('push_notification');
-        CRUD::column('blocked_at');
-        CRUD::column('blocked_reason');
-
-        /**
-         * Columns can be defined using the fluent syntax or array syntax:
-         * - CRUD::column('price')->type('number');
-         * - CRUD::addColumn(['name' => 'price', 'type' => 'number']);
-         */
+        CRUD::column(Contract::ID)->label('ID');
+        CRUD::column(Contract::ROLE)->label('Роль')
+            ->type(Contract::SELECT_FROM_ARRAY)
+            ->options([
+                Contract::ADMIN     =>  'Администратор',
+                Contract::LAWYER    =>  'Адвокат',
+                Contract::MANAGER   =>  'менеджер',
+                Contract::USER      =>  'Пользователь'
+            ]);
+        CRUD::column(Contract::NAME)->label('Имя');
+        CRUD::column(Contract::SURNAME)->label('Фамилия');
+        CRUD::column(Contract::PHONE)->label('Телефон номер');
+        CRUD::column(Contract::EMAIL)->label('Эл. почта');
+        CRUD::column(Contract::BLOCKED_AT)->label('Заблокировано')->type('date');
     }
 
-    /**
-     * Define what happens when the Create operation is loaded.
-     *
-     * @see https://backpackforlaravel.com/docs/crud-operation-create
-     * @return void
-     */
-    protected function setupCreateOperation()
+    protected function setupCreateOperation(): void
     {
         CRUD::setValidation(UserRequest::class);
 
-        CRUD::field('language_id');
-        CRUD::field('city_id');
-        CRUD::field('name');
-        CRUD::field('surname');
-        CRUD::field('last_name');
-        CRUD::field('gender');
-        CRUD::field('birthdate');
-        CRUD::field('phone');
-        CRUD::field('phone_code');
-        CRUD::field('phone_verified_at');
-        CRUD::field('email');
-        CRUD::field('email_code');
-        CRUD::field('email_verified_at');
-        CRUD::field('password');
-        CRUD::field('remember_token');
-        CRUD::field('push_notification');
-        CRUD::field('blocked_at');
-        CRUD::field('blocked_reason');
-
-        /**
-         * Fields can be defined using the fluent syntax or array syntax:
-         * - CRUD::field('price')->type('number');
-         * - CRUD::addField(['name' => 'price', 'type' => 'number']));
-         */
+        CRUD::field(Contract::LANGUAGE_ID)->label('Язык');
+        CRUD::field(Contract::REGION_ID)->label('Область');
+        CRUD::field(Contract::CITY_ID)->label('Город');
+        CRUD::field(Contract::ROLE)->label('Роль')
+            ->type(Contract::SELECT_FROM_ARRAY)
+            ->options([
+                Contract::ADMIN     =>  'Администратор',
+                Contract::LAWYER    =>  'Адвокат',
+                Contract::MANAGER   =>  'менеджер',
+                Contract::USER      =>  'Пользователь'
+            ])
+            ->default(Contract::USER);
+        CRUD::field(Contract::NAME)->label('Имя');
+        CRUD::field(Contract::SURNAME)->label('Фамилия');
+        CRUD::field(Contract::LAST_NAME)->label('Отчество');
+        CRUD::field(Contract::GENDER)
+            ->label('Пол')
+            ->type(Contract::SELECT_FROM_ARRAY)
+            ->options([
+                Contract::MALE      =>  'Муж',
+                Contract::FEMALE    =>  'Жен',
+            ])
+            ->default(Contract::MALE);;
+        CRUD::field(Contract::BIRTHDATE)->label('Дата рождения')->type('date');
+        CRUD::field(Contract::PHONE)->label('Телефон номер');
+        CRUD::field(Contract::EMAIL)->label('Эл. почта');
+        CRUD::field(Contract::PASSWORD)->label('Пароль')->type('password');
+        CRUD::field(Contract::PUSH_NOTIFICATION)
+            ->label('Пуш уведомление')
+            ->type(Contract::SELECT_FROM_ARRAY)
+            ->options([
+                true    =>  'Включить',
+                false   =>  'Отключить',
+            ])
+            ->default(false);
+        CRUD::field(Contract::BLOCKED_AT)->label('Дата блокирования')->type('date');
     }
 
-    /**
-     * Define what happens when the Update operation is loaded.
-     *
-     * @see https://backpackforlaravel.com/docs/crud-operation-update
-     * @return void
-     */
-    protected function setupUpdateOperation()
+    protected function setupUpdateOperation(): void
     {
         $this->setupCreateOperation();
     }

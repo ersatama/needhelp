@@ -17,6 +17,9 @@ return new class extends Migration
     {
         Schema::create(UserContract::TABLE, function (Blueprint $table) {
             $table->id();
+            $table->unsignedInteger(Contract::LANGUAGE_ID)->nullable()->default(1);
+            $table->unsignedInteger(Contract::REGION_ID)->nullable();
+            $table->unsignedInteger(Contract::CITY_ID)->nullable();
             $table->enum(Contract::ROLE, [
                 Contract::ADMIN,
                 Contract::LAWYER,
@@ -41,6 +44,7 @@ return new class extends Migration
             $table->boolean(Contract::PUSH_NOTIFICATION)->default(false)->nullable();
             $table->timestamp(Contract::BLOCKED_AT)->nullable();
             $table->string(Contract::BLOCKED_REASON)->nullable();
+            $table->timestamp(Contract::LAST_AUTH)->useCurrent();
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

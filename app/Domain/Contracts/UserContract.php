@@ -8,6 +8,7 @@ class UserContract extends Contract
     const FILLABLE  =   [
         self::ROLE,
         self::LANGUAGE_ID,
+        self::REGION_ID,
         self::CITY_ID,
         self::NAME,
         self::SURNAME,
@@ -25,6 +26,7 @@ class UserContract extends Contract
         self::PUSH_NOTIFICATION,
         self::BLOCKED_AT,
         self::BLOCKED_REASON,
+        self::LAST_AUTH
     ];
     const HIDDEN    =   [
         self::PASSWORD,
