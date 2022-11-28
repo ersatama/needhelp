@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Domain\Contracts\Contract;
 use Closure;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Http\RedirectResponse;
@@ -31,8 +32,7 @@ class CheckIfAdmin
      */
     private function checkIfUserIsAdmin(?Authenticatable $user): bool
     {
-        // return ($user->is_admin == 1);
-        return true;
+        return ($user->{Contract::ROLE} !== Contract::USER);
     }
 
     /**
@@ -64,7 +64,7 @@ class CheckIfAdmin
         }
 
         if (! $this->checkIfUserIsAdmin(backpack_user())) {
-            return $this->respondToUnauthorizedRequest($request);
+            return redirect('logout');
         }
 
         return $next($request);

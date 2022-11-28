@@ -97,7 +97,7 @@ class UserCrudController extends CrudController
     {
         CRUD::setValidation(UserRequest::class);
 
-        CRUD::field(Contract::LANGUAGE_ID)->label('Язык');
+        CRUD::field(Contract::LANGUAGE_ID)->label('Язык')->default(1);
         CRUD::field(Contract::REGION_ID)->label('Область');
         CRUD::field(Contract::CITY_ID)->label('Город');
         CRUD::field(Contract::ROLE)->label('Роль')
