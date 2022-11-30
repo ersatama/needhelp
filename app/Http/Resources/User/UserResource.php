@@ -14,6 +14,7 @@ class UserResource extends JsonResource
             Contract::ID    =>  $this->{Contract::ID},
             Contract::CREATED_AT    =>  $this->{Contract::CREATED_AT},
             Contract::UPDATED_AT    =>  $this->{Contract::UPDATED_AT},
+            Contract::FULLNAME  =>  $this->{Contract::FULLNAME},
         ];
         foreach (UserContract::FILLABLE as &$value) {
             $arr[$value]    =   $this->{$value};

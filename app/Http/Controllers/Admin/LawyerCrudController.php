@@ -7,10 +7,9 @@ use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 
-class UserCrudController extends CrudController
+class LawyerCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
@@ -21,11 +20,13 @@ class UserCrudController extends CrudController
     {
         CRUD::setModel(User::class);
 
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/user');
-        CRUD::setEntityNameStrings('Пользователь', 'Пользователи');
-        $this->crud->addClause('where', Contract::ROLE, '!=',Contract::LAWYER);
-        $this->crud->setShowView('vendor.backpack.base.crud.user.show');
+        CRUD::setRoute(config('backpack.base.route_prefix') . '/lawyer');
+        CRUD::setEntityNameStrings('Юрист', 'Юристы');
+        CRUD::denyAccess('create');
         $this->crud->enableExportButtons();
+        $this->crud->addClause('where', Contract::ROLE, Contract::LAWYER);
+        $this->crud->setShowView('vendor.backpack.base.crud.lawyer.show');
+
     }
 
     protected function extracted()
@@ -33,20 +34,11 @@ class UserCrudController extends CrudController
         CRUD::column(Contract::ID)->label('ID');
         CRUD::column(Contract::LANGUAGE_ID)->label('Язык');
         CRUD::column(Contract::REGION_ID)->label('Область');
-        CRUD::column(Contract::ROLE)->label('Роль')
-            ->type(Contract::SELECT_FROM_ARRAY)
-            ->options([
-                Contract::ADMIN     =>  'Администратор',
-                Contract::LAWYER    =>  'Юрист',
-                Contract::MANAGER   =>  'Менеджер',
-                Contract::USER      =>  'Пользователь'
-            ]);
         CRUD::column(Contract::NAME)->label('Имя');
         CRUD::column(Contract::SURNAME)->label('Фамилия');
         CRUD::column(Contract::LAST_NAME)->label('Отчество');
         CRUD::column(Contract::BIRTHDATE)->label('Дата рождения')->type('date');
         CRUD::column(Contract::PHONE)->label('Телефон номер');
-        CRUD::column(Contract::BLOCKED_AT)->label('Дата блокирования')->type('date');
         CRUD::column(Contract::CREATED_AT)->label('Дата регистрация')->type('date');
         CRUD::column(Contract::LAST_AUTH)->label('Дата последней авторизации')->type('date');
     }

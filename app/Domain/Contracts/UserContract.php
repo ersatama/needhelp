@@ -36,4 +36,15 @@ class UserContract extends Contract
         self::PHONE_VERIFIED_AT =>  'datetime',
         self::EMAIL_VERIFIED_AT =>  'datetime'
     ];
+    const APPENDS   =   [
+        self::FULLNAME
+    ];
+    const SEARCH    =   [
+        self::ID,
+        self::NAME,
+        self::SURNAME,
+        self::LAST_NAME,
+        self::EMAIL,
+        self::PHONE
+    ];
 }

@@ -24,4 +24,9 @@ class UserRepositoryEloquent implements UserRepositoryInterface
     {
         return User::where($arr)->where(Contract::CREATED_AT, '>', now()->subDays(30)->endOfDay())->count();
     }
+
+    public static function _getById($id)
+    {
+        return User::where(Contract::ID,$id)->first();
+    }
 }

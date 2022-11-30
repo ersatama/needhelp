@@ -30,6 +30,7 @@ class RegionCrudController extends CrudController
         CRUD::setModel(Region::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/region');
         CRUD::setEntityNameStrings('Регион', 'Регионы');
+        $this->crud->enableExportButtons();
     }
 
     /**

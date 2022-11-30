@@ -26,7 +26,7 @@ class UserSeeder extends Seeder
              Contract::PHONE_VERIFIED_AT    =>  now(),
              Contract::EMAIL    =>  'admin@needhelp.com',
              Contract::EMAIL_VERIFIED_AT    =>  now(),
-             Contract::PASSWORD =>  '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',//password
+             Contract::PASSWORD =>  'password',//password
              Contract::REMEMBER_TOKEN   =>  Str::random(10),
          ]);
         User::factory()->create([
@@ -37,7 +37,7 @@ class UserSeeder extends Seeder
             Contract::PHONE_VERIFIED_AT    =>  now(),
             Contract::EMAIL    =>  'lawyer@needhelp.com',
             Contract::EMAIL_VERIFIED_AT    =>  now(),
-            Contract::PASSWORD =>  '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',//password
+            Contract::PASSWORD =>  'password',//password
             Contract::REMEMBER_TOKEN   =>  Str::random(10),
         ]);
     }

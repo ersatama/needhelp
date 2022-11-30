@@ -17,7 +17,6 @@ Route::group([
     'namespace'  => 'App\Http\Controllers\Admin',
 ], function () { // custom admin routes
     Route::crud('notification', 'NotificationCrudController');
-    Route::crud('notification-history', 'NotificationHistoryCrudController');
     Route::crud('request', 'RequestCrudController');
     Route::crud('user', 'UserCrudController');
     Route::crud('lawyer', 'UserCrudController');
@@ -25,4 +24,5 @@ Route::group([
     Route::crud('city', 'CityCrudController');
     Route::crud('region', 'RegionCrudController');
     Route::crud('language', 'LanguageCrudController');
+    Route::crud('lawyer', 'LawyerCrudController');
 }); // this should be the absolute last line of this file

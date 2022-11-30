@@ -200,7 +200,6 @@ return [
         App\Providers\Repositories\CountryRepositoryProvider::class,
         App\Providers\Repositories\RegionRepositoryProvider::class,
         App\Providers\Repositories\NotificationRepositoryProvider::class,
-        App\Providers\Repositories\NotificationHistoryRepositoryProvider::class,
     ],
 
     /*

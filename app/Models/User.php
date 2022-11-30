@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Domain\Contracts\Contract;
 use App\Domain\Contracts\UserContract;
+use App\Domain\Scopes\Page;
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -22,6 +23,11 @@ class User extends Authenticatable
     protected $fillable =   UserContract::FILLABLE;
     protected $hidden   =   UserContract::HIDDEN;
     protected $casts    =   UserContract::CASTS;
+
+    protected static function booted(): void
+    {
+        static::addGlobalScope(new Page);
+    }
 
     public function language(): BelongsTo
     {
@@ -41,5 +47,10 @@ class User extends Authenticatable
     public function setPasswordAttribute($pass)
     {
         $this->attributes[Contract::PASSWORD] = Hash::make($pass);
+    }
+
+    public function getFullnameAttribute()
+    {
+        return $this->{Contract::ID} . ' - ' . $this->{Contract::NAME} . ' ' . $this->{Contract::SURNAME};
     }
 }

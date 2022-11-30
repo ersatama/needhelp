@@ -4,6 +4,10 @@ namespace App\Domain\Contracts;
 
 abstract class Contract
 {
+    const READONLY  =   'readonly';
+    const LIKE  =   'like';
+    const Q =   'q';
+    const PAGE  =   'page';
     const SELECT_FROM_ARRAY =   'select_from_array';
     const VIEW  =   'view';
     const NOTIFICATION_ID   =   'notification_id';
@@ -12,6 +16,9 @@ abstract class Contract
     const STATUS    =   'status';
     const DESCRIPTION   =   'description';
     const CURRENCY_ID   =   'currency_id';
+    const PAYMENT_ID    =   'payment_id';
+    const ANSWER    =   'answer';
+    const ANSWERED_AT   =   'answered_at';
     const PRICE =   'price';
     const REGION_ID =   'region_id';
     const COUNTRY_ID    =   'country_id';
@@ -29,9 +36,21 @@ abstract class Contract
     const MESSAGE   =   'message';
     const ID    =   'id';
     const USER_ID   =   'user_id';
+    const LAWYER_ID =   'lawyer_id';
     const USERS =   'users';
     const NAME  =   'name';
+    const LABEL =   'label';
+    const TYPE  =   'type';
+    const HIDDEN    =   'hidden';
+    const TEXT  =   'text';
+    const SELECT2_FROM_AJAX =   'select2_from_ajax';
+    const ENTITY    =   'entity';
+    const PLACEHOLDER   =   'placeholder';
+    const MINIMUM_INPUT_LENGTH  =   'minimum_input_length';
+    const ATTRIBUTE =   'attribute';
+    const DATA_SOURCE   =   'data_source';
     const ROLE  =   'role';
+    const FULLNAME  =   'fullname';
     const ADMIN =   'admin';
     const LAWYER    =   'lawyer';
     const MANAGER   =   'manager';

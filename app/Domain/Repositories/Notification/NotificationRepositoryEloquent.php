@@ -36,4 +36,14 @@ class NotificationRepositoryEloquent implements NotificationRepositoryInterface
             ->where(Contract::CREATED_AT, '>', now()->subDays(30)->endOfDay())
             ->sum($column);
     }
+
+    public static function _getByUserId($userId)
+    {
+        return Notification::where(Contract::USER_ID, $userId)->get();
+    }
+
+    public static function _getByLawyerId($lawyerId)
+    {
+        return Notification::where(Contract::LAWYER_ID, $lawyerId)->get();
+    }
 }

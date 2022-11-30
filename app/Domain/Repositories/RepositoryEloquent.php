@@ -3,9 +3,24 @@
 namespace App\Domain\Repositories;
 
 use App\Domain\Contracts\Contract;
+use Illuminate\Database\Eloquent\Collection;
 
 trait RepositoryEloquent
 {
+    public function all()
+    {
+        return $this->model::get();
+    }
+
+    public function search($searchColumns,$data): Collection|array
+    {
+        $query  =   $this->model::query();
+        foreach($searchColumns as &$column) {
+            $query->orWhere($column, Contract::LIKE, $data . '%');
+        }
+        return $query->get();
+    }
+
     public function count($where)
     {
         return $this->model::where($where)
