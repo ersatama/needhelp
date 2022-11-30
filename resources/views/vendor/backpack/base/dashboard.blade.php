@@ -99,11 +99,11 @@
                 [
                     'type'          => 'progress_white',
                     'class'         => 'card mb-2',
-                    'value'         =>  '<span class="text-success">' . NotificationRepositoryEloquent::sum(Contract::PRICE,[Contract::LAWYER_ID=>backpack_user()->{Contract::ID},Contract::IS_PAID=>true]) . ' KZT</span>',
+                    'value'         =>  '<span class="text-success">' . NotificationRepositoryEloquent::sum(Contract::PRICE,[Contract::IS_PAID=>true]) . ' KZT</span>',
                     'description'   => 'Сумма всех оплат',
                     'progress'      => 100, // integer
                     'progressClass' => 'progress-bar bg-success',
-                    'hint'          => NotificationRepositoryEloquent::sumLastMonth(Contract::PRICE,[Contract::LAWYER_ID=>backpack_user()->{Contract::ID},Contract::IS_PAID=>true]) . ' KZT Сумма за последний 30 дней',
+                    'hint'          => NotificationRepositoryEloquent::sumLastMonth(Contract::PRICE,[Contract::IS_PAID=>true]) . ' KZT Сумма за последний 30 дней',
                 ],
             ],
         ];
