@@ -23,7 +23,6 @@ return new class extends Migration
             $table->enum(Contract::ROLE, [
                 Contract::ADMIN,
                 Contract::LAWYER,
-                Contract::MANAGER,
                 Contract::USER
             ])->default(Contract::USER);
             $table->string(Contract::NAME);

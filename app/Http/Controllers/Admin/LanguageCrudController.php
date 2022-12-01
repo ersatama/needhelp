@@ -12,11 +12,6 @@ class LanguageCrudController extends CrudController
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
 
-    /**
-     * Configure the CrudPanel object. Apply settings to all operations.
-     *
-     * @return void
-     */
     public function setup(): void
     {
         CRUD::setModel(\App\Models\Language::class);
@@ -24,12 +19,11 @@ class LanguageCrudController extends CrudController
         CRUD::setEntityNameStrings('Язык', 'Языки');
     }
 
-    /**
-     * Define what happens when the List operation is loaded.
-     *
-     * @see  https://backpackforlaravel.com/docs/crud-operation-list-entries
-     * @return void
-     */
+    protected function setupShowOperation(): void
+    {
+        $this->setupListOperation();
+    }
+
     protected function setupListOperation(): void
     {
         CRUD::column(Contract::TITLE)->label('Название');
@@ -37,12 +31,6 @@ class LanguageCrudController extends CrudController
         CRUD::column(Contract::TITLE_EN)->label('Название (Анг)');
     }
 
-    /**
-     * Define what happens when the Create operation is loaded.
-     *
-     * @see https://backpackforlaravel.com/docs/crud-operation-create
-     * @return void
-     */
     protected function setupCreateOperation(): void
     {
         CRUD::setValidation(LanguageRequest::class);
@@ -52,12 +40,6 @@ class LanguageCrudController extends CrudController
         CRUD::field(Contract::TITLE_EN)->label('Название (Анг)');
     }
 
-    /**
-     * Define what happens when the Update operation is loaded.
-     *
-     * @see https://backpackforlaravel.com/docs/crud-operation-update
-     * @return void
-     */
     protected function setupUpdateOperation(): void
     {
         $this->setupCreateOperation();

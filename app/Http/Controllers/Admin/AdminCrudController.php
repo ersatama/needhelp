@@ -3,61 +3,28 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Domain\Contracts\Contract;
+use App\Http\Requests\AdminRequest;
 use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Route;
 
-class UserCrudController extends CrudController
+class AdminCrudController extends UserCrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
+    use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
 
-    public function setup(): void
+    public function setup() :void
     {
         CRUD::setModel(User::class);
-
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/user');
-        CRUD::setEntityNameStrings('Пользователь', 'Пользователи');
-        $this->crud->addClause('where', Contract::ROLE, Contract::USER);
-        $this->crud->setShowView('vendor.backpack.base.crud.user.show');
+        CRUD::setRoute(config('backpack.base.route_prefix') . '/admin');
+        CRUD::setEntityNameStrings('Администратор', 'Администраторы');
         $this->crud->enableExportButtons();
-    }
-
-    protected function extracted()
-    {
-        CRUD::column(Contract::ID)->label('ID');
-        CRUD::column(Contract::LANGUAGE_ID)->label('Язык');
-        CRUD::column(Contract::REGION_ID)->label('Область');
-        CRUD::column(Contract::ROLE)->label('Роль')
-            ->type(Contract::SELECT_FROM_ARRAY)
-            ->options([
-                Contract::ADMIN     =>  'Администратор',
-                Contract::LAWYER    =>  'Юрист',
-                Contract::USER      =>  'Пользователь'
-            ]);
-        CRUD::column(Contract::NAME)->label('Имя');
-        CRUD::column(Contract::SURNAME)->label('Фамилия');
-        CRUD::column(Contract::LAST_NAME)->label('Отчество');
-        CRUD::column(Contract::BIRTHDATE)->label('Дата рождения')->type('date');
-        CRUD::column(Contract::PHONE)->label('Телефон номер');
-        CRUD::column(Contract::BLOCKED_AT)->label('Дата блокирования')->type('date');
-        CRUD::column(Contract::CREATED_AT)->label('Дата регистрация')->type('date');
-        CRUD::column(Contract::LAST_AUTH)->label('Дата последней авторизации')->type('date');
-    }
-
-    protected function autoSetupShowOperation()
-    {
-        $this->extracted();
-    }
-
-    protected function setupListOperation(): void
-    {
-        $this->extracted();
+        $this->crud->addClause('where', Contract::ROLE, Contract::ADMIN);
+        $this->crud->setShowView('vendor.backpack.base.crud.user.show');
     }
 
     protected function setupCreateOperation(): void
@@ -74,7 +41,7 @@ class UserCrudController extends CrudController
                 Contract::LAWYER    =>  'Юрист',
                 Contract::USER      =>  'Пользователь'
             ])
-            ->default(Contract::USER);
+            ->default(Contract::ADMIN);
         CRUD::field(Contract::NAME)->label('Имя');
         CRUD::field(Contract::SURNAME)->label('Фамилия');
         CRUD::field(Contract::LAST_NAME)->label('Отчество');
@@ -99,10 +66,5 @@ class UserCrudController extends CrudController
             ])
             ->default(false);
         CRUD::field(Contract::BLOCKED_AT)->label('Дата блокирования')->type('date');
-    }
-
-    protected function setupUpdateOperation(): void
-    {
-        $this->setupCreateOperation();
     }
 }

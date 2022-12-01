@@ -92,20 +92,80 @@
     @php
         use App\Domain\Repositories\Notification\NotificationRepositoryEloquent;
         use App\Domain\Repositories\User\UserRepositoryEloquent;
+        use Carbon\Carbon;
+        use App\Domain\Contracts\Contract;
         $url    =   explode('/',$_SERVER['REQUEST_URI']);
         $questions  =   NotificationRepositoryEloquent::_getByLawyerId($url[2]);
-        $sum    =   0;
-        foreach ($questions as &$question) {
-            $sum    +=  $question->{\App\Domain\Contracts\Contract::PRICE};
-        }
     @endphp
-    <h4>Ответы ({{ sizeof($questions) }}) @if($sum>0) <span class="text-success">{{$sum}} KZT</span> @endif</h4>
-    @foreach ($questions as &$question)
-        @php
-            $lawyer =   UserRepositoryEloquent::_getById($question->{\App\Domain\Contracts\Contract::LAWYER_ID});
-            $user   =   UserRepositoryEloquent::_getById($question->{\App\Domain\Contracts\Contract::USER_ID});
-        @endphp
-        @include('vendor.backpack.base.crud.card',compact('question'))
-    @endforeach
+    <h4>Ответы ({{ sizeof($questions) }})</h4>
+    @php
+        $lawyer =   UserRepositoryEloquent::_getById($url[2]);
+        $status =   [
+            'отменен',
+            'Ждет ответа',
+            'Отвечено'
+        ];
+    @endphp
+    <div class="row">
+        <div class="col-8">
+            <table class="table bg-white table-bordered text-small">
+                <thead>
+                <tr>
+                    <th scope="col" class="fsize">ID</th>
+                    <th scope="col" class="fsize">Статус</th>
+                    <th scope="col" class="fsize">Вопрос</th>
+                    <th scope="col" class="fsize">Ответ</th>
+                    <th scope="col" class="fsize">Пользователь</th>
+                </tr>
+                </thead>
+                <tbody>
 
+                @foreach ($questions as &$question)
+                    @php
+                        $user   =   UserRepositoryEloquent::_getById($question->{Contract::USER_ID});
+                    @endphp
+                    <tr>
+                        <th scope="row" class="fsize">{{ $question->{Contract::ID} }}</th>
+                        <td class="fsize">
+                            @if($question->{Contract::IS_IMPORTANT}) <div class="text-danger">Срочный</div> @endif
+                            @if($question->{Contract::IS_PAID})
+                                <div class="@if($question->{Contract::STATUS} === 2) bg-success @elseif($question->{Contract::STATUS} === 1) bg-info @else bg-danger @endif rounded text-center mb-2">{{ $status[$question->{Contract::STATUS}] }}</div>
+                                @if($question->{Contract::PAYMENT_ID}) <div class="font-weight-bold">{{ $question->{Contract::PAYMENT_ID} }}</div> @endif
+                            @else
+                                <div class="bg-secondary rounded text-center mb-2">Не оплачено</div>
+                            @endif
+                            @if($question->{Contract::PRICE} > 0) <div class="font-weight-bold text-success">{{ $question->{Contract::PRICE} }} kzt</div> @endif
+                        </td>
+                        <td class="fsize" width="33%">
+                            <div class="text-info font-weight-bold border-bottom pb-2 mb-2">{{  Carbon::createFromTimeStamp(strtotime($question->{Contract::CREATED_AT}))->diffForHumans() }}</div>
+                            {{ $question->{Contract::DESCRIPTION} }}
+                        </td>
+                        <td class="fsize" width="33%">
+                            @if($question->{Contract::STATUS} === 2)
+                                <div class="text-info font-weight-bold border-bottom pb-2 mb-2">{{  Carbon::createFromTimeStamp(strtotime($question->{Contract::ANSWERED_AT}))->diffForHumans() }}</div>
+                            @endif
+                            {{ $question->{Contract::ANSWER} }}
+                        </td>
+                        <td class="fsize">
+                            @if($user)
+                                @if ($user->{Contract::ROLE} === Contract::LAWYER)
+                                    <a href="/lawyer/{{ $user->{Contract::ID} }}/show" class="text-info"><u>{{ $user->{Contract::NAME} }} {{ $user->{Contract::SURNAME} }}</u></a>
+                                @elseif ($user->{Contract::ROLE} === Contract::ADMIN)
+                                    <a href="/admin/{{ $user->{Contract::ID} }}/show" class="text-info"><u>{{ $user->{Contract::NAME} }} {{ $user->{Contract::SURNAME} }}</u></a>
+                                @elseif ($user->{Contract::ROLE} === Contract::USER)
+                                    <a href="/user/{{ $user->{Contract::ID} }}/show" class="text-info"><u>{{ $user->{Contract::NAME} }} {{ $user->{Contract::SURNAME} }}</u></a>
+                                @endif
+                            @endif
+                        </td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <style>
+        .fsize {
+            font-size: 12px;
+        }
+    </style>
 @endsection

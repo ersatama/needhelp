@@ -22,11 +22,9 @@ class LawyerCrudController extends CrudController
 
         CRUD::setRoute(config('backpack.base.route_prefix') . '/lawyer');
         CRUD::setEntityNameStrings('Юрист', 'Юристы');
-        CRUD::denyAccess('create');
         $this->crud->enableExportButtons();
         $this->crud->addClause('where', Contract::ROLE, Contract::LAWYER);
         $this->crud->setShowView('vendor.backpack.base.crud.lawyer.show');
-
     }
 
     protected function extracted()
@@ -65,10 +63,9 @@ class LawyerCrudController extends CrudController
             ->options([
                 Contract::ADMIN     =>  'Администратор',
                 Contract::LAWYER    =>  'Юрист',
-                Contract::MANAGER   =>  'Менеджер',
                 Contract::USER      =>  'Пользователь'
             ])
-            ->default(Contract::USER);
+            ->default(Contract::LAWYER);
         CRUD::field(Contract::NAME)->label('Имя');
         CRUD::field(Contract::SURNAME)->label('Фамилия');
         CRUD::field(Contract::LAST_NAME)->label('Отчество');
