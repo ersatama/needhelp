@@ -5,6 +5,7 @@ namespace App\Domain\Repositories\Notification;
 use App\Domain\Contracts\Contract;
 use App\Domain\Repositories\RepositoryEloquent;
 use App\Models\Notification;
+use Illuminate\Support\Facades\DB;
 
 class NotificationRepositoryEloquent implements NotificationRepositoryInterface
 {
@@ -45,5 +46,16 @@ class NotificationRepositoryEloquent implements NotificationRepositoryInterface
     public static function _getByLawyerId($lawyerId)
     {
         return Notification::where(Contract::LAWYER_ID, $lawyerId)->get();
+    }
+
+    public static function priceLastWeek()
+    {
+        return Notification::select(DB::raw('sum(price) as sum'),DB::raw("DATE_FORMAT(created_at, '%Y-%m-%d') as date"))
+            ->where([
+                [Contract::CREATED_AT, '>', now()->subDays(7)->endOfDay()],
+                [Contract::IS_PAID, true],
+                [Contract::STATUS,'!=',0]
+            ])
+            ->groupBy(DB::raw("DATE_FORMAT(created_at, '%Y-%m-%d')"))->get();
     }
 }

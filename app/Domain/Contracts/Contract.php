@@ -4,6 +4,8 @@ namespace App\Domain\Contracts;
 
 abstract class Contract
 {
+    const DATE  =   'date';
+    const COUNT =   'count';
     const READONLY  =   'readonly';
     const LIKE  =   'like';
     const Q =   'q';

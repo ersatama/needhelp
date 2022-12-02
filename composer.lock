@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3600a3588f5c448193f1245f0d827c0c",
+    "content-hash": "d61934d8b30b77a1a798a2567b9e90f0",
     "packages": [
         {
             "name": "backpack/crud",
@@ -6015,6 +6015,61 @@
                 }
             ],
             "time": "2022-10-07T08:04:03+00:00"
+        },
+        {
+            "name": "tabacitu/consoletvs-charts-temp",
+            "version": "6.5.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tabacitu/consoletvs-charts-temp.git",
+                "reference": "64408f15cda0ea4dd75071048c569ddfb9c919c9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tabacitu/consoletvs-charts-temp/zipball/64408f15cda0ea4dd75071048c569ddfb9c919c9",
+                "reference": "64408f15cda0ea4dd75071048c569ddfb9c919c9",
+                "shasum": ""
+            },
+            "require": {
+                "balping/json-raw-encoder": "^1.0",
+                "illuminate/console": "^5.0|^6.0|^7.0|^8.0|^9.0",
+                "illuminate/support": "^5.0|^6.0|^7.0|^8.0|^9.0",
+                "php": ">=7.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "ConsoleTVs\\Charts\\ChartsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "ConsoleTVs\\Charts\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Èrik Campobadal Forés",
+                    "email": "soc@erik.cat"
+                }
+            ],
+            "description": "Temporary Archive of ConsoleTVs/Charts (aka Chartisan/Charts) v6.5.6",
+            "support": {
+                "source": "https://github.com/tabacitu/consoletvs-charts-temp/tree/6.5.6"
+            },
+            "funding": [
+                {
+                    "url": "https://www.patreon.com/ErikCampobadal",
+                    "type": "patreon"
+                }
+            ],
+            "time": "2022-08-04T06:32:26+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
