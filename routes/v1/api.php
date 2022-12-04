@@ -49,9 +49,3 @@ Route::controller(NotificationController::class)->group(function() {
         Route::get('getByUserId/{userId}','getByUserId')->name('notification.getByUserId');
     });
 });
-
-Route::controller(NotificationHistoryController::class)->group(function() {
-    Route::prefix('notificationHistory')->group(function() {
-        Route::get('getByNotificationId/{notificationId}','getByNotificationId')->name('notificationHistory.getByNotificationId');
-    });
-});
