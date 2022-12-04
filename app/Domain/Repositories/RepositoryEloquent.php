@@ -7,6 +7,17 @@ use Illuminate\Database\Eloquent\Collection;
 
 trait RepositoryEloquent
 {
+    public function update($id, $data)
+    {
+        $this->model::where(Contract::ID, $id)->update($data);
+        return $this->firstById($id);
+    }
+
+    public function create($data)
+    {
+        return $this->model::create($data);
+    }
+
     public function all()
     {
         return $this->model::get();
@@ -30,6 +41,11 @@ trait RepositoryEloquent
     public function getByNotificationId($notificationId)
     {
         return $this->model::where(Contract::NOTIFICATION_ID,$notificationId)->get();
+    }
+
+    public function firstByPhone($phone)
+    {
+        return $this->model::where(Contract::PHONE,$phone)->first();
     }
 
     public function firstById($id)

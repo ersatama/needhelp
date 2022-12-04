@@ -12,6 +12,10 @@ use Illuminate\Support\Facades\Route;
 Route::controller(UserController::class)->group(function() {
     Route::prefix('user')->group(function() {
         Route::any('search','search')->name('user.search');
+        Route::post('create','create')->name('user.create');
+        Route::post('update','update')->name('user.update');
+        Route::get('auth/{phone}/{password}','auth')->name('user.auth');
+        Route::get('codeVerify/{id}/{code}','codeVerify')->name('user.codeVerify');
         Route::get('firstById/{id}','firstById')->name('user.firstById');
     });
 });
