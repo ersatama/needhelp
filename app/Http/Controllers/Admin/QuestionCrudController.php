@@ -4,11 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\Domain\Contracts\Contract;
 use App\Http\Requests\NotificationRequest;
-use App\Models\Notification;
+use App\Models\Question;
+use Backpack\CRUD\app\Exceptions\BackpackProRequiredException;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
-class NotificationCrudController extends CrudController
+class QuestionCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
@@ -19,20 +20,23 @@ class NotificationCrudController extends CrudController
      * Configure the CrudPanel object. Apply settings to all operations.
      *
      * @return void
+     * @throws BackpackProRequiredException
      */
     public function setup(): void
     {
-        CRUD::setModel(Notification::class);
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/notification');
+        CRUD::setModel(Question::class);
+        CRUD::setRoute(config('backpack.base.route_prefix') . '/question');
         CRUD::setEntityNameStrings('Вопрос', 'Вопросы');
-        $this->crud->enableExportButtons();
+
         if (backpack_user()->{Contract::ROLE} === Contract::LAWYER) {
             $this->crud->addClause('where', Contract::IS_PAID, true);
             $this->crud->addClause('where', Contract::STATUS, 1);
+        } else {
+            $this->crud->enableExportButtons();
         }
     }
 
-    public function update()
+    public function update(): array|\Illuminate\Http\RedirectResponse
     {
         // do something before validation, before save, before everything; for example:
         // $this->crud->addField(['type' => 'hidden', 'name' => 'author_id']);

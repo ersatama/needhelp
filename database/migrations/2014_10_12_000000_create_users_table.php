@@ -34,14 +34,14 @@ return new class extends Migration
             ])->nullable();
             $table->date(Contract::BIRTHDATE)->nullable();
             $table->string(Contract::PHONE,20)->unique()->nullable();
-            $table->char(Contract::PHONE_CODE,4)->nullable();
+            $table->char(Contract::PHONE_CODE,6)->nullable();
             $table->timestamp(Contract::PHONE_VERIFIED_AT)->nullable();
             $table->string(Contract::EMAIL)->unique()->nullable();
             $table->char(Contract::EMAIL_CODE,4)->nullable();
             $table->timestamp(Contract::EMAIL_VERIFIED_AT)->nullable();
             $table->string(Contract::PASSWORD);
-            $table->boolean(Contract::PUSH_NOTIFICATION)->default(false)->nullable();
-            $table->timestamp(Contract::BLOCKED_AT)->nullable();
+            $table->boolean(Contract::PUSH_NOTIFICATION)->default(true)->nullable();
+            $table->boolean(Contract::BLOCKED_AT)->default(false)->nullable();
             $table->string(Contract::BLOCKED_REASON)->nullable();
             $table->timestamp(Contract::LAST_AUTH)->useCurrent();
             $table->rememberToken();

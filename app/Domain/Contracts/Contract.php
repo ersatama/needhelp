@@ -4,6 +4,9 @@ namespace App\Domain\Contracts;
 
 abstract class Contract
 {
+    const TAKE  =   'take';
+    const SUCCESS   =   'success';
+    const IS_NEW    =   'is_new';
     const DATE  =   'date';
     const COUNT =   'count';
     const READONLY  =   'readonly';
@@ -16,6 +19,7 @@ abstract class Contract
     const IS_PAID   =   'is_paid';
     const IS_IMPORTANT  =   'is_important';
     const STATUS    =   'status';
+    const CODE  =   'code';
     const DESCRIPTION   =   'description';
     const CURRENCY_ID   =   'currency_id';
     const PAYMENT_ID    =   'payment_id';

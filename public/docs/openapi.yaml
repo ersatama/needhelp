@@ -5,7 +5,7 @@ info:
   version: 1.0.0
 servers:
   -
-    url: 'http://localhost:8000'
+    url: 'http://localhost'
 paths:
   '/api/v1/city/getByRegionId/{regionId}':
     get:
@@ -36,437 +36,437 @@ paths:
                 example:
                   message: 'Target [App\Domain\Repositories\City\CityRepositoryInterface] is not instantiable while building [App\Http\Controllers\Api\CityController, App\Domain\Services\CityService].'
                   exception: Illuminate\Contracts\Container\BindingResolutionException
-                  file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/Container.php
+                  file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Container\Container.php'
                   line: 1091
                   trace:
                     -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/Container.php
+                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Container\Container.php'
                       line: 884
                       function: notInstantiable
                       class: Illuminate\Container\Container
                       type: '->'
                     -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/Container.php
+                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Container\Container.php'
                       line: 756
                       function: build
                       class: Illuminate\Container\Container
                       type: '->'
                     -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Application.php
+                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Foundation\Application.php'
                       line: 860
                       function: resolve
                       class: Illuminate\Container\Container
                       type: '->'
                     -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/Container.php
+                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Container\Container.php'
                       line: 692
                       function: resolve
                       class: Illuminate\Foundation\Application
                       type: '->'
                     -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Application.php
+                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Foundation\Application.php'
                       line: 845
                       function: make
                       class: Illuminate\Container\Container
                       type: '->'
                     -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/Container.php
+                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Container\Container.php'
                       line: 1029
                       function: make
                       class: Illuminate\Foundation\Application
                       type: '->'
                     -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/Container.php
+                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Container\Container.php'
                       line: 945
                       function: resolveClass
                       class: Illuminate\Container\Container
                       type: '->'
                     -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/Container.php
+                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Container\Container.php'
                       line: 906
                       function: resolveDependencies
                       class: Illuminate\Container\Container
                       type: '->'
                     -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/Container.php
+                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Container\Container.php'
                       line: 756
                       function: build
                       class: Illuminate\Container\Container
                       type: '->'
                     -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Application.php
+                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Foundation\Application.php'
                       line: 860
                       function: resolve
                       class: Illuminate\Container\Container
                       type: '->'
                     -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/Container.php
+                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Container\Container.php'
                       line: 692
                       function: resolve
                       class: Illuminate\Foundation\Application
                       type: '->'
                     -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Application.php
+                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Foundation\Application.php'
                       line: 845
                       function: make
                       class: Illuminate\Container\Container
                       type: '->'
                     -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/Container.php
+                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Container\Container.php'
                       line: 1029
                       function: make
                       class: Illuminate\Foundation\Application
                       type: '->'
                     -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/Container.php
+                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Container\Container.php'
                       line: 945
                       function: resolveClass
                       class: Illuminate\Container\Container
                       type: '->'
                     -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/Container.php
+                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Container\Container.php'
                       line: 906
                       function: resolveDependencies
                       class: Illuminate\Container\Container
                       type: '->'
                     -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/Container.php
+                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Container\Container.php'
                       line: 756
                       function: build
                       class: Illuminate\Container\Container
                       type: '->'
                     -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Application.php
+                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Foundation\Application.php'
                       line: 860
                       function: resolve
                       class: Illuminate\Container\Container
                       type: '->'
                     -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/Container.php
+                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Container\Container.php'
                       line: 692
                       function: resolve
                       class: Illuminate\Foundation\Application
                       type: '->'
                     -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Application.php
+                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Foundation\Application.php'
                       line: 845
                       function: make
                       class: Illuminate\Container\Container
                       type: '->'
                     -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Route.php
+                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Routing\Route.php'
                       line: 274
                       function: make
                       class: Illuminate\Foundation\Application
                       type: '->'
                     -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Route.php
+                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Routing\Route.php'
                       line: 1098
                       function: getController
                       class: Illuminate\Routing\Route
                       type: '->'
                     -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Route.php
+                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Routing\Route.php'
                       line: 1029
                       function: controllerMiddleware
                       class: Illuminate\Routing\Route
                       type: '->'
                     -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Router.php
+                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Routing\Router.php'
                       line: 737
                       function: gatherMiddleware
                       class: Illuminate\Routing\Route
                       type: '->'
                     -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Router.php
+                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Routing\Router.php'
                       line: 719
                       function: gatherRouteMiddleware
                       class: Illuminate\Routing\Router
                       type: '->'
                     -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Router.php
+                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Routing\Router.php'
                       line: 703
                       function: runRouteWithinStack
                       class: Illuminate\Routing\Router
                       type: '->'
                     -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Router.php
+                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Routing\Router.php'
                       line: 667
                       function: runRoute
                       class: Illuminate\Routing\Router
                       type: '->'
                     -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Router.php
+                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Routing\Router.php'
                       line: 656
                       function: dispatchToRoute
                       class: Illuminate\Routing\Router
                       type: '->'
                     -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php
+                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php'
                       line: 190
                       function: dispatch
                       class: Illuminate\Routing\Router
                       type: '->'
                     -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
+                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
                       line: 141
                       function: 'Illuminate\Foundation\Http\{closure}'
                       class: Illuminate\Foundation\Http\Kernel
                       type: '->'
                     -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php
+                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TransformsRequest.php'
                       line: 21
                       function: 'Illuminate\Pipeline\{closure}'
                       class: Illuminate\Pipeline\Pipeline
                       type: '->'
                     -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php
+                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull.php'
                       line: 31
                       function: handle
                       class: Illuminate\Foundation\Http\Middleware\TransformsRequest
                       type: '->'
                     -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
+                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
                       line: 180
                       function: handle
                       class: Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull
                       type: '->'
                     -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php
+                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TransformsRequest.php'
                       line: 21
                       function: 'Illuminate\Pipeline\{closure}'
                       class: Illuminate\Pipeline\Pipeline
                       type: '->'
                     -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php
+                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TrimStrings.php'
                       line: 40
                       function: handle
                       class: Illuminate\Foundation\Http\Middleware\TransformsRequest
                       type: '->'
                     -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
+                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
                       line: 180
                       function: handle
                       class: Illuminate\Foundation\Http\Middleware\TrimStrings
                       type: '->'
                     -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php
+                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\ValidatePostSize.php'
                       line: 27
                       function: 'Illuminate\Pipeline\{closure}'
                       class: Illuminate\Pipeline\Pipeline
                       type: '->'
                     -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
+                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
                       line: 180
                       function: handle
                       class: Illuminate\Foundation\Http\Middleware\ValidatePostSize
                       type: '->'
                     -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php
+                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance.php'
                       line: 86
                       function: 'Illuminate\Pipeline\{closure}'
                       class: Illuminate\Pipeline\Pipeline
                       type: '->'
                     -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
+                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
                       line: 180
                       function: handle
                       class: Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance
                       type: '->'
                     -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php
+                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Http\Middleware\HandleCors.php'
                       line: 62
                       function: 'Illuminate\Pipeline\{closure}'
                       class: Illuminate\Pipeline\Pipeline
                       type: '->'
                     -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
+                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
                       line: 180
                       function: handle
                       class: Illuminate\Http\Middleware\HandleCors
                       type: '->'
                     -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php
+                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Http\Middleware\TrustProxies.php'
                       line: 39
                       function: 'Illuminate\Pipeline\{closure}'
                       class: Illuminate\Pipeline\Pipeline
                       type: '->'
                     -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
+                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
                       line: 180
                       function: handle
                       class: Illuminate\Http\Middleware\TrustProxies
                       type: '->'
                     -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
+                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
                       line: 116
                       function: 'Illuminate\Pipeline\{closure}'
                       class: Illuminate\Pipeline\Pipeline
                       type: '->'
                     -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php
+                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php'
                       line: 165
                       function: then
                       class: Illuminate\Pipeline\Pipeline
                       type: '->'
                     -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php
+                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php'
                       line: 134
                       function: sendRequestThroughRouter
                       class: Illuminate\Foundation\Http\Kernel
                       type: '->'
                     -
-                      file: /var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php
+                      file: 'C:\Projects\needhelp\vendor\knuckleswtf\scribe\src\Extracting\Strategies\Responses\ResponseCalls.php'
                       line: 303
                       function: handle
                       class: Illuminate\Foundation\Http\Kernel
                       type: '->'
                     -
-                      file: /var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php
+                      file: 'C:\Projects\needhelp\vendor\knuckleswtf\scribe\src\Extracting\Strategies\Responses\ResponseCalls.php'
                       line: 291
                       function: callLaravelOrLumenRoute
                       class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
                       type: '->'
                     -
-                      file: /var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php
+                      file: 'C:\Projects\needhelp\vendor\knuckleswtf\scribe\src\Extracting\Strategies\Responses\ResponseCalls.php'
                       line: 89
                       function: makeApiCall
                       class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
                       type: '->'
                     -
-                      file: /var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php
+                      file: 'C:\Projects\needhelp\vendor\knuckleswtf\scribe\src\Extracting\Strategies\Responses\ResponseCalls.php'
                       line: 45
                       function: makeResponseCall
                       class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
                       type: '->'
                     -
-                      file: /var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php
+                      file: 'C:\Projects\needhelp\vendor\knuckleswtf\scribe\src\Extracting\Strategies\Responses\ResponseCalls.php'
                       line: 35
                       function: makeResponseCallIfConditionsPass
                       class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
                       type: '->'
                     -
-                      file: /var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php
+                      file: 'C:\Projects\needhelp\vendor\knuckleswtf\scribe\src\Extracting\Extractor.php'
                       line: 209
                       function: __invoke
                       class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
                       type: '->'
                     -
-                      file: /var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php
+                      file: 'C:\Projects\needhelp\vendor\knuckleswtf\scribe\src\Extracting\Extractor.php'
                       line: 166
                       function: iterateThroughStrategies
                       class: Knuckles\Scribe\Extracting\Extractor
                       type: '->'
                     -
-                      file: /var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php
+                      file: 'C:\Projects\needhelp\vendor\knuckleswtf\scribe\src\Extracting\Extractor.php'
                       line: 95
                       function: fetchResponses
                       class: Knuckles\Scribe\Extracting\Extractor
                       type: '->'
                     -
-                      file: /var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php
+                      file: 'C:\Projects\needhelp\vendor\knuckleswtf\scribe\src\GroupedEndpoints\GroupedEndpointsFromApp.php'
                       line: 122
                       function: processRoute
                       class: Knuckles\Scribe\Extracting\Extractor
                       type: '->'
                     -
-                      file: /var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php
+                      file: 'C:\Projects\needhelp\vendor\knuckleswtf\scribe\src\GroupedEndpoints\GroupedEndpointsFromApp.php'
                       line: 69
                       function: extractEndpointsInfoFromLaravelApp
                       class: Knuckles\Scribe\GroupedEndpoints\GroupedEndpointsFromApp
                       type: '->'
                     -
-                      file: /var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php
+                      file: 'C:\Projects\needhelp\vendor\knuckleswtf\scribe\src\GroupedEndpoints\GroupedEndpointsFromApp.php'
                       line: 47
                       function: extractEndpointsInfoAndWriteToDisk
                       class: Knuckles\Scribe\GroupedEndpoints\GroupedEndpointsFromApp
                       type: '->'
                     -
-                      file: /var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Commands/GenerateDocumentation.php
+                      file: 'C:\Projects\needhelp\vendor\knuckleswtf\scribe\src\Commands\GenerateDocumentation.php'
                       line: 53
                       function: get
                       class: Knuckles\Scribe\GroupedEndpoints\GroupedEndpointsFromApp
                       type: '->'
                     -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php
+                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php'
                       line: 36
                       function: handle
                       class: Knuckles\Scribe\Commands\GenerateDocumentation
                       type: '->'
                     -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/Util.php
+                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Container\Util.php'
                       line: 41
                       function: 'Illuminate\Container\{closure}'
                       class: Illuminate\Container\BoundMethod
                       type: '::'
                     -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php
+                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php'
                       line: 93
                       function: unwrapIfClosure
                       class: Illuminate\Container\Util
                       type: '::'
                     -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php
+                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php'
                       line: 37
                       function: callBoundMethod
                       class: Illuminate\Container\BoundMethod
                       type: '::'
                     -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/Container.php
+                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Container\Container.php'
                       line: 651
                       function: call
                       class: Illuminate\Container\BoundMethod
                       type: '::'
                     -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Console/Command.php
+                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Console\Command.php'
                       line: 144
                       function: call
                       class: Illuminate\Container\Container
                       type: '->'
                     -
-                      file: /var/www/onlineLawyer/vendor/symfony/console/Command/Command.php
+                      file: 'C:\Projects\needhelp\vendor\symfony\console\Command\Command.php'
                       line: 308
                       function: execute
                       class: Illuminate\Console\Command
                       type: '->'
                     -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Console/Command.php
+                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Console\Command.php'
                       line: 126
                       function: run
                       class: Symfony\Component\Console\Command\Command
                       type: '->'
                     -
-                      file: /var/www/onlineLawyer/vendor/symfony/console/Application.php
+                      file: 'C:\Projects\needhelp\vendor\symfony\console\Application.php'
                       line: 1002
                       function: run
                       class: Illuminate\Console\Command
                       type: '->'
                     -
-                      file: /var/www/onlineLawyer/vendor/symfony/console/Application.php
+                      file: 'C:\Projects\needhelp\vendor\symfony\console\Application.php'
                       line: 299
                       function: doRunCommand
                       class: Symfony\Component\Console\Application
                       type: '->'
                     -
-                      file: /var/www/onlineLawyer/vendor/symfony/console/Application.php
+                      file: 'C:\Projects\needhelp\vendor\symfony\console\Application.php'
                       line: 171
                       function: doRun
                       class: Symfony\Component\Console\Application
                       type: '->'
                     -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Console/Application.php
+                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Console\Application.php'
                       line: 102
                       function: run
                       class: Symfony\Component\Console\Application
                       type: '->'
                     -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php
+                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php'
                       line: 151
                       function: run
                       class: Illuminate\Console\Application
                       type: '->'
                     -
-                      file: /var/www/onlineLawyer/artisan
+                      file: 'C:\Projects\needhelp\artisan'
                       line: 37
                       function: handle
                       class: Illuminate\Foundation\Console\Kernel
@@ -480,7 +480,7 @@ paths:
                     example: Illuminate\Contracts\Container\BindingResolutionException
                   file:
                     type: string
-                    example: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/Container.php
+                    example: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Container\Container.php'
                   line:
                     type: integer
                     example: 1091
@@ -488,433 +488,433 @@ paths:
                     type: array
                     example:
                       -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/Container.php
+                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Container\Container.php'
                         line: 884
                         function: notInstantiable
                         class: Illuminate\Container\Container
                         type: '->'
                       -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/Container.php
+                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Container\Container.php'
                         line: 756
                         function: build
                         class: Illuminate\Container\Container
                         type: '->'
                       -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Application.php
+                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Foundation\Application.php'
                         line: 860
                         function: resolve
                         class: Illuminate\Container\Container
                         type: '->'
                       -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/Container.php
+                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Container\Container.php'
                         line: 692
                         function: resolve
                         class: Illuminate\Foundation\Application
                         type: '->'
                       -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Application.php
+                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Foundation\Application.php'
                         line: 845
                         function: make
                         class: Illuminate\Container\Container
                         type: '->'
                       -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/Container.php
+                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Container\Container.php'
                         line: 1029
                         function: make
                         class: Illuminate\Foundation\Application
                         type: '->'
                       -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/Container.php
+                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Container\Container.php'
                         line: 945
                         function: resolveClass
                         class: Illuminate\Container\Container
                         type: '->'
                       -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/Container.php
+                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Container\Container.php'
                         line: 906
                         function: resolveDependencies
                         class: Illuminate\Container\Container
                         type: '->'
                       -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/Container.php
+                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Container\Container.php'
                         line: 756
                         function: build
                         class: Illuminate\Container\Container
                         type: '->'
                       -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Application.php
+                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Foundation\Application.php'
                         line: 860
                         function: resolve
                         class: Illuminate\Container\Container
                         type: '->'
                       -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/Container.php
+                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Container\Container.php'
                         line: 692
                         function: resolve
                         class: Illuminate\Foundation\Application
                         type: '->'
                       -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Application.php
+                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Foundation\Application.php'
                         line: 845
                         function: make
                         class: Illuminate\Container\Container
                         type: '->'
                       -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/Container.php
+                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Container\Container.php'
                         line: 1029
                         function: make
                         class: Illuminate\Foundation\Application
                         type: '->'
                       -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/Container.php
+                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Container\Container.php'
                         line: 945
                         function: resolveClass
                         class: Illuminate\Container\Container
                         type: '->'
                       -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/Container.php
+                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Container\Container.php'
                         line: 906
                         function: resolveDependencies
                         class: Illuminate\Container\Container
                         type: '->'
                       -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/Container.php
+                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Container\Container.php'
                         line: 756
                         function: build
                         class: Illuminate\Container\Container
                         type: '->'
                       -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Application.php
+                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Foundation\Application.php'
                         line: 860
                         function: resolve
                         class: Illuminate\Container\Container
                         type: '->'
                       -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/Container.php
+                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Container\Container.php'
                         line: 692
                         function: resolve
                         class: Illuminate\Foundation\Application
                         type: '->'
                       -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Application.php
+                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Foundation\Application.php'
                         line: 845
                         function: make
                         class: Illuminate\Container\Container
                         type: '->'
                       -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Route.php
+                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Routing\Route.php'
                         line: 274
                         function: make
                         class: Illuminate\Foundation\Application
                         type: '->'
                       -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Route.php
+                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Routing\Route.php'
                         line: 1098
                         function: getController
                         class: Illuminate\Routing\Route
                         type: '->'
                       -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Route.php
+                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Routing\Route.php'
                         line: 1029
                         function: controllerMiddleware
                         class: Illuminate\Routing\Route
                         type: '->'
                       -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Router.php
+                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Routing\Router.php'
                         line: 737
                         function: gatherMiddleware
                         class: Illuminate\Routing\Route
                         type: '->'
                       -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Router.php
+                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Routing\Router.php'
                         line: 719
                         function: gatherRouteMiddleware
                         class: Illuminate\Routing\Router
                         type: '->'
                       -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Router.php
+                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Routing\Router.php'
                         line: 703
                         function: runRouteWithinStack
                         class: Illuminate\Routing\Router
                         type: '->'
                       -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Router.php
+                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Routing\Router.php'
                         line: 667
                         function: runRoute
                         class: Illuminate\Routing\Router
                         type: '->'
                       -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Router.php
+                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Routing\Router.php'
                         line: 656
                         function: dispatchToRoute
                         class: Illuminate\Routing\Router
                         type: '->'
                       -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php
+                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php'
                         line: 190
                         function: dispatch
                         class: Illuminate\Routing\Router
                         type: '->'
                       -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
+                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
                         line: 141
                         function: 'Illuminate\Foundation\Http\{closure}'
                         class: Illuminate\Foundation\Http\Kernel
                         type: '->'
                       -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php
+                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TransformsRequest.php'
                         line: 21
                         function: 'Illuminate\Pipeline\{closure}'
                         class: Illuminate\Pipeline\Pipeline
                         type: '->'
                       -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php
+                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull.php'
                         line: 31
                         function: handle
                         class: Illuminate\Foundation\Http\Middleware\TransformsRequest
                         type: '->'
                       -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
+                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
                         line: 180
                         function: handle
                         class: Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull
                         type: '->'
                       -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php
+                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TransformsRequest.php'
                         line: 21
                         function: 'Illuminate\Pipeline\{closure}'
                         class: Illuminate\Pipeline\Pipeline
                         type: '->'
                       -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php
+                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TrimStrings.php'
                         line: 40
                         function: handle
                         class: Illuminate\Foundation\Http\Middleware\TransformsRequest
                         type: '->'
                       -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
+                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
                         line: 180
                         function: handle
                         class: Illuminate\Foundation\Http\Middleware\TrimStrings
                         type: '->'
                       -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php
+                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\ValidatePostSize.php'
                         line: 27
                         function: 'Illuminate\Pipeline\{closure}'
                         class: Illuminate\Pipeline\Pipeline
                         type: '->'
                       -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
+                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
                         line: 180
                         function: handle
                         class: Illuminate\Foundation\Http\Middleware\ValidatePostSize
                         type: '->'
                       -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php
+                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance.php'
                         line: 86
                         function: 'Illuminate\Pipeline\{closure}'
                         class: Illuminate\Pipeline\Pipeline
                         type: '->'
                       -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
+                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
                         line: 180
                         function: handle
                         class: Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance
                         type: '->'
                       -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php
+                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Http\Middleware\HandleCors.php'
                         line: 62
                         function: 'Illuminate\Pipeline\{closure}'
                         class: Illuminate\Pipeline\Pipeline
                         type: '->'
                       -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
+                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
                         line: 180
                         function: handle
                         class: Illuminate\Http\Middleware\HandleCors
                         type: '->'
                       -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php
+                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Http\Middleware\TrustProxies.php'
                         line: 39
                         function: 'Illuminate\Pipeline\{closure}'
                         class: Illuminate\Pipeline\Pipeline
                         type: '->'
                       -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
+                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
                         line: 180
                         function: handle
                         class: Illuminate\Http\Middleware\TrustProxies
                         type: '->'
                       -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
+                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
                         line: 116
                         function: 'Illuminate\Pipeline\{closure}'
                         class: Illuminate\Pipeline\Pipeline
                         type: '->'
                       -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php
+                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php'
                         line: 165
                         function: then
                         class: Illuminate\Pipeline\Pipeline
                         type: '->'
                       -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php
+                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php'
                         line: 134
                         function: sendRequestThroughRouter
                         class: Illuminate\Foundation\Http\Kernel
                         type: '->'
                       -
-                        file: /var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php
+                        file: 'C:\Projects\needhelp\vendor\knuckleswtf\scribe\src\Extracting\Strategies\Responses\ResponseCalls.php'
                         line: 303
                         function: handle
                         class: Illuminate\Foundation\Http\Kernel
                         type: '->'
                       -
-                        file: /var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php
+                        file: 'C:\Projects\needhelp\vendor\knuckleswtf\scribe\src\Extracting\Strategies\Responses\ResponseCalls.php'
                         line: 291
                         function: callLaravelOrLumenRoute
                         class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
                         type: '->'
                       -
-                        file: /var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php
+                        file: 'C:\Projects\needhelp\vendor\knuckleswtf\scribe\src\Extracting\Strategies\Responses\ResponseCalls.php'
                         line: 89
                         function: makeApiCall
                         class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
                         type: '->'
                       -
-                        file: /var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php
+                        file: 'C:\Projects\needhelp\vendor\knuckleswtf\scribe\src\Extracting\Strategies\Responses\ResponseCalls.php'
                         line: 45
                         function: makeResponseCall
                         class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
                         type: '->'
                       -
-                        file: /var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php
+                        file: 'C:\Projects\needhelp\vendor\knuckleswtf\scribe\src\Extracting\Strategies\Responses\ResponseCalls.php'
                         line: 35
                         function: makeResponseCallIfConditionsPass
                         class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
                         type: '->'
                       -
-                        file: /var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php
+                        file: 'C:\Projects\needhelp\vendor\knuckleswtf\scribe\src\Extracting\Extractor.php'
                         line: 209
                         function: __invoke
                         class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
                         type: '->'
                       -
-                        file: /var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php
+                        file: 'C:\Projects\needhelp\vendor\knuckleswtf\scribe\src\Extracting\Extractor.php'
                         line: 166
                         function: iterateThroughStrategies
                         class: Knuckles\Scribe\Extracting\Extractor
                         type: '->'
                       -
-                        file: /var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php
+                        file: 'C:\Projects\needhelp\vendor\knuckleswtf\scribe\src\Extracting\Extractor.php'
                         line: 95
                         function: fetchResponses
                         class: Knuckles\Scribe\Extracting\Extractor
                         type: '->'
                       -
-                        file: /var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php
+                        file: 'C:\Projects\needhelp\vendor\knuckleswtf\scribe\src\GroupedEndpoints\GroupedEndpointsFromApp.php'
                         line: 122
                         function: processRoute
                         class: Knuckles\Scribe\Extracting\Extractor
                         type: '->'
                       -
-                        file: /var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php
+                        file: 'C:\Projects\needhelp\vendor\knuckleswtf\scribe\src\GroupedEndpoints\GroupedEndpointsFromApp.php'
                         line: 69
                         function: extractEndpointsInfoFromLaravelApp
                         class: Knuckles\Scribe\GroupedEndpoints\GroupedEndpointsFromApp
                         type: '->'
                       -
-                        file: /var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php
+                        file: 'C:\Projects\needhelp\vendor\knuckleswtf\scribe\src\GroupedEndpoints\GroupedEndpointsFromApp.php'
                         line: 47
                         function: extractEndpointsInfoAndWriteToDisk
                         class: Knuckles\Scribe\GroupedEndpoints\GroupedEndpointsFromApp
                         type: '->'
                       -
-                        file: /var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Commands/GenerateDocumentation.php
+                        file: 'C:\Projects\needhelp\vendor\knuckleswtf\scribe\src\Commands\GenerateDocumentation.php'
                         line: 53
                         function: get
                         class: Knuckles\Scribe\GroupedEndpoints\GroupedEndpointsFromApp
                         type: '->'
                       -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php
+                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php'
                         line: 36
                         function: handle
                         class: Knuckles\Scribe\Commands\GenerateDocumentation
                         type: '->'
                       -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/Util.php
+                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Container\Util.php'
                         line: 41
                         function: 'Illuminate\Container\{closure}'
                         class: Illuminate\Container\BoundMethod
                         type: '::'
                       -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php
+                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php'
                         line: 93
                         function: unwrapIfClosure
                         class: Illuminate\Container\Util
                         type: '::'
                       -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php
+                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php'
                         line: 37
                         function: callBoundMethod
                         class: Illuminate\Container\BoundMethod
                         type: '::'
                       -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/Container.php
+                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Container\Container.php'
                         line: 651
                         function: call
                         class: Illuminate\Container\BoundMethod
                         type: '::'
                       -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Console/Command.php
+                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Console\Command.php'
                         line: 144
                         function: call
                         class: Illuminate\Container\Container
                         type: '->'
                       -
-                        file: /var/www/onlineLawyer/vendor/symfony/console/Command/Command.php
+                        file: 'C:\Projects\needhelp\vendor\symfony\console\Command\Command.php'
                         line: 308
                         function: execute
                         class: Illuminate\Console\Command
                         type: '->'
                       -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Console/Command.php
+                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Console\Command.php'
                         line: 126
                         function: run
                         class: Symfony\Component\Console\Command\Command
                         type: '->'
                       -
-                        file: /var/www/onlineLawyer/vendor/symfony/console/Application.php
+                        file: 'C:\Projects\needhelp\vendor\symfony\console\Application.php'
                         line: 1002
                         function: run
                         class: Illuminate\Console\Command
                         type: '->'
                       -
-                        file: /var/www/onlineLawyer/vendor/symfony/console/Application.php
+                        file: 'C:\Projects\needhelp\vendor\symfony\console\Application.php'
                         line: 299
                         function: doRunCommand
                         class: Symfony\Component\Console\Application
                         type: '->'
                       -
-                        file: /var/www/onlineLawyer/vendor/symfony/console/Application.php
+                        file: 'C:\Projects\needhelp\vendor\symfony\console\Application.php'
                         line: 171
                         function: doRun
                         class: Symfony\Component\Console\Application
                         type: '->'
                       -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Console/Application.php
+                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Console\Application.php'
                         line: 102
                         function: run
                         class: Symfony\Component\Console\Application
                         type: '->'
                       -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php
+                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php'
                         line: 151
                         function: run
                         class: Illuminate\Console\Application
                         type: '->'
                       -
-                        file: /var/www/onlineLawyer/artisan
+                        file: 'C:\Projects\needhelp\artisan'
                         line: 37
                         function: handle
                         class: Illuminate\Foundation\Console\Kernel
@@ -929,7 +929,7 @@ paths:
         in: path
         name: regionId
         description: ''
-        example: modi
+        example: fuga
         required: true
         schema:
           type: string
@@ -1030,943 +1030,105 @@ paths:
               schema:
                 type: object
                 example:
+                  data:
+                    -
+                      id: 1
+                      created_at: '2022-12-12T13:06:02.000000Z'
+                      updated_at: '2022-12-12T13:06:02.000000Z'
+                      title: Русский
+                      title_kz: Орысша
+                      title_en: Russian
+                    -
+                      id: 2
+                      created_at: '2022-12-12T13:06:02.000000Z'
+                      updated_at: '2022-12-12T13:06:02.000000Z'
+                      title: Английский
+                      title_kz: Ағылшынша
+                      title_en: English
+                    -
+                      id: 3
+                      created_at: '2022-12-12T13:06:02.000000Z'
+                      updated_at: '2022-12-12T13:06:02.000000Z'
+                      title: Казахский
+                      title_kz: Қазақша
+                      title_en: Kazakh
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        created_at: '2022-12-12T13:06:02.000000Z'
+                        updated_at: '2022-12-12T13:06:02.000000Z'
+                        title: Русский
+                        title_kz: Орысша
+                        title_en: Russian
+                      -
+                        id: 2
+                        created_at: '2022-12-12T13:06:02.000000Z'
+                        updated_at: '2022-12-12T13:06:02.000000Z'
+                        title: Английский
+                        title_kz: Ағылшынша
+                        title_en: English
+                      -
+                        id: 3
+                        created_at: '2022-12-12T13:06:02.000000Z'
+                        updated_at: '2022-12-12T13:06:02.000000Z'
+                        title: Казахский
+                        title_kz: Қазақша
+                        title_en: Kazakh
+                    items:
+                      type: object
+      tags:
+        - Language
+      security: []
+  '/api/v1/question/getByUserId/{userId}':
+    get:
+      summary: 'getByUserId - Questions'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
                   data: []
                 properties:
                   data:
                     type: array
                     example: []
       tags:
-        - Language
-      security: []
-  '/api/v1/notification/getByUserId/{userId}':
-    get:
-      summary: 'getByUserId - Notification'
-      description: ''
-      parameters:
-        -
-          in: header
-          name: Content-Type
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Accept
-          description: ''
-          example: application/json
-          schema:
-            type: string
-      responses:
-        500:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  message: "SQLSTATE[42S22]: Column not found: 1054 Unknown column 'user_id' in 'where clause' (SQL: select * from `notifications` where `user_id` = est)"
-                  exception: Illuminate\Database\QueryException
-                  file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Database/Connection.php
-                  line: 759
-                  trace:
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Database/Connection.php
-                      line: 719
-                      function: runQueryCallback
-                      class: Illuminate\Database\Connection
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Database/Connection.php
-                      line: 421
-                      function: run
-                      class: Illuminate\Database\Connection
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php
-                      line: 2636
-                      function: select
-                      class: Illuminate\Database\Connection
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php
-                      line: 2624
-                      function: runSelect
-                      class: Illuminate\Database\Query\Builder
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php
-                      line: 3160
-                      function: 'Illuminate\Database\Query\{closure}'
-                      class: Illuminate\Database\Query\Builder
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php
-                      line: 2625
-                      function: onceWithColumns
-                      class: Illuminate\Database\Query\Builder
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php
-                      line: 699
-                      function: get
-                      class: Illuminate\Database\Query\Builder
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php
-                      line: 683
-                      function: getModels
-                      class: Illuminate\Database\Eloquent\Builder
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/app/Domain/Repositories/RepositoryEloquent.php
-                      line: 22
-                      function: get
-                      class: Illuminate\Database\Eloquent\Builder
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/app/Http/Controllers/Api/NotificationController.php
-                      line: 25
-                      function: getByUserId
-                      class: App\Domain\Repositories\Notification\NotificationRepositoryEloquent
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Controller.php
-                      line: 54
-                      function: getByUserId
-                      class: App\Http\Controllers\Api\NotificationController
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php
-                      line: 43
-                      function: callAction
-                      class: Illuminate\Routing\Controller
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Route.php
-                      line: 260
-                      function: dispatch
-                      class: Illuminate\Routing\ControllerDispatcher
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Route.php
-                      line: 205
-                      function: runController
-                      class: Illuminate\Routing\Route
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Router.php
-                      line: 725
-                      function: run
-                      class: Illuminate\Routing\Route
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
-                      line: 141
-                      function: 'Illuminate\Routing\{closure}'
-                      class: Illuminate\Routing\Router
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php
-                      line: 50
-                      function: 'Illuminate\Pipeline\{closure}'
-                      class: Illuminate\Pipeline\Pipeline
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
-                      line: 180
-                      function: handle
-                      class: Illuminate\Routing\Middleware\SubstituteBindings
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php
-                      line: 126
-                      function: 'Illuminate\Pipeline\{closure}'
-                      class: Illuminate\Pipeline\Pipeline
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php
-                      line: 102
-                      function: handleRequest
-                      class: Illuminate\Routing\Middleware\ThrottleRequests
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php
-                      line: 54
-                      function: handleRequestUsingNamedLimiter
-                      class: Illuminate\Routing\Middleware\ThrottleRequests
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
-                      line: 180
-                      function: handle
-                      class: Illuminate\Routing\Middleware\ThrottleRequests
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
-                      line: 116
-                      function: 'Illuminate\Pipeline\{closure}'
-                      class: Illuminate\Pipeline\Pipeline
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Router.php
-                      line: 726
-                      function: then
-                      class: Illuminate\Pipeline\Pipeline
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Router.php
-                      line: 703
-                      function: runRouteWithinStack
-                      class: Illuminate\Routing\Router
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Router.php
-                      line: 667
-                      function: runRoute
-                      class: Illuminate\Routing\Router
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Router.php
-                      line: 656
-                      function: dispatchToRoute
-                      class: Illuminate\Routing\Router
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php
-                      line: 190
-                      function: dispatch
-                      class: Illuminate\Routing\Router
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
-                      line: 141
-                      function: 'Illuminate\Foundation\Http\{closure}'
-                      class: Illuminate\Foundation\Http\Kernel
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php
-                      line: 21
-                      function: 'Illuminate\Pipeline\{closure}'
-                      class: Illuminate\Pipeline\Pipeline
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php
-                      line: 31
-                      function: handle
-                      class: Illuminate\Foundation\Http\Middleware\TransformsRequest
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
-                      line: 180
-                      function: handle
-                      class: Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php
-                      line: 21
-                      function: 'Illuminate\Pipeline\{closure}'
-                      class: Illuminate\Pipeline\Pipeline
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php
-                      line: 40
-                      function: handle
-                      class: Illuminate\Foundation\Http\Middleware\TransformsRequest
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
-                      line: 180
-                      function: handle
-                      class: Illuminate\Foundation\Http\Middleware\TrimStrings
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php
-                      line: 27
-                      function: 'Illuminate\Pipeline\{closure}'
-                      class: Illuminate\Pipeline\Pipeline
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
-                      line: 180
-                      function: handle
-                      class: Illuminate\Foundation\Http\Middleware\ValidatePostSize
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php
-                      line: 86
-                      function: 'Illuminate\Pipeline\{closure}'
-                      class: Illuminate\Pipeline\Pipeline
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
-                      line: 180
-                      function: handle
-                      class: Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php
-                      line: 62
-                      function: 'Illuminate\Pipeline\{closure}'
-                      class: Illuminate\Pipeline\Pipeline
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
-                      line: 180
-                      function: handle
-                      class: Illuminate\Http\Middleware\HandleCors
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php
-                      line: 39
-                      function: 'Illuminate\Pipeline\{closure}'
-                      class: Illuminate\Pipeline\Pipeline
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
-                      line: 180
-                      function: handle
-                      class: Illuminate\Http\Middleware\TrustProxies
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
-                      line: 116
-                      function: 'Illuminate\Pipeline\{closure}'
-                      class: Illuminate\Pipeline\Pipeline
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php
-                      line: 165
-                      function: then
-                      class: Illuminate\Pipeline\Pipeline
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php
-                      line: 134
-                      function: sendRequestThroughRouter
-                      class: Illuminate\Foundation\Http\Kernel
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php
-                      line: 303
-                      function: handle
-                      class: Illuminate\Foundation\Http\Kernel
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php
-                      line: 291
-                      function: callLaravelOrLumenRoute
-                      class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php
-                      line: 89
-                      function: makeApiCall
-                      class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php
-                      line: 45
-                      function: makeResponseCall
-                      class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php
-                      line: 35
-                      function: makeResponseCallIfConditionsPass
-                      class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php
-                      line: 209
-                      function: __invoke
-                      class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php
-                      line: 166
-                      function: iterateThroughStrategies
-                      class: Knuckles\Scribe\Extracting\Extractor
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php
-                      line: 95
-                      function: fetchResponses
-                      class: Knuckles\Scribe\Extracting\Extractor
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php
-                      line: 122
-                      function: processRoute
-                      class: Knuckles\Scribe\Extracting\Extractor
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php
-                      line: 69
-                      function: extractEndpointsInfoFromLaravelApp
-                      class: Knuckles\Scribe\GroupedEndpoints\GroupedEndpointsFromApp
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php
-                      line: 47
-                      function: extractEndpointsInfoAndWriteToDisk
-                      class: Knuckles\Scribe\GroupedEndpoints\GroupedEndpointsFromApp
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Commands/GenerateDocumentation.php
-                      line: 53
-                      function: get
-                      class: Knuckles\Scribe\GroupedEndpoints\GroupedEndpointsFromApp
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php
-                      line: 36
-                      function: handle
-                      class: Knuckles\Scribe\Commands\GenerateDocumentation
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/Util.php
-                      line: 41
-                      function: 'Illuminate\Container\{closure}'
-                      class: Illuminate\Container\BoundMethod
-                      type: '::'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php
-                      line: 93
-                      function: unwrapIfClosure
-                      class: Illuminate\Container\Util
-                      type: '::'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php
-                      line: 37
-                      function: callBoundMethod
-                      class: Illuminate\Container\BoundMethod
-                      type: '::'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/Container.php
-                      line: 651
-                      function: call
-                      class: Illuminate\Container\BoundMethod
-                      type: '::'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Console/Command.php
-                      line: 144
-                      function: call
-                      class: Illuminate\Container\Container
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/symfony/console/Command/Command.php
-                      line: 308
-                      function: execute
-                      class: Illuminate\Console\Command
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Console/Command.php
-                      line: 126
-                      function: run
-                      class: Symfony\Component\Console\Command\Command
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/symfony/console/Application.php
-                      line: 1002
-                      function: run
-                      class: Illuminate\Console\Command
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/symfony/console/Application.php
-                      line: 299
-                      function: doRunCommand
-                      class: Symfony\Component\Console\Application
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/symfony/console/Application.php
-                      line: 171
-                      function: doRun
-                      class: Symfony\Component\Console\Application
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Console/Application.php
-                      line: 102
-                      function: run
-                      class: Symfony\Component\Console\Application
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php
-                      line: 151
-                      function: run
-                      class: Illuminate\Console\Application
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/artisan
-                      line: 37
-                      function: handle
-                      class: Illuminate\Foundation\Console\Kernel
-                      type: '->'
-                properties:
-                  message:
-                    type: string
-                    example: "SQLSTATE[42S22]: Column not found: 1054 Unknown column 'user_id' in 'where clause' (SQL: select * from `notifications` where `user_id` = est)"
-                  exception:
-                    type: string
-                    example: Illuminate\Database\QueryException
-                  file:
-                    type: string
-                    example: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Database/Connection.php
-                  line:
-                    type: integer
-                    example: 759
-                  trace:
-                    type: array
-                    example:
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Database/Connection.php
-                        line: 719
-                        function: runQueryCallback
-                        class: Illuminate\Database\Connection
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Database/Connection.php
-                        line: 421
-                        function: run
-                        class: Illuminate\Database\Connection
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php
-                        line: 2636
-                        function: select
-                        class: Illuminate\Database\Connection
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php
-                        line: 2624
-                        function: runSelect
-                        class: Illuminate\Database\Query\Builder
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php
-                        line: 3160
-                        function: 'Illuminate\Database\Query\{closure}'
-                        class: Illuminate\Database\Query\Builder
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php
-                        line: 2625
-                        function: onceWithColumns
-                        class: Illuminate\Database\Query\Builder
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php
-                        line: 699
-                        function: get
-                        class: Illuminate\Database\Query\Builder
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php
-                        line: 683
-                        function: getModels
-                        class: Illuminate\Database\Eloquent\Builder
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/app/Domain/Repositories/RepositoryEloquent.php
-                        line: 22
-                        function: get
-                        class: Illuminate\Database\Eloquent\Builder
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/app/Http/Controllers/Api/NotificationController.php
-                        line: 25
-                        function: getByUserId
-                        class: App\Domain\Repositories\Notification\NotificationRepositoryEloquent
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Controller.php
-                        line: 54
-                        function: getByUserId
-                        class: App\Http\Controllers\Api\NotificationController
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php
-                        line: 43
-                        function: callAction
-                        class: Illuminate\Routing\Controller
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Route.php
-                        line: 260
-                        function: dispatch
-                        class: Illuminate\Routing\ControllerDispatcher
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Route.php
-                        line: 205
-                        function: runController
-                        class: Illuminate\Routing\Route
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Router.php
-                        line: 725
-                        function: run
-                        class: Illuminate\Routing\Route
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
-                        line: 141
-                        function: 'Illuminate\Routing\{closure}'
-                        class: Illuminate\Routing\Router
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php
-                        line: 50
-                        function: 'Illuminate\Pipeline\{closure}'
-                        class: Illuminate\Pipeline\Pipeline
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
-                        line: 180
-                        function: handle
-                        class: Illuminate\Routing\Middleware\SubstituteBindings
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php
-                        line: 126
-                        function: 'Illuminate\Pipeline\{closure}'
-                        class: Illuminate\Pipeline\Pipeline
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php
-                        line: 102
-                        function: handleRequest
-                        class: Illuminate\Routing\Middleware\ThrottleRequests
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php
-                        line: 54
-                        function: handleRequestUsingNamedLimiter
-                        class: Illuminate\Routing\Middleware\ThrottleRequests
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
-                        line: 180
-                        function: handle
-                        class: Illuminate\Routing\Middleware\ThrottleRequests
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
-                        line: 116
-                        function: 'Illuminate\Pipeline\{closure}'
-                        class: Illuminate\Pipeline\Pipeline
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Router.php
-                        line: 726
-                        function: then
-                        class: Illuminate\Pipeline\Pipeline
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Router.php
-                        line: 703
-                        function: runRouteWithinStack
-                        class: Illuminate\Routing\Router
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Router.php
-                        line: 667
-                        function: runRoute
-                        class: Illuminate\Routing\Router
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Router.php
-                        line: 656
-                        function: dispatchToRoute
-                        class: Illuminate\Routing\Router
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php
-                        line: 190
-                        function: dispatch
-                        class: Illuminate\Routing\Router
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
-                        line: 141
-                        function: 'Illuminate\Foundation\Http\{closure}'
-                        class: Illuminate\Foundation\Http\Kernel
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php
-                        line: 21
-                        function: 'Illuminate\Pipeline\{closure}'
-                        class: Illuminate\Pipeline\Pipeline
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php
-                        line: 31
-                        function: handle
-                        class: Illuminate\Foundation\Http\Middleware\TransformsRequest
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
-                        line: 180
-                        function: handle
-                        class: Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php
-                        line: 21
-                        function: 'Illuminate\Pipeline\{closure}'
-                        class: Illuminate\Pipeline\Pipeline
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php
-                        line: 40
-                        function: handle
-                        class: Illuminate\Foundation\Http\Middleware\TransformsRequest
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
-                        line: 180
-                        function: handle
-                        class: Illuminate\Foundation\Http\Middleware\TrimStrings
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php
-                        line: 27
-                        function: 'Illuminate\Pipeline\{closure}'
-                        class: Illuminate\Pipeline\Pipeline
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
-                        line: 180
-                        function: handle
-                        class: Illuminate\Foundation\Http\Middleware\ValidatePostSize
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php
-                        line: 86
-                        function: 'Illuminate\Pipeline\{closure}'
-                        class: Illuminate\Pipeline\Pipeline
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
-                        line: 180
-                        function: handle
-                        class: Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php
-                        line: 62
-                        function: 'Illuminate\Pipeline\{closure}'
-                        class: Illuminate\Pipeline\Pipeline
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
-                        line: 180
-                        function: handle
-                        class: Illuminate\Http\Middleware\HandleCors
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php
-                        line: 39
-                        function: 'Illuminate\Pipeline\{closure}'
-                        class: Illuminate\Pipeline\Pipeline
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
-                        line: 180
-                        function: handle
-                        class: Illuminate\Http\Middleware\TrustProxies
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
-                        line: 116
-                        function: 'Illuminate\Pipeline\{closure}'
-                        class: Illuminate\Pipeline\Pipeline
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php
-                        line: 165
-                        function: then
-                        class: Illuminate\Pipeline\Pipeline
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php
-                        line: 134
-                        function: sendRequestThroughRouter
-                        class: Illuminate\Foundation\Http\Kernel
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php
-                        line: 303
-                        function: handle
-                        class: Illuminate\Foundation\Http\Kernel
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php
-                        line: 291
-                        function: callLaravelOrLumenRoute
-                        class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php
-                        line: 89
-                        function: makeApiCall
-                        class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php
-                        line: 45
-                        function: makeResponseCall
-                        class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php
-                        line: 35
-                        function: makeResponseCallIfConditionsPass
-                        class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php
-                        line: 209
-                        function: __invoke
-                        class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php
-                        line: 166
-                        function: iterateThroughStrategies
-                        class: Knuckles\Scribe\Extracting\Extractor
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php
-                        line: 95
-                        function: fetchResponses
-                        class: Knuckles\Scribe\Extracting\Extractor
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php
-                        line: 122
-                        function: processRoute
-                        class: Knuckles\Scribe\Extracting\Extractor
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php
-                        line: 69
-                        function: extractEndpointsInfoFromLaravelApp
-                        class: Knuckles\Scribe\GroupedEndpoints\GroupedEndpointsFromApp
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php
-                        line: 47
-                        function: extractEndpointsInfoAndWriteToDisk
-                        class: Knuckles\Scribe\GroupedEndpoints\GroupedEndpointsFromApp
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Commands/GenerateDocumentation.php
-                        line: 53
-                        function: get
-                        class: Knuckles\Scribe\GroupedEndpoints\GroupedEndpointsFromApp
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php
-                        line: 36
-                        function: handle
-                        class: Knuckles\Scribe\Commands\GenerateDocumentation
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/Util.php
-                        line: 41
-                        function: 'Illuminate\Container\{closure}'
-                        class: Illuminate\Container\BoundMethod
-                        type: '::'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php
-                        line: 93
-                        function: unwrapIfClosure
-                        class: Illuminate\Container\Util
-                        type: '::'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php
-                        line: 37
-                        function: callBoundMethod
-                        class: Illuminate\Container\BoundMethod
-                        type: '::'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/Container.php
-                        line: 651
-                        function: call
-                        class: Illuminate\Container\BoundMethod
-                        type: '::'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Console/Command.php
-                        line: 144
-                        function: call
-                        class: Illuminate\Container\Container
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/symfony/console/Command/Command.php
-                        line: 308
-                        function: execute
-                        class: Illuminate\Console\Command
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Console/Command.php
-                        line: 126
-                        function: run
-                        class: Symfony\Component\Console\Command\Command
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/symfony/console/Application.php
-                        line: 1002
-                        function: run
-                        class: Illuminate\Console\Command
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/symfony/console/Application.php
-                        line: 299
-                        function: doRunCommand
-                        class: Symfony\Component\Console\Application
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/symfony/console/Application.php
-                        line: 171
-                        function: doRun
-                        class: Symfony\Component\Console\Application
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Console/Application.php
-                        line: 102
-                        function: run
-                        class: Symfony\Component\Console\Application
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php
-                        line: 151
-                        function: run
-                        class: Illuminate\Console\Application
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/artisan
-                        line: 37
-                        function: handle
-                        class: Illuminate\Foundation\Console\Kernel
-                        type: '->'
-                    items:
-                      type: object
-      tags:
-        - Notification
+        - Questions
       security: []
     parameters:
       -
         in: path
         name: userId
         description: ''
-        example: est
+        example: vel
         required: true
         schema:
           type: string
-  '/api/v1/notificationHistory/getByNotificationId/{notificationId}':
+  '/api/v1/question/firstById/{id}':
     get:
-      summary: 'getByNotificationId - NotificationHistory'
+      summary: 'firstById - Questions'
       description: ''
       parameters:
         -
@@ -1984,915 +1146,132 @@ paths:
           schema:
             type: string
       responses:
-        500:
+        404:
           description: ''
           content:
             application/json:
               schema:
                 type: object
                 example:
-                  message: "SQLSTATE[42S22]: Column not found: 1054 Unknown column 'notification_id' in 'where clause' (SQL: select * from `notification_histories` where `notification_id` = voluptatem)"
-                  exception: Illuminate\Database\QueryException
-                  file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Database/Connection.php
-                  line: 759
-                  trace:
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Database/Connection.php
-                      line: 719
-                      function: runQueryCallback
-                      class: Illuminate\Database\Connection
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Database/Connection.php
-                      line: 421
-                      function: run
-                      class: Illuminate\Database\Connection
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php
-                      line: 2636
-                      function: select
-                      class: Illuminate\Database\Connection
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php
-                      line: 2624
-                      function: runSelect
-                      class: Illuminate\Database\Query\Builder
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php
-                      line: 3160
-                      function: 'Illuminate\Database\Query\{closure}'
-                      class: Illuminate\Database\Query\Builder
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php
-                      line: 2625
-                      function: onceWithColumns
-                      class: Illuminate\Database\Query\Builder
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php
-                      line: 699
-                      function: get
-                      class: Illuminate\Database\Query\Builder
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php
-                      line: 683
-                      function: getModels
-                      class: Illuminate\Database\Eloquent\Builder
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/app/Domain/Repositories/RepositoryEloquent.php
-                      line: 12
-                      function: get
-                      class: Illuminate\Database\Eloquent\Builder
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/app/Http/Controllers/Api/NotificationHistoryController.php
-                      line: 25
-                      function: getByNotificationId
-                      class: App\Domain\Repositories\NotificationHistory\NotificationHistoryRepositoryEloquent
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Controller.php
-                      line: 54
-                      function: getByNotificationId
-                      class: App\Http\Controllers\Api\NotificationHistoryController
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php
-                      line: 43
-                      function: callAction
-                      class: Illuminate\Routing\Controller
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Route.php
-                      line: 260
-                      function: dispatch
-                      class: Illuminate\Routing\ControllerDispatcher
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Route.php
-                      line: 205
-                      function: runController
-                      class: Illuminate\Routing\Route
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Router.php
-                      line: 725
-                      function: run
-                      class: Illuminate\Routing\Route
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
-                      line: 141
-                      function: 'Illuminate\Routing\{closure}'
-                      class: Illuminate\Routing\Router
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php
-                      line: 50
-                      function: 'Illuminate\Pipeline\{closure}'
-                      class: Illuminate\Pipeline\Pipeline
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
-                      line: 180
-                      function: handle
-                      class: Illuminate\Routing\Middleware\SubstituteBindings
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php
-                      line: 126
-                      function: 'Illuminate\Pipeline\{closure}'
-                      class: Illuminate\Pipeline\Pipeline
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php
-                      line: 102
-                      function: handleRequest
-                      class: Illuminate\Routing\Middleware\ThrottleRequests
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php
-                      line: 54
-                      function: handleRequestUsingNamedLimiter
-                      class: Illuminate\Routing\Middleware\ThrottleRequests
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
-                      line: 180
-                      function: handle
-                      class: Illuminate\Routing\Middleware\ThrottleRequests
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
-                      line: 116
-                      function: 'Illuminate\Pipeline\{closure}'
-                      class: Illuminate\Pipeline\Pipeline
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Router.php
-                      line: 726
-                      function: then
-                      class: Illuminate\Pipeline\Pipeline
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Router.php
-                      line: 703
-                      function: runRouteWithinStack
-                      class: Illuminate\Routing\Router
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Router.php
-                      line: 667
-                      function: runRoute
-                      class: Illuminate\Routing\Router
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Router.php
-                      line: 656
-                      function: dispatchToRoute
-                      class: Illuminate\Routing\Router
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php
-                      line: 190
-                      function: dispatch
-                      class: Illuminate\Routing\Router
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
-                      line: 141
-                      function: 'Illuminate\Foundation\Http\{closure}'
-                      class: Illuminate\Foundation\Http\Kernel
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php
-                      line: 21
-                      function: 'Illuminate\Pipeline\{closure}'
-                      class: Illuminate\Pipeline\Pipeline
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php
-                      line: 31
-                      function: handle
-                      class: Illuminate\Foundation\Http\Middleware\TransformsRequest
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
-                      line: 180
-                      function: handle
-                      class: Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php
-                      line: 21
-                      function: 'Illuminate\Pipeline\{closure}'
-                      class: Illuminate\Pipeline\Pipeline
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php
-                      line: 40
-                      function: handle
-                      class: Illuminate\Foundation\Http\Middleware\TransformsRequest
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
-                      line: 180
-                      function: handle
-                      class: Illuminate\Foundation\Http\Middleware\TrimStrings
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php
-                      line: 27
-                      function: 'Illuminate\Pipeline\{closure}'
-                      class: Illuminate\Pipeline\Pipeline
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
-                      line: 180
-                      function: handle
-                      class: Illuminate\Foundation\Http\Middleware\ValidatePostSize
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php
-                      line: 86
-                      function: 'Illuminate\Pipeline\{closure}'
-                      class: Illuminate\Pipeline\Pipeline
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
-                      line: 180
-                      function: handle
-                      class: Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php
-                      line: 62
-                      function: 'Illuminate\Pipeline\{closure}'
-                      class: Illuminate\Pipeline\Pipeline
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
-                      line: 180
-                      function: handle
-                      class: Illuminate\Http\Middleware\HandleCors
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php
-                      line: 39
-                      function: 'Illuminate\Pipeline\{closure}'
-                      class: Illuminate\Pipeline\Pipeline
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
-                      line: 180
-                      function: handle
-                      class: Illuminate\Http\Middleware\TrustProxies
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
-                      line: 116
-                      function: 'Illuminate\Pipeline\{closure}'
-                      class: Illuminate\Pipeline\Pipeline
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php
-                      line: 165
-                      function: then
-                      class: Illuminate\Pipeline\Pipeline
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php
-                      line: 134
-                      function: sendRequestThroughRouter
-                      class: Illuminate\Foundation\Http\Kernel
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php
-                      line: 303
-                      function: handle
-                      class: Illuminate\Foundation\Http\Kernel
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php
-                      line: 291
-                      function: callLaravelOrLumenRoute
-                      class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php
-                      line: 89
-                      function: makeApiCall
-                      class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php
-                      line: 45
-                      function: makeResponseCall
-                      class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php
-                      line: 35
-                      function: makeResponseCallIfConditionsPass
-                      class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php
-                      line: 209
-                      function: __invoke
-                      class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php
-                      line: 166
-                      function: iterateThroughStrategies
-                      class: Knuckles\Scribe\Extracting\Extractor
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php
-                      line: 95
-                      function: fetchResponses
-                      class: Knuckles\Scribe\Extracting\Extractor
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php
-                      line: 122
-                      function: processRoute
-                      class: Knuckles\Scribe\Extracting\Extractor
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php
-                      line: 69
-                      function: extractEndpointsInfoFromLaravelApp
-                      class: Knuckles\Scribe\GroupedEndpoints\GroupedEndpointsFromApp
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php
-                      line: 47
-                      function: extractEndpointsInfoAndWriteToDisk
-                      class: Knuckles\Scribe\GroupedEndpoints\GroupedEndpointsFromApp
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Commands/GenerateDocumentation.php
-                      line: 53
-                      function: get
-                      class: Knuckles\Scribe\GroupedEndpoints\GroupedEndpointsFromApp
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php
-                      line: 36
-                      function: handle
-                      class: Knuckles\Scribe\Commands\GenerateDocumentation
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/Util.php
-                      line: 41
-                      function: 'Illuminate\Container\{closure}'
-                      class: Illuminate\Container\BoundMethod
-                      type: '::'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php
-                      line: 93
-                      function: unwrapIfClosure
-                      class: Illuminate\Container\Util
-                      type: '::'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php
-                      line: 37
-                      function: callBoundMethod
-                      class: Illuminate\Container\BoundMethod
-                      type: '::'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/Container.php
-                      line: 651
-                      function: call
-                      class: Illuminate\Container\BoundMethod
-                      type: '::'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Console/Command.php
-                      line: 144
-                      function: call
-                      class: Illuminate\Container\Container
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/symfony/console/Command/Command.php
-                      line: 308
-                      function: execute
-                      class: Illuminate\Console\Command
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Console/Command.php
-                      line: 126
-                      function: run
-                      class: Symfony\Component\Console\Command\Command
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/symfony/console/Application.php
-                      line: 1002
-                      function: run
-                      class: Illuminate\Console\Command
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/symfony/console/Application.php
-                      line: 299
-                      function: doRunCommand
-                      class: Symfony\Component\Console\Application
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/symfony/console/Application.php
-                      line: 171
-                      function: doRun
-                      class: Symfony\Component\Console\Application
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Console/Application.php
-                      line: 102
-                      function: run
-                      class: Symfony\Component\Console\Application
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php
-                      line: 151
-                      function: run
-                      class: Illuminate\Console\Application
-                      type: '->'
-                    -
-                      file: /var/www/onlineLawyer/artisan
-                      line: 37
-                      function: handle
-                      class: Illuminate\Foundation\Console\Kernel
-                      type: '->'
+                  message: 'not found'
                 properties:
                   message:
                     type: string
-                    example: "SQLSTATE[42S22]: Column not found: 1054 Unknown column 'notification_id' in 'where clause' (SQL: select * from `notification_histories` where `notification_id` = voluptatem)"
-                  exception:
-                    type: string
-                    example: Illuminate\Database\QueryException
-                  file:
-                    type: string
-                    example: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Database/Connection.php
-                  line:
-                    type: integer
-                    example: 759
-                  trace:
-                    type: array
-                    example:
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Database/Connection.php
-                        line: 719
-                        function: runQueryCallback
-                        class: Illuminate\Database\Connection
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Database/Connection.php
-                        line: 421
-                        function: run
-                        class: Illuminate\Database\Connection
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php
-                        line: 2636
-                        function: select
-                        class: Illuminate\Database\Connection
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php
-                        line: 2624
-                        function: runSelect
-                        class: Illuminate\Database\Query\Builder
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php
-                        line: 3160
-                        function: 'Illuminate\Database\Query\{closure}'
-                        class: Illuminate\Database\Query\Builder
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php
-                        line: 2625
-                        function: onceWithColumns
-                        class: Illuminate\Database\Query\Builder
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php
-                        line: 699
-                        function: get
-                        class: Illuminate\Database\Query\Builder
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php
-                        line: 683
-                        function: getModels
-                        class: Illuminate\Database\Eloquent\Builder
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/app/Domain/Repositories/RepositoryEloquent.php
-                        line: 12
-                        function: get
-                        class: Illuminate\Database\Eloquent\Builder
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/app/Http/Controllers/Api/NotificationHistoryController.php
-                        line: 25
-                        function: getByNotificationId
-                        class: App\Domain\Repositories\NotificationHistory\NotificationHistoryRepositoryEloquent
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Controller.php
-                        line: 54
-                        function: getByNotificationId
-                        class: App\Http\Controllers\Api\NotificationHistoryController
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php
-                        line: 43
-                        function: callAction
-                        class: Illuminate\Routing\Controller
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Route.php
-                        line: 260
-                        function: dispatch
-                        class: Illuminate\Routing\ControllerDispatcher
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Route.php
-                        line: 205
-                        function: runController
-                        class: Illuminate\Routing\Route
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Router.php
-                        line: 725
-                        function: run
-                        class: Illuminate\Routing\Route
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
-                        line: 141
-                        function: 'Illuminate\Routing\{closure}'
-                        class: Illuminate\Routing\Router
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php
-                        line: 50
-                        function: 'Illuminate\Pipeline\{closure}'
-                        class: Illuminate\Pipeline\Pipeline
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
-                        line: 180
-                        function: handle
-                        class: Illuminate\Routing\Middleware\SubstituteBindings
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php
-                        line: 126
-                        function: 'Illuminate\Pipeline\{closure}'
-                        class: Illuminate\Pipeline\Pipeline
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php
-                        line: 102
-                        function: handleRequest
-                        class: Illuminate\Routing\Middleware\ThrottleRequests
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php
-                        line: 54
-                        function: handleRequestUsingNamedLimiter
-                        class: Illuminate\Routing\Middleware\ThrottleRequests
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
-                        line: 180
-                        function: handle
-                        class: Illuminate\Routing\Middleware\ThrottleRequests
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
-                        line: 116
-                        function: 'Illuminate\Pipeline\{closure}'
-                        class: Illuminate\Pipeline\Pipeline
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Router.php
-                        line: 726
-                        function: then
-                        class: Illuminate\Pipeline\Pipeline
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Router.php
-                        line: 703
-                        function: runRouteWithinStack
-                        class: Illuminate\Routing\Router
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Router.php
-                        line: 667
-                        function: runRoute
-                        class: Illuminate\Routing\Router
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Router.php
-                        line: 656
-                        function: dispatchToRoute
-                        class: Illuminate\Routing\Router
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php
-                        line: 190
-                        function: dispatch
-                        class: Illuminate\Routing\Router
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
-                        line: 141
-                        function: 'Illuminate\Foundation\Http\{closure}'
-                        class: Illuminate\Foundation\Http\Kernel
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php
-                        line: 21
-                        function: 'Illuminate\Pipeline\{closure}'
-                        class: Illuminate\Pipeline\Pipeline
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php
-                        line: 31
-                        function: handle
-                        class: Illuminate\Foundation\Http\Middleware\TransformsRequest
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
-                        line: 180
-                        function: handle
-                        class: Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php
-                        line: 21
-                        function: 'Illuminate\Pipeline\{closure}'
-                        class: Illuminate\Pipeline\Pipeline
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php
-                        line: 40
-                        function: handle
-                        class: Illuminate\Foundation\Http\Middleware\TransformsRequest
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
-                        line: 180
-                        function: handle
-                        class: Illuminate\Foundation\Http\Middleware\TrimStrings
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php
-                        line: 27
-                        function: 'Illuminate\Pipeline\{closure}'
-                        class: Illuminate\Pipeline\Pipeline
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
-                        line: 180
-                        function: handle
-                        class: Illuminate\Foundation\Http\Middleware\ValidatePostSize
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php
-                        line: 86
-                        function: 'Illuminate\Pipeline\{closure}'
-                        class: Illuminate\Pipeline\Pipeline
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
-                        line: 180
-                        function: handle
-                        class: Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php
-                        line: 62
-                        function: 'Illuminate\Pipeline\{closure}'
-                        class: Illuminate\Pipeline\Pipeline
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
-                        line: 180
-                        function: handle
-                        class: Illuminate\Http\Middleware\HandleCors
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php
-                        line: 39
-                        function: 'Illuminate\Pipeline\{closure}'
-                        class: Illuminate\Pipeline\Pipeline
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
-                        line: 180
-                        function: handle
-                        class: Illuminate\Http\Middleware\TrustProxies
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php
-                        line: 116
-                        function: 'Illuminate\Pipeline\{closure}'
-                        class: Illuminate\Pipeline\Pipeline
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php
-                        line: 165
-                        function: then
-                        class: Illuminate\Pipeline\Pipeline
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php
-                        line: 134
-                        function: sendRequestThroughRouter
-                        class: Illuminate\Foundation\Http\Kernel
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php
-                        line: 303
-                        function: handle
-                        class: Illuminate\Foundation\Http\Kernel
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php
-                        line: 291
-                        function: callLaravelOrLumenRoute
-                        class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php
-                        line: 89
-                        function: makeApiCall
-                        class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php
-                        line: 45
-                        function: makeResponseCall
-                        class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php
-                        line: 35
-                        function: makeResponseCallIfConditionsPass
-                        class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php
-                        line: 209
-                        function: __invoke
-                        class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php
-                        line: 166
-                        function: iterateThroughStrategies
-                        class: Knuckles\Scribe\Extracting\Extractor
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php
-                        line: 95
-                        function: fetchResponses
-                        class: Knuckles\Scribe\Extracting\Extractor
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php
-                        line: 122
-                        function: processRoute
-                        class: Knuckles\Scribe\Extracting\Extractor
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php
-                        line: 69
-                        function: extractEndpointsInfoFromLaravelApp
-                        class: Knuckles\Scribe\GroupedEndpoints\GroupedEndpointsFromApp
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php
-                        line: 47
-                        function: extractEndpointsInfoAndWriteToDisk
-                        class: Knuckles\Scribe\GroupedEndpoints\GroupedEndpointsFromApp
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Commands/GenerateDocumentation.php
-                        line: 53
-                        function: get
-                        class: Knuckles\Scribe\GroupedEndpoints\GroupedEndpointsFromApp
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php
-                        line: 36
-                        function: handle
-                        class: Knuckles\Scribe\Commands\GenerateDocumentation
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/Util.php
-                        line: 41
-                        function: 'Illuminate\Container\{closure}'
-                        class: Illuminate\Container\BoundMethod
-                        type: '::'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php
-                        line: 93
-                        function: unwrapIfClosure
-                        class: Illuminate\Container\Util
-                        type: '::'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php
-                        line: 37
-                        function: callBoundMethod
-                        class: Illuminate\Container\BoundMethod
-                        type: '::'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/Container.php
-                        line: 651
-                        function: call
-                        class: Illuminate\Container\BoundMethod
-                        type: '::'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Console/Command.php
-                        line: 144
-                        function: call
-                        class: Illuminate\Container\Container
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/symfony/console/Command/Command.php
-                        line: 308
-                        function: execute
-                        class: Illuminate\Console\Command
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Console/Command.php
-                        line: 126
-                        function: run
-                        class: Symfony\Component\Console\Command\Command
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/symfony/console/Application.php
-                        line: 1002
-                        function: run
-                        class: Illuminate\Console\Command
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/symfony/console/Application.php
-                        line: 299
-                        function: doRunCommand
-                        class: Symfony\Component\Console\Application
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/symfony/console/Application.php
-                        line: 171
-                        function: doRun
-                        class: Symfony\Component\Console\Application
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Console/Application.php
-                        line: 102
-                        function: run
-                        class: Symfony\Component\Console\Application
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php
-                        line: 151
-                        function: run
-                        class: Illuminate\Console\Application
-                        type: '->'
-                      -
-                        file: /var/www/onlineLawyer/artisan
-                        line: 37
-                        function: handle
-                        class: Illuminate\Foundation\Console\Kernel
-                        type: '->'
-                    items:
-                      type: object
+                    example: 'not found'
       tags:
-        - NotificationHistory
+        - Questions
       security: []
     parameters:
       -
         in: path
-        name: notificationId
-        description: ''
-        example: voluptatem
+        name: id
+        description: 'The ID of the firstById.'
+        example: non
         required: true
         schema:
           type: string
-  '/api/v1/user/firstById/{id}':
+  /api/v1/question/create:
+    post:
+      summary: 'create - Questions'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Questions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: string
+                  description: ''
+                  example: molestiae
+                price:
+                  type: string
+                  description: ''
+                  example: suscipit
+                title:
+                  type: string
+                  description: ''
+                  example: nihil
+                is_important:
+                  type: string
+                  description: ''
+                  example: null
+                phone:
+                  type: string
+                  description: ''
+                  example: sed
+              required:
+                - user_id
+                - price
+                - title
+                - phone
+      security: []
+  '/api/v1/region/getByCountryId/{countryId}':
     get:
-      summary: 'firstById - User'
+      summary: 'getCountryId - Region'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data: []
+                properties:
+                  data:
+                    type: array
+                    example: []
+      tags:
+        - Region
+      security: []
+    parameters:
+      -
+        in: path
+        name: countryId
+        description: ''
+        example: eius
+        required: true
+        schema:
+          type: string
+  '/api/v1/user/firstByPhone/{phone}':
+    get:
+      summary: 'firstByPhone - User'
       description: ''
       parameters:
         -
@@ -2917,20 +1296,340 @@ paths:
               schema:
                 type: object
                 example:
-                  message: 'incorrect phone or password'
+                  phone: facere
+                  code: 692774
+                  status: not_registered
                 properties:
-                  message:
+                  phone:
                     type: string
-                    example: 'incorrect phone or password'
+                    example: facere
+                  code:
+                    type: integer
+                    example: 692774
+                  status:
+                    type: string
+                    example: not_registered
       tags:
         - User
       security: []
     parameters:
       -
         in: path
-        name: id
-        description: 'The ID of the firstById.'
-        example: quia
+        name: phone
+        description: ''
+        example: facere
+        required: true
+        schema:
+          type: string
+  '/api/v1/user/checkCode/{phone}/{code}':
+    get:
+      summary: 'checkCode - User'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        400:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'incorrect code'
+                properties:
+                  message:
+                    type: string
+                    example: 'incorrect code'
+      tags:
+        - User
+      security: []
+    parameters:
+      -
+        in: path
+        name: phone
+        description: ''
+        example: et
+        required: true
+        schema:
+          type: string
+      -
+        in: path
+        name: code
+        description: ''
+        example: magnam
+        required: true
+        schema:
+          type: string
+  '/api/v1/user/resetPassword/{phone}':
+    get:
+      summary: 'resetPassword - User'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  phone: voluptas
+                  code: 839648
+                  status: code_sent
+                properties:
+                  phone:
+                    type: string
+                    example: voluptas
+                  code:
+                    type: integer
+                    example: 839648
+                  status:
+                    type: string
+                    example: code_sent
+      tags:
+        - User
+      security: []
+    parameters:
+      -
+        in: path
+        name: phone
+        description: ''
+        example: voluptas
+        required: true
+        schema:
+          type: string
+  '/api/v1/user/resendRegisterCode/{phone}':
+    get:
+      summary: 'resendRegisterCode - User'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  phone: amet
+                  code: 123114
+                  status: not_registered
+                properties:
+                  phone:
+                    type: string
+                    example: amet
+                  code:
+                    type: integer
+                    example: 123114
+                  status:
+                    type: string
+                    example: not_registered
+      tags:
+        - User
+      security: []
+    parameters:
+      -
+        in: path
+        name: phone
+        description: ''
+        example: amet
+        required: true
+        schema:
+          type: string
+  /api/v1/user/create:
+    post:
+      summary: 'create - User'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - User
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                language_id:
+                  type: string
+                  description: ''
+                  example: illum
+                region_id:
+                  type: string
+                  description: ''
+                  example: ratione
+                name:
+                  type: string
+                  description: ''
+                  example: aliquid
+                surname:
+                  type: string
+                  description: ''
+                  example: ab
+                last_name:
+                  type: string
+                  description: ''
+                  example: null
+                phone:
+                  type: string
+                  description: ''
+                  example: et
+                push_notification:
+                  type: boolean
+                  description: ''
+                  example: true
+              required:
+                - language_id
+                - region_id
+                - name
+                - surname
+                - phone
+      security: []
+  /api/v1/user/update:
+    post:
+      summary: 'update - User'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - User
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                language_id:
+                  type: string
+                  description: ''
+                  example: consequuntur
+                push_notification:
+                  type: boolean
+                  description: ''
+                  example: false
+              required:
+                - language_id
+      security: []
+  '/api/v1/user/auth/{phone}/{password}':
+    get:
+      summary: 'auth Phone & Password - User'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        404:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'not found'
+                properties:
+                  message:
+                    type: string
+                    example: 'not found'
+      tags:
+        - User
+      security: []
+    parameters:
+      -
+        in: path
+        name: phone
+        description: ''
+        example: consequuntur
+        required: true
+        schema:
+          type: string
+      -
+        in: path
+        name: password
+        description: ''
+        example: explicabo
         required: true
         schema:
           type: string
@@ -2948,10 +1647,10 @@ tags:
     name: Language
     description: ''
   -
-    name: Notification
+    name: Questions
     description: ''
   -
-    name: NotificationHistory
+    name: Region
     description: ''
   -
     name: User

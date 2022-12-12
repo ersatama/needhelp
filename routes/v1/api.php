@@ -3,7 +3,7 @@
 use App\Http\Controllers\Api\CityController;
 use App\Http\Controllers\Api\CountryController;
 use App\Http\Controllers\Api\LanguageController;
-use App\Http\Controllers\Api\NotificationController;
+use App\Http\Controllers\Api\QuestionController;
 use App\Http\Controllers\Api\NotificationHistoryController;
 use App\Http\Controllers\Api\RegionController;
 use App\Http\Controllers\Api\UserController;
@@ -11,11 +11,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::controller(UserController::class)->group(function() {
     Route::prefix('user')->group(function() {
+        Route::get('firstByPhone/{phone}','firstByPhone')->name('user.firstByPhone');
+        Route::get('checkCode/{phone}/{code}','checkCode')->name('user.checkCode');
+        Route::get('resetPassword/{phone}','resetPassword')->name('user.resetPassword');
+        Route::get('resendRegisterCode/{phone}','resendRegisterCode')->name('user.resendRegisterCode');
         Route::any('search','search')->name('user.search');
         Route::post('create','create')->name('user.create');
         Route::post('update','update')->name('user.update');
         Route::get('auth/{phone}/{password}','auth')->name('user.auth');
-        Route::get('codeVerify/{id}/{code}','codeVerify')->name('user.codeVerify');
         Route::get('firstById/{id}','firstById')->name('user.firstById');
     });
 });
@@ -44,8 +47,10 @@ Route::controller(CityController::class)->group(function() {
     });
 });
 
-Route::controller(NotificationController::class)->group(function() {
-    Route::prefix('notification')->group(function() {
-        Route::get('getByUserId/{userId}','getByUserId')->name('notification.getByUserId');
+Route::controller(QuestionController::class)->group(function() {
+    Route::prefix('question')->group(function() {
+        Route::get('getByUserId/{userId}','getByUserId')->name('history.getByUserId');
+        Route::get('firstById/{id}','firstById')->name('history.firstById');
+        Route::post('create','create')->name('history.create');
     });
 });

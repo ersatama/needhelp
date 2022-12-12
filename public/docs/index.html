@@ -26,7 +26,7 @@
             </style>
 
     <script>
-        var baseUrl = "http://localhost:8000";
+        var baseUrl = "http://localhost";
         var useCsrf = Boolean();
         var csrfUrl = "/sanctum/csrf-cookie";
     </script>
@@ -106,23 +106,29 @@
                             </li>
                                                                         </ul>
                             </ul>
-                    <ul id="tocify-header-notification" class="tocify-header">
-                <li class="tocify-item level-1" data-unique="notification">
-                    <a href="#notification">Notification</a>
+                    <ul id="tocify-header-questions" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="questions">
+                    <a href="#questions">Questions</a>
                 </li>
-                                    <ul id="tocify-subheader-notification" class="tocify-subheader">
-                                                    <li class="tocify-item level-2" data-unique="notification-GETapi-v1-notification-getByUserId--userId-">
-                                <a href="#notification-GETapi-v1-notification-getByUserId--userId-">getByUserId - Notification</a>
+                                    <ul id="tocify-subheader-questions" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="questions-GETapi-v1-question-getByUserId--userId-">
+                                <a href="#questions-GETapi-v1-question-getByUserId--userId-">getByUserId - Questions</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="questions-GETapi-v1-question-firstById--id-">
+                                <a href="#questions-GETapi-v1-question-firstById--id-">firstById - Questions</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="questions-POSTapi-v1-question-create">
+                                <a href="#questions-POSTapi-v1-question-create">create - Questions</a>
                             </li>
                                                                         </ul>
                             </ul>
-                    <ul id="tocify-header-notificationhistory" class="tocify-header">
-                <li class="tocify-item level-1" data-unique="notificationhistory">
-                    <a href="#notificationhistory">NotificationHistory</a>
+                    <ul id="tocify-header-region" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="region">
+                    <a href="#region">Region</a>
                 </li>
-                                    <ul id="tocify-subheader-notificationhistory" class="tocify-subheader">
-                                                    <li class="tocify-item level-2" data-unique="notificationhistory-GETapi-v1-notificationHistory-getByNotificationId--notificationId-">
-                                <a href="#notificationhistory-GETapi-v1-notificationHistory-getByNotificationId--notificationId-">getByNotificationId - NotificationHistory</a>
+                                    <ul id="tocify-subheader-region" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="region-GETapi-v1-region-getByCountryId--countryId-">
+                                <a href="#region-GETapi-v1-region-getByCountryId--countryId-">getCountryId - Region</a>
                             </li>
                                                                         </ul>
                             </ul>
@@ -131,8 +137,26 @@
                     <a href="#user">User</a>
                 </li>
                                     <ul id="tocify-subheader-user" class="tocify-subheader">
-                                                    <li class="tocify-item level-2" data-unique="user-GETapi-v1-user-firstById--id-">
-                                <a href="#user-GETapi-v1-user-firstById--id-">firstById - User</a>
+                                                    <li class="tocify-item level-2" data-unique="user-GETapi-v1-user-firstByPhone--phone-">
+                                <a href="#user-GETapi-v1-user-firstByPhone--phone-">firstByPhone - User</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="user-GETapi-v1-user-checkCode--phone---code-">
+                                <a href="#user-GETapi-v1-user-checkCode--phone---code-">checkCode - User</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="user-GETapi-v1-user-resetPassword--phone-">
+                                <a href="#user-GETapi-v1-user-resetPassword--phone-">resetPassword - User</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="user-GETapi-v1-user-resendRegisterCode--phone-">
+                                <a href="#user-GETapi-v1-user-resendRegisterCode--phone-">resendRegisterCode - User</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="user-POSTapi-v1-user-create">
+                                <a href="#user-POSTapi-v1-user-create">create - User</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="user-POSTapi-v1-user-update">
+                                <a href="#user-POSTapi-v1-user-update">update - User</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="user-GETapi-v1-user-auth--phone---password-">
+                                <a href="#user-GETapi-v1-user-auth--phone---password-">auth Phone & Password - User</a>
                             </li>
                                                                         </ul>
                             </ul>
@@ -144,7 +168,7 @@
                             <li><a href="http://github.com/knuckleswtf/scribe">Documentation powered by Scribe ✍</a></li>
                     </ul>
         <ul class="toc-footer" id="last-updated">
-        <li>Last updated: November 2, 2022</li>
+        <li>Last updated: December 12, 2022</li>
     </ul>
 </div>
 
@@ -180,14 +204,14 @@ You can switch the language used with the tabs at the top right (or from the nav
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/v1/city/getByRegionId/modi" \
+    --get "http://localhost/api/v1/city/getByRegionId/fuga" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/v1/city/getByRegionId/modi"
+    "http://localhost/api/v1/city/getByRegionId/fuga"
 );
 
 const headers = {
@@ -219,508 +243,508 @@ access-control-allow-origin: *
 <code class="language-json">{
     &quot;message&quot;: &quot;Target [App\\Domain\\Repositories\\City\\CityRepositoryInterface] is not instantiable while building [App\\Http\\Controllers\\Api\\CityController, App\\Domain\\Services\\CityService].&quot;,
     &quot;exception&quot;: &quot;Illuminate\\Contracts\\Container\\BindingResolutionException&quot;,
-    &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/Container.php&quot;,
+    &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php&quot;,
     &quot;line&quot;: 1091,
     &quot;trace&quot;: [
         {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/Container.php&quot;,
+            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php&quot;,
             &quot;line&quot;: 884,
             &quot;function&quot;: &quot;notInstantiable&quot;,
             &quot;class&quot;: &quot;Illuminate\\Container\\Container&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/Container.php&quot;,
+            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php&quot;,
             &quot;line&quot;: 756,
             &quot;function&quot;: &quot;build&quot;,
             &quot;class&quot;: &quot;Illuminate\\Container\\Container&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Application.php&quot;,
+            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php&quot;,
             &quot;line&quot;: 860,
             &quot;function&quot;: &quot;resolve&quot;,
             &quot;class&quot;: &quot;Illuminate\\Container\\Container&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/Container.php&quot;,
+            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php&quot;,
             &quot;line&quot;: 692,
             &quot;function&quot;: &quot;resolve&quot;,
             &quot;class&quot;: &quot;Illuminate\\Foundation\\Application&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Application.php&quot;,
+            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php&quot;,
             &quot;line&quot;: 845,
             &quot;function&quot;: &quot;make&quot;,
             &quot;class&quot;: &quot;Illuminate\\Container\\Container&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/Container.php&quot;,
+            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php&quot;,
             &quot;line&quot;: 1029,
             &quot;function&quot;: &quot;make&quot;,
             &quot;class&quot;: &quot;Illuminate\\Foundation\\Application&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/Container.php&quot;,
+            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php&quot;,
             &quot;line&quot;: 945,
             &quot;function&quot;: &quot;resolveClass&quot;,
             &quot;class&quot;: &quot;Illuminate\\Container\\Container&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/Container.php&quot;,
+            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php&quot;,
             &quot;line&quot;: 906,
             &quot;function&quot;: &quot;resolveDependencies&quot;,
             &quot;class&quot;: &quot;Illuminate\\Container\\Container&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/Container.php&quot;,
+            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php&quot;,
             &quot;line&quot;: 756,
             &quot;function&quot;: &quot;build&quot;,
             &quot;class&quot;: &quot;Illuminate\\Container\\Container&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Application.php&quot;,
+            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php&quot;,
             &quot;line&quot;: 860,
             &quot;function&quot;: &quot;resolve&quot;,
             &quot;class&quot;: &quot;Illuminate\\Container\\Container&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/Container.php&quot;,
+            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php&quot;,
             &quot;line&quot;: 692,
             &quot;function&quot;: &quot;resolve&quot;,
             &quot;class&quot;: &quot;Illuminate\\Foundation\\Application&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Application.php&quot;,
+            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php&quot;,
             &quot;line&quot;: 845,
             &quot;function&quot;: &quot;make&quot;,
             &quot;class&quot;: &quot;Illuminate\\Container\\Container&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/Container.php&quot;,
+            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php&quot;,
             &quot;line&quot;: 1029,
             &quot;function&quot;: &quot;make&quot;,
             &quot;class&quot;: &quot;Illuminate\\Foundation\\Application&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/Container.php&quot;,
+            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php&quot;,
             &quot;line&quot;: 945,
             &quot;function&quot;: &quot;resolveClass&quot;,
             &quot;class&quot;: &quot;Illuminate\\Container\\Container&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/Container.php&quot;,
+            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php&quot;,
             &quot;line&quot;: 906,
             &quot;function&quot;: &quot;resolveDependencies&quot;,
             &quot;class&quot;: &quot;Illuminate\\Container\\Container&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/Container.php&quot;,
+            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php&quot;,
             &quot;line&quot;: 756,
             &quot;function&quot;: &quot;build&quot;,
             &quot;class&quot;: &quot;Illuminate\\Container\\Container&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Application.php&quot;,
+            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php&quot;,
             &quot;line&quot;: 860,
             &quot;function&quot;: &quot;resolve&quot;,
             &quot;class&quot;: &quot;Illuminate\\Container\\Container&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/Container.php&quot;,
+            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php&quot;,
             &quot;line&quot;: 692,
             &quot;function&quot;: &quot;resolve&quot;,
             &quot;class&quot;: &quot;Illuminate\\Foundation\\Application&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Application.php&quot;,
+            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php&quot;,
             &quot;line&quot;: 845,
             &quot;function&quot;: &quot;make&quot;,
             &quot;class&quot;: &quot;Illuminate\\Container\\Container&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Route.php&quot;,
+            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php&quot;,
             &quot;line&quot;: 274,
             &quot;function&quot;: &quot;make&quot;,
             &quot;class&quot;: &quot;Illuminate\\Foundation\\Application&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Route.php&quot;,
+            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php&quot;,
             &quot;line&quot;: 1098,
             &quot;function&quot;: &quot;getController&quot;,
             &quot;class&quot;: &quot;Illuminate\\Routing\\Route&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Route.php&quot;,
+            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php&quot;,
             &quot;line&quot;: 1029,
             &quot;function&quot;: &quot;controllerMiddleware&quot;,
             &quot;class&quot;: &quot;Illuminate\\Routing\\Route&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Router.php&quot;,
+            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php&quot;,
             &quot;line&quot;: 737,
             &quot;function&quot;: &quot;gatherMiddleware&quot;,
             &quot;class&quot;: &quot;Illuminate\\Routing\\Route&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Router.php&quot;,
+            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php&quot;,
             &quot;line&quot;: 719,
             &quot;function&quot;: &quot;gatherRouteMiddleware&quot;,
             &quot;class&quot;: &quot;Illuminate\\Routing\\Router&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Router.php&quot;,
+            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php&quot;,
             &quot;line&quot;: 703,
             &quot;function&quot;: &quot;runRouteWithinStack&quot;,
             &quot;class&quot;: &quot;Illuminate\\Routing\\Router&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Router.php&quot;,
+            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php&quot;,
             &quot;line&quot;: 667,
             &quot;function&quot;: &quot;runRoute&quot;,
             &quot;class&quot;: &quot;Illuminate\\Routing\\Router&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Router.php&quot;,
+            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php&quot;,
             &quot;line&quot;: 656,
             &quot;function&quot;: &quot;dispatchToRoute&quot;,
             &quot;class&quot;: &quot;Illuminate\\Routing\\Router&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php&quot;,
+            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php&quot;,
             &quot;line&quot;: 190,
             &quot;function&quot;: &quot;dispatch&quot;,
             &quot;class&quot;: &quot;Illuminate\\Routing\\Router&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
+            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php&quot;,
             &quot;line&quot;: 141,
             &quot;function&quot;: &quot;Illuminate\\Foundation\\Http\\{closure}&quot;,
             &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Kernel&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php&quot;,
+            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php&quot;,
             &quot;line&quot;: 21,
             &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
             &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php&quot;,
+            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull.php&quot;,
             &quot;line&quot;: 31,
             &quot;function&quot;: &quot;handle&quot;,
             &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
+            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php&quot;,
             &quot;line&quot;: 180,
             &quot;function&quot;: &quot;handle&quot;,
             &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php&quot;,
+            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php&quot;,
             &quot;line&quot;: 21,
             &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
             &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php&quot;,
+            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TrimStrings.php&quot;,
             &quot;line&quot;: 40,
             &quot;function&quot;: &quot;handle&quot;,
             &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
+            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php&quot;,
             &quot;line&quot;: 180,
             &quot;function&quot;: &quot;handle&quot;,
             &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\TrimStrings&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php&quot;,
+            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize.php&quot;,
             &quot;line&quot;: 27,
             &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
             &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
+            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php&quot;,
             &quot;line&quot;: 180,
             &quot;function&quot;: &quot;handle&quot;,
             &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php&quot;,
+            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance.php&quot;,
             &quot;line&quot;: 86,
             &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
             &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
+            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php&quot;,
             &quot;line&quot;: 180,
             &quot;function&quot;: &quot;handle&quot;,
             &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php&quot;,
+            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\HandleCors.php&quot;,
             &quot;line&quot;: 62,
             &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
             &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
+            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php&quot;,
             &quot;line&quot;: 180,
             &quot;function&quot;: &quot;handle&quot;,
             &quot;class&quot;: &quot;Illuminate\\Http\\Middleware\\HandleCors&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php&quot;,
+            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\TrustProxies.php&quot;,
             &quot;line&quot;: 39,
             &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
             &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
+            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php&quot;,
             &quot;line&quot;: 180,
             &quot;function&quot;: &quot;handle&quot;,
             &quot;class&quot;: &quot;Illuminate\\Http\\Middleware\\TrustProxies&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
+            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php&quot;,
             &quot;line&quot;: 116,
             &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
             &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php&quot;,
+            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php&quot;,
             &quot;line&quot;: 165,
             &quot;function&quot;: &quot;then&quot;,
             &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php&quot;,
+            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php&quot;,
             &quot;line&quot;: 134,
             &quot;function&quot;: &quot;sendRequestThroughRouter&quot;,
             &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Kernel&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php&quot;,
+            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\knuckleswtf\\scribe\\src\\Extracting\\Strategies\\Responses\\ResponseCalls.php&quot;,
             &quot;line&quot;: 303,
             &quot;function&quot;: &quot;handle&quot;,
             &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Kernel&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php&quot;,
+            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\knuckleswtf\\scribe\\src\\Extracting\\Strategies\\Responses\\ResponseCalls.php&quot;,
             &quot;line&quot;: 291,
             &quot;function&quot;: &quot;callLaravelOrLumenRoute&quot;,
             &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php&quot;,
+            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\knuckleswtf\\scribe\\src\\Extracting\\Strategies\\Responses\\ResponseCalls.php&quot;,
             &quot;line&quot;: 89,
             &quot;function&quot;: &quot;makeApiCall&quot;,
             &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php&quot;,
+            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\knuckleswtf\\scribe\\src\\Extracting\\Strategies\\Responses\\ResponseCalls.php&quot;,
             &quot;line&quot;: 45,
             &quot;function&quot;: &quot;makeResponseCall&quot;,
             &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php&quot;,
+            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\knuckleswtf\\scribe\\src\\Extracting\\Strategies\\Responses\\ResponseCalls.php&quot;,
             &quot;line&quot;: 35,
             &quot;function&quot;: &quot;makeResponseCallIfConditionsPass&quot;,
             &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php&quot;,
+            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\knuckleswtf\\scribe\\src\\Extracting\\Extractor.php&quot;,
             &quot;line&quot;: 209,
             &quot;function&quot;: &quot;__invoke&quot;,
             &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php&quot;,
+            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\knuckleswtf\\scribe\\src\\Extracting\\Extractor.php&quot;,
             &quot;line&quot;: 166,
             &quot;function&quot;: &quot;iterateThroughStrategies&quot;,
             &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Extractor&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php&quot;,
+            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\knuckleswtf\\scribe\\src\\Extracting\\Extractor.php&quot;,
             &quot;line&quot;: 95,
             &quot;function&quot;: &quot;fetchResponses&quot;,
             &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Extractor&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php&quot;,
+            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\knuckleswtf\\scribe\\src\\GroupedEndpoints\\GroupedEndpointsFromApp.php&quot;,
             &quot;line&quot;: 122,
             &quot;function&quot;: &quot;processRoute&quot;,
             &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Extractor&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php&quot;,
+            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\knuckleswtf\\scribe\\src\\GroupedEndpoints\\GroupedEndpointsFromApp.php&quot;,
             &quot;line&quot;: 69,
             &quot;function&quot;: &quot;extractEndpointsInfoFromLaravelApp&quot;,
             &quot;class&quot;: &quot;Knuckles\\Scribe\\GroupedEndpoints\\GroupedEndpointsFromApp&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php&quot;,
+            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\knuckleswtf\\scribe\\src\\GroupedEndpoints\\GroupedEndpointsFromApp.php&quot;,
             &quot;line&quot;: 47,
             &quot;function&quot;: &quot;extractEndpointsInfoAndWriteToDisk&quot;,
             &quot;class&quot;: &quot;Knuckles\\Scribe\\GroupedEndpoints\\GroupedEndpointsFromApp&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Commands/GenerateDocumentation.php&quot;,
+            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\knuckleswtf\\scribe\\src\\Commands\\GenerateDocumentation.php&quot;,
             &quot;line&quot;: 53,
             &quot;function&quot;: &quot;get&quot;,
             &quot;class&quot;: &quot;Knuckles\\Scribe\\GroupedEndpoints\\GroupedEndpointsFromApp&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php&quot;,
+            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php&quot;,
             &quot;line&quot;: 36,
             &quot;function&quot;: &quot;handle&quot;,
             &quot;class&quot;: &quot;Knuckles\\Scribe\\Commands\\GenerateDocumentation&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/Util.php&quot;,
+            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php&quot;,
             &quot;line&quot;: 41,
             &quot;function&quot;: &quot;Illuminate\\Container\\{closure}&quot;,
             &quot;class&quot;: &quot;Illuminate\\Container\\BoundMethod&quot;,
             &quot;type&quot;: &quot;::&quot;
         },
         {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php&quot;,
+            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php&quot;,
             &quot;line&quot;: 93,
             &quot;function&quot;: &quot;unwrapIfClosure&quot;,
             &quot;class&quot;: &quot;Illuminate\\Container\\Util&quot;,
             &quot;type&quot;: &quot;::&quot;
         },
         {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php&quot;,
+            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php&quot;,
             &quot;line&quot;: 37,
             &quot;function&quot;: &quot;callBoundMethod&quot;,
             &quot;class&quot;: &quot;Illuminate\\Container\\BoundMethod&quot;,
             &quot;type&quot;: &quot;::&quot;
         },
         {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/Container.php&quot;,
+            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php&quot;,
             &quot;line&quot;: 651,
             &quot;function&quot;: &quot;call&quot;,
             &quot;class&quot;: &quot;Illuminate\\Container\\BoundMethod&quot;,
             &quot;type&quot;: &quot;::&quot;
         },
         {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Console/Command.php&quot;,
+            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php&quot;,
             &quot;line&quot;: 144,
             &quot;function&quot;: &quot;call&quot;,
             &quot;class&quot;: &quot;Illuminate\\Container\\Container&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/symfony/console/Command/Command.php&quot;,
+            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\symfony\\console\\Command\\Command.php&quot;,
             &quot;line&quot;: 308,
             &quot;function&quot;: &quot;execute&quot;,
             &quot;class&quot;: &quot;Illuminate\\Console\\Command&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Console/Command.php&quot;,
+            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php&quot;,
             &quot;line&quot;: 126,
             &quot;function&quot;: &quot;run&quot;,
             &quot;class&quot;: &quot;Symfony\\Component\\Console\\Command\\Command&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/symfony/console/Application.php&quot;,
+            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\symfony\\console\\Application.php&quot;,
             &quot;line&quot;: 1002,
             &quot;function&quot;: &quot;run&quot;,
             &quot;class&quot;: &quot;Illuminate\\Console\\Command&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/symfony/console/Application.php&quot;,
+            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\symfony\\console\\Application.php&quot;,
             &quot;line&quot;: 299,
             &quot;function&quot;: &quot;doRunCommand&quot;,
             &quot;class&quot;: &quot;Symfony\\Component\\Console\\Application&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/symfony/console/Application.php&quot;,
+            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\symfony\\console\\Application.php&quot;,
             &quot;line&quot;: 171,
             &quot;function&quot;: &quot;doRun&quot;,
             &quot;class&quot;: &quot;Symfony\\Component\\Console\\Application&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Console/Application.php&quot;,
+            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php&quot;,
             &quot;line&quot;: 102,
             &quot;function&quot;: &quot;run&quot;,
             &quot;class&quot;: &quot;Symfony\\Component\\Console\\Application&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php&quot;,
+            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php&quot;,
             &quot;line&quot;: 151,
             &quot;function&quot;: &quot;run&quot;,
             &quot;class&quot;: &quot;Illuminate\\Console\\Application&quot;,
             &quot;type&quot;: &quot;-&gt;&quot;
         },
         {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/artisan&quot;,
+            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\artisan&quot;,
             &quot;line&quot;: 37,
             &quot;function&quot;: &quot;handle&quot;,
             &quot;class&quot;: &quot;Illuminate\\Foundation\\Console\\Kernel&quot;,
@@ -777,7 +801,7 @@ access-control-allow-origin: *
                 <input type="text"
                name="regionId"
                data-endpoint="GETapi-v1-city-getByRegionId--regionId-"
-               value="modi"
+               value="fuga"
                data-component="url" hidden>
     <br>
 
@@ -801,14 +825,14 @@ access-control-allow-origin: *
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/v1/country/get" \
+    --get "http://localhost/api/v1/country/get" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/v1/country/get"
+    "http://localhost/api/v1/country/get"
 );
 
 const headers = {
@@ -834,7 +858,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 57
+x-ratelimit-remaining: 53
 access-control-allow-origin: *
  </code></pre>
         </details>         <pre>
@@ -902,14 +926,14 @@ access-control-allow-origin: *
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/user" \
+    --get "http://localhost/api/user" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/user"
+    "http://localhost/api/user"
 );
 
 const headers = {
@@ -1001,14 +1025,14 @@ access-control-allow-origin: *
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/v1/language/get" \
+    --get "http://localhost/api/v1/language/get" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/v1/language/get"
+    "http://localhost/api/v1/language/get"
 );
 
 const headers = {
@@ -1034,13 +1058,38 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 58
+x-ratelimit-remaining: 54
 access-control-allow-origin: *
  </code></pre>
         </details>         <pre>
 
 <code class="language-json">{
-    &quot;data&quot;: []
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-12-12T13:06:02.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-12-12T13:06:02.000000Z&quot;,
+            &quot;title&quot;: &quot;Русский&quot;,
+            &quot;title_kz&quot;: &quot;Орысша&quot;,
+            &quot;title_en&quot;: &quot;Russian&quot;
+        },
+        {
+            &quot;id&quot;: 2,
+            &quot;created_at&quot;: &quot;2022-12-12T13:06:02.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-12-12T13:06:02.000000Z&quot;,
+            &quot;title&quot;: &quot;Английский&quot;,
+            &quot;title_kz&quot;: &quot;Ағылшынша&quot;,
+            &quot;title_en&quot;: &quot;English&quot;
+        },
+        {
+            &quot;id&quot;: 3,
+            &quot;created_at&quot;: &quot;2022-12-12T13:06:02.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-12-12T13:06:02.000000Z&quot;,
+            &quot;title&quot;: &quot;Казахский&quot;,
+            &quot;title_kz&quot;: &quot;Қазақша&quot;,
+            &quot;title_en&quot;: &quot;Kazakh&quot;
+        }
+    ]
 }</code>
  </pre>
     </span>
@@ -1085,31 +1134,31 @@ access-control-allow-origin: *
         </p>
                     </form>
 
-                <h1 id="notification">Notification</h1>
+                <h1 id="questions">Questions</h1>
 
     
 
-                                <h2 id="notification-GETapi-v1-notification-getByUserId--userId-">getByUserId - Notification</h2>
+                                <h2 id="questions-GETapi-v1-question-getByUserId--userId-">getByUserId - Questions</h2>
 
 <p>
 </p>
 
 
 
-<span id="example-requests-GETapi-v1-notification-getByUserId--userId-">
+<span id="example-requests-GETapi-v1-question-getByUserId--userId-">
 <blockquote>Example request:</blockquote>
 
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/v1/notification/getByUserId/est" \
+    --get "http://localhost/api/v1/question/getByUserId/vel" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/v1/notification/getByUserId/est"
+    "http://localhost/api/v1/question/getByUserId/vel"
 );
 
 const headers = {
@@ -1124,9 +1173,9 @@ fetch(url, {
 
 </span>
 
-<span id="example-responses-GETapi-v1-notification-getByUserId--userId-">
+<span id="example-responses-GETapi-v1-question-getByUserId--userId-">
             <blockquote>
-            <p>Example response (500):</p>
+            <p>Example response (200):</p>
         </blockquote>
                 <details class="annotation">
             <summary>
@@ -1135,563 +1184,54 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 56
+x-ratelimit-remaining: 51
 access-control-allow-origin: *
  </code></pre>
         </details>         <pre>
 
 <code class="language-json">{
-    &quot;message&quot;: &quot;SQLSTATE[42S22]: Column not found: 1054 Unknown column &#039;user_id&#039; in &#039;where clause&#039; (SQL: select * from `notifications` where `user_id` = est)&quot;,
-    &quot;exception&quot;: &quot;Illuminate\\Database\\QueryException&quot;,
-    &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Database/Connection.php&quot;,
-    &quot;line&quot;: 759,
-    &quot;trace&quot;: [
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Database/Connection.php&quot;,
-            &quot;line&quot;: 719,
-            &quot;function&quot;: &quot;runQueryCallback&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Database\\Connection&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Database/Connection.php&quot;,
-            &quot;line&quot;: 421,
-            &quot;function&quot;: &quot;run&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Database\\Connection&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php&quot;,
-            &quot;line&quot;: 2636,
-            &quot;function&quot;: &quot;select&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Database\\Connection&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php&quot;,
-            &quot;line&quot;: 2624,
-            &quot;function&quot;: &quot;runSelect&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Database\\Query\\Builder&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php&quot;,
-            &quot;line&quot;: 3160,
-            &quot;function&quot;: &quot;Illuminate\\Database\\Query\\{closure}&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Database\\Query\\Builder&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php&quot;,
-            &quot;line&quot;: 2625,
-            &quot;function&quot;: &quot;onceWithColumns&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Database\\Query\\Builder&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php&quot;,
-            &quot;line&quot;: 699,
-            &quot;function&quot;: &quot;get&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Database\\Query\\Builder&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php&quot;,
-            &quot;line&quot;: 683,
-            &quot;function&quot;: &quot;getModels&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Database\\Eloquent\\Builder&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/app/Domain/Repositories/RepositoryEloquent.php&quot;,
-            &quot;line&quot;: 22,
-            &quot;function&quot;: &quot;get&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Database\\Eloquent\\Builder&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/app/Http/Controllers/Api/NotificationController.php&quot;,
-            &quot;line&quot;: 25,
-            &quot;function&quot;: &quot;getByUserId&quot;,
-            &quot;class&quot;: &quot;App\\Domain\\Repositories\\Notification\\NotificationRepositoryEloquent&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Controller.php&quot;,
-            &quot;line&quot;: 54,
-            &quot;function&quot;: &quot;getByUserId&quot;,
-            &quot;class&quot;: &quot;App\\Http\\Controllers\\Api\\NotificationController&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php&quot;,
-            &quot;line&quot;: 43,
-            &quot;function&quot;: &quot;callAction&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Routing\\Controller&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Route.php&quot;,
-            &quot;line&quot;: 260,
-            &quot;function&quot;: &quot;dispatch&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Routing\\ControllerDispatcher&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Route.php&quot;,
-            &quot;line&quot;: 205,
-            &quot;function&quot;: &quot;runController&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Routing\\Route&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Router.php&quot;,
-            &quot;line&quot;: 725,
-            &quot;function&quot;: &quot;run&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Routing\\Route&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
-            &quot;line&quot;: 141,
-            &quot;function&quot;: &quot;Illuminate\\Routing\\{closure}&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Routing\\Router&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php&quot;,
-            &quot;line&quot;: 50,
-            &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
-            &quot;line&quot;: 180,
-            &quot;function&quot;: &quot;handle&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Routing\\Middleware\\SubstituteBindings&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php&quot;,
-            &quot;line&quot;: 126,
-            &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php&quot;,
-            &quot;line&quot;: 102,
-            &quot;function&quot;: &quot;handleRequest&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Routing\\Middleware\\ThrottleRequests&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php&quot;,
-            &quot;line&quot;: 54,
-            &quot;function&quot;: &quot;handleRequestUsingNamedLimiter&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Routing\\Middleware\\ThrottleRequests&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
-            &quot;line&quot;: 180,
-            &quot;function&quot;: &quot;handle&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Routing\\Middleware\\ThrottleRequests&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
-            &quot;line&quot;: 116,
-            &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Router.php&quot;,
-            &quot;line&quot;: 726,
-            &quot;function&quot;: &quot;then&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Router.php&quot;,
-            &quot;line&quot;: 703,
-            &quot;function&quot;: &quot;runRouteWithinStack&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Routing\\Router&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Router.php&quot;,
-            &quot;line&quot;: 667,
-            &quot;function&quot;: &quot;runRoute&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Routing\\Router&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Router.php&quot;,
-            &quot;line&quot;: 656,
-            &quot;function&quot;: &quot;dispatchToRoute&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Routing\\Router&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php&quot;,
-            &quot;line&quot;: 190,
-            &quot;function&quot;: &quot;dispatch&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Routing\\Router&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
-            &quot;line&quot;: 141,
-            &quot;function&quot;: &quot;Illuminate\\Foundation\\Http\\{closure}&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Kernel&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php&quot;,
-            &quot;line&quot;: 21,
-            &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php&quot;,
-            &quot;line&quot;: 31,
-            &quot;function&quot;: &quot;handle&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
-            &quot;line&quot;: 180,
-            &quot;function&quot;: &quot;handle&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php&quot;,
-            &quot;line&quot;: 21,
-            &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php&quot;,
-            &quot;line&quot;: 40,
-            &quot;function&quot;: &quot;handle&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
-            &quot;line&quot;: 180,
-            &quot;function&quot;: &quot;handle&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\TrimStrings&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php&quot;,
-            &quot;line&quot;: 27,
-            &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
-            &quot;line&quot;: 180,
-            &quot;function&quot;: &quot;handle&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php&quot;,
-            &quot;line&quot;: 86,
-            &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
-            &quot;line&quot;: 180,
-            &quot;function&quot;: &quot;handle&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php&quot;,
-            &quot;line&quot;: 62,
-            &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
-            &quot;line&quot;: 180,
-            &quot;function&quot;: &quot;handle&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Http\\Middleware\\HandleCors&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php&quot;,
-            &quot;line&quot;: 39,
-            &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
-            &quot;line&quot;: 180,
-            &quot;function&quot;: &quot;handle&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Http\\Middleware\\TrustProxies&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
-            &quot;line&quot;: 116,
-            &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php&quot;,
-            &quot;line&quot;: 165,
-            &quot;function&quot;: &quot;then&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php&quot;,
-            &quot;line&quot;: 134,
-            &quot;function&quot;: &quot;sendRequestThroughRouter&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Kernel&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php&quot;,
-            &quot;line&quot;: 303,
-            &quot;function&quot;: &quot;handle&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Kernel&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php&quot;,
-            &quot;line&quot;: 291,
-            &quot;function&quot;: &quot;callLaravelOrLumenRoute&quot;,
-            &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php&quot;,
-            &quot;line&quot;: 89,
-            &quot;function&quot;: &quot;makeApiCall&quot;,
-            &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php&quot;,
-            &quot;line&quot;: 45,
-            &quot;function&quot;: &quot;makeResponseCall&quot;,
-            &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php&quot;,
-            &quot;line&quot;: 35,
-            &quot;function&quot;: &quot;makeResponseCallIfConditionsPass&quot;,
-            &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php&quot;,
-            &quot;line&quot;: 209,
-            &quot;function&quot;: &quot;__invoke&quot;,
-            &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php&quot;,
-            &quot;line&quot;: 166,
-            &quot;function&quot;: &quot;iterateThroughStrategies&quot;,
-            &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Extractor&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php&quot;,
-            &quot;line&quot;: 95,
-            &quot;function&quot;: &quot;fetchResponses&quot;,
-            &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Extractor&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php&quot;,
-            &quot;line&quot;: 122,
-            &quot;function&quot;: &quot;processRoute&quot;,
-            &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Extractor&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php&quot;,
-            &quot;line&quot;: 69,
-            &quot;function&quot;: &quot;extractEndpointsInfoFromLaravelApp&quot;,
-            &quot;class&quot;: &quot;Knuckles\\Scribe\\GroupedEndpoints\\GroupedEndpointsFromApp&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php&quot;,
-            &quot;line&quot;: 47,
-            &quot;function&quot;: &quot;extractEndpointsInfoAndWriteToDisk&quot;,
-            &quot;class&quot;: &quot;Knuckles\\Scribe\\GroupedEndpoints\\GroupedEndpointsFromApp&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Commands/GenerateDocumentation.php&quot;,
-            &quot;line&quot;: 53,
-            &quot;function&quot;: &quot;get&quot;,
-            &quot;class&quot;: &quot;Knuckles\\Scribe\\GroupedEndpoints\\GroupedEndpointsFromApp&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php&quot;,
-            &quot;line&quot;: 36,
-            &quot;function&quot;: &quot;handle&quot;,
-            &quot;class&quot;: &quot;Knuckles\\Scribe\\Commands\\GenerateDocumentation&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/Util.php&quot;,
-            &quot;line&quot;: 41,
-            &quot;function&quot;: &quot;Illuminate\\Container\\{closure}&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Container\\BoundMethod&quot;,
-            &quot;type&quot;: &quot;::&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php&quot;,
-            &quot;line&quot;: 93,
-            &quot;function&quot;: &quot;unwrapIfClosure&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Container\\Util&quot;,
-            &quot;type&quot;: &quot;::&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php&quot;,
-            &quot;line&quot;: 37,
-            &quot;function&quot;: &quot;callBoundMethod&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Container\\BoundMethod&quot;,
-            &quot;type&quot;: &quot;::&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/Container.php&quot;,
-            &quot;line&quot;: 651,
-            &quot;function&quot;: &quot;call&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Container\\BoundMethod&quot;,
-            &quot;type&quot;: &quot;::&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Console/Command.php&quot;,
-            &quot;line&quot;: 144,
-            &quot;function&quot;: &quot;call&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Container\\Container&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/symfony/console/Command/Command.php&quot;,
-            &quot;line&quot;: 308,
-            &quot;function&quot;: &quot;execute&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Console\\Command&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Console/Command.php&quot;,
-            &quot;line&quot;: 126,
-            &quot;function&quot;: &quot;run&quot;,
-            &quot;class&quot;: &quot;Symfony\\Component\\Console\\Command\\Command&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/symfony/console/Application.php&quot;,
-            &quot;line&quot;: 1002,
-            &quot;function&quot;: &quot;run&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Console\\Command&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/symfony/console/Application.php&quot;,
-            &quot;line&quot;: 299,
-            &quot;function&quot;: &quot;doRunCommand&quot;,
-            &quot;class&quot;: &quot;Symfony\\Component\\Console\\Application&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/symfony/console/Application.php&quot;,
-            &quot;line&quot;: 171,
-            &quot;function&quot;: &quot;doRun&quot;,
-            &quot;class&quot;: &quot;Symfony\\Component\\Console\\Application&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Console/Application.php&quot;,
-            &quot;line&quot;: 102,
-            &quot;function&quot;: &quot;run&quot;,
-            &quot;class&quot;: &quot;Symfony\\Component\\Console\\Application&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php&quot;,
-            &quot;line&quot;: 151,
-            &quot;function&quot;: &quot;run&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Console\\Application&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/artisan&quot;,
-            &quot;line&quot;: 37,
-            &quot;function&quot;: &quot;handle&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Foundation\\Console\\Kernel&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        }
-    ]
+    &quot;data&quot;: []
 }</code>
  </pre>
     </span>
-<span id="execution-results-GETapi-v1-notification-getByUserId--userId-" hidden>
+<span id="execution-results-GETapi-v1-question-getByUserId--userId-" hidden>
     <blockquote>Received response<span
-                id="execution-response-status-GETapi-v1-notification-getByUserId--userId-"></span>:
+                id="execution-response-status-GETapi-v1-question-getByUserId--userId-"></span>:
     </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-v1-notification-getByUserId--userId-"></code></pre>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-question-getByUserId--userId-"></code></pre>
 </span>
-<span id="execution-error-GETapi-v1-notification-getByUserId--userId-" hidden>
+<span id="execution-error-GETapi-v1-question-getByUserId--userId-" hidden>
     <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-v1-notification-getByUserId--userId-"></code></pre>
+    <pre><code id="execution-error-message-GETapi-v1-question-getByUserId--userId-"></code></pre>
 </span>
-<form id="form-GETapi-v1-notification-getByUserId--userId-" data-method="GET"
-      data-path="api/v1/notification/getByUserId/{userId}"
+<form id="form-GETapi-v1-question-getByUserId--userId-" data-method="GET"
+      data-path="api/v1/question/getByUserId/{userId}"
       data-authed="0"
       data-hasfiles="0"
       data-isarraybody="0"
       data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-notification-getByUserId--userId-', this);">
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-question-getByUserId--userId-', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-v1-notification-getByUserId--userId-"
-                    onclick="tryItOut('GETapi-v1-notification-getByUserId--userId-');">Try it out ⚡
+                    id="btn-tryout-GETapi-v1-question-getByUserId--userId-"
+                    onclick="tryItOut('GETapi-v1-question-getByUserId--userId-');">Try it out ⚡
             </button>
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-v1-notification-getByUserId--userId-"
-                    onclick="cancelTryOut('GETapi-v1-notification-getByUserId--userId-');" hidden>Cancel 🛑
+                    id="btn-canceltryout-GETapi-v1-question-getByUserId--userId-"
+                    onclick="cancelTryOut('GETapi-v1-question-getByUserId--userId-');" hidden>Cancel 🛑
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-v1-notification-getByUserId--userId-" hidden>Send Request 💥
+                    id="btn-executetryout-GETapi-v1-question-getByUserId--userId-" hidden>Send Request 💥
             </button>
             </h3>
             <p>
             <small class="badge badge-green">GET</small>
-            <b><code>api/v1/notification/getByUserId/{userId}</code></b>
+            <b><code>api/v1/question/getByUserId/{userId}</code></b>
         </p>
                     <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
                     <p>
@@ -1700,39 +1240,35 @@ access-control-allow-origin: *
  &nbsp;
                 <input type="text"
                name="userId"
-               data-endpoint="GETapi-v1-notification-getByUserId--userId-"
-               value="est"
+               data-endpoint="GETapi-v1-question-getByUserId--userId-"
+               value="vel"
                data-component="url" hidden>
     <br>
 
             </p>
                     </form>
 
-                <h1 id="notificationhistory">NotificationHistory</h1>
-
-    
-
-                                <h2 id="notificationhistory-GETapi-v1-notificationHistory-getByNotificationId--notificationId-">getByNotificationId - NotificationHistory</h2>
+                    <h2 id="questions-GETapi-v1-question-firstById--id-">firstById - Questions</h2>
 
 <p>
 </p>
 
 
 
-<span id="example-requests-GETapi-v1-notificationHistory-getByNotificationId--notificationId-">
+<span id="example-requests-GETapi-v1-question-firstById--id-">
 <blockquote>Example request:</blockquote>
 
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/v1/notificationHistory/getByNotificationId/voluptatem" \
+    --get "http://localhost/api/v1/question/firstById/non" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/v1/notificationHistory/getByNotificationId/voluptatem"
+    "http://localhost/api/v1/question/firstById/non"
 );
 
 const headers = {
@@ -1747,9 +1283,9 @@ fetch(url, {
 
 </span>
 
-<span id="example-responses-GETapi-v1-notificationHistory-getByNotificationId--notificationId-">
+<span id="example-responses-GETapi-v1-question-firstById--id-">
             <blockquote>
-            <p>Example response (500):</p>
+            <p>Example response (404):</p>
         </blockquote>
                 <details class="annotation">
             <summary>
@@ -1758,573 +1294,332 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 55
+x-ratelimit-remaining: 50
 access-control-allow-origin: *
  </code></pre>
         </details>         <pre>
 
 <code class="language-json">{
-    &quot;message&quot;: &quot;SQLSTATE[42S22]: Column not found: 1054 Unknown column &#039;notification_id&#039; in &#039;where clause&#039; (SQL: select * from `notification_histories` where `notification_id` = voluptatem)&quot;,
-    &quot;exception&quot;: &quot;Illuminate\\Database\\QueryException&quot;,
-    &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Database/Connection.php&quot;,
-    &quot;line&quot;: 759,
-    &quot;trace&quot;: [
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Database/Connection.php&quot;,
-            &quot;line&quot;: 719,
-            &quot;function&quot;: &quot;runQueryCallback&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Database\\Connection&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Database/Connection.php&quot;,
-            &quot;line&quot;: 421,
-            &quot;function&quot;: &quot;run&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Database\\Connection&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php&quot;,
-            &quot;line&quot;: 2636,
-            &quot;function&quot;: &quot;select&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Database\\Connection&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php&quot;,
-            &quot;line&quot;: 2624,
-            &quot;function&quot;: &quot;runSelect&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Database\\Query\\Builder&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php&quot;,
-            &quot;line&quot;: 3160,
-            &quot;function&quot;: &quot;Illuminate\\Database\\Query\\{closure}&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Database\\Query\\Builder&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php&quot;,
-            &quot;line&quot;: 2625,
-            &quot;function&quot;: &quot;onceWithColumns&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Database\\Query\\Builder&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php&quot;,
-            &quot;line&quot;: 699,
-            &quot;function&quot;: &quot;get&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Database\\Query\\Builder&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php&quot;,
-            &quot;line&quot;: 683,
-            &quot;function&quot;: &quot;getModels&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Database\\Eloquent\\Builder&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/app/Domain/Repositories/RepositoryEloquent.php&quot;,
-            &quot;line&quot;: 12,
-            &quot;function&quot;: &quot;get&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Database\\Eloquent\\Builder&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/app/Http/Controllers/Api/NotificationHistoryController.php&quot;,
-            &quot;line&quot;: 25,
-            &quot;function&quot;: &quot;getByNotificationId&quot;,
-            &quot;class&quot;: &quot;App\\Domain\\Repositories\\NotificationHistory\\NotificationHistoryRepositoryEloquent&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Controller.php&quot;,
-            &quot;line&quot;: 54,
-            &quot;function&quot;: &quot;getByNotificationId&quot;,
-            &quot;class&quot;: &quot;App\\Http\\Controllers\\Api\\NotificationHistoryController&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php&quot;,
-            &quot;line&quot;: 43,
-            &quot;function&quot;: &quot;callAction&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Routing\\Controller&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Route.php&quot;,
-            &quot;line&quot;: 260,
-            &quot;function&quot;: &quot;dispatch&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Routing\\ControllerDispatcher&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Route.php&quot;,
-            &quot;line&quot;: 205,
-            &quot;function&quot;: &quot;runController&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Routing\\Route&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Router.php&quot;,
-            &quot;line&quot;: 725,
-            &quot;function&quot;: &quot;run&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Routing\\Route&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
-            &quot;line&quot;: 141,
-            &quot;function&quot;: &quot;Illuminate\\Routing\\{closure}&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Routing\\Router&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Middleware/SubstituteBindings.php&quot;,
-            &quot;line&quot;: 50,
-            &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
-            &quot;line&quot;: 180,
-            &quot;function&quot;: &quot;handle&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Routing\\Middleware\\SubstituteBindings&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php&quot;,
-            &quot;line&quot;: 126,
-            &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php&quot;,
-            &quot;line&quot;: 102,
-            &quot;function&quot;: &quot;handleRequest&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Routing\\Middleware\\ThrottleRequests&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Middleware/ThrottleRequests.php&quot;,
-            &quot;line&quot;: 54,
-            &quot;function&quot;: &quot;handleRequestUsingNamedLimiter&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Routing\\Middleware\\ThrottleRequests&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
-            &quot;line&quot;: 180,
-            &quot;function&quot;: &quot;handle&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Routing\\Middleware\\ThrottleRequests&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
-            &quot;line&quot;: 116,
-            &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Router.php&quot;,
-            &quot;line&quot;: 726,
-            &quot;function&quot;: &quot;then&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Router.php&quot;,
-            &quot;line&quot;: 703,
-            &quot;function&quot;: &quot;runRouteWithinStack&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Routing\\Router&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Router.php&quot;,
-            &quot;line&quot;: 667,
-            &quot;function&quot;: &quot;runRoute&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Routing\\Router&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Routing/Router.php&quot;,
-            &quot;line&quot;: 656,
-            &quot;function&quot;: &quot;dispatchToRoute&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Routing\\Router&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php&quot;,
-            &quot;line&quot;: 190,
-            &quot;function&quot;: &quot;dispatch&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Routing\\Router&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
-            &quot;line&quot;: 141,
-            &quot;function&quot;: &quot;Illuminate\\Foundation\\Http\\{closure}&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Kernel&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php&quot;,
-            &quot;line&quot;: 21,
-            &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ConvertEmptyStringsToNull.php&quot;,
-            &quot;line&quot;: 31,
-            &quot;function&quot;: &quot;handle&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
-            &quot;line&quot;: 180,
-            &quot;function&quot;: &quot;handle&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TransformsRequest.php&quot;,
-            &quot;line&quot;: 21,
-            &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/TrimStrings.php&quot;,
-            &quot;line&quot;: 40,
-            &quot;function&quot;: &quot;handle&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
-            &quot;line&quot;: 180,
-            &quot;function&quot;: &quot;handle&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\TrimStrings&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/ValidatePostSize.php&quot;,
-            &quot;line&quot;: 27,
-            &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
-            &quot;line&quot;: 180,
-            &quot;function&quot;: &quot;handle&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/PreventRequestsDuringMaintenance.php&quot;,
-            &quot;line&quot;: 86,
-            &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
-            &quot;line&quot;: 180,
-            &quot;function&quot;: &quot;handle&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Http/Middleware/HandleCors.php&quot;,
-            &quot;line&quot;: 62,
-            &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
-            &quot;line&quot;: 180,
-            &quot;function&quot;: &quot;handle&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Http\\Middleware\\HandleCors&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Http/Middleware/TrustProxies.php&quot;,
-            &quot;line&quot;: 39,
-            &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
-            &quot;line&quot;: 180,
-            &quot;function&quot;: &quot;handle&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Http\\Middleware\\TrustProxies&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php&quot;,
-            &quot;line&quot;: 116,
-            &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php&quot;,
-            &quot;line&quot;: 165,
-            &quot;function&quot;: &quot;then&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php&quot;,
-            &quot;line&quot;: 134,
-            &quot;function&quot;: &quot;sendRequestThroughRouter&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Kernel&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php&quot;,
-            &quot;line&quot;: 303,
-            &quot;function&quot;: &quot;handle&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Kernel&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php&quot;,
-            &quot;line&quot;: 291,
-            &quot;function&quot;: &quot;callLaravelOrLumenRoute&quot;,
-            &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php&quot;,
-            &quot;line&quot;: 89,
-            &quot;function&quot;: &quot;makeApiCall&quot;,
-            &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php&quot;,
-            &quot;line&quot;: 45,
-            &quot;function&quot;: &quot;makeResponseCall&quot;,
-            &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Extracting/Strategies/Responses/ResponseCalls.php&quot;,
-            &quot;line&quot;: 35,
-            &quot;function&quot;: &quot;makeResponseCallIfConditionsPass&quot;,
-            &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php&quot;,
-            &quot;line&quot;: 209,
-            &quot;function&quot;: &quot;__invoke&quot;,
-            &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php&quot;,
-            &quot;line&quot;: 166,
-            &quot;function&quot;: &quot;iterateThroughStrategies&quot;,
-            &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Extractor&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Extracting/Extractor.php&quot;,
-            &quot;line&quot;: 95,
-            &quot;function&quot;: &quot;fetchResponses&quot;,
-            &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Extractor&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php&quot;,
-            &quot;line&quot;: 122,
-            &quot;function&quot;: &quot;processRoute&quot;,
-            &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Extractor&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php&quot;,
-            &quot;line&quot;: 69,
-            &quot;function&quot;: &quot;extractEndpointsInfoFromLaravelApp&quot;,
-            &quot;class&quot;: &quot;Knuckles\\Scribe\\GroupedEndpoints\\GroupedEndpointsFromApp&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/GroupedEndpoints/GroupedEndpointsFromApp.php&quot;,
-            &quot;line&quot;: 47,
-            &quot;function&quot;: &quot;extractEndpointsInfoAndWriteToDisk&quot;,
-            &quot;class&quot;: &quot;Knuckles\\Scribe\\GroupedEndpoints\\GroupedEndpointsFromApp&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/knuckleswtf/scribe/src/Commands/GenerateDocumentation.php&quot;,
-            &quot;line&quot;: 53,
-            &quot;function&quot;: &quot;get&quot;,
-            &quot;class&quot;: &quot;Knuckles\\Scribe\\GroupedEndpoints\\GroupedEndpointsFromApp&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php&quot;,
-            &quot;line&quot;: 36,
-            &quot;function&quot;: &quot;handle&quot;,
-            &quot;class&quot;: &quot;Knuckles\\Scribe\\Commands\\GenerateDocumentation&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/Util.php&quot;,
-            &quot;line&quot;: 41,
-            &quot;function&quot;: &quot;Illuminate\\Container\\{closure}&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Container\\BoundMethod&quot;,
-            &quot;type&quot;: &quot;::&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php&quot;,
-            &quot;line&quot;: 93,
-            &quot;function&quot;: &quot;unwrapIfClosure&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Container\\Util&quot;,
-            &quot;type&quot;: &quot;::&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php&quot;,
-            &quot;line&quot;: 37,
-            &quot;function&quot;: &quot;callBoundMethod&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Container\\BoundMethod&quot;,
-            &quot;type&quot;: &quot;::&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Container/Container.php&quot;,
-            &quot;line&quot;: 651,
-            &quot;function&quot;: &quot;call&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Container\\BoundMethod&quot;,
-            &quot;type&quot;: &quot;::&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Console/Command.php&quot;,
-            &quot;line&quot;: 144,
-            &quot;function&quot;: &quot;call&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Container\\Container&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/symfony/console/Command/Command.php&quot;,
-            &quot;line&quot;: 308,
-            &quot;function&quot;: &quot;execute&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Console\\Command&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Console/Command.php&quot;,
-            &quot;line&quot;: 126,
-            &quot;function&quot;: &quot;run&quot;,
-            &quot;class&quot;: &quot;Symfony\\Component\\Console\\Command\\Command&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/symfony/console/Application.php&quot;,
-            &quot;line&quot;: 1002,
-            &quot;function&quot;: &quot;run&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Console\\Command&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/symfony/console/Application.php&quot;,
-            &quot;line&quot;: 299,
-            &quot;function&quot;: &quot;doRunCommand&quot;,
-            &quot;class&quot;: &quot;Symfony\\Component\\Console\\Application&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/symfony/console/Application.php&quot;,
-            &quot;line&quot;: 171,
-            &quot;function&quot;: &quot;doRun&quot;,
-            &quot;class&quot;: &quot;Symfony\\Component\\Console\\Application&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Console/Application.php&quot;,
-            &quot;line&quot;: 102,
-            &quot;function&quot;: &quot;run&quot;,
-            &quot;class&quot;: &quot;Symfony\\Component\\Console\\Application&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php&quot;,
-            &quot;line&quot;: 151,
-            &quot;function&quot;: &quot;run&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Console\\Application&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;/var/www/onlineLawyer/artisan&quot;,
-            &quot;line&quot;: 37,
-            &quot;function&quot;: &quot;handle&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Foundation\\Console\\Kernel&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        }
-    ]
+    &quot;message&quot;: &quot;not found&quot;
 }</code>
  </pre>
     </span>
-<span id="execution-results-GETapi-v1-notificationHistory-getByNotificationId--notificationId-" hidden>
+<span id="execution-results-GETapi-v1-question-firstById--id-" hidden>
     <blockquote>Received response<span
-                id="execution-response-status-GETapi-v1-notificationHistory-getByNotificationId--notificationId-"></span>:
+                id="execution-response-status-GETapi-v1-question-firstById--id-"></span>:
     </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-v1-notificationHistory-getByNotificationId--notificationId-"></code></pre>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-question-firstById--id-"></code></pre>
 </span>
-<span id="execution-error-GETapi-v1-notificationHistory-getByNotificationId--notificationId-" hidden>
+<span id="execution-error-GETapi-v1-question-firstById--id-" hidden>
     <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-v1-notificationHistory-getByNotificationId--notificationId-"></code></pre>
+    <pre><code id="execution-error-message-GETapi-v1-question-firstById--id-"></code></pre>
 </span>
-<form id="form-GETapi-v1-notificationHistory-getByNotificationId--notificationId-" data-method="GET"
-      data-path="api/v1/notificationHistory/getByNotificationId/{notificationId}"
+<form id="form-GETapi-v1-question-firstById--id-" data-method="GET"
+      data-path="api/v1/question/firstById/{id}"
       data-authed="0"
       data-hasfiles="0"
       data-isarraybody="0"
       data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-notificationHistory-getByNotificationId--notificationId-', this);">
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-question-firstById--id-', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-v1-notificationHistory-getByNotificationId--notificationId-"
-                    onclick="tryItOut('GETapi-v1-notificationHistory-getByNotificationId--notificationId-');">Try it out ⚡
+                    id="btn-tryout-GETapi-v1-question-firstById--id-"
+                    onclick="tryItOut('GETapi-v1-question-firstById--id-');">Try it out ⚡
             </button>
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-v1-notificationHistory-getByNotificationId--notificationId-"
-                    onclick="cancelTryOut('GETapi-v1-notificationHistory-getByNotificationId--notificationId-');" hidden>Cancel 🛑
+                    id="btn-canceltryout-GETapi-v1-question-firstById--id-"
+                    onclick="cancelTryOut('GETapi-v1-question-firstById--id-');" hidden>Cancel 🛑
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-v1-notificationHistory-getByNotificationId--notificationId-" hidden>Send Request 💥
+                    id="btn-executetryout-GETapi-v1-question-firstById--id-" hidden>Send Request 💥
             </button>
             </h3>
             <p>
             <small class="badge badge-green">GET</small>
-            <b><code>api/v1/notificationHistory/getByNotificationId/{notificationId}</code></b>
+            <b><code>api/v1/question/firstById/{id}</code></b>
         </p>
                     <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
                     <p>
-                <b><code>notificationId</code></b>&nbsp;&nbsp;
+                <b><code>id</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
                 <input type="text"
-               name="notificationId"
-               data-endpoint="GETapi-v1-notificationHistory-getByNotificationId--notificationId-"
-               value="voluptatem"
+               name="id"
+               data-endpoint="GETapi-v1-question-firstById--id-"
+               value="non"
+               data-component="url" hidden>
+    <br>
+<p>The ID of the firstById.</p>
+            </p>
+                    </form>
+
+                    <h2 id="questions-POSTapi-v1-question-create">create - Questions</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTapi-v1-question-create">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/v1/question/create" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"user_id\": \"molestiae\",
+    \"price\": \"suscipit\",
+    \"title\": \"nihil\",
+    \"phone\": \"sed\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v1/question/create"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "user_id": "molestiae",
+    "price": "suscipit",
+    "title": "nihil",
+    "phone": "sed"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-v1-question-create">
+</span>
+<span id="execution-results-POSTapi-v1-question-create" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-v1-question-create"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-v1-question-create"></code></pre>
+</span>
+<span id="execution-error-POSTapi-v1-question-create" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-v1-question-create"></code></pre>
+</span>
+<form id="form-POSTapi-v1-question-create" data-method="POST"
+      data-path="api/v1/question/create"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-question-create', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-v1-question-create"
+                    onclick="tryItOut('POSTapi-v1-question-create');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-v1-question-create"
+                    onclick="cancelTryOut('POSTapi-v1-question-create');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-v1-question-create" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/v1/question/create</code></b>
+        </p>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <p>
+            <b><code>user_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text"
+               name="user_id"
+               data-endpoint="POSTapi-v1-question-create"
+               value="molestiae"
+               data-component="body" hidden>
+    <br>
+
+        </p>
+                <p>
+            <b><code>price</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text"
+               name="price"
+               data-endpoint="POSTapi-v1-question-create"
+               value="suscipit"
+               data-component="body" hidden>
+    <br>
+
+        </p>
+                <p>
+            <b><code>title</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text"
+               name="title"
+               data-endpoint="POSTapi-v1-question-create"
+               value="nihil"
+               data-component="body" hidden>
+    <br>
+
+        </p>
+                <p>
+            <b><code>is_important</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text"
+               name="is_important"
+               data-endpoint="POSTapi-v1-question-create"
+               value=""
+               data-component="body" hidden>
+    <br>
+
+        </p>
+                <p>
+            <b><code>phone</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text"
+               name="phone"
+               data-endpoint="POSTapi-v1-question-create"
+               value="sed"
+               data-component="body" hidden>
+    <br>
+
+        </p>
+        </form>
+
+                <h1 id="region">Region</h1>
+
+    
+
+                                <h2 id="region-GETapi-v1-region-getByCountryId--countryId-">getCountryId - Region</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-v1-region-getByCountryId--countryId-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/v1/region/getByCountryId/eius" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v1/region/getByCountryId/eius"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-v1-region-getByCountryId--countryId-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary>
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 52
+access-control-allow-origin: *
+ </code></pre>
+        </details>         <pre>
+
+<code class="language-json">{
+    &quot;data&quot;: []
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-v1-region-getByCountryId--countryId-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-v1-region-getByCountryId--countryId-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-region-getByCountryId--countryId-"></code></pre>
+</span>
+<span id="execution-error-GETapi-v1-region-getByCountryId--countryId-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-region-getByCountryId--countryId-"></code></pre>
+</span>
+<form id="form-GETapi-v1-region-getByCountryId--countryId-" data-method="GET"
+      data-path="api/v1/region/getByCountryId/{countryId}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-region-getByCountryId--countryId-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-v1-region-getByCountryId--countryId-"
+                    onclick="tryItOut('GETapi-v1-region-getByCountryId--countryId-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-v1-region-getByCountryId--countryId-"
+                    onclick="cancelTryOut('GETapi-v1-region-getByCountryId--countryId-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-v1-region-getByCountryId--countryId-" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/v1/region/getByCountryId/{countryId}</code></b>
+        </p>
+                    <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <p>
+                <b><code>countryId</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text"
+               name="countryId"
+               data-endpoint="GETapi-v1-region-getByCountryId--countryId-"
+               value="eius"
                data-component="url" hidden>
     <br>
 
@@ -2335,27 +1630,27 @@ access-control-allow-origin: *
 
     
 
-                                <h2 id="user-GETapi-v1-user-firstById--id-">firstById - User</h2>
+                                <h2 id="user-GETapi-v1-user-firstByPhone--phone-">firstByPhone - User</h2>
 
 <p>
 </p>
 
 
 
-<span id="example-requests-GETapi-v1-user-firstById--id-">
+<span id="example-requests-GETapi-v1-user-firstByPhone--phone-">
 <blockquote>Example request:</blockquote>
 
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/v1/user/firstById/quia" \
+    --get "http://localhost/api/v1/user/firstByPhone/facere" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/v1/user/firstById/quia"
+    "http://localhost/api/v1/user/firstByPhone/facere"
 );
 
 const headers = {
@@ -2370,7 +1665,7 @@ fetch(url, {
 
 </span>
 
-<span id="example-responses-GETapi-v1-user-firstById--id-">
+<span id="example-responses-GETapi-v1-user-firstByPhone--phone-">
             <blockquote>
             <p>Example response (401):</p>
         </blockquote>
@@ -2387,61 +1682,849 @@ access-control-allow-origin: *
         </details>         <pre>
 
 <code class="language-json">{
-    &quot;message&quot;: &quot;incorrect phone or password&quot;
+    &quot;phone&quot;: &quot;facere&quot;,
+    &quot;code&quot;: 692774,
+    &quot;status&quot;: &quot;not_registered&quot;
 }</code>
  </pre>
     </span>
-<span id="execution-results-GETapi-v1-user-firstById--id-" hidden>
+<span id="execution-results-GETapi-v1-user-firstByPhone--phone-" hidden>
     <blockquote>Received response<span
-                id="execution-response-status-GETapi-v1-user-firstById--id-"></span>:
+                id="execution-response-status-GETapi-v1-user-firstByPhone--phone-"></span>:
     </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-v1-user-firstById--id-"></code></pre>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-user-firstByPhone--phone-"></code></pre>
 </span>
-<span id="execution-error-GETapi-v1-user-firstById--id-" hidden>
+<span id="execution-error-GETapi-v1-user-firstByPhone--phone-" hidden>
     <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-v1-user-firstById--id-"></code></pre>
+    <pre><code id="execution-error-message-GETapi-v1-user-firstByPhone--phone-"></code></pre>
 </span>
-<form id="form-GETapi-v1-user-firstById--id-" data-method="GET"
-      data-path="api/v1/user/firstById/{id}"
+<form id="form-GETapi-v1-user-firstByPhone--phone-" data-method="GET"
+      data-path="api/v1/user/firstByPhone/{phone}"
       data-authed="0"
       data-hasfiles="0"
       data-isarraybody="0"
       data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-user-firstById--id-', this);">
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-user-firstByPhone--phone-', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-v1-user-firstById--id-"
-                    onclick="tryItOut('GETapi-v1-user-firstById--id-');">Try it out ⚡
+                    id="btn-tryout-GETapi-v1-user-firstByPhone--phone-"
+                    onclick="tryItOut('GETapi-v1-user-firstByPhone--phone-');">Try it out ⚡
             </button>
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-v1-user-firstById--id-"
-                    onclick="cancelTryOut('GETapi-v1-user-firstById--id-');" hidden>Cancel 🛑
+                    id="btn-canceltryout-GETapi-v1-user-firstByPhone--phone-"
+                    onclick="cancelTryOut('GETapi-v1-user-firstByPhone--phone-');" hidden>Cancel 🛑
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-v1-user-firstById--id-" hidden>Send Request 💥
+                    id="btn-executetryout-GETapi-v1-user-firstByPhone--phone-" hidden>Send Request 💥
             </button>
             </h3>
             <p>
             <small class="badge badge-green">GET</small>
-            <b><code>api/v1/user/firstById/{id}</code></b>
+            <b><code>api/v1/user/firstByPhone/{phone}</code></b>
         </p>
                     <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
                     <p>
-                <b><code>id</code></b>&nbsp;&nbsp;
+                <b><code>phone</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
                 <input type="text"
-               name="id"
-               data-endpoint="GETapi-v1-user-firstById--id-"
-               value="quia"
+               name="phone"
+               data-endpoint="GETapi-v1-user-firstByPhone--phone-"
+               value="facere"
                data-component="url" hidden>
     <br>
-<p>The ID of the firstById.</p>
+
+            </p>
+                    </form>
+
+                    <h2 id="user-GETapi-v1-user-checkCode--phone---code-">checkCode - User</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-v1-user-checkCode--phone---code-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/v1/user/checkCode/et/magnam" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v1/user/checkCode/et/magnam"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-v1-user-checkCode--phone---code-">
+            <blockquote>
+            <p>Example response (400):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary>
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 58
+access-control-allow-origin: *
+ </code></pre>
+        </details>         <pre>
+
+<code class="language-json">{
+    &quot;message&quot;: &quot;incorrect code&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-v1-user-checkCode--phone---code-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-v1-user-checkCode--phone---code-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-user-checkCode--phone---code-"></code></pre>
+</span>
+<span id="execution-error-GETapi-v1-user-checkCode--phone---code-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-user-checkCode--phone---code-"></code></pre>
+</span>
+<form id="form-GETapi-v1-user-checkCode--phone---code-" data-method="GET"
+      data-path="api/v1/user/checkCode/{phone}/{code}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-user-checkCode--phone---code-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-v1-user-checkCode--phone---code-"
+                    onclick="tryItOut('GETapi-v1-user-checkCode--phone---code-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-v1-user-checkCode--phone---code-"
+                    onclick="cancelTryOut('GETapi-v1-user-checkCode--phone---code-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-v1-user-checkCode--phone---code-" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/v1/user/checkCode/{phone}/{code}</code></b>
+        </p>
+                    <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <p>
+                <b><code>phone</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text"
+               name="phone"
+               data-endpoint="GETapi-v1-user-checkCode--phone---code-"
+               value="et"
+               data-component="url" hidden>
+    <br>
+
+            </p>
+                    <p>
+                <b><code>code</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text"
+               name="code"
+               data-endpoint="GETapi-v1-user-checkCode--phone---code-"
+               value="magnam"
+               data-component="url" hidden>
+    <br>
+
+            </p>
+                    </form>
+
+                    <h2 id="user-GETapi-v1-user-resetPassword--phone-">resetPassword - User</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-v1-user-resetPassword--phone-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/v1/user/resetPassword/voluptas" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v1/user/resetPassword/voluptas"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-v1-user-resetPassword--phone-">
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary>
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 57
+access-control-allow-origin: *
+ </code></pre>
+        </details>         <pre>
+
+<code class="language-json">{
+    &quot;phone&quot;: &quot;voluptas&quot;,
+    &quot;code&quot;: 839648,
+    &quot;status&quot;: &quot;code_sent&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-v1-user-resetPassword--phone-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-v1-user-resetPassword--phone-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-user-resetPassword--phone-"></code></pre>
+</span>
+<span id="execution-error-GETapi-v1-user-resetPassword--phone-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-user-resetPassword--phone-"></code></pre>
+</span>
+<form id="form-GETapi-v1-user-resetPassword--phone-" data-method="GET"
+      data-path="api/v1/user/resetPassword/{phone}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-user-resetPassword--phone-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-v1-user-resetPassword--phone-"
+                    onclick="tryItOut('GETapi-v1-user-resetPassword--phone-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-v1-user-resetPassword--phone-"
+                    onclick="cancelTryOut('GETapi-v1-user-resetPassword--phone-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-v1-user-resetPassword--phone-" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/v1/user/resetPassword/{phone}</code></b>
+        </p>
+                    <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <p>
+                <b><code>phone</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text"
+               name="phone"
+               data-endpoint="GETapi-v1-user-resetPassword--phone-"
+               value="voluptas"
+               data-component="url" hidden>
+    <br>
+
+            </p>
+                    </form>
+
+                    <h2 id="user-GETapi-v1-user-resendRegisterCode--phone-">resendRegisterCode - User</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-v1-user-resendRegisterCode--phone-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/v1/user/resendRegisterCode/amet" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v1/user/resendRegisterCode/amet"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-v1-user-resendRegisterCode--phone-">
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary>
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 56
+access-control-allow-origin: *
+ </code></pre>
+        </details>         <pre>
+
+<code class="language-json">{
+    &quot;phone&quot;: &quot;amet&quot;,
+    &quot;code&quot;: 123114,
+    &quot;status&quot;: &quot;not_registered&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-v1-user-resendRegisterCode--phone-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-v1-user-resendRegisterCode--phone-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-user-resendRegisterCode--phone-"></code></pre>
+</span>
+<span id="execution-error-GETapi-v1-user-resendRegisterCode--phone-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-user-resendRegisterCode--phone-"></code></pre>
+</span>
+<form id="form-GETapi-v1-user-resendRegisterCode--phone-" data-method="GET"
+      data-path="api/v1/user/resendRegisterCode/{phone}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-user-resendRegisterCode--phone-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-v1-user-resendRegisterCode--phone-"
+                    onclick="tryItOut('GETapi-v1-user-resendRegisterCode--phone-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-v1-user-resendRegisterCode--phone-"
+                    onclick="cancelTryOut('GETapi-v1-user-resendRegisterCode--phone-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-v1-user-resendRegisterCode--phone-" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/v1/user/resendRegisterCode/{phone}</code></b>
+        </p>
+                    <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <p>
+                <b><code>phone</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text"
+               name="phone"
+               data-endpoint="GETapi-v1-user-resendRegisterCode--phone-"
+               value="amet"
+               data-component="url" hidden>
+    <br>
+
+            </p>
+                    </form>
+
+                    <h2 id="user-POSTapi-v1-user-create">create - User</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTapi-v1-user-create">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/v1/user/create" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"language_id\": \"illum\",
+    \"region_id\": \"ratione\",
+    \"name\": \"aliquid\",
+    \"surname\": \"ab\",
+    \"phone\": \"et\",
+    \"push_notification\": true
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v1/user/create"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "language_id": "illum",
+    "region_id": "ratione",
+    "name": "aliquid",
+    "surname": "ab",
+    "phone": "et",
+    "push_notification": true
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-v1-user-create">
+</span>
+<span id="execution-results-POSTapi-v1-user-create" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-v1-user-create"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-v1-user-create"></code></pre>
+</span>
+<span id="execution-error-POSTapi-v1-user-create" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-v1-user-create"></code></pre>
+</span>
+<form id="form-POSTapi-v1-user-create" data-method="POST"
+      data-path="api/v1/user/create"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-user-create', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-v1-user-create"
+                    onclick="tryItOut('POSTapi-v1-user-create');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-v1-user-create"
+                    onclick="cancelTryOut('POSTapi-v1-user-create');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-v1-user-create" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/v1/user/create</code></b>
+        </p>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <p>
+            <b><code>language_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text"
+               name="language_id"
+               data-endpoint="POSTapi-v1-user-create"
+               value="illum"
+               data-component="body" hidden>
+    <br>
+
+        </p>
+                <p>
+            <b><code>region_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text"
+               name="region_id"
+               data-endpoint="POSTapi-v1-user-create"
+               value="ratione"
+               data-component="body" hidden>
+    <br>
+
+        </p>
+                <p>
+            <b><code>name</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text"
+               name="name"
+               data-endpoint="POSTapi-v1-user-create"
+               value="aliquid"
+               data-component="body" hidden>
+    <br>
+
+        </p>
+                <p>
+            <b><code>surname</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text"
+               name="surname"
+               data-endpoint="POSTapi-v1-user-create"
+               value="ab"
+               data-component="body" hidden>
+    <br>
+
+        </p>
+                <p>
+            <b><code>last_name</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text"
+               name="last_name"
+               data-endpoint="POSTapi-v1-user-create"
+               value=""
+               data-component="body" hidden>
+    <br>
+
+        </p>
+                <p>
+            <b><code>phone</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text"
+               name="phone"
+               data-endpoint="POSTapi-v1-user-create"
+               value="et"
+               data-component="body" hidden>
+    <br>
+
+        </p>
+                <p>
+            <b><code>push_notification</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="POSTapi-v1-user-create" hidden>
+            <input type="radio" name="push_notification"
+                   value="true"
+                   data-endpoint="POSTapi-v1-user-create"
+                   data-component="body"
+            >
+            <code>true</code>
+        </label>
+        <label data-endpoint="POSTapi-v1-user-create" hidden>
+            <input type="radio" name="push_notification"
+                   value="false"
+                   data-endpoint="POSTapi-v1-user-create"
+                   data-component="body"
+            >
+            <code>false</code>
+        </label>
+    <br>
+
+        </p>
+        </form>
+
+                    <h2 id="user-POSTapi-v1-user-update">update - User</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTapi-v1-user-update">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/v1/user/update" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"language_id\": \"consequuntur\",
+    \"push_notification\": false
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v1/user/update"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "language_id": "consequuntur",
+    "push_notification": false
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-v1-user-update">
+</span>
+<span id="execution-results-POSTapi-v1-user-update" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-v1-user-update"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-v1-user-update"></code></pre>
+</span>
+<span id="execution-error-POSTapi-v1-user-update" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-v1-user-update"></code></pre>
+</span>
+<form id="form-POSTapi-v1-user-update" data-method="POST"
+      data-path="api/v1/user/update"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-user-update', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-v1-user-update"
+                    onclick="tryItOut('POSTapi-v1-user-update');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-v1-user-update"
+                    onclick="cancelTryOut('POSTapi-v1-user-update');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-v1-user-update" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/v1/user/update</code></b>
+        </p>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <p>
+            <b><code>language_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text"
+               name="language_id"
+               data-endpoint="POSTapi-v1-user-update"
+               value="consequuntur"
+               data-component="body" hidden>
+    <br>
+
+        </p>
+                <p>
+            <b><code>push_notification</code></b>&nbsp;&nbsp;
+<small>boolean</small>&nbsp;
+<i>optional</i> &nbsp;
+                <label data-endpoint="POSTapi-v1-user-update" hidden>
+            <input type="radio" name="push_notification"
+                   value="true"
+                   data-endpoint="POSTapi-v1-user-update"
+                   data-component="body"
+            >
+            <code>true</code>
+        </label>
+        <label data-endpoint="POSTapi-v1-user-update" hidden>
+            <input type="radio" name="push_notification"
+                   value="false"
+                   data-endpoint="POSTapi-v1-user-update"
+                   data-component="body"
+            >
+            <code>false</code>
+        </label>
+    <br>
+
+        </p>
+        </form>
+
+                    <h2 id="user-GETapi-v1-user-auth--phone---password-">auth Phone &amp; Password - User</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-v1-user-auth--phone---password-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/v1/user/auth/consequuntur/explicabo" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/v1/user/auth/consequuntur/explicabo"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-v1-user-auth--phone---password-">
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary>
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 55
+access-control-allow-origin: *
+ </code></pre>
+        </details>         <pre>
+
+<code class="language-json">{
+    &quot;message&quot;: &quot;not found&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-v1-user-auth--phone---password-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-v1-user-auth--phone---password-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-user-auth--phone---password-"></code></pre>
+</span>
+<span id="execution-error-GETapi-v1-user-auth--phone---password-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-user-auth--phone---password-"></code></pre>
+</span>
+<form id="form-GETapi-v1-user-auth--phone---password-" data-method="GET"
+      data-path="api/v1/user/auth/{phone}/{password}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-user-auth--phone---password-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-v1-user-auth--phone---password-"
+                    onclick="tryItOut('GETapi-v1-user-auth--phone---password-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-v1-user-auth--phone---password-"
+                    onclick="cancelTryOut('GETapi-v1-user-auth--phone---password-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-v1-user-auth--phone---password-" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/v1/user/auth/{phone}/{password}</code></b>
+        </p>
+                    <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <p>
+                <b><code>phone</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text"
+               name="phone"
+               data-endpoint="GETapi-v1-user-auth--phone---password-"
+               value="consequuntur"
+               data-component="url" hidden>
+    <br>
+
+            </p>
+                    <p>
+                <b><code>password</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text"
+               name="password"
+               data-endpoint="GETapi-v1-user-auth--phone---password-"
+               value="explicabo"
+               data-component="url" hidden>
+    <br>
+
             </p>
                     </form>
 

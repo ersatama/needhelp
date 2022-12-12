@@ -4,7 +4,7 @@ namespace App\Providers\Repositories;
 
 use Illuminate\Support\ServiceProvider;
 
-class NotificationRepositoryProvider extends ServiceProvider
+class QuestionRepositoryProvider extends ServiceProvider
 {
     /**
      * Register services.
@@ -14,8 +14,8 @@ class NotificationRepositoryProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->bind(
-            \App\Domain\Repositories\Notification\NotificationRepositoryInterface::class,
-            \App\Domain\Repositories\Notification\NotificationRepositoryEloquent::class,
+            \App\Domain\Repositories\Question\QuestionRepositoryInterface::class,
+            \App\Domain\Repositories\Question\QuestionRepositoryEloquent::class,
         );
     }
 

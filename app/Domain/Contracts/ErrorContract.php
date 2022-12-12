@@ -5,7 +5,7 @@ namespace App\Domain\Contracts;
 class ErrorContract extends Contract
 {
     const NOT_FOUND =   [
-        self::MESSAGE   =>  'incorrect phone or password'
+        self::MESSAGE   =>  'not found'
     ];
     const INCORRECT_CODE    =   [
         self::MESSAGE   =>  'incorrect code'
@@ -13,4 +13,6 @@ class ErrorContract extends Contract
     const INCORRECT_PASSWORD    =   [
         self::MESSAGE   =>  'incorrect password'
     ];
+    const NOT_REGISTERED    =   'not_registered';
+    const CODE_SENT =   'code_sent';
 }

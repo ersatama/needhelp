@@ -45,7 +45,7 @@ class UserCrudController extends CrudController
         CRUD::column(Contract::LAST_NAME)->label('Отчество');
         CRUD::column(Contract::BIRTHDATE)->label('Дата рождения')->type('date');
         CRUD::column(Contract::PHONE)->label('Телефон номер');
-        CRUD::column(Contract::BLOCKED_AT)->label('Дата блокирования')->type('date');
+        CRUD::column(Contract::BLOCKED_AT)->label('Дата блокирования');
         CRUD::column(Contract::CREATED_AT)->label('Дата регистрация')->type('date');
         CRUD::column(Contract::LAST_AUTH)->label('Дата последней авторизации')->type('date');
     }
@@ -84,8 +84,7 @@ class UserCrudController extends CrudController
             ->options([
                 Contract::MALE      =>  'Муж',
                 Contract::FEMALE    =>  'Жен',
-            ])
-            ->default(Contract::MALE);;
+            ]);
         CRUD::field(Contract::BIRTHDATE)->label('Дата рождения')->type('date');
         CRUD::field(Contract::PHONE)->label('Телефон номер');
         CRUD::field(Contract::EMAIL)->label('Эл. почта');
@@ -98,7 +97,14 @@ class UserCrudController extends CrudController
                 false   =>  'Отключить',
             ])
             ->default(false);
-        CRUD::field(Contract::BLOCKED_AT)->label('Дата блокирования')->type('date');
+        CRUD::field(Contract::BLOCKED_AT)
+            ->label('Статус блокирования')
+            ->type(Contract::SELECT_FROM_ARRAY)
+            ->options([
+                true    =>  'Заблокирован',
+                false   =>  'Активный',
+            ])
+            ->default(false);
     }
 
     protected function setupUpdateOperation(): void

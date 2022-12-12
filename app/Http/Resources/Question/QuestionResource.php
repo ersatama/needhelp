@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Http\Resources\NotificationHistory;
+namespace App\Http\Resources\Question;
 
 use App\Domain\Contracts\Contract;
-use App\Domain\Contracts\NotificationHistoryContract;
-use App\Models\NotificationHistory;
+use App\Domain\Contracts\QuestionContract;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class NotificationHistoryResource extends JsonResource
+class QuestionResource extends JsonResource
 {
     public function toArray($request): array
     {
@@ -16,7 +15,7 @@ class NotificationHistoryResource extends JsonResource
             Contract::CREATED_AT    =>  $this->{Contract::CREATED_AT},
             Contract::UPDATED_AT    =>  $this->{Contract::UPDATED_AT},
         ];
-        foreach (NotificationHistoryContract::FILLABLE as &$value) {
+        foreach (QuestionContract::FILLABLE as &$value) {
             $arr[$value]    =   $this->{$value};
         }
         return $arr;

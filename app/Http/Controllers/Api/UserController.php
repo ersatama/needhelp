@@ -5,9 +5,11 @@ namespace App\Http\Controllers\Api;
 use App\Domain\Contracts\Contract;
 use App\Domain\Contracts\ErrorContract;
 use App\Domain\Contracts\UserContract;
+use App\Domain\Helpers\Smsc;
 use App\Domain\Requests\User\CreateRequest;
 use App\Domain\Requests\User\SearchRequest;
 use App\Domain\Requests\User\UpdateRequest;
+use App\Domain\Services\PhoneCodeService;
 use App\Domain\Services\UserService;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\User\UserCollection;
@@ -23,12 +25,107 @@ use Illuminate\Validation\ValidationException;
 class UserController extends Controller
 {
     protected UserService $userService;
-    public function __construct(UserService $userService)
+    protected PhoneCodeService $phoneCodeService;
+    public function __construct(UserService $userService, PhoneCodeService $phoneCodeService)
     {
         $this->userService  =   $userService;
+        $this->phoneCodeService =   $phoneCodeService;
     }
 
     /**
+     * firstByPhone - User
+     *
+     * @group User
+     */
+    public function firstByPhone($phone): Response|Application|ResponseFactory|UserResource
+    {
+        if ($user = $this->userService->userRepository->firstByPhone($phone)) {
+            return new UserResource($user);
+        }
+        $data   =   [
+            Contract::PHONE =>  $phone,
+            Contract::CODE  =>  rand(100000,999999),
+            Contract::STATUS    =>  ErrorContract::NOT_REGISTERED,
+        ];
+        if ($phoneCode = $this->phoneCodeService->phoneCodeRepository->firstByPhone($phone)) {
+            $data[Contract::CODE]   =   $phoneCode->{Contract::CODE};
+        } else {
+            $this->phoneCodeService->phoneCodeRepository->create([
+                Contract::PHONE =>  $phone,
+                Contract::CODE  =>  $data[Contract::CODE],
+            ]);
+            Smsc::sendCode($phone, $data[Contract::CODE]);
+        }
+        return response($data, 401);
+    }
+
+    /**
+     * resendRegisterCode - User
+     *
+     * @group User
+     */
+    public function resendRegisterCode($phone): Response|Application|ResponseFactory
+    {
+        $data   =   [
+            Contract::PHONE =>  $phone,
+            Contract::CODE  =>  rand(100000,999999),
+            Contract::STATUS    =>  ErrorContract::NOT_REGISTERED,
+        ];
+        if ($phoneCode = $this->phoneCodeService->phoneCodeRepository->firstByPhone($phone)) {
+            $this->phoneCodeService->phoneCodeRepository->update($phoneCode->{Contract::ID}, [
+                Contract::CODE  =>  $data[Contract::CODE]
+            ]);
+        } else {
+            $this->phoneCodeService->phoneCodeRepository->create([
+                Contract::PHONE =>  $phone,
+                Contract::CODE  =>  $data[Contract::CODE],
+            ]);
+        }
+        Smsc::sendCode($phone, $data[Contract::CODE]);
+        return response($data, 401);
+    }
+
+    /**
+     * resetPassword - User
+     *
+     * @group User
+     */
+    public function resetPassword($phone): Response|Application|ResponseFactory
+    {
+        $data   =   [
+            Contract::PHONE =>  $phone,
+            Contract::CODE  =>  rand(100000,999999),
+            Contract::STATUS    =>  ErrorContract::CODE_SENT,
+        ];
+        if ($phoneCode  =   $this->phoneCodeService->phoneCodeRepository->firstByPhone($phone)) {
+            $this->phoneCodeService->phoneCodeRepository->update($phoneCode->{Contract::ID}, [
+                Contract::CODE  =>  $data[Contract::CODE]
+            ]);
+            $this->userService->userRepository->updateByPhone($phone,[
+                Contract::PASSWORD  =>  Contract::CODE
+            ]);
+        }
+        Smsc::sendCode($phone, $data[Contract::CODE]);
+        return response($data, 401);
+    }
+
+    /**
+     * checkCode - User
+     *
+     * @group User
+     */
+    public function checkCode($phone, $code): Response|Application|ResponseFactory
+    {
+        if ($phoneCode  =   $this->phoneCodeService->phoneCodeRepository->firstByPhone($phone)) {
+            if ($phoneCode->{Contract::CODE} === $code) {
+                return response(Contract::SUCCESS, 200);
+            }
+        }
+        return response(ErrorContract::INCORRECT_CODE, 400);
+    }
+
+    /**
+     * @hideFromAPIDocumentation
      * firstById - User
      *
      * @group User
@@ -49,25 +146,9 @@ class UserController extends Controller
      */
     public function create(CreateRequest $createRequest): UserResource
     {
-        return new UserResource($this->userService->userRepository->create($createRequest->checked()));
-    }
-
-    /**
-     * codeVerify ID & Code - User
-     *
-     * @group User
-     */
-    public function codeVerify($id, $code): Response|Application|ResponseFactory|UserResource
-    {
-        if ($user = $this->userService->userRepository->firstById($id)) {
-            if ((int)$user->{Contract::PHONE_CODE} === (int)$code) {
-                $user->{Contract::PHONE_VERIFIED_AT}    =   Carbon::now();
-                $user->save();
-                return new UserResource($user);
-            }
-            return response(ErrorContract::INCORRECT_CODE, 400);
-        }
-        return response(ErrorContract::NOT_FOUND, 404);
+        $data   =   $createRequest->checked();
+        $data[Contract::PASSWORD]   =   $this->phoneCodeService->getCodeByPhone($data[Contract::PHONE]);
+        return new UserResource($this->userService->userRepository->create($data));
     }
 
     /**

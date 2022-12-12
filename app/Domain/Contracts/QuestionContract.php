@@ -2,9 +2,9 @@
 
 namespace App\Domain\Contracts;
 
-class NotificationContract extends Contract
+class QuestionContract extends Contract
 {
-    const TABLE =   'notifications';
+    const TABLE =   'questions';
     const FILLABLE  =   [
         self::USER_ID,
         self::LAWYER_ID,
@@ -17,6 +17,7 @@ class NotificationContract extends Contract
         self::IS_IMPORTANT,
         self::IS_PAID,
         self::STATUS,
+        self::IS_NEW,
         self::ANSWERED_AT,
     ];
 }

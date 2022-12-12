@@ -43,6 +43,12 @@ trait RepositoryEloquent
         return $this->model::where(Contract::NOTIFICATION_ID,$notificationId)->get();
     }
 
+    public function updateByPhone($phone, $data)
+    {
+        $this->model::where(Contract::PHONE, $phone)->update($data);
+        return $this->firstByPhone($phone);
+    }
+
     public function firstByPhone($phone)
     {
         return $this->model::where(Contract::PHONE,$phone)->first();

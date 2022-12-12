@@ -4,13 +4,13 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: 'api/v1/user/firstById/{id}'
+    uri: 'api/v1/user/firstByPhone/{phone}'
     metadata:
       groupName: User
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'firstById - User'
+      title: 'firstByPhone - User'
       description: ''
       authenticated: false
       custom: []
@@ -18,15 +18,15 @@ endpoints:
       Content-Type: application/json
       Accept: application/json
     urlParameters:
-      id:
-        name: id
-        description: 'The ID of the firstById.'
+      phone:
+        name: phone
+        description: ''
         required: true
-        example: quia
+        example: facere
         type: string
         custom: []
     cleanUrlParameters:
-      id: quia
+      phone: facere
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -35,12 +35,355 @@ endpoints:
     responses:
       -
         status: 401
-        content: '{"message":"incorrect phone or password"}'
+        content: '{"phone":"facere","code":692774,"status":"not_registered"}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
           x-ratelimit-remaining: '59'
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/v1/user/checkCode/{phone}/{code}'
+    metadata:
+      groupName: User
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'checkCode - User'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      phone:
+        name: phone
+        description: ''
+        required: true
+        example: et
+        type: string
+        custom: []
+      code:
+        name: code
+        description: ''
+        required: true
+        example: magnam
+        type: string
+        custom: []
+    cleanUrlParameters:
+      phone: et
+      code: magnam
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 400
+        content: '{"message":"incorrect code"}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '58'
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/v1/user/resetPassword/{phone}'
+    metadata:
+      groupName: User
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'resetPassword - User'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      phone:
+        name: phone
+        description: ''
+        required: true
+        example: voluptas
+        type: string
+        custom: []
+    cleanUrlParameters:
+      phone: voluptas
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"phone":"voluptas","code":839648,"status":"code_sent"}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '57'
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/v1/user/resendRegisterCode/{phone}'
+    metadata:
+      groupName: User
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'resendRegisterCode - User'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      phone:
+        name: phone
+        description: ''
+        required: true
+        example: amet
+        type: string
+        custom: []
+    cleanUrlParameters:
+      phone: amet
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"phone":"amet","code":123114,"status":"not_registered"}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '56'
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/v1/user/create
+    metadata:
+      groupName: User
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'create - User'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      language_id:
+        name: language_id
+        description: ''
+        required: true
+        example: illum
+        type: string
+        custom: []
+      region_id:
+        name: region_id
+        description: ''
+        required: true
+        example: ratione
+        type: string
+        custom: []
+      name:
+        name: name
+        description: ''
+        required: true
+        example: aliquid
+        type: string
+        custom: []
+      surname:
+        name: surname
+        description: ''
+        required: true
+        example: ab
+        type: string
+        custom: []
+      last_name:
+        name: last_name
+        description: ''
+        required: false
+        example: null
+        type: string
+        custom: []
+      phone:
+        name: phone
+        description: ''
+        required: true
+        example: et
+        type: string
+        custom: []
+      push_notification:
+        name: push_notification
+        description: ''
+        required: false
+        example: true
+        type: boolean
+        custom: []
+    cleanBodyParameters:
+      language_id: illum
+      region_id: ratione
+      name: aliquid
+      surname: ab
+      phone: et
+      push_notification: true
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/v1/user/update
+    metadata:
+      groupName: User
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'update - User'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      language_id:
+        name: language_id
+        description: ''
+        required: true
+        example: consequuntur
+        type: string
+        custom: []
+      push_notification:
+        name: push_notification
+        description: ''
+        required: false
+        example: false
+        type: boolean
+        custom: []
+    cleanBodyParameters:
+      language_id: consequuntur
+      push_notification: false
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/v1/user/auth/{phone}/{password}'
+    metadata:
+      groupName: User
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'auth Phone & Password - User'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      phone:
+        name: phone
+        description: ''
+        required: true
+        example: consequuntur
+        type: string
+        custom: []
+      password:
+        name: password
+        description: ''
+        required: true
+        example: explicabo
+        type: string
+        custom: []
+    cleanUrlParameters:
+      phone: consequuntur
+      password: explicabo
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 404
+        content: '{"message":"not found"}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '55'
           access-control-allow-origin: '*'
         description: null
         custom: []

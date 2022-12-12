@@ -3,21 +3,21 @@
 namespace Database\Seeders;
 
 use App\Domain\Contracts\Contract;
-use App\Models\Notification;
+use App\Models\Question;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class NotificationSeeder extends Seeder
+class QuestionSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
         for ($i=0;$i<5;$i++) {
-            Notification::create([
+            Question::create([
                 Contract::USER_ID   =>  1,
                 Contract::CURRENCY_ID   =>  1,
                 Contract::PRICE =>  3000,
@@ -27,7 +27,7 @@ class NotificationSeeder extends Seeder
                 Contract::IS_PAID   =>  false,
                 Contract::STATUS    =>  1,
             ]);
-            Notification::create([
+            Question::create([
                 Contract::USER_ID   =>  1,
                 Contract::CURRENCY_ID   =>  1,
                 Contract::PRICE =>  3000,
@@ -37,7 +37,7 @@ class NotificationSeeder extends Seeder
                 Contract::IS_PAID   =>  true,
                 Contract::STATUS    =>  0,
             ]);
-            Notification::create([
+            Question::create([
                 Contract::USER_ID   =>  1,
                 Contract::CURRENCY_ID   =>  1,
                 Contract::PRICE =>  3000,
@@ -48,7 +48,7 @@ class NotificationSeeder extends Seeder
                 Contract::IS_PAID   =>  true,
                 Contract::STATUS    =>  1,
             ]);
-            Notification::create([
+            Question::create([
                 Contract::USER_ID   =>  1,
                 Contract::CURRENCY_ID   =>  1,
                 Contract::LAWYER_ID =>  2,
