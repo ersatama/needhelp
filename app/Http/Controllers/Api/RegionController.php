@@ -20,7 +20,7 @@ class RegionController extends Controller
      *
      * @group Region
      */
-    public function getCountryId($countryId): RegionCollection
+    public function getByCountryId($countryId): RegionCollection
     {
         return new RegionCollection($this->regionService->regionRepository->getByCountryId($countryId));
     }
