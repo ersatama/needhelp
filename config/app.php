@@ -199,6 +199,7 @@ return [
         App\Providers\Repositories\LanguageRepositoryProvider::class,
         App\Providers\Repositories\CountryRepositoryProvider::class,
         App\Providers\Repositories\RegionRepositoryProvider::class,
+        App\Providers\Repositories\CityRepositoryProvider::class,
         App\Providers\Repositories\QuestionRepositoryProvider::class,
         App\Providers\Repositories\PhoneCodeRepositoryProvider::class,
     ],
