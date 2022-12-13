@@ -7,6 +7,14 @@ use Illuminate\Database\Eloquent\Collection;
 
 trait RepositoryEloquent
 {
+    public function firstByIp($ip)
+    {
+        return $this->model::where([
+            [Contract::IP,$ip],
+            [Contract::STATUS,true]
+        ])->first();
+    }
+
     public function firstByEmail($email)
     {
         return $this->model::where(Contract::EMAIL,$email)->first();

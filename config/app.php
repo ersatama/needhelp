@@ -202,6 +202,7 @@ return [
         App\Providers\Repositories\CityRepositoryProvider::class,
         App\Providers\Repositories\QuestionRepositoryProvider::class,
         App\Providers\Repositories\PhoneCodeRepositoryProvider::class,
+        App\Providers\Repositories\IpRepositoryProvider::class,
     ],
 
     /*
