@@ -4,7 +4,8 @@ namespace App\Domain\Contracts;
 
 abstract class Contract
 {
-    const TAKE  =   'take';
+    const G_RECAPTCHA_RESPONSE  =   'g-recaptcha-response';
+    const TAKE =   'take';
     const SUCCESS   =   'success';
     const IS_NEW    =   'is_new';
     const DATE  =   'date';

@@ -7,6 +7,11 @@ use Illuminate\Database\Eloquent\Collection;
 
 trait RepositoryEloquent
 {
+    public function firstByEmail($email)
+    {
+        return $this->model::where(Contract::EMAIL,$email)->first();
+    }
+
     public function update($id, $data)
     {
         $this->model::where(Contract::ID, $id)->update($data);
