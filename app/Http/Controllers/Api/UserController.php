@@ -46,6 +46,16 @@ class UserController extends Controller
     }
 
     /**
+     * sendRegisterCode - User
+     *
+     * @group User
+     */
+    public function sendRegisterCode($phone): Response|Application|ResponseFactory
+    {
+        return $this->resendRegisterCode($phone);
+    }
+
+    /**
      * resendRegisterCode - User
      *
      * @group User

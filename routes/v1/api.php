@@ -14,7 +14,7 @@ Route::controller(UserController::class)->group(function() {
         Route::get('firstByPhone/{phone}','firstByPhone')->name('user.firstByPhone');
         Route::get('checkCode/{phone}/{code}','checkCode')->name('user.checkCode');
         Route::get('resetPassword/{phone}','resetPassword')->name('user.resetPassword');
-        Route::get('sendRegisterCode/{phone}','resendRegisterCode')->name('user.sendRegisterCode');
+        Route::get('sendRegisterCode/{phone}','sendRegisterCode')->name('user.sendRegisterCode');
         Route::get('resendRegisterCode/{phone}','resendRegisterCode')->name('user.resendRegisterCode');
         Route::any('search','search')->name('user.search');
         Route::post('create','create')->name('user.create');
