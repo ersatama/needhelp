@@ -23,9 +23,7 @@ class UserSeeder extends Seeder
              Contract::NAME =>  Contract::ADMIN,
              Contract::SURNAME  =>  Contract::ADMIN,
              Contract::PHONE    =>  null,
-             Contract::PHONE_VERIFIED_AT    =>  now(),
              Contract::EMAIL    =>  'admin@needhelp.com',
-             Contract::EMAIL_VERIFIED_AT    =>  now(),
              Contract::PASSWORD =>  'password',//password
              Contract::REMEMBER_TOKEN   =>  Str::random(10),
          ]);
@@ -34,9 +32,7 @@ class UserSeeder extends Seeder
             Contract::NAME =>  Contract::LAWYER,
             Contract::SURNAME  =>  Contract::LAWYER,
             Contract::PHONE    =>  null,
-            Contract::PHONE_VERIFIED_AT    =>  now(),
             Contract::EMAIL    =>  'lawyer@needhelp.com',
-            Contract::EMAIL_VERIFIED_AT    =>  now(),
             Contract::PASSWORD =>  'password',//password
             Contract::REMEMBER_TOKEN   =>  Str::random(10),
         ]);

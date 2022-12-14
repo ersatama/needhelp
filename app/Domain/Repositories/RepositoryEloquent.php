@@ -4,9 +4,16 @@ namespace App\Domain\Repositories;
 
 use App\Domain\Contracts\Contract;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\DB;
 
 trait RepositoryEloquent
 {
+    public function forceDeleteById($id): void
+    {
+        $this->model::where(Contract::ID,$id)
+            ->forceDelete();
+    }
+
     public function firstByIp($ip)
     {
         return $this->model::where([
@@ -24,6 +31,11 @@ trait RepositoryEloquent
     {
         $this->model::where(Contract::ID, $id)->update($data);
         return $this->firstById($id);
+    }
+
+    public function insert($data)
+    {
+        DB::table($this->model->getTable())->insert($data);
     }
 
     public function create($data)

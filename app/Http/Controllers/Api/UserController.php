@@ -10,6 +10,7 @@ use App\Domain\Requests\User\CreateRequest;
 use App\Domain\Requests\User\SearchRequest;
 use App\Domain\Requests\User\UpdateRequest;
 use App\Domain\Services\PhoneCodeService;
+use App\Domain\Services\UserDeletedService;
 use App\Domain\Services\UserService;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\User\UserCollection;
@@ -26,10 +27,87 @@ class UserController extends Controller
 {
     protected UserService $userService;
     protected PhoneCodeService $phoneCodeService;
-    public function __construct(UserService $userService, PhoneCodeService $phoneCodeService)
+    protected UserDeletedService $userDeletedService;
+
+    public function __construct(UserService $userService, PhoneCodeService $phoneCodeService, UserDeletedService $userDeletedService)
     {
         $this->userService  =   $userService;
         $this->phoneCodeService =   $phoneCodeService;
+        $this->userDeletedService   =   $userDeletedService;
+    }
+
+    /**
+     * @hideFromAPIDocumentation
+     * deleteById - User
+     *
+     * @group User
+     */
+    public function deleteById($id): Response|Application|ResponseFactory
+    {
+        if ($user = $this->userService->userRepository->firstById($id)) {
+            if ($userDeleted = $this->userDeletedService->userDeletedRepository->firstByPhone($user->{Contract::PHONE})) {
+                $this->userDeletedService->userDeletedRepository->forceDeleteById($userDeleted->{Contract::ID});
+            }
+            $this->userDeletedService->userDeletedRepository->insert($user->toArray());
+            $this->userService->userRepository->forceDeleteById($user->{Contract::ID});
+            return response(ErrorContract::DELETED, 200);
+        }
+        return response(ErrorContract::NOT_FOUND, 404);
+    }
+
+    /**
+     * deleteByPhone - User
+     *
+     * @group User
+     */
+    public function deleteByPhone($phone): Response|Application|ResponseFactory
+    {
+        if ($user = $this->userService->userRepository->firstByPhone($phone)) {
+            if ($userDeleted = $this->userDeletedService->userDeletedRepository->firstByPhone($user->{Contract::PHONE})) {
+                $this->userDeletedService->userDeletedRepository->forceDeleteById($userDeleted->{Contract::ID});
+            }
+            $this->userDeletedService->userDeletedRepository->insert($user->toArray());
+            $this->userService->userRepository->forceDeleteById($user->{Contract::ID});
+            return response(ErrorContract::DELETED, 200);
+        }
+        return response(ErrorContract::NOT_FOUND, 404);
+    }
+
+    /**
+     * @hideFromAPIDocumentation
+     * restoreById - User
+     *
+     * @group User
+     */
+    public function restoreById($id): Response|Application|ResponseFactory
+    {
+        if ($user = $this->userService->userRepository->firstById($id)) {
+            return response(ErrorContract::RESTORED, 200);
+        }
+        if ($userDeleted = $this->userDeletedService->userDeletedRepository->firstById($id)) {
+            $this->userService->userRepository->insert($userDeleted->toArray());
+            $this->userDeletedService->userDeletedRepository->forceDeleteById($userDeleted->{Contract::ID});
+            return response(ErrorContract::RESTORED, 200);
+        }
+        return response(ErrorContract::NOT_FOUND, 404);
+    }
+
+    /**
+     * restoreByPhone - User
+     *
+     * @group User
+     */
+    public function restoreByPhone($phone): Response|Application|ResponseFactory
+    {
+        if ($user = $this->userService->userRepository->firstByPhone($phone)) {
+            return response(ErrorContract::RESTORED, 200);
+        }
+        if ($userDeleted = $this->userDeletedService->userDeletedRepository->firstByPhone($phone)) {
+            $this->userService->userRepository->insert($userDeleted->toArray());
+            $this->userDeletedService->userDeletedRepository->forceDeleteById($userDeleted->{Contract::ID});
+            return response(ErrorContract::RESTORED, 200);
+        }
+        return response(ErrorContract::NOT_FOUND, 404);
     }
 
     /**

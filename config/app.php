@@ -203,6 +203,7 @@ return [
         App\Providers\Repositories\QuestionRepositoryProvider::class,
         App\Providers\Repositories\PhoneCodeRepositoryProvider::class,
         App\Providers\Repositories\IpRepositoryProvider::class,
+        App\Providers\Repositories\UserDeletedRepositoryProvider::class,
     ],
 
     /*

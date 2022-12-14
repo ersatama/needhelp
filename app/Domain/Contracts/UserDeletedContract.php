@@ -2,9 +2,9 @@
 
 namespace App\Domain\Contracts;
 
-class UserContract extends Contract
+class UserDeletedContract extends Contract
 {
-    const TABLE =   self::USERS;
+    const TABLE =   'user_deleted';
     const FILLABLE  =   [
         self::ID,
         self::ROLE,
@@ -31,27 +31,5 @@ class UserContract extends Contract
         self::CREATED_AT,
         self::UPDATED_AT,
         self::DELETED_AT
-    ];
-    const HIDDEN    =   [
-
-    ];
-    const DATES =   [
-        self::CREATED_AT,
-        self::UPDATED_AT,
-        self::DELETED_AT
-    ];
-    const CASTS =   [
-
-    ];
-    const APPENDS   =   [
-        self::FULLNAME
-    ];
-    const SEARCH    =   [
-        self::ID,
-        self::NAME,
-        self::SURNAME,
-        self::LAST_NAME,
-        self::EMAIL,
-        self::PHONE
     ];
 }

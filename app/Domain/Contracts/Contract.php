@@ -38,6 +38,7 @@ abstract class Contract
     const LANGUAGE_ID   =   'language_id';
     const UPDATED_AT    =   'updated_at';
     const CREATED_AT    =   'created_at';
+    const DELETED_AT    =   'deleted_at';
     const BLOCKED_AT    =   'blocked_at';
     const BLOCKED_REASON    =   'blocked_reason';
     const LAST_AUTH =   'last_auth';

@@ -15,4 +15,6 @@ class ErrorContract extends Contract
     ];
     const NOT_REGISTERED    =   'not_registered';
     const CODE_SENT =   'code_sent';
+    const DELETED   =   'deleted';
+    const RESTORED  =   'restored';
 }

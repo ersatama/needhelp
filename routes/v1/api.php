@@ -11,6 +11,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::controller(UserController::class)->group(function() {
     Route::prefix('user')->group(function() {
+        Route::get('deleteById/{id}','deleteById')->name('user.deleteById');
+        Route::get('deleteByPhone/{phone}','deleteByPhone')->name('user.deleteByPhone');
+        Route::get('restoreById/{id}','restoreById')->name('user.restoreById');
+        Route::get('restoreByPhone/{phone}','restoreByPhone')->name('user.restoreByPhone');
         Route::get('firstByPhone/{phone}','firstByPhone')->name('user.firstByPhone');
         Route::get('checkCode/{phone}/{code}','checkCode')->name('user.checkCode');
         Route::get('resetPassword/{phone}','resetPassword')->name('user.resetPassword');

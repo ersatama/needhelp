@@ -1,7 +1,7 @@
 <?php
 
 use App\Domain\Contracts\Contract;
-use App\Domain\Contracts\UserContract;
+use App\Domain\Contracts\UserDeletedContract;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,7 +15,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create(UserContract::TABLE, function (Blueprint $table) {
+        Schema::create(UserDeletedContract::TABLE, function (Blueprint $table) {
             $table->id();
             $table->unsignedInteger(Contract::LANGUAGE_ID)->nullable()->default(1);
             $table->unsignedInteger(Contract::REGION_ID)->nullable();
@@ -57,6 +57,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists(UserContract::TABLE);
+        Schema::dropIfExists(UserDeletedContract::TABLE);
     }
 };
