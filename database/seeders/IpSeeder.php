@@ -20,6 +20,7 @@ class IpSeeder extends Seeder
             ['127.0.0.1','localhost',true],
             ['37.99.39.166','developer',true],
             ['37.99.36.132','developer #2', true],
+            ['37.99.36.123','developer #3', true],
             ['78.40.109.43','needhelp.kz',true],
             ['151.210.128.51','Kamiyar',true]
         ];
