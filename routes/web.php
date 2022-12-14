@@ -19,8 +19,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware(IpAddressMiddleware::class)->group(function() {
-    Route::controller(AuthController::class)->group(function() {
-        Route::post('login','login')->name('backpack.auth.login');
-    });
+Route::controller(AuthController::class)->group(function() {
+    Route::post('login','login')->name('backpack.auth.login');
 });

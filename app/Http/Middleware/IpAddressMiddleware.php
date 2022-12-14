@@ -17,7 +17,7 @@ class IpAddressMiddleware
     public function handle(Request $request, Closure $next)
     {
         if (!$this->ipService->ipRepository->firstByIp($request->getClientIp())) {
-            return redirect('/');
+            return redirect('/logout');
         }
         return $next($request);
     }
