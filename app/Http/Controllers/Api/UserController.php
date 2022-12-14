@@ -42,21 +42,7 @@ class UserController extends Controller
         if ($user = $this->userService->userRepository->firstByPhone($phone)) {
             return new UserResource($user);
         }
-        $data   =   [
-            Contract::PHONE =>  $phone,
-            Contract::CODE  =>  rand(100000,999999),
-            Contract::STATUS    =>  ErrorContract::NOT_REGISTERED,
-        ];
-        if ($phoneCode = $this->phoneCodeService->phoneCodeRepository->firstByPhone($phone)) {
-            $data[Contract::CODE]   =   $phoneCode->{Contract::CODE};
-        } else {
-            $this->phoneCodeService->phoneCodeRepository->create([
-                Contract::PHONE =>  $phone,
-                Contract::CODE  =>  $data[Contract::CODE],
-            ]);
-            Smsc::sendCode($phone, $data[Contract::CODE]);
-        }
-        return response($data, 401);
+        return response(ErrorContract::NOT_FOUND, 404);
     }
 
     /**
@@ -68,7 +54,7 @@ class UserController extends Controller
     {
         $data   =   [
             Contract::PHONE =>  $phone,
-            Contract::CODE  =>  rand(100000,999999),
+            Contract::CODE  =>  rand(1000,9999),
             Contract::STATUS    =>  ErrorContract::NOT_REGISTERED,
         ];
         if ($phoneCode = $this->phoneCodeService->phoneCodeRepository->firstByPhone($phone)) {
@@ -94,7 +80,7 @@ class UserController extends Controller
     {
         $data   =   [
             Contract::PHONE =>  $phone,
-            Contract::CODE  =>  rand(100000,999999),
+            Contract::CODE  =>  rand(1000,9999),
             Contract::STATUS    =>  ErrorContract::CODE_SENT,
         ];
         if ($phoneCode  =   $this->phoneCodeService->phoneCodeRepository->firstByPhone($phone)) {
@@ -102,7 +88,12 @@ class UserController extends Controller
                 Contract::CODE  =>  $data[Contract::CODE]
             ]);
             $this->userService->userRepository->updateByPhone($phone,[
-                Contract::PASSWORD  =>  Contract::CODE
+                Contract::PASSWORD  =>  $data[Contract::CODE]
+            ]);
+        } else {
+            $this->phoneCodeService->phoneCodeRepository->create([
+                Contract::PHONE =>  $phone,
+                Contract::CODE  =>  $data[Contract::CODE]
             ]);
         }
         Smsc::sendCode($phone, $data[Contract::CODE]);
