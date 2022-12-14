@@ -38,4 +38,25 @@ class UserRepositoryEloquent implements UserRepositoryInterface
             ->where(Contract::CREATED_AT, '>', now()->subDays(7)->endOfDay())
             ->groupBy(DB::raw("DATE_FORMAT(created_at, '%Y-%m-%d')"))->get();
     }
+
+    public static function userLastMonth()
+    {
+        return User::select(DB::raw('count(id) as count'),DB::raw("DATE_FORMAT(created_at, '%Y-%m-%d') as date"))
+            ->where(Contract::CREATED_AT, '>', now()->subDays(30)->endOfDay())
+            ->groupBy(DB::raw("DATE_FORMAT(created_at, '%Y-%m-%d')"))->get();
+    }
+
+    public static function userLastYear()
+    {
+        return User::select(DB::raw('count(id) as count'),DB::raw("DATE_FORMAT(created_at, '%Y-%m') as date"))
+            ->where(Contract::CREATED_AT, '>', now()->subDays(365)->endOfDay())
+            ->groupBy(DB::raw("DATE_FORMAT(created_at, '%Y-%m')"))->get();
+    }
+
+    public static function userDateBetween($start, $end)
+    {
+        return User::select(DB::raw('count(id) as count'),DB::raw("DATE_FORMAT(created_at, '%Y-%m-%d') as date"))
+            ->whereBetween(Contract::CREATED_AT, [$start.' 00:00:00',$end.' 23:59:59'])
+            ->groupBy(DB::raw("DATE_FORMAT(created_at, '%Y-%m-%d')"))->get();
+    }
 }

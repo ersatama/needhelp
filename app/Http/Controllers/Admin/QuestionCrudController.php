@@ -34,6 +34,8 @@ class QuestionCrudController extends CrudController
         } else {
             $this->crud->enableExportButtons();
         }
+        $this->crud->orderBy(Contract::IS_IMPORTANT, Contract::DESC);
+        $this->crud->orderBy(Contract::CREATED_AT, Contract::DESC);
     }
 
     public function update(): array|\Illuminate\Http\RedirectResponse

@@ -54,8 +54,37 @@ class QuestionRepositoryEloquent implements QuestionRepositoryInterface
             ->where([
                 [Contract::CREATED_AT, '>', now()->subDays(7)->endOfDay()],
                 [Contract::IS_PAID, true],
-                [Contract::STATUS,'!=',0]
             ])
+            ->groupBy(DB::raw("DATE_FORMAT(created_at, '%Y-%m-%d')"))->get();
+    }
+
+    public static function priceLastMonth()
+    {
+        return Question::select(DB::raw('sum(price) as sum'),DB::raw("DATE_FORMAT(created_at, '%Y-%m-%d') as date"))
+            ->where([
+                [Contract::CREATED_AT, '>', now()->subDays(30)->endOfDay()],
+                [Contract::IS_PAID, true],
+            ])
+            ->groupBy(DB::raw("DATE_FORMAT(created_at, '%Y-%m-%d')"))->get();
+    }
+
+    public static function priceLastYear()
+    {
+        return Question::select(DB::raw('sum(price) as sum'),DB::raw("DATE_FORMAT(created_at, '%Y-%m') as date"))
+            ->where([
+                [Contract::CREATED_AT, '>', now()->subDays(365)->endOfDay()],
+                [Contract::IS_PAID, true],
+            ])
+            ->groupBy(DB::raw("DATE_FORMAT(created_at, '%Y-%m')"))->get();
+    }
+
+    public static function priceDateBetween($start, $end)
+    {
+        return Question::select(DB::raw('sum(price) as sum'),DB::raw("DATE_FORMAT(created_at, '%Y-%m-%d') as date"))
+            ->where([
+                [Contract::IS_PAID, true],
+            ])
+            ->whereBetween(Contract::CREATED_AT, [$start.' 00:00:00',$end.' 23:59:59'])
             ->groupBy(DB::raw("DATE_FORMAT(created_at, '%Y-%m-%d')"))->get();
     }
 }
