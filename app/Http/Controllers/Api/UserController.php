@@ -38,6 +38,17 @@ class UserController extends Controller
 
     /**
      * @hideFromAPIDocumentation
+     * userDateBetween - User
+     *
+     * @group User
+     */
+    public function userDateBetween($start,$end)
+    {
+        return $this->userService->userRepository::userDateBetween($start,$end);
+    }
+
+    /**
+     * @hideFromAPIDocumentation
      * deleteById - User
      *
      * @group User

@@ -36,3 +36,20 @@
 
     <![endif]-->
     <script src='https://www.google.com/recaptcha/api.js'></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <style>
+        .head-date {
+            gap: 15px;
+        }
+        .input-date {
+            cursor: pointer;
+            text-align: center;
+            width: 100px;
+            border-radius: 3px;
+            border: none;
+            background: rgba(0,0,0,.08);
+            font-size: 14px;
+            height: 22px;
+            outline: none;
+        }
+    </style>

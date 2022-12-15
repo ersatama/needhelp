@@ -17,10 +17,43 @@ use Illuminate\Validation\ValidationException;
 
 class QuestionController extends Controller
 {
-    protected QuestionService $notificationService;
-    public function __construct(QuestionService $notificationService)
+    protected QuestionService $questionService;
+    public function __construct(QuestionService $questionService)
     {
-        $this->notificationService  =   $notificationService;
+        $this->questionService  =   $questionService;
+    }
+
+    /**
+     * @hideFromAPIDocumentation
+     * countDateBetweenClosed - Questions
+     *
+     * @group Questions
+     */
+    public function countDateBetweenClosed($start,$end)
+    {
+        return $this->questionService->questionRepository::countDateBetweenClosed($start,$end);
+    }
+
+    /**
+     * @hideFromAPIDocumentation
+     * countDateBetween - Questions
+     *
+     * @group Questions
+     */
+    public function countDateBetween($start,$end)
+    {
+        return $this->questionService->questionRepository::countDateBetween($start,$end);
+    }
+
+    /**
+     * @hideFromAPIDocumentation
+     * priceDateBetween - Questions
+     *
+     * @group Questions
+     */
+    public function priceDateBetween($start,$end)
+    {
+        return $this->questionService->questionRepository::priceDateBetween($start,$end);
     }
 
     /**
@@ -30,7 +63,7 @@ class QuestionController extends Controller
      */
     public function getByUserId($userId): QuestionCollection
     {
-        return new QuestionCollection($this->notificationService->notificationRepository->getByUserId($userId));
+        return new QuestionCollection($this->questionService->questionRepository->getByUserId($userId));
     }
 
     /**
@@ -40,8 +73,8 @@ class QuestionController extends Controller
      */
     public function firstById($id): Response|QuestionResource|Application|ResponseFactory
     {
-        if ($notification = $this->notificationService->notificationRepository->firstById($id)) {
-            $notification   =   $this->notificationService->notificationRepository->update($notification->{Contract::ID},[
+        if ($notification = $this->questionService->questionRepository->firstById($id)) {
+            $notification   =   $this->questionService->questionRepository->update($notification->{Contract::ID},[
                     Contract::IS_NEW    =>  false
                 ]);
             return new QuestionResource($notification);
@@ -57,7 +90,7 @@ class QuestionController extends Controller
      */
     public function create(CreateRequest $createRequest): QuestionResource
     {
-        $notification   =   $this->notificationService->notificationRepository->create($createRequest->checked());
+        $notification   =   $this->questionService->questionRepository->create($createRequest->checked());
         return new QuestionResource($notification);
     }
 }

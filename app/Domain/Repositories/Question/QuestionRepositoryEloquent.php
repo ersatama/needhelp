@@ -48,6 +48,42 @@ class QuestionRepositoryEloquent implements QuestionRepositoryInterface
         return Question::where(Contract::LAWYER_ID, $lawyerId)->get();
     }
 
+    public static function countDateBetweenClosed($start, $end)
+    {
+        return Question::select(DB::raw('count(id) as count'),DB::raw("DATE_FORMAT(created_at, '%Y-%m-%d') as date"))
+            ->where([
+                [Contract::IS_PAID,true],
+                [Contract::STATUS,2]
+            ])
+            ->whereBetween(Contract::CREATED_AT, [$start.' 00:00:00',$end.' 23:59:59'])
+            ->groupBy(DB::raw("DATE_FORMAT(created_at, '%Y-%m-%d')"))->get();
+    }
+
+    public static function countDateBetween($start, $end)
+    {
+        return Question::select(DB::raw('count(id) as count'),DB::raw("DATE_FORMAT(created_at, '%Y-%m-%d') as date"))
+            ->where([
+                [Contract::IS_PAID,true],
+                [Contract::STATUS,1]
+            ])
+            ->whereBetween(Contract::CREATED_AT, [$start.' 00:00:00',$end.' 23:59:59'])
+            ->groupBy(DB::raw("DATE_FORMAT(created_at, '%Y-%m-%d')"))->get();
+    }
+
+    public static function countWhereYear($where = [])
+    {
+        return Question::select(DB::raw('count(id) as count'),DB::raw("DATE_FORMAT(created_at, '%Y-%m') as date"))
+            ->where($where)
+            ->groupBy(DB::raw("DATE_FORMAT(created_at, '%Y-%m')"))->get();
+    }
+
+    public static function countWhere($where = [])
+    {
+        return Question::select(DB::raw('count(id) as count'),DB::raw("DATE_FORMAT(created_at, '%Y-%m-%d') as date"))
+            ->where($where)
+            ->groupBy(DB::raw("DATE_FORMAT(created_at, '%Y-%m-%d')"))->get();
+    }
+
     public static function priceLastWeek()
     {
         return Question::select(DB::raw('sum(price) as sum'),DB::raw("DATE_FORMAT(created_at, '%Y-%m-%d') as date"))
@@ -81,9 +117,7 @@ class QuestionRepositoryEloquent implements QuestionRepositoryInterface
     public static function priceDateBetween($start, $end)
     {
         return Question::select(DB::raw('sum(price) as sum'),DB::raw("DATE_FORMAT(created_at, '%Y-%m-%d') as date"))
-            ->where([
-                [Contract::IS_PAID, true],
-            ])
+            ->where(Contract::IS_PAID, true)
             ->whereBetween(Contract::CREATED_AT, [$start.' 00:00:00',$end.' 23:59:59'])
             ->groupBy(DB::raw("DATE_FORMAT(created_at, '%Y-%m-%d')"))->get();
     }

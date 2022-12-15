@@ -6,9 +6,9 @@ use App\Domain\Repositories\Question\QuestionRepositoryInterface;
 
 class QuestionService extends Service
 {
-    public QuestionRepositoryInterface $notificationRepository;
-    public function __construct(QuestionRepositoryInterface $notificationRepository)
+    public QuestionRepositoryInterface $questionRepository;
+    public function __construct(QuestionRepositoryInterface $questionRepository)
     {
-        $this->notificationRepository   =   $notificationRepository;
+        $this->questionRepository   =   $questionRepository;
     }
 }

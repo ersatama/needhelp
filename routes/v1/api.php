@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::controller(UserController::class)->group(function() {
     Route::prefix('user')->group(function() {
+        Route::get('userDateBetween/{start}/{end}','userDateBetween')->name('user.userDateBetween');
         Route::get('deleteById/{id}','deleteById')->name('user.deleteById');
         Route::get('deleteByPhone/{phone}','deleteByPhone')->name('user.deleteByPhone');
         Route::get('restoreById/{id}','restoreById')->name('user.restoreById');
@@ -56,9 +57,12 @@ Route::controller(CityController::class)->group(function() {
 
 Route::controller(QuestionController::class)->group(function() {
     Route::prefix('question')->group(function() {
-        Route::get('getByUserId/{userId}','getByUserId')->name('history.getByUserId');
-        Route::get('firstById/{id}','firstById')->name('history.firstById');
-        Route::post('create','create')->name('history.create');
+        Route::get('priceDateBetween/{start}/{end}','priceDateBetween')->name('question.priceDateBetween');
+        Route::get('countDateBetween/{start}/{end}','countDateBetween')->name('question.countDateBetween');
+        Route::get('countDateBetweenClosed/{start}/{end}','countDateBetweenClosed')->name('question.countDateBetweenClosed');
+        Route::get('getByUserId/{userId}','getByUserId')->name('question.getByUserId');
+        Route::get('firstById/{id}','firstById')->name('question.firstById');
+        Route::post('create','create')->name('question.create');
     });
 });
 
