@@ -22,7 +22,7 @@ Route::controller(UserController::class)->group(function() {
         Route::get('resendRegisterCode/{phone}','resendRegisterCode')->name('user.resendRegisterCode');
         Route::any('search','search')->name('user.search');
         Route::post('create','create')->name('user.create');
-        Route::post('update','update')->name('user.update');
+        Route::post('update/{id}','update')->name('user.update');
         Route::get('auth/{phone}/{password}','auth')->name('user.auth');
         Route::get('firstById/{id}','firstById')->name('user.firstById');
     });
