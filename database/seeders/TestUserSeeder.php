@@ -21,8 +21,26 @@ class TestUserSeeder extends Seeder
             Contract::ROLE =>  Contract::USER,
             Contract::NAME =>  Contract::USER,
             Contract::SURNAME  =>  Contract::USER,
-            Contract::PHONE    =>  77776665544,
-            Contract::EMAIL    =>  'test@needhelp.com',
+            Contract::PHONE    =>  77776665541,
+            Contract::EMAIL    =>  'test1@needhelp.com',
+            Contract::PASSWORD =>  '1234',//password
+            Contract::REMEMBER_TOKEN   =>  Str::random(10),
+        ]);
+        User::factory()->create([
+            Contract::ROLE =>  Contract::USER,
+            Contract::NAME =>  Contract::USER,
+            Contract::SURNAME  =>  Contract::USER,
+            Contract::PHONE    =>  77776665542,
+            Contract::EMAIL    =>  'test2@needhelp.com',
+            Contract::PASSWORD =>  '1234',//password
+            Contract::REMEMBER_TOKEN   =>  Str::random(10),
+        ]);
+        User::factory()->create([
+            Contract::ROLE =>  Contract::USER,
+            Contract::NAME =>  Contract::USER,
+            Contract::SURNAME  =>  Contract::USER,
+            Contract::PHONE    =>  77776665543,
+            Contract::EMAIL    =>  'test3@needhelp.com',
             Contract::PASSWORD =>  '1234',//password
             Contract::REMEMBER_TOKEN   =>  Str::random(10),
         ]);
