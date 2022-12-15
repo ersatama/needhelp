@@ -18,7 +18,7 @@ class QuestionSeeder extends Seeder
     {
         for ($i=0;$i<5;$i++) {
             Question::create([
-                Contract::USER_ID   =>  1,
+                Contract::USER_ID   =>  3,
                 Contract::CURRENCY_ID   =>  1,
                 Contract::PRICE =>  3000,
                 Contract::TITLE =>  'Lorem ipsum dolor sit amet, consectetur adipiscing elit '.$i,
@@ -28,7 +28,7 @@ class QuestionSeeder extends Seeder
                 Contract::STATUS    =>  1,
             ]);
             Question::create([
-                Contract::USER_ID   =>  1,
+                Contract::USER_ID   =>  3,
                 Contract::CURRENCY_ID   =>  1,
                 Contract::PRICE =>  3000,
                 Contract::TITLE =>  'Lorem ipsum dolor sit amet, consectetur adipiscing elit '.$i,
@@ -38,7 +38,7 @@ class QuestionSeeder extends Seeder
                 Contract::STATUS    =>  0,
             ]);
             Question::create([
-                Contract::USER_ID   =>  1,
+                Contract::USER_ID   =>  3,
                 Contract::CURRENCY_ID   =>  1,
                 Contract::PRICE =>  3000,
                 Contract::PAYMENT_ID    =>  rand(100000,999999),
@@ -49,7 +49,7 @@ class QuestionSeeder extends Seeder
                 Contract::STATUS    =>  1,
             ]);
             Question::create([
-                Contract::USER_ID   =>  1,
+                Contract::USER_ID   =>  3,
                 Contract::CURRENCY_ID   =>  1,
                 Contract::LAWYER_ID =>  2,
                 Contract::PRICE =>  3000,

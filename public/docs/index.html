@@ -26,7 +26,7 @@
             </style>
 
     <script>
-        var baseUrl = "http://localhost";
+        var baseUrl = "http://localhost:8000";
         var useCsrf = Boolean();
         var csrfUrl = "/sanctum/csrf-cookie";
     </script>
@@ -106,6 +106,19 @@
                             </li>
                                                                         </ul>
                             </ul>
+                    <ul id="tocify-header-notification" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="notification">
+                    <a href="#notification">Notification</a>
+                </li>
+                                    <ul id="tocify-subheader-notification" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="notification-GETapi-v1-notification-getByUserId--userId-">
+                                <a href="#notification-GETapi-v1-notification-getByUserId--userId-">getByUserId - Notification</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="notification-GETapi-v1-notification-firstById--id-">
+                                <a href="#notification-GETapi-v1-notification-firstById--id-">firstById - Notification</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
                     <ul id="tocify-header-questions" class="tocify-header">
                 <li class="tocify-item level-1" data-unique="questions">
                     <a href="#questions">Questions</a>
@@ -137,7 +150,13 @@
                     <a href="#user">User</a>
                 </li>
                                     <ul id="tocify-subheader-user" class="tocify-subheader">
-                                                    <li class="tocify-item level-2" data-unique="user-GETapi-v1-user-firstByPhone--phone-">
+                                                    <li class="tocify-item level-2" data-unique="user-GETapi-v1-user-deleteByPhone--phone-">
+                                <a href="#user-GETapi-v1-user-deleteByPhone--phone-">deleteByPhone - User</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="user-GETapi-v1-user-restoreByPhone--phone-">
+                                <a href="#user-GETapi-v1-user-restoreByPhone--phone-">restoreByPhone - User</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="user-GETapi-v1-user-firstByPhone--phone-">
                                 <a href="#user-GETapi-v1-user-firstByPhone--phone-">firstByPhone - User</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="user-GETapi-v1-user-checkCode--phone---code-">
@@ -146,14 +165,17 @@
                                                                                 <li class="tocify-item level-2" data-unique="user-GETapi-v1-user-resetPassword--phone-">
                                 <a href="#user-GETapi-v1-user-resetPassword--phone-">resetPassword - User</a>
                             </li>
+                                                                                <li class="tocify-item level-2" data-unique="user-GETapi-v1-user-sendRegisterCode--phone-">
+                                <a href="#user-GETapi-v1-user-sendRegisterCode--phone-">sendRegisterCode - User</a>
+                            </li>
                                                                                 <li class="tocify-item level-2" data-unique="user-GETapi-v1-user-resendRegisterCode--phone-">
                                 <a href="#user-GETapi-v1-user-resendRegisterCode--phone-">resendRegisterCode - User</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="user-POSTapi-v1-user-create">
                                 <a href="#user-POSTapi-v1-user-create">create - User</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="user-POSTapi-v1-user-update">
-                                <a href="#user-POSTapi-v1-user-update">update - User</a>
+                                                                                <li class="tocify-item level-2" data-unique="user-POSTapi-v1-user-update--id-">
+                                <a href="#user-POSTapi-v1-user-update--id-">update - User</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="user-GETapi-v1-user-auth--phone---password-">
                                 <a href="#user-GETapi-v1-user-auth--phone---password-">auth Phone & Password - User</a>
@@ -168,7 +190,7 @@
                             <li><a href="http://github.com/knuckleswtf/scribe">Documentation powered by Scribe ✍</a></li>
                     </ul>
         <ul class="toc-footer" id="last-updated">
-        <li>Last updated: December 12, 2022</li>
+        <li>Last updated: December 15, 2022</li>
     </ul>
 </div>
 
@@ -204,14 +226,14 @@ You can switch the language used with the tabs at the top right (or from the nav
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/v1/city/getByRegionId/fuga" \
+    --get "http://localhost:8000/api/v1/city/getByRegionId/explicabo" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/v1/city/getByRegionId/fuga"
+    "http://localhost:8000/api/v1/city/getByRegionId/explicabo"
 );
 
 const headers = {
@@ -228,7 +250,7 @@ fetch(url, {
 
 <span id="example-responses-GETapi-v1-city-getByRegionId--regionId-">
             <blockquote>
-            <p>Example response (500):</p>
+            <p>Example response (200):</p>
         </blockquote>
                 <details class="annotation">
             <summary>
@@ -236,521 +258,14 @@ fetch(url, {
             </summary>
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 48
 access-control-allow-origin: *
  </code></pre>
         </details>         <pre>
 
 <code class="language-json">{
-    &quot;message&quot;: &quot;Target [App\\Domain\\Repositories\\City\\CityRepositoryInterface] is not instantiable while building [App\\Http\\Controllers\\Api\\CityController, App\\Domain\\Services\\CityService].&quot;,
-    &quot;exception&quot;: &quot;Illuminate\\Contracts\\Container\\BindingResolutionException&quot;,
-    &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php&quot;,
-    &quot;line&quot;: 1091,
-    &quot;trace&quot;: [
-        {
-            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php&quot;,
-            &quot;line&quot;: 884,
-            &quot;function&quot;: &quot;notInstantiable&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Container\\Container&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php&quot;,
-            &quot;line&quot;: 756,
-            &quot;function&quot;: &quot;build&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Container\\Container&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php&quot;,
-            &quot;line&quot;: 860,
-            &quot;function&quot;: &quot;resolve&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Container\\Container&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php&quot;,
-            &quot;line&quot;: 692,
-            &quot;function&quot;: &quot;resolve&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Foundation\\Application&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php&quot;,
-            &quot;line&quot;: 845,
-            &quot;function&quot;: &quot;make&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Container\\Container&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php&quot;,
-            &quot;line&quot;: 1029,
-            &quot;function&quot;: &quot;make&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Foundation\\Application&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php&quot;,
-            &quot;line&quot;: 945,
-            &quot;function&quot;: &quot;resolveClass&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Container\\Container&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php&quot;,
-            &quot;line&quot;: 906,
-            &quot;function&quot;: &quot;resolveDependencies&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Container\\Container&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php&quot;,
-            &quot;line&quot;: 756,
-            &quot;function&quot;: &quot;build&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Container\\Container&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php&quot;,
-            &quot;line&quot;: 860,
-            &quot;function&quot;: &quot;resolve&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Container\\Container&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php&quot;,
-            &quot;line&quot;: 692,
-            &quot;function&quot;: &quot;resolve&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Foundation\\Application&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php&quot;,
-            &quot;line&quot;: 845,
-            &quot;function&quot;: &quot;make&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Container\\Container&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php&quot;,
-            &quot;line&quot;: 1029,
-            &quot;function&quot;: &quot;make&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Foundation\\Application&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php&quot;,
-            &quot;line&quot;: 945,
-            &quot;function&quot;: &quot;resolveClass&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Container\\Container&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php&quot;,
-            &quot;line&quot;: 906,
-            &quot;function&quot;: &quot;resolveDependencies&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Container\\Container&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php&quot;,
-            &quot;line&quot;: 756,
-            &quot;function&quot;: &quot;build&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Container\\Container&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php&quot;,
-            &quot;line&quot;: 860,
-            &quot;function&quot;: &quot;resolve&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Container\\Container&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php&quot;,
-            &quot;line&quot;: 692,
-            &quot;function&quot;: &quot;resolve&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Foundation\\Application&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php&quot;,
-            &quot;line&quot;: 845,
-            &quot;function&quot;: &quot;make&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Container\\Container&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php&quot;,
-            &quot;line&quot;: 274,
-            &quot;function&quot;: &quot;make&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Foundation\\Application&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php&quot;,
-            &quot;line&quot;: 1098,
-            &quot;function&quot;: &quot;getController&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Routing\\Route&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Route.php&quot;,
-            &quot;line&quot;: 1029,
-            &quot;function&quot;: &quot;controllerMiddleware&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Routing\\Route&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php&quot;,
-            &quot;line&quot;: 737,
-            &quot;function&quot;: &quot;gatherMiddleware&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Routing\\Route&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php&quot;,
-            &quot;line&quot;: 719,
-            &quot;function&quot;: &quot;gatherRouteMiddleware&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Routing\\Router&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php&quot;,
-            &quot;line&quot;: 703,
-            &quot;function&quot;: &quot;runRouteWithinStack&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Routing\\Router&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php&quot;,
-            &quot;line&quot;: 667,
-            &quot;function&quot;: &quot;runRoute&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Routing\\Router&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php&quot;,
-            &quot;line&quot;: 656,
-            &quot;function&quot;: &quot;dispatchToRoute&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Routing\\Router&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php&quot;,
-            &quot;line&quot;: 190,
-            &quot;function&quot;: &quot;dispatch&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Routing\\Router&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php&quot;,
-            &quot;line&quot;: 141,
-            &quot;function&quot;: &quot;Illuminate\\Foundation\\Http\\{closure}&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Kernel&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php&quot;,
-            &quot;line&quot;: 21,
-            &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull.php&quot;,
-            &quot;line&quot;: 31,
-            &quot;function&quot;: &quot;handle&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php&quot;,
-            &quot;line&quot;: 180,
-            &quot;function&quot;: &quot;handle&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\ConvertEmptyStringsToNull&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest.php&quot;,
-            &quot;line&quot;: 21,
-            &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\TrimStrings.php&quot;,
-            &quot;line&quot;: 40,
-            &quot;function&quot;: &quot;handle&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\TransformsRequest&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php&quot;,
-            &quot;line&quot;: 180,
-            &quot;function&quot;: &quot;handle&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\TrimStrings&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize.php&quot;,
-            &quot;line&quot;: 27,
-            &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php&quot;,
-            &quot;line&quot;: 180,
-            &quot;function&quot;: &quot;handle&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\ValidatePostSize&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance.php&quot;,
-            &quot;line&quot;: 86,
-            &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php&quot;,
-            &quot;line&quot;: 180,
-            &quot;function&quot;: &quot;handle&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Middleware\\PreventRequestsDuringMaintenance&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\HandleCors.php&quot;,
-            &quot;line&quot;: 62,
-            &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php&quot;,
-            &quot;line&quot;: 180,
-            &quot;function&quot;: &quot;handle&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Http\\Middleware\\HandleCors&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Http\\Middleware\\TrustProxies.php&quot;,
-            &quot;line&quot;: 39,
-            &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php&quot;,
-            &quot;line&quot;: 180,
-            &quot;function&quot;: &quot;handle&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Http\\Middleware\\TrustProxies&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Pipeline\\Pipeline.php&quot;,
-            &quot;line&quot;: 116,
-            &quot;function&quot;: &quot;Illuminate\\Pipeline\\{closure}&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php&quot;,
-            &quot;line&quot;: 165,
-            &quot;function&quot;: &quot;then&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Pipeline\\Pipeline&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php&quot;,
-            &quot;line&quot;: 134,
-            &quot;function&quot;: &quot;sendRequestThroughRouter&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Kernel&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\knuckleswtf\\scribe\\src\\Extracting\\Strategies\\Responses\\ResponseCalls.php&quot;,
-            &quot;line&quot;: 303,
-            &quot;function&quot;: &quot;handle&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Foundation\\Http\\Kernel&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\knuckleswtf\\scribe\\src\\Extracting\\Strategies\\Responses\\ResponseCalls.php&quot;,
-            &quot;line&quot;: 291,
-            &quot;function&quot;: &quot;callLaravelOrLumenRoute&quot;,
-            &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\knuckleswtf\\scribe\\src\\Extracting\\Strategies\\Responses\\ResponseCalls.php&quot;,
-            &quot;line&quot;: 89,
-            &quot;function&quot;: &quot;makeApiCall&quot;,
-            &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\knuckleswtf\\scribe\\src\\Extracting\\Strategies\\Responses\\ResponseCalls.php&quot;,
-            &quot;line&quot;: 45,
-            &quot;function&quot;: &quot;makeResponseCall&quot;,
-            &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\knuckleswtf\\scribe\\src\\Extracting\\Strategies\\Responses\\ResponseCalls.php&quot;,
-            &quot;line&quot;: 35,
-            &quot;function&quot;: &quot;makeResponseCallIfConditionsPass&quot;,
-            &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\knuckleswtf\\scribe\\src\\Extracting\\Extractor.php&quot;,
-            &quot;line&quot;: 209,
-            &quot;function&quot;: &quot;__invoke&quot;,
-            &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Strategies\\Responses\\ResponseCalls&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\knuckleswtf\\scribe\\src\\Extracting\\Extractor.php&quot;,
-            &quot;line&quot;: 166,
-            &quot;function&quot;: &quot;iterateThroughStrategies&quot;,
-            &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Extractor&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\knuckleswtf\\scribe\\src\\Extracting\\Extractor.php&quot;,
-            &quot;line&quot;: 95,
-            &quot;function&quot;: &quot;fetchResponses&quot;,
-            &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Extractor&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\knuckleswtf\\scribe\\src\\GroupedEndpoints\\GroupedEndpointsFromApp.php&quot;,
-            &quot;line&quot;: 122,
-            &quot;function&quot;: &quot;processRoute&quot;,
-            &quot;class&quot;: &quot;Knuckles\\Scribe\\Extracting\\Extractor&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\knuckleswtf\\scribe\\src\\GroupedEndpoints\\GroupedEndpointsFromApp.php&quot;,
-            &quot;line&quot;: 69,
-            &quot;function&quot;: &quot;extractEndpointsInfoFromLaravelApp&quot;,
-            &quot;class&quot;: &quot;Knuckles\\Scribe\\GroupedEndpoints\\GroupedEndpointsFromApp&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\knuckleswtf\\scribe\\src\\GroupedEndpoints\\GroupedEndpointsFromApp.php&quot;,
-            &quot;line&quot;: 47,
-            &quot;function&quot;: &quot;extractEndpointsInfoAndWriteToDisk&quot;,
-            &quot;class&quot;: &quot;Knuckles\\Scribe\\GroupedEndpoints\\GroupedEndpointsFromApp&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\knuckleswtf\\scribe\\src\\Commands\\GenerateDocumentation.php&quot;,
-            &quot;line&quot;: 53,
-            &quot;function&quot;: &quot;get&quot;,
-            &quot;class&quot;: &quot;Knuckles\\Scribe\\GroupedEndpoints\\GroupedEndpointsFromApp&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php&quot;,
-            &quot;line&quot;: 36,
-            &quot;function&quot;: &quot;handle&quot;,
-            &quot;class&quot;: &quot;Knuckles\\Scribe\\Commands\\GenerateDocumentation&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php&quot;,
-            &quot;line&quot;: 41,
-            &quot;function&quot;: &quot;Illuminate\\Container\\{closure}&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Container\\BoundMethod&quot;,
-            &quot;type&quot;: &quot;::&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php&quot;,
-            &quot;line&quot;: 93,
-            &quot;function&quot;: &quot;unwrapIfClosure&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Container\\Util&quot;,
-            &quot;type&quot;: &quot;::&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php&quot;,
-            &quot;line&quot;: 37,
-            &quot;function&quot;: &quot;callBoundMethod&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Container\\BoundMethod&quot;,
-            &quot;type&quot;: &quot;::&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php&quot;,
-            &quot;line&quot;: 651,
-            &quot;function&quot;: &quot;call&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Container\\BoundMethod&quot;,
-            &quot;type&quot;: &quot;::&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php&quot;,
-            &quot;line&quot;: 144,
-            &quot;function&quot;: &quot;call&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Container\\Container&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\symfony\\console\\Command\\Command.php&quot;,
-            &quot;line&quot;: 308,
-            &quot;function&quot;: &quot;execute&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Console\\Command&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Command.php&quot;,
-            &quot;line&quot;: 126,
-            &quot;function&quot;: &quot;run&quot;,
-            &quot;class&quot;: &quot;Symfony\\Component\\Console\\Command\\Command&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\symfony\\console\\Application.php&quot;,
-            &quot;line&quot;: 1002,
-            &quot;function&quot;: &quot;run&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Console\\Command&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\symfony\\console\\Application.php&quot;,
-            &quot;line&quot;: 299,
-            &quot;function&quot;: &quot;doRunCommand&quot;,
-            &quot;class&quot;: &quot;Symfony\\Component\\Console\\Application&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\symfony\\console\\Application.php&quot;,
-            &quot;line&quot;: 171,
-            &quot;function&quot;: &quot;doRun&quot;,
-            &quot;class&quot;: &quot;Symfony\\Component\\Console\\Application&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Console\\Application.php&quot;,
-            &quot;line&quot;: 102,
-            &quot;function&quot;: &quot;run&quot;,
-            &quot;class&quot;: &quot;Symfony\\Component\\Console\\Application&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php&quot;,
-            &quot;line&quot;: 151,
-            &quot;function&quot;: &quot;run&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Console\\Application&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        },
-        {
-            &quot;file&quot;: &quot;C:\\Projects\\needhelp\\artisan&quot;,
-            &quot;line&quot;: 37,
-            &quot;function&quot;: &quot;handle&quot;,
-            &quot;class&quot;: &quot;Illuminate\\Foundation\\Console\\Kernel&quot;,
-            &quot;type&quot;: &quot;-&gt;&quot;
-        }
-    ]
+    &quot;data&quot;: []
 }</code>
  </pre>
     </span>
@@ -801,7 +316,7 @@ access-control-allow-origin: *
                 <input type="text"
                name="regionId"
                data-endpoint="GETapi-v1-city-getByRegionId--regionId-"
-               value="fuga"
+               value="explicabo"
                data-component="url" hidden>
     <br>
 
@@ -825,14 +340,14 @@ access-control-allow-origin: *
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/v1/country/get" \
+    --get "http://localhost:8000/api/v1/country/get" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/v1/country/get"
+    "http://localhost:8000/api/v1/country/get"
 );
 
 const headers = {
@@ -858,7 +373,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 53
+x-ratelimit-remaining: 50
 access-control-allow-origin: *
  </code></pre>
         </details>         <pre>
@@ -926,14 +441,14 @@ access-control-allow-origin: *
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/user" \
+    --get "http://localhost:8000/api/user" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/user"
+    "http://localhost:8000/api/user"
 );
 
 const headers = {
@@ -1025,14 +540,14 @@ access-control-allow-origin: *
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/v1/language/get" \
+    --get "http://localhost:8000/api/v1/language/get" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/v1/language/get"
+    "http://localhost:8000/api/v1/language/get"
 );
 
 const headers = {
@@ -1058,7 +573,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 54
+x-ratelimit-remaining: 51
 access-control-allow-origin: *
  </code></pre>
         </details>         <pre>
@@ -1067,24 +582,24 @@ access-control-allow-origin: *
     &quot;data&quot;: [
         {
             &quot;id&quot;: 1,
-            &quot;created_at&quot;: &quot;2022-12-12T13:06:02.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2022-12-12T13:06:02.000000Z&quot;,
+            &quot;created_at&quot;: &quot;2022-12-14T15:49:03.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-12-14T15:49:03.000000Z&quot;,
             &quot;title&quot;: &quot;Русский&quot;,
             &quot;title_kz&quot;: &quot;Орысша&quot;,
             &quot;title_en&quot;: &quot;Russian&quot;
         },
         {
             &quot;id&quot;: 2,
-            &quot;created_at&quot;: &quot;2022-12-12T13:06:02.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2022-12-12T13:06:02.000000Z&quot;,
+            &quot;created_at&quot;: &quot;2022-12-14T15:49:03.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-12-14T15:49:03.000000Z&quot;,
             &quot;title&quot;: &quot;Английский&quot;,
             &quot;title_kz&quot;: &quot;Ағылшынша&quot;,
             &quot;title_en&quot;: &quot;English&quot;
         },
         {
             &quot;id&quot;: 3,
-            &quot;created_at&quot;: &quot;2022-12-12T13:06:02.000000Z&quot;,
-            &quot;updated_at&quot;: &quot;2022-12-12T13:06:02.000000Z&quot;,
+            &quot;created_at&quot;: &quot;2022-12-14T15:49:03.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-12-14T15:49:03.000000Z&quot;,
             &quot;title&quot;: &quot;Казахский&quot;,
             &quot;title_kz&quot;: &quot;Қазақша&quot;,
             &quot;title_en&quot;: &quot;Kazakh&quot;
@@ -1134,6 +649,230 @@ access-control-allow-origin: *
         </p>
                     </form>
 
+                <h1 id="notification">Notification</h1>
+
+    
+
+                                <h2 id="notification-GETapi-v1-notification-getByUserId--userId-">getByUserId - Notification</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-v1-notification-getByUserId--userId-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost:8000/api/v1/notification/getByUserId/quia" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8000/api/v1/notification/getByUserId/quia"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-v1-notification-getByUserId--userId-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary>
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 45
+access-control-allow-origin: *
+ </code></pre>
+        </details>         <pre>
+
+<code class="language-json">{
+    &quot;data&quot;: []
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-v1-notification-getByUserId--userId-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-v1-notification-getByUserId--userId-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-notification-getByUserId--userId-"></code></pre>
+</span>
+<span id="execution-error-GETapi-v1-notification-getByUserId--userId-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-notification-getByUserId--userId-"></code></pre>
+</span>
+<form id="form-GETapi-v1-notification-getByUserId--userId-" data-method="GET"
+      data-path="api/v1/notification/getByUserId/{userId}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-notification-getByUserId--userId-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-v1-notification-getByUserId--userId-"
+                    onclick="tryItOut('GETapi-v1-notification-getByUserId--userId-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-v1-notification-getByUserId--userId-"
+                    onclick="cancelTryOut('GETapi-v1-notification-getByUserId--userId-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-v1-notification-getByUserId--userId-" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/v1/notification/getByUserId/{userId}</code></b>
+        </p>
+                    <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <p>
+                <b><code>userId</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text"
+               name="userId"
+               data-endpoint="GETapi-v1-notification-getByUserId--userId-"
+               value="quia"
+               data-component="url" hidden>
+    <br>
+
+            </p>
+                    </form>
+
+                    <h2 id="notification-GETapi-v1-notification-firstById--id-">firstById - Notification</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-v1-notification-firstById--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost:8000/api/v1/notification/firstById/repellat" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8000/api/v1/notification/firstById/repellat"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-v1-notification-firstById--id-">
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary>
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 44
+access-control-allow-origin: *
+ </code></pre>
+        </details>         <pre>
+
+<code class="language-json">{
+    &quot;message&quot;: &quot;not found&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-v1-notification-firstById--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-v1-notification-firstById--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-notification-firstById--id-"></code></pre>
+</span>
+<span id="execution-error-GETapi-v1-notification-firstById--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-notification-firstById--id-"></code></pre>
+</span>
+<form id="form-GETapi-v1-notification-firstById--id-" data-method="GET"
+      data-path="api/v1/notification/firstById/{id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-notification-firstById--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-v1-notification-firstById--id-"
+                    onclick="tryItOut('GETapi-v1-notification-firstById--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-v1-notification-firstById--id-"
+                    onclick="cancelTryOut('GETapi-v1-notification-firstById--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-v1-notification-firstById--id-" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/v1/notification/firstById/{id}</code></b>
+        </p>
+                    <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <p>
+                <b><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text"
+               name="id"
+               data-endpoint="GETapi-v1-notification-firstById--id-"
+               value="repellat"
+               data-component="url" hidden>
+    <br>
+<p>The ID of the firstById.</p>
+            </p>
+                    </form>
+
                 <h1 id="questions">Questions</h1>
 
     
@@ -1151,14 +890,14 @@ access-control-allow-origin: *
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/v1/question/getByUserId/vel" \
+    --get "http://localhost:8000/api/v1/question/getByUserId/pariatur" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/v1/question/getByUserId/vel"
+    "http://localhost:8000/api/v1/question/getByUserId/pariatur"
 );
 
 const headers = {
@@ -1184,7 +923,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 51
+x-ratelimit-remaining: 47
 access-control-allow-origin: *
  </code></pre>
         </details>         <pre>
@@ -1241,7 +980,7 @@ access-control-allow-origin: *
                 <input type="text"
                name="userId"
                data-endpoint="GETapi-v1-question-getByUserId--userId-"
-               value="vel"
+               value="pariatur"
                data-component="url" hidden>
     <br>
 
@@ -1261,14 +1000,14 @@ access-control-allow-origin: *
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/v1/question/firstById/non" \
+    --get "http://localhost:8000/api/v1/question/firstById/consequatur" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/v1/question/firstById/non"
+    "http://localhost:8000/api/v1/question/firstById/consequatur"
 );
 
 const headers = {
@@ -1294,7 +1033,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 50
+x-ratelimit-remaining: 46
 access-control-allow-origin: *
  </code></pre>
         </details>         <pre>
@@ -1351,7 +1090,7 @@ access-control-allow-origin: *
                 <input type="text"
                name="id"
                data-endpoint="GETapi-v1-question-firstById--id-"
-               value="non"
+               value="consequatur"
                data-component="url" hidden>
     <br>
 <p>The ID of the firstById.</p>
@@ -1371,21 +1110,21 @@ access-control-allow-origin: *
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/v1/question/create" \
+    "http://localhost:8000/api/v1/question/create" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"user_id\": \"molestiae\",
-    \"price\": \"suscipit\",
-    \"title\": \"nihil\",
-    \"phone\": \"sed\"
+    \"user_id\": \"vel\",
+    \"price\": \"amet\",
+    \"title\": \"est\",
+    \"phone\": \"voluptas\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/v1/question/create"
+    "http://localhost:8000/api/v1/question/create"
 );
 
 const headers = {
@@ -1394,10 +1133,10 @@ const headers = {
 };
 
 let body = {
-    "user_id": "molestiae",
-    "price": "suscipit",
-    "title": "nihil",
-    "phone": "sed"
+    "user_id": "vel",
+    "price": "amet",
+    "title": "est",
+    "phone": "voluptas"
 };
 
 fetch(url, {
@@ -1457,7 +1196,7 @@ fetch(url, {
                 <input type="text"
                name="user_id"
                data-endpoint="POSTapi-v1-question-create"
-               value="molestiae"
+               value="vel"
                data-component="body" hidden>
     <br>
 
@@ -1469,7 +1208,7 @@ fetch(url, {
                 <input type="text"
                name="price"
                data-endpoint="POSTapi-v1-question-create"
-               value="suscipit"
+               value="amet"
                data-component="body" hidden>
     <br>
 
@@ -1481,7 +1220,7 @@ fetch(url, {
                 <input type="text"
                name="title"
                data-endpoint="POSTapi-v1-question-create"
-               value="nihil"
+               value="est"
                data-component="body" hidden>
     <br>
 
@@ -1505,7 +1244,7 @@ fetch(url, {
                 <input type="text"
                name="phone"
                data-endpoint="POSTapi-v1-question-create"
-               value="sed"
+               value="voluptas"
                data-component="body" hidden>
     <br>
 
@@ -1529,14 +1268,14 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/v1/region/getByCountryId/eius" \
+    --get "http://localhost:8000/api/v1/region/getByCountryId/minima" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/v1/region/getByCountryId/eius"
+    "http://localhost:8000/api/v1/region/getByCountryId/minima"
 );
 
 const headers = {
@@ -1562,7 +1301,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 52
+x-ratelimit-remaining: 49
 access-control-allow-origin: *
  </code></pre>
         </details>         <pre>
@@ -1619,7 +1358,7 @@ access-control-allow-origin: *
                 <input type="text"
                name="countryId"
                data-endpoint="GETapi-v1-region-getByCountryId--countryId-"
-               value="eius"
+               value="minima"
                data-component="url" hidden>
     <br>
 
@@ -1630,7 +1369,227 @@ access-control-allow-origin: *
 
     
 
-                                <h2 id="user-GETapi-v1-user-firstByPhone--phone-">firstByPhone - User</h2>
+                                <h2 id="user-GETapi-v1-user-deleteByPhone--phone-">deleteByPhone - User</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-v1-user-deleteByPhone--phone-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost:8000/api/v1/user/deleteByPhone/maiores" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8000/api/v1/user/deleteByPhone/maiores"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-v1-user-deleteByPhone--phone-">
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary>
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 59
+access-control-allow-origin: *
+ </code></pre>
+        </details>         <pre>
+
+<code class="language-json">{
+    &quot;message&quot;: &quot;not found&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-v1-user-deleteByPhone--phone-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-v1-user-deleteByPhone--phone-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-user-deleteByPhone--phone-"></code></pre>
+</span>
+<span id="execution-error-GETapi-v1-user-deleteByPhone--phone-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-user-deleteByPhone--phone-"></code></pre>
+</span>
+<form id="form-GETapi-v1-user-deleteByPhone--phone-" data-method="GET"
+      data-path="api/v1/user/deleteByPhone/{phone}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-user-deleteByPhone--phone-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-v1-user-deleteByPhone--phone-"
+                    onclick="tryItOut('GETapi-v1-user-deleteByPhone--phone-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-v1-user-deleteByPhone--phone-"
+                    onclick="cancelTryOut('GETapi-v1-user-deleteByPhone--phone-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-v1-user-deleteByPhone--phone-" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/v1/user/deleteByPhone/{phone}</code></b>
+        </p>
+                    <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <p>
+                <b><code>phone</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text"
+               name="phone"
+               data-endpoint="GETapi-v1-user-deleteByPhone--phone-"
+               value="maiores"
+               data-component="url" hidden>
+    <br>
+
+            </p>
+                    </form>
+
+                    <h2 id="user-GETapi-v1-user-restoreByPhone--phone-">restoreByPhone - User</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-v1-user-restoreByPhone--phone-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost:8000/api/v1/user/restoreByPhone/molestias" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8000/api/v1/user/restoreByPhone/molestias"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-v1-user-restoreByPhone--phone-">
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary>
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 58
+access-control-allow-origin: *
+ </code></pre>
+        </details>         <pre>
+
+<code class="language-json">{
+    &quot;message&quot;: &quot;not found&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-v1-user-restoreByPhone--phone-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-v1-user-restoreByPhone--phone-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-user-restoreByPhone--phone-"></code></pre>
+</span>
+<span id="execution-error-GETapi-v1-user-restoreByPhone--phone-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-user-restoreByPhone--phone-"></code></pre>
+</span>
+<form id="form-GETapi-v1-user-restoreByPhone--phone-" data-method="GET"
+      data-path="api/v1/user/restoreByPhone/{phone}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-user-restoreByPhone--phone-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-v1-user-restoreByPhone--phone-"
+                    onclick="tryItOut('GETapi-v1-user-restoreByPhone--phone-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-v1-user-restoreByPhone--phone-"
+                    onclick="cancelTryOut('GETapi-v1-user-restoreByPhone--phone-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-v1-user-restoreByPhone--phone-" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/v1/user/restoreByPhone/{phone}</code></b>
+        </p>
+                    <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <p>
+                <b><code>phone</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text"
+               name="phone"
+               data-endpoint="GETapi-v1-user-restoreByPhone--phone-"
+               value="molestias"
+               data-component="url" hidden>
+    <br>
+
+            </p>
+                    </form>
+
+                    <h2 id="user-GETapi-v1-user-firstByPhone--phone-">firstByPhone - User</h2>
 
 <p>
 </p>
@@ -1643,14 +1602,14 @@ access-control-allow-origin: *
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/v1/user/firstByPhone/facere" \
+    --get "http://localhost:8000/api/v1/user/firstByPhone/labore" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/v1/user/firstByPhone/facere"
+    "http://localhost:8000/api/v1/user/firstByPhone/labore"
 );
 
 const headers = {
@@ -1667,7 +1626,7 @@ fetch(url, {
 
 <span id="example-responses-GETapi-v1-user-firstByPhone--phone-">
             <blockquote>
-            <p>Example response (401):</p>
+            <p>Example response (404):</p>
         </blockquote>
                 <details class="annotation">
             <summary>
@@ -1676,15 +1635,13 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 59
+x-ratelimit-remaining: 57
 access-control-allow-origin: *
  </code></pre>
         </details>         <pre>
 
 <code class="language-json">{
-    &quot;phone&quot;: &quot;facere&quot;,
-    &quot;code&quot;: 692774,
-    &quot;status&quot;: &quot;not_registered&quot;
+    &quot;message&quot;: &quot;not found&quot;
 }</code>
  </pre>
     </span>
@@ -1735,7 +1692,7 @@ access-control-allow-origin: *
                 <input type="text"
                name="phone"
                data-endpoint="GETapi-v1-user-firstByPhone--phone-"
-               value="facere"
+               value="labore"
                data-component="url" hidden>
     <br>
 
@@ -1755,14 +1712,14 @@ access-control-allow-origin: *
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/v1/user/checkCode/et/magnam" \
+    --get "http://localhost:8000/api/v1/user/checkCode/a/id" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/v1/user/checkCode/et/magnam"
+    "http://localhost:8000/api/v1/user/checkCode/a/id"
 );
 
 const headers = {
@@ -1788,7 +1745,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 58
+x-ratelimit-remaining: 56
 access-control-allow-origin: *
  </code></pre>
         </details>         <pre>
@@ -1845,7 +1802,7 @@ access-control-allow-origin: *
                 <input type="text"
                name="phone"
                data-endpoint="GETapi-v1-user-checkCode--phone---code-"
-               value="et"
+               value="a"
                data-component="url" hidden>
     <br>
 
@@ -1857,7 +1814,7 @@ access-control-allow-origin: *
                 <input type="text"
                name="code"
                data-endpoint="GETapi-v1-user-checkCode--phone---code-"
-               value="magnam"
+               value="id"
                data-component="url" hidden>
     <br>
 
@@ -1877,14 +1834,14 @@ access-control-allow-origin: *
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/v1/user/resetPassword/voluptas" \
+    --get "http://localhost:8000/api/v1/user/resetPassword/suscipit" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/v1/user/resetPassword/voluptas"
+    "http://localhost:8000/api/v1/user/resetPassword/suscipit"
 );
 
 const headers = {
@@ -1910,14 +1867,14 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 57
+x-ratelimit-remaining: 55
 access-control-allow-origin: *
  </code></pre>
         </details>         <pre>
 
 <code class="language-json">{
-    &quot;phone&quot;: &quot;voluptas&quot;,
-    &quot;code&quot;: 839648,
+    &quot;phone&quot;: &quot;suscipit&quot;,
+    &quot;code&quot;: 1041,
     &quot;status&quot;: &quot;code_sent&quot;
 }</code>
  </pre>
@@ -1969,7 +1926,119 @@ access-control-allow-origin: *
                 <input type="text"
                name="phone"
                data-endpoint="GETapi-v1-user-resetPassword--phone-"
-               value="voluptas"
+               value="suscipit"
+               data-component="url" hidden>
+    <br>
+
+            </p>
+                    </form>
+
+                    <h2 id="user-GETapi-v1-user-sendRegisterCode--phone-">sendRegisterCode - User</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-v1-user-sendRegisterCode--phone-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost:8000/api/v1/user/sendRegisterCode/officiis" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8000/api/v1/user/sendRegisterCode/officiis"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-v1-user-sendRegisterCode--phone-">
+            <blockquote>
+            <p>Example response (401):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary>
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 54
+access-control-allow-origin: *
+ </code></pre>
+        </details>         <pre>
+
+<code class="language-json">{
+    &quot;phone&quot;: &quot;officiis&quot;,
+    &quot;code&quot;: 1690,
+    &quot;status&quot;: &quot;not_registered&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-v1-user-sendRegisterCode--phone-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-v1-user-sendRegisterCode--phone-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-user-sendRegisterCode--phone-"></code></pre>
+</span>
+<span id="execution-error-GETapi-v1-user-sendRegisterCode--phone-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-user-sendRegisterCode--phone-"></code></pre>
+</span>
+<form id="form-GETapi-v1-user-sendRegisterCode--phone-" data-method="GET"
+      data-path="api/v1/user/sendRegisterCode/{phone}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-user-sendRegisterCode--phone-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-v1-user-sendRegisterCode--phone-"
+                    onclick="tryItOut('GETapi-v1-user-sendRegisterCode--phone-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-v1-user-sendRegisterCode--phone-"
+                    onclick="cancelTryOut('GETapi-v1-user-sendRegisterCode--phone-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-v1-user-sendRegisterCode--phone-" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/v1/user/sendRegisterCode/{phone}</code></b>
+        </p>
+                    <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <p>
+                <b><code>phone</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text"
+               name="phone"
+               data-endpoint="GETapi-v1-user-sendRegisterCode--phone-"
+               value="officiis"
                data-component="url" hidden>
     <br>
 
@@ -1989,14 +2058,14 @@ access-control-allow-origin: *
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/v1/user/resendRegisterCode/amet" \
+    --get "http://localhost:8000/api/v1/user/resendRegisterCode/aut" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/v1/user/resendRegisterCode/amet"
+    "http://localhost:8000/api/v1/user/resendRegisterCode/aut"
 );
 
 const headers = {
@@ -2022,14 +2091,14 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 56
+x-ratelimit-remaining: 53
 access-control-allow-origin: *
  </code></pre>
         </details>         <pre>
 
 <code class="language-json">{
-    &quot;phone&quot;: &quot;amet&quot;,
-    &quot;code&quot;: 123114,
+    &quot;phone&quot;: &quot;aut&quot;,
+    &quot;code&quot;: 2524,
     &quot;status&quot;: &quot;not_registered&quot;
 }</code>
  </pre>
@@ -2081,7 +2150,7 @@ access-control-allow-origin: *
                 <input type="text"
                name="phone"
                data-endpoint="GETapi-v1-user-resendRegisterCode--phone-"
-               value="amet"
+               value="aut"
                data-component="url" hidden>
     <br>
 
@@ -2101,15 +2170,15 @@ access-control-allow-origin: *
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/v1/user/create" \
+    "http://localhost:8000/api/v1/user/create" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"language_id\": \"illum\",
-    \"region_id\": \"ratione\",
-    \"name\": \"aliquid\",
-    \"surname\": \"ab\",
-    \"phone\": \"et\",
+    \"language_id\": \"voluptatibus\",
+    \"region_id\": \"modi\",
+    \"name\": \"amet\",
+    \"surname\": \"expedita\",
+    \"phone\": \"non\",
     \"push_notification\": true
 }"
 </code></pre></div>
@@ -2117,7 +2186,7 @@ access-control-allow-origin: *
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/v1/user/create"
+    "http://localhost:8000/api/v1/user/create"
 );
 
 const headers = {
@@ -2126,11 +2195,11 @@ const headers = {
 };
 
 let body = {
-    "language_id": "illum",
-    "region_id": "ratione",
-    "name": "aliquid",
-    "surname": "ab",
-    "phone": "et",
+    "language_id": "voluptatibus",
+    "region_id": "modi",
+    "name": "amet",
+    "surname": "expedita",
+    "phone": "non",
     "push_notification": true
 };
 
@@ -2191,7 +2260,7 @@ fetch(url, {
                 <input type="text"
                name="language_id"
                data-endpoint="POSTapi-v1-user-create"
-               value="illum"
+               value="voluptatibus"
                data-component="body" hidden>
     <br>
 
@@ -2203,7 +2272,7 @@ fetch(url, {
                 <input type="text"
                name="region_id"
                data-endpoint="POSTapi-v1-user-create"
-               value="ratione"
+               value="modi"
                data-component="body" hidden>
     <br>
 
@@ -2215,7 +2284,7 @@ fetch(url, {
                 <input type="text"
                name="name"
                data-endpoint="POSTapi-v1-user-create"
-               value="aliquid"
+               value="amet"
                data-component="body" hidden>
     <br>
 
@@ -2227,7 +2296,7 @@ fetch(url, {
                 <input type="text"
                name="surname"
                data-endpoint="POSTapi-v1-user-create"
-               value="ab"
+               value="expedita"
                data-component="body" hidden>
     <br>
 
@@ -2251,7 +2320,7 @@ fetch(url, {
                 <input type="text"
                name="phone"
                data-endpoint="POSTapi-v1-user-create"
-               value="et"
+               value="non"
                data-component="body" hidden>
     <br>
 
@@ -2281,32 +2350,32 @@ fetch(url, {
         </p>
         </form>
 
-                    <h2 id="user-POSTapi-v1-user-update">update - User</h2>
+                    <h2 id="user-POSTapi-v1-user-update--id-">update - User</h2>
 
 <p>
 </p>
 
 
 
-<span id="example-requests-POSTapi-v1-user-update">
+<span id="example-requests-POSTapi-v1-user-update--id-">
 <blockquote>Example request:</blockquote>
 
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/v1/user/update" \
+    "http://localhost:8000/api/v1/user/update/ut" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"language_id\": \"consequuntur\",
-    \"push_notification\": false
+    \"language_id\": \"odio\",
+    \"push_notification\": true
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/v1/user/update"
+    "http://localhost:8000/api/v1/user/update/ut"
 );
 
 const headers = {
@@ -2315,8 +2384,8 @@ const headers = {
 };
 
 let body = {
-    "language_id": "consequuntur",
-    "push_notification": false
+    "language_id": "odio",
+    "push_notification": true
 };
 
 fetch(url, {
@@ -2327,47 +2396,60 @@ fetch(url, {
 
 </span>
 
-<span id="example-responses-POSTapi-v1-user-update">
+<span id="example-responses-POSTapi-v1-user-update--id-">
 </span>
-<span id="execution-results-POSTapi-v1-user-update" hidden>
+<span id="execution-results-POSTapi-v1-user-update--id-" hidden>
     <blockquote>Received response<span
-                id="execution-response-status-POSTapi-v1-user-update"></span>:
+                id="execution-response-status-POSTapi-v1-user-update--id-"></span>:
     </blockquote>
-    <pre class="json"><code id="execution-response-content-POSTapi-v1-user-update"></code></pre>
+    <pre class="json"><code id="execution-response-content-POSTapi-v1-user-update--id-"></code></pre>
 </span>
-<span id="execution-error-POSTapi-v1-user-update" hidden>
+<span id="execution-error-POSTapi-v1-user-update--id-" hidden>
     <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-POSTapi-v1-user-update"></code></pre>
+    <pre><code id="execution-error-message-POSTapi-v1-user-update--id-"></code></pre>
 </span>
-<form id="form-POSTapi-v1-user-update" data-method="POST"
-      data-path="api/v1/user/update"
+<form id="form-POSTapi-v1-user-update--id-" data-method="POST"
+      data-path="api/v1/user/update/{id}"
       data-authed="0"
       data-hasfiles="0"
       data-isarraybody="0"
       data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
       autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-user-update', this);">
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-user-update--id-', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-POSTapi-v1-user-update"
-                    onclick="tryItOut('POSTapi-v1-user-update');">Try it out ⚡
+                    id="btn-tryout-POSTapi-v1-user-update--id-"
+                    onclick="tryItOut('POSTapi-v1-user-update--id-');">Try it out ⚡
             </button>
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-POSTapi-v1-user-update"
-                    onclick="cancelTryOut('POSTapi-v1-user-update');" hidden>Cancel 🛑
+                    id="btn-canceltryout-POSTapi-v1-user-update--id-"
+                    onclick="cancelTryOut('POSTapi-v1-user-update--id-');" hidden>Cancel 🛑
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-POSTapi-v1-user-update" hidden>Send Request 💥
+                    id="btn-executetryout-POSTapi-v1-user-update--id-" hidden>Send Request 💥
             </button>
             </h3>
             <p>
             <small class="badge badge-black">POST</small>
-            <b><code>api/v1/user/update</code></b>
+            <b><code>api/v1/user/update/{id}</code></b>
         </p>
+                    <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <p>
+                <b><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text"
+               name="id"
+               data-endpoint="POSTapi-v1-user-update--id-"
+               value="ut"
+               data-component="url" hidden>
+    <br>
+<p>The ID of the update.</p>
+            </p>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <p>
             <b><code>language_id</code></b>&nbsp;&nbsp;
@@ -2375,8 +2457,8 @@ fetch(url, {
  &nbsp;
                 <input type="text"
                name="language_id"
-               data-endpoint="POSTapi-v1-user-update"
-               value="consequuntur"
+               data-endpoint="POSTapi-v1-user-update--id-"
+               value="odio"
                data-component="body" hidden>
     <br>
 
@@ -2385,18 +2467,18 @@ fetch(url, {
             <b><code>push_notification</code></b>&nbsp;&nbsp;
 <small>boolean</small>&nbsp;
 <i>optional</i> &nbsp;
-                <label data-endpoint="POSTapi-v1-user-update" hidden>
+                <label data-endpoint="POSTapi-v1-user-update--id-" hidden>
             <input type="radio" name="push_notification"
                    value="true"
-                   data-endpoint="POSTapi-v1-user-update"
+                   data-endpoint="POSTapi-v1-user-update--id-"
                    data-component="body"
             >
             <code>true</code>
         </label>
-        <label data-endpoint="POSTapi-v1-user-update" hidden>
+        <label data-endpoint="POSTapi-v1-user-update--id-" hidden>
             <input type="radio" name="push_notification"
                    value="false"
-                   data-endpoint="POSTapi-v1-user-update"
+                   data-endpoint="POSTapi-v1-user-update--id-"
                    data-component="body"
             >
             <code>false</code>
@@ -2419,14 +2501,14 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/v1/user/auth/consequuntur/explicabo" \
+    --get "http://localhost:8000/api/v1/user/auth/ipsam/sequi" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/v1/user/auth/consequuntur/explicabo"
+    "http://localhost:8000/api/v1/user/auth/ipsam/sequi"
 );
 
 const headers = {
@@ -2452,7 +2534,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 55
+x-ratelimit-remaining: 52
 access-control-allow-origin: *
  </code></pre>
         </details>         <pre>
@@ -2509,7 +2591,7 @@ access-control-allow-origin: *
                 <input type="text"
                name="phone"
                data-endpoint="GETapi-v1-user-auth--phone---password-"
-               value="consequuntur"
+               value="ipsam"
                data-component="url" hidden>
     <br>
 
@@ -2521,7 +2603,7 @@ access-control-allow-origin: *
                 <input type="text"
                name="password"
                data-endpoint="GETapi-v1-user-auth--phone---password-"
-               value="explicabo"
+               value="sequi"
                data-component="url" hidden>
     <br>
 

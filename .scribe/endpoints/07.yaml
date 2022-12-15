@@ -1,16 +1,16 @@
-name: Questions
+name: Notification
 description: ''
 endpoints:
   -
     httpMethods:
       - GET
-    uri: 'api/v1/question/getByUserId/{userId}'
+    uri: 'api/v1/notification/getByUserId/{userId}'
     metadata:
-      groupName: Questions
+      groupName: Notification
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'getByUserId - Questions'
+      title: 'getByUserId - Notification'
       description: ''
       authenticated: false
       custom: []
@@ -22,11 +22,11 @@ endpoints:
         name: userId
         description: ''
         required: true
-        example: pariatur
+        example: quia
         type: string
         custom: []
     cleanUrlParameters:
-      userId: pariatur
+      userId: quia
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -40,7 +40,7 @@ endpoints:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '47'
+          x-ratelimit-remaining: '45'
           access-control-allow-origin: '*'
         description: null
         custom: []
@@ -53,13 +53,13 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: 'api/v1/question/firstById/{id}'
+    uri: 'api/v1/notification/firstById/{id}'
     metadata:
-      groupName: Questions
+      groupName: Notification
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'firstById - Questions'
+      title: 'firstById - Notification'
       description: ''
       authenticated: false
       custom: []
@@ -71,11 +71,11 @@ endpoints:
         name: id
         description: 'The ID of the firstById.'
         required: true
-        example: consequatur
+        example: repellat
         type: string
         custom: []
     cleanUrlParameters:
-      id: consequatur
+      id: repellat
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -89,79 +89,10 @@ endpoints:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '46'
+          x-ratelimit-remaining: '44'
           access-control-allow-origin: '*'
         description: null
         custom: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - POST
-    uri: api/v1/question/create
-    metadata:
-      groupName: Questions
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'create - Questions'
-      description: ''
-      authenticated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    cleanUrlParameters: []
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters:
-      user_id:
-        name: user_id
-        description: ''
-        required: true
-        example: vel
-        type: string
-        custom: []
-      price:
-        name: price
-        description: ''
-        required: true
-        example: amet
-        type: string
-        custom: []
-      title:
-        name: title
-        description: ''
-        required: true
-        example: est
-        type: string
-        custom: []
-      is_important:
-        name: is_important
-        description: ''
-        required: false
-        example: null
-        type: string
-        custom: []
-      phone:
-        name: phone
-        description: ''
-        required: true
-        example: voluptas
-        type: string
-        custom: []
-    cleanBodyParameters:
-      user_id: vel
-      price: amet
-      title: est
-      phone: voluptas
-    fileParameters: []
-    responses: []
     responseFields: []
     auth: []
     controller: null

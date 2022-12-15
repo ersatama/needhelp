@@ -2,11 +2,9 @@
 
 namespace App\Providers\Repositories;
 
-use App\Models\Question;
-use App\Observers\Question\QuestionObserver;
 use Illuminate\Support\ServiceProvider;
 
-class QuestionRepositoryProvider extends ServiceProvider
+class NotificationRepositoryProvider extends ServiceProvider
 {
     /**
      * Register services.
@@ -16,8 +14,8 @@ class QuestionRepositoryProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->bind(
-            \App\Domain\Repositories\Question\QuestionRepositoryInterface::class,
-            \App\Domain\Repositories\Question\QuestionRepositoryEloquent::class,
+            \App\Domain\Repositories\Notification\NotificationRepositoryInterface::class,
+            \App\Domain\Repositories\Notification\NotificationRepositoryEloquent::class,
         );
     }
 
@@ -28,6 +26,6 @@ class QuestionRepositoryProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //Question::observe(QuestionObserver::class);
+        //
     }
 }

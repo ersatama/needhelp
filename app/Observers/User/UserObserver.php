@@ -16,7 +16,7 @@ class UserObserver
      */
     public function created(User $user): void
     {
-        Smsc::sendCode($user->{Contract::PHONE},$user->{Contract::PHONE_CODE});
+        //Smsc::sendCode($user->{Contract::PHONE},$user->{Contract::PHONE_CODE});
     }
 
     /**

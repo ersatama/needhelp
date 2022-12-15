@@ -204,6 +204,7 @@ return [
         App\Providers\Repositories\PhoneCodeRepositoryProvider::class,
         App\Providers\Repositories\IpRepositoryProvider::class,
         App\Providers\Repositories\UserDeletedRepositoryProvider::class,
+        App\Providers\Repositories\NotificationRepositoryProvider::class,
     ],
 
     /*

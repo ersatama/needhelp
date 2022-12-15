@@ -24,11 +24,11 @@ endpoints:
         name: userId
         description: ''
         required: true
-        example: vel
+        example: pariatur
         type: string
         custom: []
     cleanUrlParameters:
-      userId: vel
+      userId: pariatur
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -42,7 +42,7 @@ endpoints:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '51'
+          x-ratelimit-remaining: '47'
           access-control-allow-origin: '*'
         description: null
         custom: []
@@ -73,11 +73,11 @@ endpoints:
         name: id
         description: 'The ID of the firstById.'
         required: true
-        example: non
+        example: consequatur
         type: string
         custom: []
     cleanUrlParameters:
-      id: non
+      id: consequatur
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -91,7 +91,7 @@ endpoints:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '50'
+          x-ratelimit-remaining: '46'
           access-control-allow-origin: '*'
         description: null
         custom: []
@@ -126,21 +126,21 @@ endpoints:
         name: user_id
         description: ''
         required: true
-        example: molestiae
+        example: vel
         type: string
         custom: []
       price:
         name: price
         description: ''
         required: true
-        example: suscipit
+        example: amet
         type: string
         custom: []
       title:
         name: title
         description: ''
         required: true
-        example: nihil
+        example: est
         type: string
         custom: []
       is_important:
@@ -154,14 +154,14 @@ endpoints:
         name: phone
         description: ''
         required: true
-        example: sed
+        example: voluptas
         type: string
         custom: []
     cleanBodyParameters:
-      user_id: molestiae
-      price: suscipit
-      title: nihil
-      phone: sed
+      user_id: vel
+      price: amet
+      title: est
+      phone: voluptas
     fileParameters: []
     responses: []
     responseFields: []

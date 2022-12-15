@@ -4,6 +4,7 @@ namespace App\Domain\Contracts;
 
 abstract class Contract
 {
+    const QUESTION_ID   =   'question_id';
     const DESC  =   'desc';
     const IP    =   'ip';
     const G_RECAPTCHA_RESPONSE  =   'g-recaptcha-response';
@@ -41,6 +42,7 @@ abstract class Contract
     const CREATED_AT    =   'created_at';
     const DELETED_AT    =   'deleted_at';
     const BLOCKED_AT    =   'blocked_at';
+    const QUESTION  =   'question';
     const BLOCKED_REASON    =   'blocked_reason';
     const LAST_AUTH =   'last_auth';
     const MESSAGE   =   'message';

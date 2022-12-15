@@ -5,7 +5,7 @@ info:
   version: 1.0.0
 servers:
   -
-    url: 'http://localhost'
+    url: 'http://localhost:8000'
 paths:
   '/api/v1/city/getByRegionId/{regionId}':
     get:
@@ -27,900 +27,18 @@ paths:
           schema:
             type: string
       responses:
-        500:
+        200:
           description: ''
           content:
             application/json:
               schema:
                 type: object
                 example:
-                  message: 'Target [App\Domain\Repositories\City\CityRepositoryInterface] is not instantiable while building [App\Http\Controllers\Api\CityController, App\Domain\Services\CityService].'
-                  exception: Illuminate\Contracts\Container\BindingResolutionException
-                  file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Container\Container.php'
-                  line: 1091
-                  trace:
-                    -
-                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Container\Container.php'
-                      line: 884
-                      function: notInstantiable
-                      class: Illuminate\Container\Container
-                      type: '->'
-                    -
-                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Container\Container.php'
-                      line: 756
-                      function: build
-                      class: Illuminate\Container\Container
-                      type: '->'
-                    -
-                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Foundation\Application.php'
-                      line: 860
-                      function: resolve
-                      class: Illuminate\Container\Container
-                      type: '->'
-                    -
-                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Container\Container.php'
-                      line: 692
-                      function: resolve
-                      class: Illuminate\Foundation\Application
-                      type: '->'
-                    -
-                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Foundation\Application.php'
-                      line: 845
-                      function: make
-                      class: Illuminate\Container\Container
-                      type: '->'
-                    -
-                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Container\Container.php'
-                      line: 1029
-                      function: make
-                      class: Illuminate\Foundation\Application
-                      type: '->'
-                    -
-                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Container\Container.php'
-                      line: 945
-                      function: resolveClass
-                      class: Illuminate\Container\Container
-                      type: '->'
-                    -
-                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Container\Container.php'
-                      line: 906
-                      function: resolveDependencies
-                      class: Illuminate\Container\Container
-                      type: '->'
-                    -
-                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Container\Container.php'
-                      line: 756
-                      function: build
-                      class: Illuminate\Container\Container
-                      type: '->'
-                    -
-                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Foundation\Application.php'
-                      line: 860
-                      function: resolve
-                      class: Illuminate\Container\Container
-                      type: '->'
-                    -
-                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Container\Container.php'
-                      line: 692
-                      function: resolve
-                      class: Illuminate\Foundation\Application
-                      type: '->'
-                    -
-                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Foundation\Application.php'
-                      line: 845
-                      function: make
-                      class: Illuminate\Container\Container
-                      type: '->'
-                    -
-                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Container\Container.php'
-                      line: 1029
-                      function: make
-                      class: Illuminate\Foundation\Application
-                      type: '->'
-                    -
-                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Container\Container.php'
-                      line: 945
-                      function: resolveClass
-                      class: Illuminate\Container\Container
-                      type: '->'
-                    -
-                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Container\Container.php'
-                      line: 906
-                      function: resolveDependencies
-                      class: Illuminate\Container\Container
-                      type: '->'
-                    -
-                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Container\Container.php'
-                      line: 756
-                      function: build
-                      class: Illuminate\Container\Container
-                      type: '->'
-                    -
-                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Foundation\Application.php'
-                      line: 860
-                      function: resolve
-                      class: Illuminate\Container\Container
-                      type: '->'
-                    -
-                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Container\Container.php'
-                      line: 692
-                      function: resolve
-                      class: Illuminate\Foundation\Application
-                      type: '->'
-                    -
-                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Foundation\Application.php'
-                      line: 845
-                      function: make
-                      class: Illuminate\Container\Container
-                      type: '->'
-                    -
-                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Routing\Route.php'
-                      line: 274
-                      function: make
-                      class: Illuminate\Foundation\Application
-                      type: '->'
-                    -
-                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Routing\Route.php'
-                      line: 1098
-                      function: getController
-                      class: Illuminate\Routing\Route
-                      type: '->'
-                    -
-                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Routing\Route.php'
-                      line: 1029
-                      function: controllerMiddleware
-                      class: Illuminate\Routing\Route
-                      type: '->'
-                    -
-                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Routing\Router.php'
-                      line: 737
-                      function: gatherMiddleware
-                      class: Illuminate\Routing\Route
-                      type: '->'
-                    -
-                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Routing\Router.php'
-                      line: 719
-                      function: gatherRouteMiddleware
-                      class: Illuminate\Routing\Router
-                      type: '->'
-                    -
-                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Routing\Router.php'
-                      line: 703
-                      function: runRouteWithinStack
-                      class: Illuminate\Routing\Router
-                      type: '->'
-                    -
-                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Routing\Router.php'
-                      line: 667
-                      function: runRoute
-                      class: Illuminate\Routing\Router
-                      type: '->'
-                    -
-                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Routing\Router.php'
-                      line: 656
-                      function: dispatchToRoute
-                      class: Illuminate\Routing\Router
-                      type: '->'
-                    -
-                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php'
-                      line: 190
-                      function: dispatch
-                      class: Illuminate\Routing\Router
-                      type: '->'
-                    -
-                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                      line: 141
-                      function: 'Illuminate\Foundation\Http\{closure}'
-                      class: Illuminate\Foundation\Http\Kernel
-                      type: '->'
-                    -
-                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TransformsRequest.php'
-                      line: 21
-                      function: 'Illuminate\Pipeline\{closure}'
-                      class: Illuminate\Pipeline\Pipeline
-                      type: '->'
-                    -
-                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull.php'
-                      line: 31
-                      function: handle
-                      class: Illuminate\Foundation\Http\Middleware\TransformsRequest
-                      type: '->'
-                    -
-                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                      line: 180
-                      function: handle
-                      class: Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull
-                      type: '->'
-                    -
-                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TransformsRequest.php'
-                      line: 21
-                      function: 'Illuminate\Pipeline\{closure}'
-                      class: Illuminate\Pipeline\Pipeline
-                      type: '->'
-                    -
-                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TrimStrings.php'
-                      line: 40
-                      function: handle
-                      class: Illuminate\Foundation\Http\Middleware\TransformsRequest
-                      type: '->'
-                    -
-                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                      line: 180
-                      function: handle
-                      class: Illuminate\Foundation\Http\Middleware\TrimStrings
-                      type: '->'
-                    -
-                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\ValidatePostSize.php'
-                      line: 27
-                      function: 'Illuminate\Pipeline\{closure}'
-                      class: Illuminate\Pipeline\Pipeline
-                      type: '->'
-                    -
-                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                      line: 180
-                      function: handle
-                      class: Illuminate\Foundation\Http\Middleware\ValidatePostSize
-                      type: '->'
-                    -
-                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance.php'
-                      line: 86
-                      function: 'Illuminate\Pipeline\{closure}'
-                      class: Illuminate\Pipeline\Pipeline
-                      type: '->'
-                    -
-                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                      line: 180
-                      function: handle
-                      class: Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance
-                      type: '->'
-                    -
-                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Http\Middleware\HandleCors.php'
-                      line: 62
-                      function: 'Illuminate\Pipeline\{closure}'
-                      class: Illuminate\Pipeline\Pipeline
-                      type: '->'
-                    -
-                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                      line: 180
-                      function: handle
-                      class: Illuminate\Http\Middleware\HandleCors
-                      type: '->'
-                    -
-                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Http\Middleware\TrustProxies.php'
-                      line: 39
-                      function: 'Illuminate\Pipeline\{closure}'
-                      class: Illuminate\Pipeline\Pipeline
-                      type: '->'
-                    -
-                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                      line: 180
-                      function: handle
-                      class: Illuminate\Http\Middleware\TrustProxies
-                      type: '->'
-                    -
-                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                      line: 116
-                      function: 'Illuminate\Pipeline\{closure}'
-                      class: Illuminate\Pipeline\Pipeline
-                      type: '->'
-                    -
-                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php'
-                      line: 165
-                      function: then
-                      class: Illuminate\Pipeline\Pipeline
-                      type: '->'
-                    -
-                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php'
-                      line: 134
-                      function: sendRequestThroughRouter
-                      class: Illuminate\Foundation\Http\Kernel
-                      type: '->'
-                    -
-                      file: 'C:\Projects\needhelp\vendor\knuckleswtf\scribe\src\Extracting\Strategies\Responses\ResponseCalls.php'
-                      line: 303
-                      function: handle
-                      class: Illuminate\Foundation\Http\Kernel
-                      type: '->'
-                    -
-                      file: 'C:\Projects\needhelp\vendor\knuckleswtf\scribe\src\Extracting\Strategies\Responses\ResponseCalls.php'
-                      line: 291
-                      function: callLaravelOrLumenRoute
-                      class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
-                      type: '->'
-                    -
-                      file: 'C:\Projects\needhelp\vendor\knuckleswtf\scribe\src\Extracting\Strategies\Responses\ResponseCalls.php'
-                      line: 89
-                      function: makeApiCall
-                      class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
-                      type: '->'
-                    -
-                      file: 'C:\Projects\needhelp\vendor\knuckleswtf\scribe\src\Extracting\Strategies\Responses\ResponseCalls.php'
-                      line: 45
-                      function: makeResponseCall
-                      class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
-                      type: '->'
-                    -
-                      file: 'C:\Projects\needhelp\vendor\knuckleswtf\scribe\src\Extracting\Strategies\Responses\ResponseCalls.php'
-                      line: 35
-                      function: makeResponseCallIfConditionsPass
-                      class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
-                      type: '->'
-                    -
-                      file: 'C:\Projects\needhelp\vendor\knuckleswtf\scribe\src\Extracting\Extractor.php'
-                      line: 209
-                      function: __invoke
-                      class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
-                      type: '->'
-                    -
-                      file: 'C:\Projects\needhelp\vendor\knuckleswtf\scribe\src\Extracting\Extractor.php'
-                      line: 166
-                      function: iterateThroughStrategies
-                      class: Knuckles\Scribe\Extracting\Extractor
-                      type: '->'
-                    -
-                      file: 'C:\Projects\needhelp\vendor\knuckleswtf\scribe\src\Extracting\Extractor.php'
-                      line: 95
-                      function: fetchResponses
-                      class: Knuckles\Scribe\Extracting\Extractor
-                      type: '->'
-                    -
-                      file: 'C:\Projects\needhelp\vendor\knuckleswtf\scribe\src\GroupedEndpoints\GroupedEndpointsFromApp.php'
-                      line: 122
-                      function: processRoute
-                      class: Knuckles\Scribe\Extracting\Extractor
-                      type: '->'
-                    -
-                      file: 'C:\Projects\needhelp\vendor\knuckleswtf\scribe\src\GroupedEndpoints\GroupedEndpointsFromApp.php'
-                      line: 69
-                      function: extractEndpointsInfoFromLaravelApp
-                      class: Knuckles\Scribe\GroupedEndpoints\GroupedEndpointsFromApp
-                      type: '->'
-                    -
-                      file: 'C:\Projects\needhelp\vendor\knuckleswtf\scribe\src\GroupedEndpoints\GroupedEndpointsFromApp.php'
-                      line: 47
-                      function: extractEndpointsInfoAndWriteToDisk
-                      class: Knuckles\Scribe\GroupedEndpoints\GroupedEndpointsFromApp
-                      type: '->'
-                    -
-                      file: 'C:\Projects\needhelp\vendor\knuckleswtf\scribe\src\Commands\GenerateDocumentation.php'
-                      line: 53
-                      function: get
-                      class: Knuckles\Scribe\GroupedEndpoints\GroupedEndpointsFromApp
-                      type: '->'
-                    -
-                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php'
-                      line: 36
-                      function: handle
-                      class: Knuckles\Scribe\Commands\GenerateDocumentation
-                      type: '->'
-                    -
-                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Container\Util.php'
-                      line: 41
-                      function: 'Illuminate\Container\{closure}'
-                      class: Illuminate\Container\BoundMethod
-                      type: '::'
-                    -
-                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php'
-                      line: 93
-                      function: unwrapIfClosure
-                      class: Illuminate\Container\Util
-                      type: '::'
-                    -
-                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php'
-                      line: 37
-                      function: callBoundMethod
-                      class: Illuminate\Container\BoundMethod
-                      type: '::'
-                    -
-                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Container\Container.php'
-                      line: 651
-                      function: call
-                      class: Illuminate\Container\BoundMethod
-                      type: '::'
-                    -
-                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Console\Command.php'
-                      line: 144
-                      function: call
-                      class: Illuminate\Container\Container
-                      type: '->'
-                    -
-                      file: 'C:\Projects\needhelp\vendor\symfony\console\Command\Command.php'
-                      line: 308
-                      function: execute
-                      class: Illuminate\Console\Command
-                      type: '->'
-                    -
-                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Console\Command.php'
-                      line: 126
-                      function: run
-                      class: Symfony\Component\Console\Command\Command
-                      type: '->'
-                    -
-                      file: 'C:\Projects\needhelp\vendor\symfony\console\Application.php'
-                      line: 1002
-                      function: run
-                      class: Illuminate\Console\Command
-                      type: '->'
-                    -
-                      file: 'C:\Projects\needhelp\vendor\symfony\console\Application.php'
-                      line: 299
-                      function: doRunCommand
-                      class: Symfony\Component\Console\Application
-                      type: '->'
-                    -
-                      file: 'C:\Projects\needhelp\vendor\symfony\console\Application.php'
-                      line: 171
-                      function: doRun
-                      class: Symfony\Component\Console\Application
-                      type: '->'
-                    -
-                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Console\Application.php'
-                      line: 102
-                      function: run
-                      class: Symfony\Component\Console\Application
-                      type: '->'
-                    -
-                      file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php'
-                      line: 151
-                      function: run
-                      class: Illuminate\Console\Application
-                      type: '->'
-                    -
-                      file: 'C:\Projects\needhelp\artisan'
-                      line: 37
-                      function: handle
-                      class: Illuminate\Foundation\Console\Kernel
-                      type: '->'
+                  data: []
                 properties:
-                  message:
-                    type: string
-                    example: 'Target [App\Domain\Repositories\City\CityRepositoryInterface] is not instantiable while building [App\Http\Controllers\Api\CityController, App\Domain\Services\CityService].'
-                  exception:
-                    type: string
-                    example: Illuminate\Contracts\Container\BindingResolutionException
-                  file:
-                    type: string
-                    example: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Container\Container.php'
-                  line:
-                    type: integer
-                    example: 1091
-                  trace:
+                  data:
                     type: array
-                    example:
-                      -
-                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Container\Container.php'
-                        line: 884
-                        function: notInstantiable
-                        class: Illuminate\Container\Container
-                        type: '->'
-                      -
-                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Container\Container.php'
-                        line: 756
-                        function: build
-                        class: Illuminate\Container\Container
-                        type: '->'
-                      -
-                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Foundation\Application.php'
-                        line: 860
-                        function: resolve
-                        class: Illuminate\Container\Container
-                        type: '->'
-                      -
-                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Container\Container.php'
-                        line: 692
-                        function: resolve
-                        class: Illuminate\Foundation\Application
-                        type: '->'
-                      -
-                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Foundation\Application.php'
-                        line: 845
-                        function: make
-                        class: Illuminate\Container\Container
-                        type: '->'
-                      -
-                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Container\Container.php'
-                        line: 1029
-                        function: make
-                        class: Illuminate\Foundation\Application
-                        type: '->'
-                      -
-                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Container\Container.php'
-                        line: 945
-                        function: resolveClass
-                        class: Illuminate\Container\Container
-                        type: '->'
-                      -
-                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Container\Container.php'
-                        line: 906
-                        function: resolveDependencies
-                        class: Illuminate\Container\Container
-                        type: '->'
-                      -
-                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Container\Container.php'
-                        line: 756
-                        function: build
-                        class: Illuminate\Container\Container
-                        type: '->'
-                      -
-                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Foundation\Application.php'
-                        line: 860
-                        function: resolve
-                        class: Illuminate\Container\Container
-                        type: '->'
-                      -
-                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Container\Container.php'
-                        line: 692
-                        function: resolve
-                        class: Illuminate\Foundation\Application
-                        type: '->'
-                      -
-                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Foundation\Application.php'
-                        line: 845
-                        function: make
-                        class: Illuminate\Container\Container
-                        type: '->'
-                      -
-                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Container\Container.php'
-                        line: 1029
-                        function: make
-                        class: Illuminate\Foundation\Application
-                        type: '->'
-                      -
-                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Container\Container.php'
-                        line: 945
-                        function: resolveClass
-                        class: Illuminate\Container\Container
-                        type: '->'
-                      -
-                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Container\Container.php'
-                        line: 906
-                        function: resolveDependencies
-                        class: Illuminate\Container\Container
-                        type: '->'
-                      -
-                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Container\Container.php'
-                        line: 756
-                        function: build
-                        class: Illuminate\Container\Container
-                        type: '->'
-                      -
-                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Foundation\Application.php'
-                        line: 860
-                        function: resolve
-                        class: Illuminate\Container\Container
-                        type: '->'
-                      -
-                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Container\Container.php'
-                        line: 692
-                        function: resolve
-                        class: Illuminate\Foundation\Application
-                        type: '->'
-                      -
-                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Foundation\Application.php'
-                        line: 845
-                        function: make
-                        class: Illuminate\Container\Container
-                        type: '->'
-                      -
-                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Routing\Route.php'
-                        line: 274
-                        function: make
-                        class: Illuminate\Foundation\Application
-                        type: '->'
-                      -
-                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Routing\Route.php'
-                        line: 1098
-                        function: getController
-                        class: Illuminate\Routing\Route
-                        type: '->'
-                      -
-                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Routing\Route.php'
-                        line: 1029
-                        function: controllerMiddleware
-                        class: Illuminate\Routing\Route
-                        type: '->'
-                      -
-                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Routing\Router.php'
-                        line: 737
-                        function: gatherMiddleware
-                        class: Illuminate\Routing\Route
-                        type: '->'
-                      -
-                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Routing\Router.php'
-                        line: 719
-                        function: gatherRouteMiddleware
-                        class: Illuminate\Routing\Router
-                        type: '->'
-                      -
-                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Routing\Router.php'
-                        line: 703
-                        function: runRouteWithinStack
-                        class: Illuminate\Routing\Router
-                        type: '->'
-                      -
-                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Routing\Router.php'
-                        line: 667
-                        function: runRoute
-                        class: Illuminate\Routing\Router
-                        type: '->'
-                      -
-                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Routing\Router.php'
-                        line: 656
-                        function: dispatchToRoute
-                        class: Illuminate\Routing\Router
-                        type: '->'
-                      -
-                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php'
-                        line: 190
-                        function: dispatch
-                        class: Illuminate\Routing\Router
-                        type: '->'
-                      -
-                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                        line: 141
-                        function: 'Illuminate\Foundation\Http\{closure}'
-                        class: Illuminate\Foundation\Http\Kernel
-                        type: '->'
-                      -
-                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TransformsRequest.php'
-                        line: 21
-                        function: 'Illuminate\Pipeline\{closure}'
-                        class: Illuminate\Pipeline\Pipeline
-                        type: '->'
-                      -
-                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull.php'
-                        line: 31
-                        function: handle
-                        class: Illuminate\Foundation\Http\Middleware\TransformsRequest
-                        type: '->'
-                      -
-                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                        line: 180
-                        function: handle
-                        class: Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull
-                        type: '->'
-                      -
-                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TransformsRequest.php'
-                        line: 21
-                        function: 'Illuminate\Pipeline\{closure}'
-                        class: Illuminate\Pipeline\Pipeline
-                        type: '->'
-                      -
-                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TrimStrings.php'
-                        line: 40
-                        function: handle
-                        class: Illuminate\Foundation\Http\Middleware\TransformsRequest
-                        type: '->'
-                      -
-                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                        line: 180
-                        function: handle
-                        class: Illuminate\Foundation\Http\Middleware\TrimStrings
-                        type: '->'
-                      -
-                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\ValidatePostSize.php'
-                        line: 27
-                        function: 'Illuminate\Pipeline\{closure}'
-                        class: Illuminate\Pipeline\Pipeline
-                        type: '->'
-                      -
-                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                        line: 180
-                        function: handle
-                        class: Illuminate\Foundation\Http\Middleware\ValidatePostSize
-                        type: '->'
-                      -
-                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance.php'
-                        line: 86
-                        function: 'Illuminate\Pipeline\{closure}'
-                        class: Illuminate\Pipeline\Pipeline
-                        type: '->'
-                      -
-                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                        line: 180
-                        function: handle
-                        class: Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance
-                        type: '->'
-                      -
-                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Http\Middleware\HandleCors.php'
-                        line: 62
-                        function: 'Illuminate\Pipeline\{closure}'
-                        class: Illuminate\Pipeline\Pipeline
-                        type: '->'
-                      -
-                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                        line: 180
-                        function: handle
-                        class: Illuminate\Http\Middleware\HandleCors
-                        type: '->'
-                      -
-                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Http\Middleware\TrustProxies.php'
-                        line: 39
-                        function: 'Illuminate\Pipeline\{closure}'
-                        class: Illuminate\Pipeline\Pipeline
-                        type: '->'
-                      -
-                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                        line: 180
-                        function: handle
-                        class: Illuminate\Http\Middleware\TrustProxies
-                        type: '->'
-                      -
-                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php'
-                        line: 116
-                        function: 'Illuminate\Pipeline\{closure}'
-                        class: Illuminate\Pipeline\Pipeline
-                        type: '->'
-                      -
-                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php'
-                        line: 165
-                        function: then
-                        class: Illuminate\Pipeline\Pipeline
-                        type: '->'
-                      -
-                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php'
-                        line: 134
-                        function: sendRequestThroughRouter
-                        class: Illuminate\Foundation\Http\Kernel
-                        type: '->'
-                      -
-                        file: 'C:\Projects\needhelp\vendor\knuckleswtf\scribe\src\Extracting\Strategies\Responses\ResponseCalls.php'
-                        line: 303
-                        function: handle
-                        class: Illuminate\Foundation\Http\Kernel
-                        type: '->'
-                      -
-                        file: 'C:\Projects\needhelp\vendor\knuckleswtf\scribe\src\Extracting\Strategies\Responses\ResponseCalls.php'
-                        line: 291
-                        function: callLaravelOrLumenRoute
-                        class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
-                        type: '->'
-                      -
-                        file: 'C:\Projects\needhelp\vendor\knuckleswtf\scribe\src\Extracting\Strategies\Responses\ResponseCalls.php'
-                        line: 89
-                        function: makeApiCall
-                        class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
-                        type: '->'
-                      -
-                        file: 'C:\Projects\needhelp\vendor\knuckleswtf\scribe\src\Extracting\Strategies\Responses\ResponseCalls.php'
-                        line: 45
-                        function: makeResponseCall
-                        class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
-                        type: '->'
-                      -
-                        file: 'C:\Projects\needhelp\vendor\knuckleswtf\scribe\src\Extracting\Strategies\Responses\ResponseCalls.php'
-                        line: 35
-                        function: makeResponseCallIfConditionsPass
-                        class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
-                        type: '->'
-                      -
-                        file: 'C:\Projects\needhelp\vendor\knuckleswtf\scribe\src\Extracting\Extractor.php'
-                        line: 209
-                        function: __invoke
-                        class: Knuckles\Scribe\Extracting\Strategies\Responses\ResponseCalls
-                        type: '->'
-                      -
-                        file: 'C:\Projects\needhelp\vendor\knuckleswtf\scribe\src\Extracting\Extractor.php'
-                        line: 166
-                        function: iterateThroughStrategies
-                        class: Knuckles\Scribe\Extracting\Extractor
-                        type: '->'
-                      -
-                        file: 'C:\Projects\needhelp\vendor\knuckleswtf\scribe\src\Extracting\Extractor.php'
-                        line: 95
-                        function: fetchResponses
-                        class: Knuckles\Scribe\Extracting\Extractor
-                        type: '->'
-                      -
-                        file: 'C:\Projects\needhelp\vendor\knuckleswtf\scribe\src\GroupedEndpoints\GroupedEndpointsFromApp.php'
-                        line: 122
-                        function: processRoute
-                        class: Knuckles\Scribe\Extracting\Extractor
-                        type: '->'
-                      -
-                        file: 'C:\Projects\needhelp\vendor\knuckleswtf\scribe\src\GroupedEndpoints\GroupedEndpointsFromApp.php'
-                        line: 69
-                        function: extractEndpointsInfoFromLaravelApp
-                        class: Knuckles\Scribe\GroupedEndpoints\GroupedEndpointsFromApp
-                        type: '->'
-                      -
-                        file: 'C:\Projects\needhelp\vendor\knuckleswtf\scribe\src\GroupedEndpoints\GroupedEndpointsFromApp.php'
-                        line: 47
-                        function: extractEndpointsInfoAndWriteToDisk
-                        class: Knuckles\Scribe\GroupedEndpoints\GroupedEndpointsFromApp
-                        type: '->'
-                      -
-                        file: 'C:\Projects\needhelp\vendor\knuckleswtf\scribe\src\Commands\GenerateDocumentation.php'
-                        line: 53
-                        function: get
-                        class: Knuckles\Scribe\GroupedEndpoints\GroupedEndpointsFromApp
-                        type: '->'
-                      -
-                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php'
-                        line: 36
-                        function: handle
-                        class: Knuckles\Scribe\Commands\GenerateDocumentation
-                        type: '->'
-                      -
-                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Container\Util.php'
-                        line: 41
-                        function: 'Illuminate\Container\{closure}'
-                        class: Illuminate\Container\BoundMethod
-                        type: '::'
-                      -
-                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php'
-                        line: 93
-                        function: unwrapIfClosure
-                        class: Illuminate\Container\Util
-                        type: '::'
-                      -
-                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Container\BoundMethod.php'
-                        line: 37
-                        function: callBoundMethod
-                        class: Illuminate\Container\BoundMethod
-                        type: '::'
-                      -
-                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Container\Container.php'
-                        line: 651
-                        function: call
-                        class: Illuminate\Container\BoundMethod
-                        type: '::'
-                      -
-                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Console\Command.php'
-                        line: 144
-                        function: call
-                        class: Illuminate\Container\Container
-                        type: '->'
-                      -
-                        file: 'C:\Projects\needhelp\vendor\symfony\console\Command\Command.php'
-                        line: 308
-                        function: execute
-                        class: Illuminate\Console\Command
-                        type: '->'
-                      -
-                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Console\Command.php'
-                        line: 126
-                        function: run
-                        class: Symfony\Component\Console\Command\Command
-                        type: '->'
-                      -
-                        file: 'C:\Projects\needhelp\vendor\symfony\console\Application.php'
-                        line: 1002
-                        function: run
-                        class: Illuminate\Console\Command
-                        type: '->'
-                      -
-                        file: 'C:\Projects\needhelp\vendor\symfony\console\Application.php'
-                        line: 299
-                        function: doRunCommand
-                        class: Symfony\Component\Console\Application
-                        type: '->'
-                      -
-                        file: 'C:\Projects\needhelp\vendor\symfony\console\Application.php'
-                        line: 171
-                        function: doRun
-                        class: Symfony\Component\Console\Application
-                        type: '->'
-                      -
-                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Console\Application.php'
-                        line: 102
-                        function: run
-                        class: Symfony\Component\Console\Application
-                        type: '->'
-                      -
-                        file: 'C:\Projects\needhelp\vendor\laravel\framework\src\Illuminate\Foundation\Console\Kernel.php'
-                        line: 151
-                        function: run
-                        class: Illuminate\Console\Application
-                        type: '->'
-                      -
-                        file: 'C:\Projects\needhelp\artisan'
-                        line: 37
-                        function: handle
-                        class: Illuminate\Foundation\Console\Kernel
-                        type: '->'
-                    items:
-                      type: object
+                    example: []
       tags:
         - City
       security: []
@@ -929,7 +47,7 @@ paths:
         in: path
         name: regionId
         description: ''
-        example: fuga
+        example: explicabo
         required: true
         schema:
           type: string
@@ -1033,22 +151,22 @@ paths:
                   data:
                     -
                       id: 1
-                      created_at: '2022-12-12T13:06:02.000000Z'
-                      updated_at: '2022-12-12T13:06:02.000000Z'
+                      created_at: '2022-12-14T15:49:03.000000Z'
+                      updated_at: '2022-12-14T15:49:03.000000Z'
                       title: Русский
                       title_kz: Орысша
                       title_en: Russian
                     -
                       id: 2
-                      created_at: '2022-12-12T13:06:02.000000Z'
-                      updated_at: '2022-12-12T13:06:02.000000Z'
+                      created_at: '2022-12-14T15:49:03.000000Z'
+                      updated_at: '2022-12-14T15:49:03.000000Z'
                       title: Английский
                       title_kz: Ағылшынша
                       title_en: English
                     -
                       id: 3
-                      created_at: '2022-12-12T13:06:02.000000Z'
-                      updated_at: '2022-12-12T13:06:02.000000Z'
+                      created_at: '2022-12-14T15:49:03.000000Z'
+                      updated_at: '2022-12-14T15:49:03.000000Z'
                       title: Казахский
                       title_kz: Қазақша
                       title_en: Kazakh
@@ -1058,22 +176,22 @@ paths:
                     example:
                       -
                         id: 1
-                        created_at: '2022-12-12T13:06:02.000000Z'
-                        updated_at: '2022-12-12T13:06:02.000000Z'
+                        created_at: '2022-12-14T15:49:03.000000Z'
+                        updated_at: '2022-12-14T15:49:03.000000Z'
                         title: Русский
                         title_kz: Орысша
                         title_en: Russian
                       -
                         id: 2
-                        created_at: '2022-12-12T13:06:02.000000Z'
-                        updated_at: '2022-12-12T13:06:02.000000Z'
+                        created_at: '2022-12-14T15:49:03.000000Z'
+                        updated_at: '2022-12-14T15:49:03.000000Z'
                         title: Английский
                         title_kz: Ағылшынша
                         title_en: English
                       -
                         id: 3
-                        created_at: '2022-12-12T13:06:02.000000Z'
-                        updated_at: '2022-12-12T13:06:02.000000Z'
+                        created_at: '2022-12-14T15:49:03.000000Z'
+                        updated_at: '2022-12-14T15:49:03.000000Z'
                         title: Казахский
                         title_kz: Қазақша
                         title_en: Kazakh
@@ -1082,6 +200,94 @@ paths:
       tags:
         - Language
       security: []
+  '/api/v1/notification/getByUserId/{userId}':
+    get:
+      summary: 'getByUserId - Notification'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data: []
+                properties:
+                  data:
+                    type: array
+                    example: []
+      tags:
+        - Notification
+      security: []
+    parameters:
+      -
+        in: path
+        name: userId
+        description: ''
+        example: quia
+        required: true
+        schema:
+          type: string
+  '/api/v1/notification/firstById/{id}':
+    get:
+      summary: 'firstById - Notification'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        404:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'not found'
+                properties:
+                  message:
+                    type: string
+                    example: 'not found'
+      tags:
+        - Notification
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the firstById.'
+        example: repellat
+        required: true
+        schema:
+          type: string
   '/api/v1/question/getByUserId/{userId}':
     get:
       summary: 'getByUserId - Questions'
@@ -1122,7 +328,7 @@ paths:
         in: path
         name: userId
         description: ''
-        example: vel
+        example: pariatur
         required: true
         schema:
           type: string
@@ -1166,7 +372,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the firstById.'
-        example: non
+        example: consequatur
         required: true
         schema:
           type: string
@@ -1202,15 +408,15 @@ paths:
                 user_id:
                   type: string
                   description: ''
-                  example: molestiae
+                  example: vel
                 price:
                   type: string
                   description: ''
-                  example: suscipit
+                  example: amet
                 title:
                   type: string
                   description: ''
-                  example: nihil
+                  example: est
                 is_important:
                   type: string
                   description: ''
@@ -1218,7 +424,7 @@ paths:
                 phone:
                   type: string
                   description: ''
-                  example: sed
+                  example: voluptas
               required:
                 - user_id
                 - price
@@ -1265,7 +471,95 @@ paths:
         in: path
         name: countryId
         description: ''
-        example: eius
+        example: minima
+        required: true
+        schema:
+          type: string
+  '/api/v1/user/deleteByPhone/{phone}':
+    get:
+      summary: 'deleteByPhone - User'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        404:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'not found'
+                properties:
+                  message:
+                    type: string
+                    example: 'not found'
+      tags:
+        - User
+      security: []
+    parameters:
+      -
+        in: path
+        name: phone
+        description: ''
+        example: maiores
+        required: true
+        schema:
+          type: string
+  '/api/v1/user/restoreByPhone/{phone}':
+    get:
+      summary: 'restoreByPhone - User'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        404:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'not found'
+                properties:
+                  message:
+                    type: string
+                    example: 'not found'
+      tags:
+        - User
+      security: []
+    parameters:
+      -
+        in: path
+        name: phone
+        description: ''
+        example: molestias
         required: true
         schema:
           type: string
@@ -1289,26 +583,18 @@ paths:
           schema:
             type: string
       responses:
-        401:
+        404:
           description: ''
           content:
             application/json:
               schema:
                 type: object
                 example:
-                  phone: facere
-                  code: 692774
-                  status: not_registered
+                  message: 'not found'
                 properties:
-                  phone:
+                  message:
                     type: string
-                    example: facere
-                  code:
-                    type: integer
-                    example: 692774
-                  status:
-                    type: string
-                    example: not_registered
+                    example: 'not found'
       tags:
         - User
       security: []
@@ -1317,7 +603,7 @@ paths:
         in: path
         name: phone
         description: ''
-        example: facere
+        example: labore
         required: true
         schema:
           type: string
@@ -1361,7 +647,7 @@ paths:
         in: path
         name: phone
         description: ''
-        example: et
+        example: a
         required: true
         schema:
           type: string
@@ -1369,7 +655,7 @@ paths:
         in: path
         name: code
         description: ''
-        example: magnam
+        example: id
         required: true
         schema:
           type: string
@@ -1400,16 +686,16 @@ paths:
               schema:
                 type: object
                 example:
-                  phone: voluptas
-                  code: 839648
+                  phone: suscipit
+                  code: 1041
                   status: code_sent
                 properties:
                   phone:
                     type: string
-                    example: voluptas
+                    example: suscipit
                   code:
                     type: integer
-                    example: 839648
+                    example: 1041
                   status:
                     type: string
                     example: code_sent
@@ -1421,7 +707,59 @@ paths:
         in: path
         name: phone
         description: ''
-        example: voluptas
+        example: suscipit
+        required: true
+        schema:
+          type: string
+  '/api/v1/user/sendRegisterCode/{phone}':
+    get:
+      summary: 'sendRegisterCode - User'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  phone: officiis
+                  code: 1690
+                  status: not_registered
+                properties:
+                  phone:
+                    type: string
+                    example: officiis
+                  code:
+                    type: integer
+                    example: 1690
+                  status:
+                    type: string
+                    example: not_registered
+      tags:
+        - User
+      security: []
+    parameters:
+      -
+        in: path
+        name: phone
+        description: ''
+        example: officiis
         required: true
         schema:
           type: string
@@ -1452,16 +790,16 @@ paths:
               schema:
                 type: object
                 example:
-                  phone: amet
-                  code: 123114
+                  phone: aut
+                  code: 2524
                   status: not_registered
                 properties:
                   phone:
                     type: string
-                    example: amet
+                    example: aut
                   code:
                     type: integer
-                    example: 123114
+                    example: 2524
                   status:
                     type: string
                     example: not_registered
@@ -1473,7 +811,7 @@ paths:
         in: path
         name: phone
         description: ''
-        example: amet
+        example: aut
         required: true
         schema:
           type: string
@@ -1509,19 +847,19 @@ paths:
                 language_id:
                   type: string
                   description: ''
-                  example: illum
+                  example: voluptatibus
                 region_id:
                   type: string
                   description: ''
-                  example: ratione
+                  example: modi
                 name:
                   type: string
                   description: ''
-                  example: aliquid
+                  example: amet
                 surname:
                   type: string
                   description: ''
-                  example: ab
+                  example: expedita
                 last_name:
                   type: string
                   description: ''
@@ -1529,7 +867,7 @@ paths:
                 phone:
                   type: string
                   description: ''
-                  example: et
+                  example: non
                 push_notification:
                   type: boolean
                   description: ''
@@ -1541,7 +879,7 @@ paths:
                 - surname
                 - phone
       security: []
-  /api/v1/user/update:
+  '/api/v1/user/update/{id}':
     post:
       summary: 'update - User'
       description: ''
@@ -1573,14 +911,23 @@ paths:
                 language_id:
                   type: string
                   description: ''
-                  example: consequuntur
+                  example: odio
                 push_notification:
                   type: boolean
                   description: ''
-                  example: false
+                  example: true
               required:
                 - language_id
       security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the update.'
+        example: ut
+        required: true
+        schema:
+          type: string
   '/api/v1/user/auth/{phone}/{password}':
     get:
       summary: 'auth Phone & Password - User'
@@ -1621,7 +968,7 @@ paths:
         in: path
         name: phone
         description: ''
-        example: consequuntur
+        example: ipsam
         required: true
         schema:
           type: string
@@ -1629,7 +976,7 @@ paths:
         in: path
         name: password
         description: ''
-        example: explicabo
+        example: sequi
         required: true
         schema:
           type: string
@@ -1645,6 +992,9 @@ tags:
     description: ''
   -
     name: Language
+    description: ''
+  -
+    name: Notification
     description: ''
   -
     name: Questions
