@@ -346,15 +346,18 @@
                         new Chart(
                             document.getElementById('payment-last-year'),
                             {
-                                type: 'line',
+                                type: 'doughnut',
                                 data: {
                                     labels: notifications.map(row => row.day),
                                     datasets: [{
                                         label: 'Сумма выплат за последний 365 дней (KZT)',
                                         data: notifications.map(row => row.sum),
-                                        fill: false,
-                                        borderColor: 'rgb(75, 192, 192)',
-                                        tension: 0.1
+                                        backgroundColor: [
+                                            'rgb(255, 99, 132)',
+                                            'rgb(54, 162, 235)',
+                                            'rgb(255, 205, 86)',
+                                        ],
+                                        hoverOffset: 4
                                     }]
                                 },
                             }
