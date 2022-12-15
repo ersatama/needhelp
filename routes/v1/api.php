@@ -16,6 +16,7 @@ Route::controller(UserController::class)->group(function() {
         Route::get('deleteByPhone/{phone}','deleteByPhone')->name('user.deleteByPhone');
         Route::get('restoreById/{id}','restoreById')->name('user.restoreById');
         Route::get('restoreByPhone/{phone}','restoreByPhone')->name('user.restoreByPhone');
+        Route::get('checkUserPhone/{phone}','checkUserPhone')->name('user.checkUserPhone');
         Route::get('firstByPhone/{phone}','firstByPhone')->name('user.firstByPhone');
         Route::get('checkCode/{phone}/{code}','checkCode')->name('user.checkCode');
         Route::get('resetPassword/{phone}','resetPassword')->name('user.resetPassword');
