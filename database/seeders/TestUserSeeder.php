@@ -23,7 +23,7 @@ class TestUserSeeder extends Seeder
             Contract::SURNAME  =>  Contract::USER,
             Contract::PHONE    =>  77776665544,
             Contract::EMAIL    =>  'test@needhelp.com',
-            Contract::PASSWORD =>  'password',//password
+            Contract::PASSWORD =>  '1234',//password
             Contract::REMEMBER_TOKEN   =>  Str::random(10),
         ]);
     }

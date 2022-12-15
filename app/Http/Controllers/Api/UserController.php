@@ -204,6 +204,19 @@ class UserController extends Controller
     }
 
     /**
+     * checkUserByPhone - User
+     *
+     * @group User
+     */
+    public function checkUserByPhone($phone): Response|Application|ResponseFactory
+    {
+        if ($user = $this->userService->userRepository->firstByPhone($phone)) {
+            return response(Contract::SUCCESS, 200);
+        }
+        return response(ErrorContract::NOT_FOUND, 404);
+    }
+
+    /**
      * @hideFromAPIDocumentation
      * firstById - User
      *
