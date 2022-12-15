@@ -89,7 +89,14 @@ class LawyerCrudController extends CrudController
                 false   =>  'Отключить',
             ])
             ->default(false);
-        CRUD::field(Contract::BLOCKED_AT)->label('Дата блокирования')->type('date');
+        CRUD::field(Contract::BLOCKED_AT)
+            ->label('Статус блокирования')
+            ->type(Contract::SELECT_FROM_ARRAY)
+            ->options([
+                true    =>  'Заблокирован',
+                false   =>  'Активный',
+            ])
+            ->default(false);
     }
 
     protected function setupUpdateOperation(): void
