@@ -14,7 +14,6 @@ class CreateRequest extends MainRequest
             Contract::PRICE     =>  'required',
             Contract::TITLE     =>  'required',
             Contract::IS_IMPORTANT  =>  'nullable',
-            Contract::PHONE     =>  'required|unique:users,phone',
         ];
     }
 
