@@ -18,8 +18,6 @@ class Page implements Scope
         if (request()->has(Contract::PAGE)) {
             $page   =   (int) request()->input(Contract::PAGE) - 1;
             $builder->skip(($this->take * $page))->take($this->take);
-        } else {
-            $builder->take($this->take);
         }
     }
 }

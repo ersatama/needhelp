@@ -11,9 +11,9 @@ class QuestionRepositoryEloquent implements QuestionRepositoryInterface
 {
     use RepositoryEloquent;
     protected Question $model;
-    public function __construct(Question $notification)
+    public function __construct(Question $question)
     {
-        $this->model    =   $notification;
+        $this->model    =   $question;
     }
 
     public static function count($arr = [])
