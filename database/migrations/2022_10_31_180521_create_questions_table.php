@@ -28,6 +28,7 @@ return new class extends Migration
             $table->boolean(Contract::IS_IMPORTANT)->default(false)->nullable();
             $table->boolean(Contract::IS_PAID)->default(false)->nullable();
             $table->tinyInteger(Contract::STATUS)->default(1);
+            $table->boolean(Contract::IS_NEW)->default(true)->nullable();
             $table->timestamp(Contract::ANSWERED_AT)->nullable();
             $table->timestamps();
             $table->softDeletes();
