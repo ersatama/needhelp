@@ -15,7 +15,6 @@ class PhoneCodeService extends Service
 
     public function getCodeByPhone($phone)
     {
-        $phoneCode  =   $this->phoneCodeRepository->firstByPhone($phone);
-        return $phoneCode->{Contract::CODE};
+        return $this->phoneCodeRepository->firstByPhone($phone);
     }
 }

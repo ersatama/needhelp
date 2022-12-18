@@ -17,4 +17,7 @@ class ErrorContract extends Contract
     const CODE_SENT =   'code_sent';
     const DELETED   =   'deleted';
     const RESTORED  =   'restored';
+    const SMS_NOT_SENT  =   [
+        self::MESSAGE   =>  'sms_not_sent'
+    ];
 }

@@ -167,7 +167,7 @@ class UserController extends Controller
             ]);
         }
         Smsc::sendCode($phone, $data[Contract::CODE]);
-        return response($data, 401);
+        return response($data, 200);
     }
 
     /**
@@ -196,7 +196,7 @@ class UserController extends Controller
             ]);
         }
         Smsc::sendCode($phone, $data[Contract::CODE]);
-        return response($data, 401);
+        return response($data, 200);
     }
 
     /**
@@ -208,7 +208,9 @@ class UserController extends Controller
     {
         if ($phoneCode  =   $this->phoneCodeService->phoneCodeRepository->firstByPhone($phone)) {
             if ($phoneCode->{Contract::CODE} === $code) {
-                return response(Contract::SUCCESS, 200);
+                return response([
+                    Contract::MESSAGE   =>  Contract::SUCCESS
+                ], 200);
             }
         }
         return response(ErrorContract::INCORRECT_CODE, 400);
@@ -247,11 +249,14 @@ class UserController extends Controller
      * @group User
      * @throws ValidationException
      */
-    public function create(CreateRequest $createRequest): UserResource
+    public function create(CreateRequest $createRequest): Response|Application|ResponseFactory|UserResource
     {
         $data   =   $createRequest->checked();
-        $data[Contract::PASSWORD]   =   $this->phoneCodeService->getCodeByPhone($data[Contract::PHONE]);
-        return new UserResource($this->userService->userRepository->create($data));
+        if ($phoneCode = $this->phoneCodeService->getCodeByPhone($data[Contract::PHONE])) {
+            $data[Contract::PASSWORD]   =   $phoneCode->{Contract::CODE};
+            return new UserResource($this->userService->userRepository->create($data));
+        }
+        return response(ErrorContract::SMS_NOT_SENT, 400);
     }
 
     /**
