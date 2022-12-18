@@ -59,4 +59,11 @@ class UserRepositoryEloquent implements UserRepositoryInterface
             ->whereBetween(Contract::CREATED_AT, [$start.' 00:00:00',$end.' 23:59:59'])
             ->groupBy(DB::raw("DATE_FORMAT(created_at, '%Y-%m-%d')"))->get();
     }
+
+    public static function rolePercentage()
+    {
+        return User::select(DB::raw('count(id) as count'),DB::raw("role"))
+            ->groupBy(Contract::ROLE)
+            ->get();
+    }
 }

@@ -16,7 +16,7 @@
                     [
                         'type'          => 'progress_white',
                         'class'         => 'card mb-2',
-                        'wrapper'       =>  ['class' => 'col-sm-3'],
+                        'wrapper'       =>  ['class' => 'col-sm-4'],
                         'value'         =>  '<span class="text-primary">' . UserRepositoryEloquent::count([]) . '</span>',
                         'description'   => 'Все пользователи',
                         'progress'      => 100, // integer
@@ -25,7 +25,7 @@
                     [
                         'type'          => 'progress_white',
                         'class'         => 'card mb-2',
-                        'wrapper'       =>  ['class' => 'col-sm-3'],
+                        'wrapper'       =>  ['class' => 'col-sm-4'],
                         'value'         =>  '<span class="text-primary">' . UserRepositoryEloquent::count([Contract::ROLE=>Contract::LAWYER]) . '</span>',
                         'description'   => 'Все юристы',
                         'progress'      => 100, // integer
@@ -34,20 +34,11 @@
                     [
                         'type'          => 'progress_white',
                         'class'         => 'card mb-2',
-                        'wrapper'       =>  ['class' => 'col-sm-3'],
+                        'wrapper'       =>  ['class' => 'col-sm-4'],
                         'value'         =>  '<span class="text-danger">' . QuestionRepositoryEloquent::count([]) . '</span>',
                         'description'   => 'Все вопросы',
                         'progress'      => 100, // integer
                         'progressClass' => 'progress-bar bg-danger',
-                    ],
-                                        [
-                        'type'          => 'progress_white',
-                        'class'         => 'card mb-2',
-                        'wrapper'       =>  ['class' => 'col-sm-3'],
-                        'value'         =>  '<span class="text-success">' . QuestionRepositoryEloquent::sum(Contract::PRICE,[Contract::IS_PAID=>true]) . ' KZT</span>',
-                        'description'   => 'Сумма всех оплат',
-                        'progress'      => 100, // integer
-                        'progressClass' => 'progress-bar bg-success',
                     ],
                 ],
             ];
@@ -77,17 +68,16 @@
 
     <div class="h4 font-weight-bold text-center mt-4">Пользователи</div>
     <div class="row">
-        <div class="col-12 col-lg-6">
+        <div class="col-12 col-lg-4">
             <div class="card mt-4">
                 <div class="card-header text-center">
-                    Зар-но пользователи за последний 7 дней
+                    Зарегистрировано за последние 7 дней
                 </div>
                 <div class="card-body">
                     @php
-                        $users      =   UserRepositoryEloquent::userLastWeek();
+                        $users  =   UserRepositoryEloquent::userLastWeek();
                     @endphp
-                    <canvas id="user-last-week" width="400" height="220" aria-label="Hello ARIA World"
-                            role="img"></canvas>
+                    <canvas id="user-last-week" width="400" height="220" role="img"></canvas>
                     <script>
                         let data = [
                                 @foreach( $users as &$user)
@@ -104,23 +94,28 @@
                                 data: {
                                     labels: data.map(row => row.day),
                                     datasets: [{
-                                        label: 'Зарегистрировано за последний 7 дней',
+                                        label: '',
                                         data: data.map(row => row.count),
                                         fill: false,
                                         borderColor: 'rgb(124, 105, 239)',
                                         tension: 0.1
                                     }]
                                 },
+                                options: {
+                                    legend: {
+                                        display: false
+                                    },
+                                }
                             }
                         );
                     </script>
                 </div>
             </div>
         </div>
-        <div class="col-12 col-lg-6">
+        <div class="col-12 col-lg-4">
             <div class="card mt-4">
                 <div class="card-header text-center">
-                    Зар-но пользователи за последний 30 дней
+                    Зарегистрировано за последние 30 дней
                 </div>
                 <div class="card-body">
                     @php
@@ -150,70 +145,21 @@
                                         tension: 0.1
                                     }]
                                 },
+                                options: {
+                                    legend: {
+                                        display: false
+                                    },
+                                }
                             }
                         );
                     </script>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-12 col-lg-6">
-            <div class="card mt-4">
-                <div class="card-header text-center">
-                    За-но пользователи за последний 365 дней
-                </div>
-                <div class="card-body">
-                    @php
-                        $userYear   =   UserRepositoryEloquent::userLastYear();
-                    @endphp
-                    <canvas id="user-last-year" width="400" height="220"></canvas>
-                    <script>
-                        data = [
-                                @foreach( $userYear as &$user)
-                            {
-                                day: '{{ $user['date'] }}',
-                                count: {{ $user['count'] }}
-                            },
-                            @endforeach
-                        ];
-                        new Chart(
-                            document.getElementById('user-last-year'),
-                            {
-                                type: 'doughnut',
-                                data: {
-                                    labels: data.map(row => row.day),
-                                    datasets: [{
-                                        label: 'За последний 365 дней',
-                                        data: data.map(row => row.count),
-                                        backgroundColor: [
-                                            'purple',
-                                            'magenta',
-                                            'darkcyan',
-                                            'grey',
-                                            'orange',
-                                            'lime',
-                                            'brown',
-                                            'blue',
-                                            'red',
-                                            'skyblue',
-                                            'green',
-                                            'pink',
-                                            'Gold',
-                                        ],
-                                        hoverOffset: 4
-                                    }]
-                                },
-                            }
-                        );
-                    </script>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-lg-6">
+        <div class="col-12 col-lg-4">
             <div class="card mt-4">
                 @php
-                    $before =   date("Y-m-d", strtotime("-10 day"));
+                    $before =   date("Y-m-d", strtotime("-365 day"));
                     $after  =   date("Y-m-d");
                     $userBetween    =   UserRepositoryEloquent::userDateBetween($before,$after);
                 @endphp
@@ -248,6 +194,11 @@
                                         tension: 0.1
                                     }]
                                 },
+                                options: {
+                                    legend: {
+                                        display: false
+                                    },
+                                }
                             }
                         );
                     </script>
@@ -257,7 +208,7 @@
     </div>
     <div class="h4 font-weight-bold text-center">Сумма</div>
     <div class="row">
-        <div class="col-12 col-lg-6">
+        <div class="col-12 col-lg-4">
             <div class="card mt-3">
                 <div class="card-header text-center">
                     За последний 7 дней (KZT)
@@ -291,13 +242,18 @@
                                         tension: 0.1
                                     }]
                                 },
+                                options: {
+                                    legend: {
+                                        display: false
+                                    },
+                                }
                             }
                         );
                     </script>
                 </div>
             </div>
         </div>
-        <div class="col-12 col-lg-6">
+        <div class="col-12 col-lg-4">
             <div class="card mt-3">
                 <div class="card-header text-center">
                     За последний 30 дней (KZT)
@@ -331,68 +287,18 @@
                                         tension: 0.1
                                     }]
                                 },
+                                options: {
+                                    legend: {
+                                        display: false
+                                    },
+                                }
                             }
                         );
                     </script>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-12 col-lg-6">
-            <div class="card mt-3">
-                <div class="card-header text-center">
-                    За последний 365 дней (KZT)
-                </div>
-                <div class="card-body">
-                    @php
-                        $notificationYear  =   QuestionRepositoryEloquent::priceLastYear();
-                    @endphp
-                    <canvas id="payment-last-year" width="400" height="220"
-                            aria-label="Сумма выплат за последний 365 дней"></canvas>
-                    <script>
-                        notifications = [
-                                @foreach( $notificationYear as &$notification)
-                            {
-                                day: '{{ $notification['date'] }}',
-                                sum: {{ $notification['sum'] }}
-                            },
-                            @endforeach
-                        ];
-                        new Chart(
-                            document.getElementById('payment-last-year'),
-                            {
-                                type: 'doughnut',
-                                data: {
-                                    labels: notifications.map(row => row.day),
-                                    datasets: [{
-                                        label: 'Сумма выплат за последний 365 дней (KZT)',
-                                        data: notifications.map(row => row.sum),
-                                        backgroundColor: [
-                                            'purple',
-                                            'magenta',
-                                            'darkcyan',
-                                            'grey',
-                                            'orange',
-                                            'lime',
-                                            'brown',
-                                            'blue',
-                                            'red',
-                                            'skyblue',
-                                            'green',
-                                            'pink',
-                                            'Gold',
-                                        ],
-                                        hoverOffset: 4
-                                    }]
-                                },
-                            }
-                        );
-                    </script>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-lg-6">
+        <div class="col-12 col-lg-4">
             <div class="card mt-3">
                 @php
                     $startPrice  =   date("Y-m-d", strtotime("-10 day"));
@@ -430,6 +336,11 @@
                                         tension: 0.1
                                     }]
                                 },
+                                options: {
+                                    legend: {
+                                        display: false
+                                    },
+                                }
                             }
                         );
                     </script>
@@ -437,12 +348,12 @@
             </div>
         </div>
     </div>
-    <div class="h4 font-weight-bold text-center">Открытые вопросы</div>
+    <div class="h4 font-weight-bold text-center">В обработке</div>
     <div class="row">
-        <div class="col-12 col-lg-6">
+        <div class="col-12 col-lg-4">
             <div class="card mt-3">
                 <div class="card-header text-center">
-                    Открытые вопросы за последний 7 дней
+                    В обработке за последний 7 дней
                 </div>
                 <div class="card-body">
                     @php
@@ -475,16 +386,21 @@
                                         tension: 0.1
                                     }]
                                 },
+                                options: {
+                                    legend: {
+                                        display: false
+                                    },
+                                }
                             }
                         );
                     </script>
                 </div>
             </div>
         </div>
-        <div class="col-12 col-lg-6">
+        <div class="col-12 col-lg-4">
             <div class="card mt-3">
                 <div class="card-header text-center">
-                    Открытые вопросы за последний 30 дней
+                    В обработке за последний 30 дней
                 </div>
                 <div class="card-body">
                     @php
@@ -517,70 +433,18 @@
                                         tension: 1
                                     }]
                                 },
+                                options: {
+                                    legend: {
+                                        display: false
+                                    },
+                                }
                             }
                         );
                     </script>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-12 col-lg-6">
-            <div class="card mt-3">
-                <div class="card-header text-center">
-                    Открытые вопросы за последний 365 дней
-                </div>
-                <div class="card-body">
-                    @php
-                        $notificationYear  =   QuestionRepositoryEloquent::countWhereYear([
-                            [Contract::CREATED_AT, '>', now()->subDays(365)->endOfDay()],
-                            [Contract::IS_PAID,true],
-                            [Contract::STATUS,1]]);
-                    @endphp
-                    <canvas id="open-question-year" width="400" height="220" aria-label="Открытые вопросы за последний 365 дней"></canvas>
-                    <script>
-                        notifications = [
-                                @foreach( $notificationYear as &$notification)
-                            {
-                                day: '{{ $notification['date'] }}',
-                                count: {{ $notification['count'] }}
-                            },
-                            @endforeach
-                        ];
-                        new Chart(
-                            document.getElementById('open-question-year'),
-                            {
-                                type: 'doughnut',
-                                data: {
-                                    labels: notifications.map(row => row.day),
-                                    datasets: [{
-                                        label: 'Открытые вопросы за последний 365 дней',
-                                        data: notifications.map(row => row.count),
-                                        backgroundColor: [
-                                            'purple',
-                                            'magenta',
-                                            'darkcyan',
-                                            'grey',
-                                            'orange',
-                                            'lime',
-                                            'brown',
-                                            'blue',
-                                            'red',
-                                            'skyblue',
-                                            'green',
-                                            'pink',
-                                            'Gold',
-                                        ],
-                                        hoverOffset: 4
-                                    }]
-                                },
-                            }
-                        );
-                    </script>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-lg-6">
+        <div class="col-12 col-lg-4">
             <div class="card mt-3">
                 @php
                     $startOpen  =   date("Y-m-d", strtotime("-10 day"));
@@ -618,6 +482,11 @@
                                         tension: 1
                                     }]
                                 },
+                                options: {
+                                    legend: {
+                                        display: false
+                                    },
+                                }
                             }
                         );
                     </script>
@@ -625,9 +494,9 @@
             </div>
         </div>
     </div>
-    <div class="h4 font-weight-bold text-center">Закрытые вопросы</div>
+    <div class="h4 font-weight-bold text-center">Закрытые</div>
     <div class="row">
-        <div class="col-12 col-lg-6">
+        <div class="col-12 col-lg-4">
             <div class="card mt-3">
                 <div class="card-header text-center">
                     Закрытые вопросы за последний 7 дней
@@ -663,13 +532,18 @@
                                         tension: 0.1
                                     }]
                                 },
+                                options: {
+                                    legend: {
+                                        display: false
+                                    },
+                                }
                             }
                         );
                     </script>
                 </div>
             </div>
         </div>
-        <div class="col-12 col-lg-6">
+        <div class="col-12 col-lg-4">
             <div class="card mt-3">
                 <div class="card-header text-center">
                     Закрытые вопросы за последний 30 дней
@@ -705,70 +579,18 @@
                                         tension: 1
                                     }]
                                 },
+                                options: {
+                                    legend: {
+                                        display: false
+                                    },
+                                }
                             }
                         );
                     </script>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-12 col-lg-6">
-            <div class="card mt-3">
-                <div class="card-header text-center">
-                    Закрытые вопросы за последний 365 дней
-                </div>
-                <div class="card-body">
-                    @php
-                        $notificationYear  =   QuestionRepositoryEloquent::countWhereYear([
-                            [Contract::CREATED_AT, '>', now()->subDays(365)->endOfDay()],
-                            [Contract::IS_PAID,true],
-                            [Contract::STATUS,2]]);
-                    @endphp
-                    <canvas id="closed-question-year" width="400" height="220" aria-label="Закрытые вопросы за последний 365 дней"></canvas>
-                    <script>
-                        notifications = [
-                                @foreach( $notificationYear as &$notification)
-                            {
-                                day: '{{ $notification['date'] }}',
-                                count: {{ $notification['count'] }}
-                            },
-                            @endforeach
-                        ];
-                        new Chart(
-                            document.getElementById('closed-question-year'),
-                            {
-                                type: 'doughnut',
-                                data: {
-                                    labels: notifications.map(row => row.day),
-                                    datasets: [{
-                                        label: 'Закрытые вопросы за последний 365 дней',
-                                        data: notifications.map(row => row.count),
-                                        backgroundColor: [
-                                            'purple',
-                                            'magenta',
-                                            'darkcyan',
-                                            'grey',
-                                            'orange',
-                                            'lime',
-                                            'brown',
-                                            'blue',
-                                            'red',
-                                            'skyblue',
-                                            'green',
-                                            'pink',
-                                            'Gold',
-                                        ],
-                                        hoverOffset: 4
-                                    }]
-                                },
-                            }
-                        );
-                    </script>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-lg-6">
+        <div class="col-12 col-lg-4">
             <div class="card mt-3">
                 @php
                     $startClosed  =   date("Y-m-d", strtotime("-10 day"));
@@ -804,6 +626,124 @@
                                         fill: false,
                                         borderColor: 'rgb(75, 192, 192)',
                                         tension: 0.1
+                                    }]
+                                },
+                                options: {
+                                    legend: {
+                                        display: false
+                                    },
+                                }
+                            }
+                        );
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="h4 font-weight-bold text-center">Общее</div>
+    <div class="row">
+        <div class="col-12 col-lg-6">
+            <div class="card mt-3">
+                <div class="card-header text-center">
+                    Статистика вопросов
+                </div>
+                <div class="card-body">
+                    @php
+                        $notificationYear  =   QuestionRepositoryEloquent::openClosedPercentage();
+                        $status =   ['Отменен','В обработке','Закрыт'];
+                    @endphp
+                    <canvas id="open-question-year" width="400" height="220" aria-label="Открытые вопросы за последний 365 дней"></canvas>
+                    <script>
+                        notifications = [
+                            @foreach( $notificationYear as &$notification)
+                            {
+                                status: '{{ $status[$notification['status']] }}',
+                                count: {{ $notification['count'] }}
+                            },
+                            @endforeach
+                        ];
+                        new Chart(
+                            document.getElementById('open-question-year'),
+                            {
+                                type: 'doughnut',
+                                data: {
+                                    labels: notifications.map(row => row.status),
+                                    datasets: [{
+                                        label: 'Открытые вопросы за последний 365 дней',
+                                        data: notifications.map(row => row.count),
+                                        backgroundColor: [
+                                            'purple',
+                                            'magenta',
+                                            'darkcyan',
+                                            'grey',
+                                            'orange',
+                                            'lime',
+                                            'brown',
+                                            'blue',
+                                            'red',
+                                            'skyblue',
+                                            'green',
+                                            'pink',
+                                            'Gold',
+                                        ],
+                                        hoverOffset: 4
+                                    }]
+                                },
+                            }
+                        );
+                    </script>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-lg-6">
+            <div class="card mt-3">
+                <div class="card-header text-center">
+                    Пользователи
+                </div>
+                <div class="card-body">
+                    @php
+                        $userGlobal =   UserRepositoryEloquent::rolePercentage();
+                        $roles  =   [
+                            Contract::ADMIN =>  'Администратор',
+                            Contract::USER  =>  'Пользователь',
+                            Contract::LAWYER    =>  'Юрист'
+                        ];
+                    @endphp
+                    <canvas id="user-global" width="400" height="220"></canvas>
+                    <script>
+                        notifications = [
+                            @foreach( $userGlobal as &$notification)
+                            {
+                                role: '{{ $roles[$notification['role']] }}',
+                                count: {{ $notification['count'] }}
+                            },
+                            @endforeach
+                        ];
+                        new Chart(
+                            document.getElementById('user-global'),
+                            {
+                                type: 'doughnut',
+                                data: {
+                                    labels: notifications.map(row => row.role),
+                                    datasets: [{
+                                        label: 'Открытые вопросы за последний 365 дней',
+                                        data: notifications.map(row => row.count),
+                                        backgroundColor: [
+                                            'purple',
+                                            'magenta',
+                                            'darkcyan',
+                                            'grey',
+                                            'orange',
+                                            'lime',
+                                            'brown',
+                                            'blue',
+                                            'red',
+                                            'skyblue',
+                                            'green',
+                                            'pink',
+                                            'Gold',
+                                        ],
+                                        hoverOffset: 4
                                     }]
                                 },
                             }

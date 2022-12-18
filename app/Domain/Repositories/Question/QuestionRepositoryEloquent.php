@@ -77,6 +77,15 @@ class QuestionRepositoryEloquent implements QuestionRepositoryInterface
             ->groupBy(DB::raw("DATE_FORMAT(created_at, '%Y-%m')"))->get();
     }
 
+    public static function openClosedPercentage()
+    {
+        return Question::select(DB::raw('count(id) as count'),DB::raw("status"))
+            ->where([
+                [Contract::IS_PAID,true],
+            ])
+            ->groupBy(Contract::STATUS)->get();
+    }
+
     public static function countWhere($where = [])
     {
         return Question::select(DB::raw('count(id) as count'),DB::raw("DATE_FORMAT(created_at, '%Y-%m-%d') as date"))
