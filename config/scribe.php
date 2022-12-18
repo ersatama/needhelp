@@ -270,6 +270,8 @@ INTRO
     'example_languages' => [
         'bash',
         'javascript',
+        'php',
+        'python'
     ],
 
     /*
@@ -302,7 +304,7 @@ INTRO
          * Manually override some generated content in the spec. Dot notation is supported.
          */
         'overrides' => [
-            // 'info.version' => '2.0.0',
+            'info.version' => '1.0.0',
         ],
     ],
 
