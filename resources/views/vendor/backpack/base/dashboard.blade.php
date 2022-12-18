@@ -301,7 +301,7 @@
         <div class="col-12 col-lg-4">
             <div class="card mt-3">
                 @php
-                    $startPrice  =   date("Y-m-d", strtotime("-10 day"));
+                    $startPrice  =   date("Y-m-d", strtotime("-365 day"));
                     $endPrice    =   date("Y-m-d");
                     $priceBetween  =   QuestionRepositoryEloquent::priceDateBetween($startPrice,$endPrice);
                 @endphp
@@ -447,7 +447,7 @@
         <div class="col-12 col-lg-4">
             <div class="card mt-3">
                 @php
-                    $startOpen  =   date("Y-m-d", strtotime("-10 day"));
+                    $startOpen  =   date("Y-m-d", strtotime("-365 day"));
                     $endOpen    =   date("Y-m-d");
                     $priceBetween  =   QuestionRepositoryEloquent::countDateBetween($startOpen,$endOpen);
                 @endphp
@@ -593,7 +593,7 @@
         <div class="col-12 col-lg-4">
             <div class="card mt-3">
                 @php
-                    $startClosed  =   date("Y-m-d", strtotime("-10 day"));
+                    $startClosed  =   date("Y-m-d", strtotime("-365 day"));
                     $endClosed    =   date("Y-m-d");
                     $countEndBetween  =   QuestionRepositoryEloquent::countDateBetweenClosed($startOpen,$endOpen);
                 @endphp
