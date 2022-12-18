@@ -205,6 +205,8 @@ return [
         App\Providers\Repositories\IpRepositoryProvider::class,
         App\Providers\Repositories\UserDeletedRepositoryProvider::class,
         App\Providers\Repositories\NotificationRepositoryProvider::class,
+        App\Providers\Repositories\PaymentRepositoryProvider::class,
+        App\Providers\Repositories\PriceRepositoryProvider::class,
     ],
 
     /*

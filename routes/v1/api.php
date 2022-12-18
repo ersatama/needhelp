@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\CityController;
 use App\Http\Controllers\Api\CountryController;
 use App\Http\Controllers\Api\LanguageController;
 use App\Http\Controllers\Api\NotificationController;
+use App\Http\Controllers\Api\PaymentController;
 use App\Http\Controllers\Api\QuestionController;
 use App\Http\Controllers\Api\NotificationHistoryController;
 use App\Http\Controllers\Api\RegionController;
@@ -70,5 +71,11 @@ Route::controller(NotificationController::class)->group(function() {
     Route::prefix('notification')->group(function() {
         Route::get('getByUserId/{userId}','getByUserId')->name('history.getByUserId');
         Route::get('firstById/{id}','firstById')->name('history.firstById');
+    });
+});
+
+Route::controller(PaymentController::class)->group(function() {
+    Route::prefix('payment')->group(function() {
+        Route::get('get','get')->name('payment.get');
     });
 });

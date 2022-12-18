@@ -57,7 +57,7 @@
                         'description'   => 'Сумма всех оплат',
                         'progress'      => 100, // integer
                         'progressClass' => 'progress-bar bg-success',
-                        'hint'          => QuestionRepositoryEloquent::sumLastMonth(Contract::PRICE,[Contract::IS_PAID=>true,Contract::LAWYER_ID=>backpack_user()->{Contract::ID}]) . ' KZT Сумма за последний 30 дней',
+                        'hint'          => QuestionRepositoryEloquent::sumLastMonth(Contract::PRICE,[Contract::IS_PAID=>true,Contract::LAWYER_ID=>backpack_user()->{Contract::ID}]) . ' KZT Сумма за последние 30 дней',
                     ],
                 ],
             ];
@@ -138,7 +138,7 @@
                                 data: {
                                     labels: data.map(row => row.day),
                                     datasets: [{
-                                        label: 'Зарегистрировано за последний 30 дней',
+                                        label: 'Зарегистрировано за последние 30 дней',
                                         data: data.map(row => row.count),
                                         fill: false,
                                         borderColor: 'rgb(124, 105, 239)',
@@ -211,14 +211,14 @@
         <div class="col-12 col-lg-4">
             <div class="card mt-3">
                 <div class="card-header text-center">
-                    За последний 7 дней (KZT)
+                    За последние 7 дней (KZT)
                 </div>
                 <div class="card-body">
                     @php
                         $notifications  =   QuestionRepositoryEloquent::priceLastWeek();
                     @endphp
                     <canvas id="payment-last-week" width="400" height="220"
-                            aria-label="Сумма выплат за последний 7 дней"></canvas>
+                            aria-label="Сумма выплат за последние 7 дней"></canvas>
                     <script>
                         let notifications = [
                                 @foreach( $notifications as &$notification)
@@ -235,7 +235,7 @@
                                 data: {
                                     labels: notifications.map(row => row.day),
                                     datasets: [{
-                                        label: 'Сумма выплат за последний 7 дней (KZT)',
+                                        label: 'Сумма выплат за последние 7 дней (KZT)',
                                         data: notifications.map(row => row.sum),
                                         fill: false,
                                         borderColor: 'rgb(75, 192, 192)',
@@ -256,14 +256,14 @@
         <div class="col-12 col-lg-4">
             <div class="card mt-3">
                 <div class="card-header text-center">
-                    За последний 30 дней (KZT)
+                    За последние 30 дней (KZT)
                 </div>
                 <div class="card-body">
                     @php
                         $notificationMonth  =   QuestionRepositoryEloquent::priceLastMonth();
                     @endphp
                     <canvas id="payment-last-month" width="400" height="220"
-                            aria-label="Сумма выплат за последний 30 дней"></canvas>
+                            aria-label="Сумма выплат за последние 30 дней"></canvas>
                     <script>
                         notifications = [
                                 @foreach( $notificationMonth as &$notification)
@@ -280,7 +280,7 @@
                                 data: {
                                     labels: notifications.map(row => row.day),
                                     datasets: [{
-                                        label: 'Сумма выплат за последний 30 дней (KZT)',
+                                        label: 'Сумма выплат за последние 30 дней (KZT)',
                                         data: notifications.map(row => row.sum),
                                         fill: false,
                                         borderColor: 'rgb(75, 192, 192)',
@@ -353,7 +353,7 @@
         <div class="col-12 col-lg-4">
             <div class="card mt-3">
                 <div class="card-header text-center">
-                    В обработке за последний 7 дней
+                    В обработке за последние 7 дней
                 </div>
                 <div class="card-body">
                     @php
@@ -362,7 +362,7 @@
                             [Contract::IS_PAID,true],
                             [Contract::STATUS,1]]);
                     @endphp
-                    <canvas id="open-question-week" width="400" height="220" aria-label="Открытые вопросы за последний 7 дней"></canvas>
+                    <canvas id="open-question-week" width="400" height="220" aria-label="Открытые вопросы за последние 7 дней"></canvas>
                     <script>
                         notifications = [
                                 @foreach( $notifications as &$notification)
@@ -379,7 +379,7 @@
                                 data: {
                                     labels: notifications.map(row => row.day),
                                     datasets: [{
-                                        label: 'Открытые вопросы за последний 7 дней (KZT)',
+                                        label: 'Открытые вопросы за последние 7 дней (KZT)',
                                         data: notifications.map(row => row.count),
                                         fill: false,
                                         borderColor: 'rgb(75, 192, 192)',
@@ -400,7 +400,7 @@
         <div class="col-12 col-lg-4">
             <div class="card mt-3">
                 <div class="card-header text-center">
-                    В обработке за последний 30 дней
+                    В обработке за последние 30 дней
                 </div>
                 <div class="card-body">
                     @php
@@ -409,7 +409,7 @@
                             [Contract::IS_PAID,true],
                             [Contract::STATUS,1]]);
                     @endphp
-                    <canvas id="open-question-month" width="400" height="220" aria-label="Открытые вопросы за последний 30 дней"></canvas>
+                    <canvas id="open-question-month" width="400" height="220" aria-label="Открытые вопросы за последние 30 дней"></canvas>
                     <script>
                         notifications = [
                             @foreach( $notificationMonth as &$notification)
@@ -426,7 +426,7 @@
                                 data: {
                                     labels: notifications.map(row => row.day),
                                     datasets: [{
-                                        label: 'Открытые вопросы за последний 30 дней',
+                                        label: 'Открытые вопросы за последние 30 дней',
                                         data: notifications.map(row => row.count),
                                         fill: false,
                                         borderColor: 'rgb(75, 192, 192)',
@@ -499,7 +499,7 @@
         <div class="col-12 col-lg-4">
             <div class="card mt-3">
                 <div class="card-header text-center">
-                    Закрытые вопросы за последний 7 дней
+                    Закрытые вопросы за последние 7 дней
                 </div>
                 <div class="card-body">
                     @php
@@ -508,7 +508,7 @@
                             [Contract::IS_PAID,true],
                             [Contract::STATUS,2]]);
                     @endphp
-                    <canvas id="closed-question-week" width="400" height="220" aria-label="Закрытые вопросы за последний 7 дней"></canvas>
+                    <canvas id="closed-question-week" width="400" height="220" aria-label="Закрытые вопросы за последние 7 дней"></canvas>
                     <script>
                         notifications = [
                                 @foreach( $notifications as &$notification)
@@ -525,7 +525,7 @@
                                 data: {
                                     labels: notifications.map(row => row.day),
                                     datasets: [{
-                                        label: 'Закрытые вопросы за последний 7 дней (KZT)',
+                                        label: 'Закрытые вопросы за последние 7 дней (KZT)',
                                         data: notifications.map(row => row.count),
                                         fill: false,
                                         borderColor: 'rgb(75, 192, 192)',
@@ -546,7 +546,7 @@
         <div class="col-12 col-lg-4">
             <div class="card mt-3">
                 <div class="card-header text-center">
-                    Закрытые вопросы за последний 30 дней
+                    Закрытые вопросы за последние 30 дней
                 </div>
                 <div class="card-body">
                     @php
@@ -555,7 +555,7 @@
                             [Contract::IS_PAID,true],
                             [Contract::STATUS,2]]);
                     @endphp
-                    <canvas id="closed-question-month" width="400" height="220" aria-label="Закрытые вопросы за последний 30 дней"></canvas>
+                    <canvas id="closed-question-month" width="400" height="220" aria-label="Закрытые вопросы за последние 30 дней"></canvas>
                     <script>
                         notifications = [
                             @foreach( $notificationMonth as &$notification)
@@ -572,7 +572,7 @@
                                 data: {
                                     labels: notifications.map(row => row.day),
                                     datasets: [{
-                                        label: 'Закрытые вопросы за последний 30 дней',
+                                        label: 'Закрытые вопросы за последние 30 дней',
                                         data: notifications.map(row => row.count),
                                         fill: false,
                                         borderColor: 'rgb(75, 192, 192)',
@@ -652,7 +652,7 @@
                         $notificationYear  =   QuestionRepositoryEloquent::openClosedPercentage();
                         $status =   ['Отменен','В обработке','Закрыт'];
                     @endphp
-                    <canvas id="open-question-year" width="400" height="220" aria-label="Открытые вопросы за последний 365 дней"></canvas>
+                    <canvas id="open-question-year" width="400" height="220" aria-label="Открытые вопросы за последние 365 дней"></canvas>
                     <script>
                         notifications = [
                             @foreach( $notificationYear as &$notification)
@@ -669,7 +669,7 @@
                                 data: {
                                     labels: notifications.map(row => row.status),
                                     datasets: [{
-                                        label: 'Открытые вопросы за последний 365 дней',
+                                        label: 'Открытые вопросы за последние 365 дней',
                                         data: notifications.map(row => row.count),
                                         backgroundColor: [
                                             'purple',
@@ -726,7 +726,7 @@
                                 data: {
                                     labels: notifications.map(row => row.role),
                                     datasets: [{
-                                        label: 'Открытые вопросы за последний 365 дней',
+                                        label: 'Открытые вопросы за последние 365 дней',
                                         data: notifications.map(row => row.count),
                                         backgroundColor: [
                                             'purple',

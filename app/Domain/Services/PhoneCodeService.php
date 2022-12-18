@@ -12,9 +12,4 @@ class PhoneCodeService extends Service
     {
         $this->phoneCodeRepository  =   $phoneCodeRepository;
     }
-
-    public function getCodeByPhone($phone)
-    {
-        return $this->phoneCodeRepository->firstByPhone($phone);
-    }
 }

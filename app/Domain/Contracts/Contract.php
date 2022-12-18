@@ -80,7 +80,9 @@ abstract class Contract
     const EMAIL_CODE    =   'email_code';
     const EMAIL_VERIFIED_AT =   'email_verified_at';
     const PASSWORD  =   'password';
+    const LOGIN =   'login';
     const REMEMBER_TOKEN    =   'remember_token';
     const LANGUAGE  =   'language';
     const PUSH_NOTIFICATION =   'push_notification';
+    const IMPORTANT_PRICE   =   'important_price';
 }

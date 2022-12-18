@@ -47,7 +47,7 @@ paths:
         in: path
         name: regionId
         description: ''
-        example: explicabo
+        example: sit
         required: true
         schema:
           type: string
@@ -240,7 +240,7 @@ paths:
         in: path
         name: userId
         description: ''
-        example: quia
+        example: ut
         required: true
         schema:
           type: string
@@ -284,10 +284,67 @@ paths:
         in: path
         name: id
         description: 'The ID of the firstById.'
-        example: repellat
+        example: maiores
         required: true
         schema:
           type: string
+  /api/v1/payment/get:
+    get:
+      summary: 'get - Payment'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      id: 1
+                      created_at: '2022-12-18T13:24:00.000000Z'
+                      updated_at: '2022-12-18T13:24:00.000000Z'
+                      title: Wooppay
+                    -
+                      id: 2
+                      created_at: '2022-12-18T13:24:00.000000Z'
+                      updated_at: '2022-12-18T13:24:00.000000Z'
+                      title: Kaspi
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        created_at: '2022-12-18T13:24:00.000000Z'
+                        updated_at: '2022-12-18T13:24:00.000000Z'
+                        title: Wooppay
+                      -
+                        id: 2
+                        created_at: '2022-12-18T13:24:00.000000Z'
+                        updated_at: '2022-12-18T13:24:00.000000Z'
+                        title: Kaspi
+                    items:
+                      type: object
+      tags:
+        - Payment
+      security: []
   '/api/v1/question/getByUserId/{userId}':
     get:
       summary: 'getByUserId - Questions'
@@ -328,7 +385,7 @@ paths:
         in: path
         name: userId
         description: ''
-        example: pariatur
+        example: perspiciatis
         required: true
         schema:
           type: string
@@ -372,7 +429,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the firstById.'
-        example: consequatur
+        example: consectetur
         required: true
         schema:
           type: string
@@ -408,28 +465,24 @@ paths:
                 user_id:
                   type: string
                   description: ''
-                  example: vel
+                  example: aut
                 price:
                   type: string
                   description: ''
-                  example: amet
+                  example: placeat
                 title:
                   type: string
                   description: ''
-                  example: est
+                  example: laborum
                 is_important:
-                  type: string
+                  type: boolean
                   description: ''
-                  example: null
-                phone:
-                  type: string
-                  description: ''
-                  example: voluptas
+                  example: false
               required:
                 - user_id
                 - price
                 - title
-                - phone
+                - is_important
       security: []
   '/api/v1/region/getByCountryId/{countryId}':
     get:
@@ -471,7 +524,7 @@ paths:
         in: path
         name: countryId
         description: ''
-        example: minima
+        example: id
         required: true
         schema:
           type: string
@@ -515,7 +568,7 @@ paths:
         in: path
         name: phone
         description: ''
-        example: maiores
+        example: quia
         required: true
         schema:
           type: string
@@ -559,7 +612,51 @@ paths:
         in: path
         name: phone
         description: ''
-        example: molestias
+        example: non
+        required: true
+        schema:
+          type: string
+  '/api/v1/user/checkUserByPhone/{phone}':
+    get:
+      summary: 'checkUserByPhone - User'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        404:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'not found'
+                properties:
+                  message:
+                    type: string
+                    example: 'not found'
+      tags:
+        - User
+      security: []
+    parameters:
+      -
+        in: path
+        name: phone
+        description: ''
+        example: totam
         required: true
         schema:
           type: string
@@ -603,7 +700,7 @@ paths:
         in: path
         name: phone
         description: ''
-        example: labore
+        example: maxime
         required: true
         schema:
           type: string
@@ -647,7 +744,7 @@ paths:
         in: path
         name: phone
         description: ''
-        example: a
+        example: tempore
         required: true
         schema:
           type: string
@@ -655,7 +752,7 @@ paths:
         in: path
         name: code
         description: ''
-        example: id
+        example: quia
         required: true
         schema:
           type: string
@@ -679,23 +776,23 @@ paths:
           schema:
             type: string
       responses:
-        401:
+        200:
           description: ''
           content:
             application/json:
               schema:
                 type: object
                 example:
-                  phone: suscipit
-                  code: 1041
+                  phone: ut
+                  code: 1215
                   status: code_sent
                 properties:
                   phone:
                     type: string
-                    example: suscipit
+                    example: ut
                   code:
                     type: integer
-                    example: 1041
+                    example: 1215
                   status:
                     type: string
                     example: code_sent
@@ -707,7 +804,7 @@ paths:
         in: path
         name: phone
         description: ''
-        example: suscipit
+        example: ut
         required: true
         schema:
           type: string
@@ -731,23 +828,23 @@ paths:
           schema:
             type: string
       responses:
-        401:
+        200:
           description: ''
           content:
             application/json:
               schema:
                 type: object
                 example:
-                  phone: officiis
-                  code: 1690
+                  phone: ipsa
+                  code: 8582
                   status: not_registered
                 properties:
                   phone:
                     type: string
-                    example: officiis
+                    example: ipsa
                   code:
                     type: integer
-                    example: 1690
+                    example: 8582
                   status:
                     type: string
                     example: not_registered
@@ -759,7 +856,7 @@ paths:
         in: path
         name: phone
         description: ''
-        example: officiis
+        example: ipsa
         required: true
         schema:
           type: string
@@ -783,23 +880,23 @@ paths:
           schema:
             type: string
       responses:
-        401:
+        200:
           description: ''
           content:
             application/json:
               schema:
                 type: object
                 example:
-                  phone: aut
-                  code: 2524
+                  phone: et
+                  code: 4972
                   status: not_registered
                 properties:
                   phone:
                     type: string
-                    example: aut
+                    example: et
                   code:
                     type: integer
-                    example: 2524
+                    example: 4972
                   status:
                     type: string
                     example: not_registered
@@ -811,7 +908,7 @@ paths:
         in: path
         name: phone
         description: ''
-        example: aut
+        example: et
         required: true
         schema:
           type: string
@@ -847,19 +944,19 @@ paths:
                 language_id:
                   type: string
                   description: ''
-                  example: voluptatibus
+                  example: aliquid
                 region_id:
                   type: string
                   description: ''
-                  example: modi
+                  example: et
                 name:
                   type: string
                   description: ''
-                  example: amet
+                  example: ratione
                 surname:
                   type: string
                   description: ''
-                  example: expedita
+                  example: deleniti
                 last_name:
                   type: string
                   description: ''
@@ -867,11 +964,11 @@ paths:
                 phone:
                   type: string
                   description: ''
-                  example: non
+                  example: repellendus
                 push_notification:
                   type: boolean
                   description: ''
-                  example: true
+                  example: false
               required:
                 - language_id
                 - region_id
@@ -911,7 +1008,7 @@ paths:
                 language_id:
                   type: string
                   description: ''
-                  example: odio
+                  example: repudiandae
                 push_notification:
                   type: boolean
                   description: ''
@@ -924,7 +1021,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the update.'
-        example: ut
+        example: dignissimos
         required: true
         schema:
           type: string
@@ -968,7 +1065,7 @@ paths:
         in: path
         name: phone
         description: ''
-        example: ipsam
+        example: rerum
         required: true
         schema:
           type: string
@@ -976,7 +1073,7 @@ paths:
         in: path
         name: password
         description: ''
-        example: sequi
+        example: modi
         required: true
         schema:
           type: string
@@ -995,6 +1092,9 @@ tags:
     description: ''
   -
     name: Notification
+    description: ''
+  -
+    name: Payment
     description: ''
   -
     name: Questions

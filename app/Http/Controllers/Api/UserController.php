@@ -252,7 +252,7 @@ class UserController extends Controller
     public function create(CreateRequest $createRequest): Response|Application|ResponseFactory|UserResource
     {
         $data   =   $createRequest->checked();
-        if ($phoneCode = $this->phoneCodeService->getCodeByPhone($data[Contract::PHONE])) {
+        if ($phoneCode = $this->phoneCodeService->phoneCodeRepository->firstByPhone($data[Contract::PHONE])) {
             $data[Contract::PASSWORD]   =   $phoneCode->{Contract::CODE};
             return new UserResource($this->userService->userRepository->create($data));
         }

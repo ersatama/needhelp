@@ -10,7 +10,7 @@
     ],
     "info": {
         "name": "Laravel",
-        "_postman_id": "4d072a5d-2216-4e9d-b761-22b14a845fb5",
+        "_postman_id": "b2aa429d-9346-4ee3-a3cd-e2264eef76df",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -31,7 +31,7 @@
                                 {
                                     "id": "regionId",
                                     "key": "regionId",
-                                    "value": "explicabo",
+                                    "value": "sit",
                                     "description": ""
                                 }
                             ]
@@ -70,7 +70,7 @@
                                 },
                                 {
                                     "key": "x-ratelimit-remaining",
-                                    "value": "48"
+                                    "value": "47"
                                 },
                                 {
                                     "key": "access-control-allow-origin",
@@ -132,7 +132,7 @@
                                 },
                                 {
                                     "key": "x-ratelimit-remaining",
-                                    "value": "50"
+                                    "value": "49"
                                 },
                                 {
                                     "key": "access-control-allow-origin",
@@ -248,7 +248,7 @@
                                 },
                                 {
                                     "key": "x-ratelimit-remaining",
-                                    "value": "51"
+                                    "value": "50"
                                 },
                                 {
                                     "key": "access-control-allow-origin",
@@ -279,72 +279,8 @@
                                 {
                                     "id": "userId",
                                     "key": "userId",
-                                    "value": "quia",
+                                    "value": "ut",
                                     "description": ""
-                                }
-                            ]
-                        },
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": null,
-                        "description": "",
-                        "auth": {
-                            "type": "noauth"
-                        }
-                    },
-                    "response": [
-                        {
-                            "header": [
-                                {
-                                    "key": "cache-control",
-                                    "value": "no-cache, private"
-                                },
-                                {
-                                    "key": "content-type",
-                                    "value": "application\/json"
-                                },
-                                {
-                                    "key": "x-ratelimit-limit",
-                                    "value": "60"
-                                },
-                                {
-                                    "key": "x-ratelimit-remaining",
-                                    "value": "45"
-                                },
-                                {
-                                    "key": "access-control-allow-origin",
-                                    "value": "*"
-                                }
-                            ],
-                            "code": 200,
-                            "body": "{\"data\":[]}",
-                            "name": ""
-                        }
-                    ]
-                },
-                {
-                    "name": "firstById - Notification",
-                    "request": {
-                        "url": {
-                            "host": "{{baseUrl}}",
-                            "path": "api\/v1\/notification\/firstById\/:id",
-                            "query": [],
-                            "raw": "{{baseUrl}}\/api\/v1\/notification\/firstById\/:id",
-                            "variable": [
-                                {
-                                    "id": "id",
-                                    "key": "id",
-                                    "value": "repellat",
-                                    "description": "The ID of the firstById."
                                 }
                             ]
                         },
@@ -389,32 +325,26 @@
                                     "value": "*"
                                 }
                             ],
-                            "code": 404,
-                            "body": "{\"message\":\"not found\"}",
+                            "code": 200,
+                            "body": "{\"data\":[]}",
                             "name": ""
                         }
                     ]
-                }
-            ]
-        },
-        {
-            "name": "Questions",
-            "description": "",
-            "item": [
+                },
                 {
-                    "name": "getByUserId - Questions",
+                    "name": "firstById - Notification",
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/v1\/question\/getByUserId\/:userId",
+                            "path": "api\/v1\/notification\/firstById\/:id",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/v1\/question\/getByUserId\/:userId",
+                            "raw": "{{baseUrl}}\/api\/v1\/notification\/firstById\/:id",
                             "variable": [
                                 {
-                                    "id": "userId",
-                                    "key": "userId",
-                                    "value": "pariatur",
-                                    "description": ""
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "maiores",
+                                    "description": "The ID of the firstById."
                                 }
                             ]
                         },
@@ -452,7 +382,69 @@
                                 },
                                 {
                                     "key": "x-ratelimit-remaining",
-                                    "value": "47"
+                                    "value": "43"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 404,
+                            "body": "{\"message\":\"not found\"}",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Payment",
+            "description": "",
+            "item": [
+                {
+                    "name": "get - Payment",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/payment\/get",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/payment\/get"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "42"
                                 },
                                 {
                                     "key": "access-control-allow-origin",
@@ -460,25 +452,31 @@
                                 }
                             ],
                             "code": 200,
-                            "body": "{\"data\":[]}",
+                            "body": "{\"data\":[{\"id\":1,\"created_at\":\"2022-12-18T13:24:00.000000Z\",\"updated_at\":\"2022-12-18T13:24:00.000000Z\",\"title\":\"Wooppay\"},{\"id\":2,\"created_at\":\"2022-12-18T13:24:00.000000Z\",\"updated_at\":\"2022-12-18T13:24:00.000000Z\",\"title\":\"Kaspi\"}]}",
                             "name": ""
                         }
                     ]
-                },
+                }
+            ]
+        },
+        {
+            "name": "Questions",
+            "description": "",
+            "item": [
                 {
-                    "name": "firstById - Questions",
+                    "name": "getByUserId - Questions",
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/v1\/question\/firstById\/:id",
+                            "path": "api\/v1\/question\/getByUserId\/:userId",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/v1\/question\/firstById\/:id",
+                            "raw": "{{baseUrl}}\/api\/v1\/question\/getByUserId\/:userId",
                             "variable": [
                                 {
-                                    "id": "id",
-                                    "key": "id",
-                                    "value": "consequatur",
-                                    "description": "The ID of the firstById."
+                                    "id": "userId",
+                                    "key": "userId",
+                                    "value": "perspiciatis",
+                                    "description": ""
                                 }
                             ]
                         },
@@ -523,6 +521,70 @@
                                     "value": "*"
                                 }
                             ],
+                            "code": 200,
+                            "body": "{\"data\":[]}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "firstById - Questions",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/question\/firstById\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/question\/firstById\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "consectetur",
+                                    "description": "The ID of the firstById."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "45"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
                             "code": 404,
                             "body": "{\"message\":\"not found\"}",
                             "name": ""
@@ -551,7 +613,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"user_id\":\"vel\",\"price\":\"amet\",\"title\":\"est\",\"phone\":\"voluptas\"}"
+                            "raw": "{\"user_id\":\"aut\",\"price\":\"placeat\",\"title\":\"laborum\",\"is_important\":false}"
                         },
                         "description": "",
                         "auth": {
@@ -578,7 +640,7 @@
                                 {
                                     "id": "countryId",
                                     "key": "countryId",
-                                    "value": "minima",
+                                    "value": "id",
                                     "description": ""
                                 }
                             ]
@@ -617,7 +679,7 @@
                                 },
                                 {
                                     "key": "x-ratelimit-remaining",
-                                    "value": "49"
+                                    "value": "48"
                                 },
                                 {
                                     "key": "access-control-allow-origin",
@@ -648,7 +710,7 @@
                                 {
                                     "id": "phone",
                                     "key": "phone",
-                                    "value": "maiores",
+                                    "value": "quia",
                                     "description": ""
                                 }
                             ]
@@ -712,7 +774,7 @@
                                 {
                                     "id": "phone",
                                     "key": "phone",
-                                    "value": "molestias",
+                                    "value": "non",
                                     "description": ""
                                 }
                             ]
@@ -765,18 +827,18 @@
                     ]
                 },
                 {
-                    "name": "firstByPhone - User",
+                    "name": "checkUserByPhone - User",
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/v1\/user\/firstByPhone\/:phone",
+                            "path": "api\/v1\/user\/checkUserByPhone\/:phone",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/v1\/user\/firstByPhone\/:phone",
+                            "raw": "{{baseUrl}}\/api\/v1\/user\/checkUserByPhone\/:phone",
                             "variable": [
                                 {
                                     "id": "phone",
                                     "key": "phone",
-                                    "value": "labore",
+                                    "value": "totam",
                                     "description": ""
                                 }
                             ]
@@ -829,24 +891,18 @@
                     ]
                 },
                 {
-                    "name": "checkCode - User",
+                    "name": "firstByPhone - User",
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/v1\/user\/checkCode\/:phone\/:code",
+                            "path": "api\/v1\/user\/firstByPhone\/:phone",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/v1\/user\/checkCode\/:phone\/:code",
+                            "raw": "{{baseUrl}}\/api\/v1\/user\/firstByPhone\/:phone",
                             "variable": [
                                 {
                                     "id": "phone",
                                     "key": "phone",
-                                    "value": "a",
-                                    "description": ""
-                                },
-                                {
-                                    "id": "code",
-                                    "key": "code",
-                                    "value": "id",
+                                    "value": "maxime",
                                     "description": ""
                                 }
                             ]
@@ -892,25 +948,31 @@
                                     "value": "*"
                                 }
                             ],
-                            "code": 400,
-                            "body": "{\"message\":\"incorrect code\"}",
+                            "code": 404,
+                            "body": "{\"message\":\"not found\"}",
                             "name": ""
                         }
                     ]
                 },
                 {
-                    "name": "resetPassword - User",
+                    "name": "checkCode - User",
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/v1\/user\/resetPassword\/:phone",
+                            "path": "api\/v1\/user\/checkCode\/:phone\/:code",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/v1\/user\/resetPassword\/:phone",
+                            "raw": "{{baseUrl}}\/api\/v1\/user\/checkCode\/:phone\/:code",
                             "variable": [
                                 {
                                     "id": "phone",
                                     "key": "phone",
-                                    "value": "suscipit",
+                                    "value": "tempore",
+                                    "description": ""
+                                },
+                                {
+                                    "id": "code",
+                                    "key": "code",
+                                    "value": "quia",
                                     "description": ""
                                 }
                             ]
@@ -956,25 +1018,25 @@
                                     "value": "*"
                                 }
                             ],
-                            "code": 401,
-                            "body": "{\"phone\":\"suscipit\",\"code\":1041,\"status\":\"code_sent\"}",
+                            "code": 400,
+                            "body": "{\"message\":\"incorrect code\"}",
                             "name": ""
                         }
                     ]
                 },
                 {
-                    "name": "sendRegisterCode - User",
+                    "name": "resetPassword - User",
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/v1\/user\/sendRegisterCode\/:phone",
+                            "path": "api\/v1\/user\/resetPassword\/:phone",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/v1\/user\/sendRegisterCode\/:phone",
+                            "raw": "{{baseUrl}}\/api\/v1\/user\/resetPassword\/:phone",
                             "variable": [
                                 {
                                     "id": "phone",
                                     "key": "phone",
-                                    "value": "officiis",
+                                    "value": "ut",
                                     "description": ""
                                 }
                             ]
@@ -1020,25 +1082,25 @@
                                     "value": "*"
                                 }
                             ],
-                            "code": 401,
-                            "body": "{\"phone\":\"officiis\",\"code\":1690,\"status\":\"not_registered\"}",
+                            "code": 200,
+                            "body": "{\"phone\":\"ut\",\"code\":1215,\"status\":\"code_sent\"}",
                             "name": ""
                         }
                     ]
                 },
                 {
-                    "name": "resendRegisterCode - User",
+                    "name": "sendRegisterCode - User",
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/v1\/user\/resendRegisterCode\/:phone",
+                            "path": "api\/v1\/user\/sendRegisterCode\/:phone",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/v1\/user\/resendRegisterCode\/:phone",
+                            "raw": "{{baseUrl}}\/api\/v1\/user\/sendRegisterCode\/:phone",
                             "variable": [
                                 {
                                     "id": "phone",
                                     "key": "phone",
-                                    "value": "aut",
+                                    "value": "ipsa",
                                     "description": ""
                                 }
                             ]
@@ -1084,101 +1146,25 @@
                                     "value": "*"
                                 }
                             ],
-                            "code": 401,
-                            "body": "{\"phone\":\"aut\",\"code\":2524,\"status\":\"not_registered\"}",
+                            "code": 200,
+                            "body": "{\"phone\":\"ipsa\",\"code\":8582,\"status\":\"not_registered\"}",
                             "name": ""
                         }
                     ]
                 },
                 {
-                    "name": "create - User",
+                    "name": "resendRegisterCode - User",
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/v1\/user\/create",
+                            "path": "api\/v1\/user\/resendRegisterCode\/:phone",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/v1\/user\/create"
-                        },
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "{\"language_id\":\"voluptatibus\",\"region_id\":\"modi\",\"name\":\"amet\",\"surname\":\"expedita\",\"phone\":\"non\",\"push_notification\":true}"
-                        },
-                        "description": "",
-                        "auth": {
-                            "type": "noauth"
-                        }
-                    },
-                    "response": []
-                },
-                {
-                    "name": "update - User",
-                    "request": {
-                        "url": {
-                            "host": "{{baseUrl}}",
-                            "path": "api\/v1\/user\/update\/:id",
-                            "query": [],
-                            "raw": "{{baseUrl}}\/api\/v1\/user\/update\/:id",
-                            "variable": [
-                                {
-                                    "id": "id",
-                                    "key": "id",
-                                    "value": "ut",
-                                    "description": "The ID of the update."
-                                }
-                            ]
-                        },
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "{\"language_id\":\"odio\",\"push_notification\":true}"
-                        },
-                        "description": "",
-                        "auth": {
-                            "type": "noauth"
-                        }
-                    },
-                    "response": []
-                },
-                {
-                    "name": "auth Phone & Password - User",
-                    "request": {
-                        "url": {
-                            "host": "{{baseUrl}}",
-                            "path": "api\/v1\/user\/auth\/:phone\/:password",
-                            "query": [],
-                            "raw": "{{baseUrl}}\/api\/v1\/user\/auth\/:phone\/:password",
+                            "raw": "{{baseUrl}}\/api\/v1\/user\/resendRegisterCode\/:phone",
                             "variable": [
                                 {
                                     "id": "phone",
                                     "key": "phone",
-                                    "value": "ipsam",
-                                    "description": ""
-                                },
-                                {
-                                    "id": "password",
-                                    "key": "password",
-                                    "value": "sequi",
+                                    "value": "et",
                                     "description": ""
                                 }
                             ]
@@ -1218,6 +1204,146 @@
                                 {
                                     "key": "x-ratelimit-remaining",
                                     "value": "52"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"phone\":\"et\",\"code\":4972,\"status\":\"not_registered\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "create - User",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/user\/create",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/user\/create"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"language_id\":\"aliquid\",\"region_id\":\"et\",\"name\":\"ratione\",\"surname\":\"deleniti\",\"phone\":\"repellendus\",\"push_notification\":false}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "update - User",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/user\/update\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/user\/update\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "dignissimos",
+                                    "description": "The ID of the update."
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"language_id\":\"repudiandae\",\"push_notification\":true}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "auth Phone & Password - User",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/user\/auth\/:phone\/:password",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/user\/auth\/:phone\/:password",
+                            "variable": [
+                                {
+                                    "id": "phone",
+                                    "key": "phone",
+                                    "value": "rerum",
+                                    "description": ""
+                                },
+                                {
+                                    "id": "password",
+                                    "key": "password",
+                                    "value": "modi",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "51"
                                 },
                                 {
                                     "key": "access-control-allow-origin",

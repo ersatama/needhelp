@@ -3,6 +3,7 @@
 
 @if (backpack_user()->role === 'admin')
     <li class="nav-item"><a class="nav-link" href="{{ backpack_url('ip') }}"><i class="nav-icon las la-shield-alt"></i> IP адреса</a></li>
+
     <li class="nav-title">Основное</li>
 
     <li class="nav-item"><a class="nav-link" href="{{ backpack_url('admin') }}"><i class="nav-icon la la-group"></i> Администраторы</a></li>
@@ -18,6 +19,8 @@
     <li class="nav-title">Дополнительно</li>
 
     <li class="nav-item"><a class="nav-link" href="{{ backpack_url('language') }}"><i class="nav-icon las la-language"></i> Языки</a></li>
+    <li class="nav-item"><a class="nav-link" href="{{ backpack_url('payment') }}"><i class="nav-icon las la-coins"></i> Платежи</a></li>
+    <li class="nav-item"><a class="nav-link" href="{{ backpack_url('price') }}"><i class="nav-icon las la-money-bill-wave"></i> Цены</a></li>
 @else
-    <li class="nav-item"><a class="nav-link" href="{{ backpack_url('notification') }}"><i class="nav-icon las la-bell"></i> Вопросы</a></li>
+    <li class="nav-item"><a class="nav-link" href="{{ backpack_url('notification') }}"><i class="nav-iconla la-question"></i> Вопросы</a></li>
 @endif

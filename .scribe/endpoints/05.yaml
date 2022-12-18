@@ -22,11 +22,11 @@ endpoints:
         name: regionId
         description: ''
         required: true
-        example: explicabo
+        example: sit
         type: string
         custom: []
     cleanUrlParameters:
-      regionId: explicabo
+      regionId: sit
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -40,7 +40,7 @@ endpoints:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '48'
+          x-ratelimit-remaining: '47'
           access-control-allow-origin: '*'
         description: null
         custom: []

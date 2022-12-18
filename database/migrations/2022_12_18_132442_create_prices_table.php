@@ -1,7 +1,7 @@
 <?php
 
 use App\Domain\Contracts\Contract;
-use App\Domain\Contracts\PaymentContract;
+use App\Domain\Contracts\PriceContract;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,13 +15,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create(PaymentContract::TABLE, function (Blueprint $table) {
+        Schema::create(PriceContract::TABLE, function (Blueprint $table) {
             $table->id();
-            $table->string(Contract::TITLE);
-            $table->string(Contract::LOGIN);
-            $table->string(Contract::PASSWORD);
+            $table->unsignedInteger(Contract::CURRENCY_ID)->nullable();
+            $table->string(Contract::PRICE);
+            $table->string(Contract::IMPORTANT_PRICE);
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -32,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists(PaymentContract::TABLE);
+        Schema::dropIfExists(PriceContract::TABLE);
     }
 };

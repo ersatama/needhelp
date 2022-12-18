@@ -119,6 +119,16 @@
                             </li>
                                                                         </ul>
                             </ul>
+                    <ul id="tocify-header-payment" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="payment">
+                    <a href="#payment">Payment</a>
+                </li>
+                                    <ul id="tocify-subheader-payment" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="payment-GETapi-v1-payment-get">
+                                <a href="#payment-GETapi-v1-payment-get">get - Payment</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
                     <ul id="tocify-header-questions" class="tocify-header">
                 <li class="tocify-item level-1" data-unique="questions">
                     <a href="#questions">Questions</a>
@@ -156,6 +166,9 @@
                                                                                 <li class="tocify-item level-2" data-unique="user-GETapi-v1-user-restoreByPhone--phone-">
                                 <a href="#user-GETapi-v1-user-restoreByPhone--phone-">restoreByPhone - User</a>
                             </li>
+                                                                                <li class="tocify-item level-2" data-unique="user-GETapi-v1-user-checkUserByPhone--phone-">
+                                <a href="#user-GETapi-v1-user-checkUserByPhone--phone-">checkUserByPhone - User</a>
+                            </li>
                                                                                 <li class="tocify-item level-2" data-unique="user-GETapi-v1-user-firstByPhone--phone-">
                                 <a href="#user-GETapi-v1-user-firstByPhone--phone-">firstByPhone - User</a>
                             </li>
@@ -190,7 +203,7 @@
                             <li><a href="http://github.com/knuckleswtf/scribe">Documentation powered by Scribe ✍</a></li>
                     </ul>
         <ul class="toc-footer" id="last-updated">
-        <li>Last updated: December 15, 2022</li>
+        <li>Last updated: December 18, 2022</li>
     </ul>
 </div>
 
@@ -226,14 +239,14 @@ You can switch the language used with the tabs at the top right (or from the nav
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/v1/city/getByRegionId/explicabo" \
+    --get "http://localhost:8000/api/v1/city/getByRegionId/sit" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/v1/city/getByRegionId/explicabo"
+    "http://localhost:8000/api/v1/city/getByRegionId/sit"
 );
 
 const headers = {
@@ -259,7 +272,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 48
+x-ratelimit-remaining: 47
 access-control-allow-origin: *
  </code></pre>
         </details>         <pre>
@@ -316,7 +329,7 @@ access-control-allow-origin: *
                 <input type="text"
                name="regionId"
                data-endpoint="GETapi-v1-city-getByRegionId--regionId-"
-               value="explicabo"
+               value="sit"
                data-component="url" hidden>
     <br>
 
@@ -373,7 +386,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 50
+x-ratelimit-remaining: 49
 access-control-allow-origin: *
  </code></pre>
         </details>         <pre>
@@ -573,7 +586,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 51
+x-ratelimit-remaining: 50
 access-control-allow-origin: *
  </code></pre>
         </details>         <pre>
@@ -666,14 +679,14 @@ access-control-allow-origin: *
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/v1/notification/getByUserId/quia" \
+    --get "http://localhost:8000/api/v1/notification/getByUserId/ut" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/v1/notification/getByUserId/quia"
+    "http://localhost:8000/api/v1/notification/getByUserId/ut"
 );
 
 const headers = {
@@ -699,7 +712,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 45
+x-ratelimit-remaining: 44
 access-control-allow-origin: *
  </code></pre>
         </details>         <pre>
@@ -756,7 +769,7 @@ access-control-allow-origin: *
                 <input type="text"
                name="userId"
                data-endpoint="GETapi-v1-notification-getByUserId--userId-"
-               value="quia"
+               value="ut"
                data-component="url" hidden>
     <br>
 
@@ -776,14 +789,14 @@ access-control-allow-origin: *
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/v1/notification/firstById/repellat" \
+    --get "http://localhost:8000/api/v1/notification/firstById/maiores" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/v1/notification/firstById/repellat"
+    "http://localhost:8000/api/v1/notification/firstById/maiores"
 );
 
 const headers = {
@@ -809,7 +822,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 44
+x-ratelimit-remaining: 43
 access-control-allow-origin: *
  </code></pre>
         </details>         <pre>
@@ -866,11 +879,125 @@ access-control-allow-origin: *
                 <input type="text"
                name="id"
                data-endpoint="GETapi-v1-notification-firstById--id-"
-               value="repellat"
+               value="maiores"
                data-component="url" hidden>
     <br>
 <p>The ID of the firstById.</p>
             </p>
+                    </form>
+
+                <h1 id="payment">Payment</h1>
+
+    
+
+                                <h2 id="payment-GETapi-v1-payment-get">get - Payment</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-v1-payment-get">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost:8000/api/v1/payment/get" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8000/api/v1/payment/get"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-v1-payment-get">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary>
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 42
+access-control-allow-origin: *
+ </code></pre>
+        </details>         <pre>
+
+<code class="language-json">{
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-12-18T13:24:00.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-12-18T13:24:00.000000Z&quot;,
+            &quot;title&quot;: &quot;Wooppay&quot;
+        },
+        {
+            &quot;id&quot;: 2,
+            &quot;created_at&quot;: &quot;2022-12-18T13:24:00.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-12-18T13:24:00.000000Z&quot;,
+            &quot;title&quot;: &quot;Kaspi&quot;
+        }
+    ]
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-v1-payment-get" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-v1-payment-get"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-payment-get"></code></pre>
+</span>
+<span id="execution-error-GETapi-v1-payment-get" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-payment-get"></code></pre>
+</span>
+<form id="form-GETapi-v1-payment-get" data-method="GET"
+      data-path="api/v1/payment/get"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-payment-get', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-v1-payment-get"
+                    onclick="tryItOut('GETapi-v1-payment-get');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-v1-payment-get"
+                    onclick="cancelTryOut('GETapi-v1-payment-get');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-v1-payment-get" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/v1/payment/get</code></b>
+        </p>
                     </form>
 
                 <h1 id="questions">Questions</h1>
@@ -890,14 +1017,14 @@ access-control-allow-origin: *
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/v1/question/getByUserId/pariatur" \
+    --get "http://localhost:8000/api/v1/question/getByUserId/perspiciatis" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/v1/question/getByUserId/pariatur"
+    "http://localhost:8000/api/v1/question/getByUserId/perspiciatis"
 );
 
 const headers = {
@@ -923,7 +1050,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 47
+x-ratelimit-remaining: 46
 access-control-allow-origin: *
  </code></pre>
         </details>         <pre>
@@ -980,7 +1107,7 @@ access-control-allow-origin: *
                 <input type="text"
                name="userId"
                data-endpoint="GETapi-v1-question-getByUserId--userId-"
-               value="pariatur"
+               value="perspiciatis"
                data-component="url" hidden>
     <br>
 
@@ -1000,14 +1127,14 @@ access-control-allow-origin: *
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/v1/question/firstById/consequatur" \
+    --get "http://localhost:8000/api/v1/question/firstById/consectetur" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/v1/question/firstById/consequatur"
+    "http://localhost:8000/api/v1/question/firstById/consectetur"
 );
 
 const headers = {
@@ -1033,7 +1160,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 46
+x-ratelimit-remaining: 45
 access-control-allow-origin: *
  </code></pre>
         </details>         <pre>
@@ -1090,7 +1217,7 @@ access-control-allow-origin: *
                 <input type="text"
                name="id"
                data-endpoint="GETapi-v1-question-firstById--id-"
-               value="consequatur"
+               value="consectetur"
                data-component="url" hidden>
     <br>
 <p>The ID of the firstById.</p>
@@ -1114,10 +1241,10 @@ access-control-allow-origin: *
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"user_id\": \"vel\",
-    \"price\": \"amet\",
-    \"title\": \"est\",
-    \"phone\": \"voluptas\"
+    \"user_id\": \"aut\",
+    \"price\": \"placeat\",
+    \"title\": \"laborum\",
+    \"is_important\": false
 }"
 </code></pre></div>
 
@@ -1133,10 +1260,10 @@ const headers = {
 };
 
 let body = {
-    "user_id": "vel",
-    "price": "amet",
-    "title": "est",
-    "phone": "voluptas"
+    "user_id": "aut",
+    "price": "placeat",
+    "title": "laborum",
+    "is_important": false
 };
 
 fetch(url, {
@@ -1196,7 +1323,7 @@ fetch(url, {
                 <input type="text"
                name="user_id"
                data-endpoint="POSTapi-v1-question-create"
-               value="vel"
+               value="aut"
                data-component="body" hidden>
     <br>
 
@@ -1208,7 +1335,7 @@ fetch(url, {
                 <input type="text"
                name="price"
                data-endpoint="POSTapi-v1-question-create"
-               value="amet"
+               value="placeat"
                data-component="body" hidden>
     <br>
 
@@ -1220,32 +1347,31 @@ fetch(url, {
                 <input type="text"
                name="title"
                data-endpoint="POSTapi-v1-question-create"
-               value="est"
+               value="laborum"
                data-component="body" hidden>
     <br>
 
         </p>
                 <p>
             <b><code>is_important</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
-<i>optional</i> &nbsp;
-                <input type="text"
-               name="is_important"
-               data-endpoint="POSTapi-v1-question-create"
-               value=""
-               data-component="body" hidden>
-    <br>
-
-        </p>
-                <p>
-            <b><code>phone</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
+<small>boolean</small>&nbsp;
  &nbsp;
-                <input type="text"
-               name="phone"
-               data-endpoint="POSTapi-v1-question-create"
-               value="voluptas"
-               data-component="body" hidden>
+                <label data-endpoint="POSTapi-v1-question-create" hidden>
+            <input type="radio" name="is_important"
+                   value="true"
+                   data-endpoint="POSTapi-v1-question-create"
+                   data-component="body"
+            >
+            <code>true</code>
+        </label>
+        <label data-endpoint="POSTapi-v1-question-create" hidden>
+            <input type="radio" name="is_important"
+                   value="false"
+                   data-endpoint="POSTapi-v1-question-create"
+                   data-component="body"
+            >
+            <code>false</code>
+        </label>
     <br>
 
         </p>
@@ -1268,14 +1394,14 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/v1/region/getByCountryId/minima" \
+    --get "http://localhost:8000/api/v1/region/getByCountryId/id" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/v1/region/getByCountryId/minima"
+    "http://localhost:8000/api/v1/region/getByCountryId/id"
 );
 
 const headers = {
@@ -1301,7 +1427,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 49
+x-ratelimit-remaining: 48
 access-control-allow-origin: *
  </code></pre>
         </details>         <pre>
@@ -1358,7 +1484,7 @@ access-control-allow-origin: *
                 <input type="text"
                name="countryId"
                data-endpoint="GETapi-v1-region-getByCountryId--countryId-"
-               value="minima"
+               value="id"
                data-component="url" hidden>
     <br>
 
@@ -1382,14 +1508,14 @@ access-control-allow-origin: *
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/v1/user/deleteByPhone/maiores" \
+    --get "http://localhost:8000/api/v1/user/deleteByPhone/quia" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/v1/user/deleteByPhone/maiores"
+    "http://localhost:8000/api/v1/user/deleteByPhone/quia"
 );
 
 const headers = {
@@ -1472,7 +1598,7 @@ access-control-allow-origin: *
                 <input type="text"
                name="phone"
                data-endpoint="GETapi-v1-user-deleteByPhone--phone-"
-               value="maiores"
+               value="quia"
                data-component="url" hidden>
     <br>
 
@@ -1492,14 +1618,14 @@ access-control-allow-origin: *
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/v1/user/restoreByPhone/molestias" \
+    --get "http://localhost:8000/api/v1/user/restoreByPhone/non" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/v1/user/restoreByPhone/molestias"
+    "http://localhost:8000/api/v1/user/restoreByPhone/non"
 );
 
 const headers = {
@@ -1582,7 +1708,117 @@ access-control-allow-origin: *
                 <input type="text"
                name="phone"
                data-endpoint="GETapi-v1-user-restoreByPhone--phone-"
-               value="molestias"
+               value="non"
+               data-component="url" hidden>
+    <br>
+
+            </p>
+                    </form>
+
+                    <h2 id="user-GETapi-v1-user-checkUserByPhone--phone-">checkUserByPhone - User</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-v1-user-checkUserByPhone--phone-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost:8000/api/v1/user/checkUserByPhone/totam" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8000/api/v1/user/checkUserByPhone/totam"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-v1-user-checkUserByPhone--phone-">
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary>
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 57
+access-control-allow-origin: *
+ </code></pre>
+        </details>         <pre>
+
+<code class="language-json">{
+    &quot;message&quot;: &quot;not found&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-v1-user-checkUserByPhone--phone-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-v1-user-checkUserByPhone--phone-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-user-checkUserByPhone--phone-"></code></pre>
+</span>
+<span id="execution-error-GETapi-v1-user-checkUserByPhone--phone-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-user-checkUserByPhone--phone-"></code></pre>
+</span>
+<form id="form-GETapi-v1-user-checkUserByPhone--phone-" data-method="GET"
+      data-path="api/v1/user/checkUserByPhone/{phone}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-user-checkUserByPhone--phone-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-v1-user-checkUserByPhone--phone-"
+                    onclick="tryItOut('GETapi-v1-user-checkUserByPhone--phone-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-v1-user-checkUserByPhone--phone-"
+                    onclick="cancelTryOut('GETapi-v1-user-checkUserByPhone--phone-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-v1-user-checkUserByPhone--phone-" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/v1/user/checkUserByPhone/{phone}</code></b>
+        </p>
+                    <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <p>
+                <b><code>phone</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text"
+               name="phone"
+               data-endpoint="GETapi-v1-user-checkUserByPhone--phone-"
+               value="totam"
                data-component="url" hidden>
     <br>
 
@@ -1602,14 +1838,14 @@ access-control-allow-origin: *
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/v1/user/firstByPhone/labore" \
+    --get "http://localhost:8000/api/v1/user/firstByPhone/maxime" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/v1/user/firstByPhone/labore"
+    "http://localhost:8000/api/v1/user/firstByPhone/maxime"
 );
 
 const headers = {
@@ -1635,7 +1871,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 57
+x-ratelimit-remaining: 56
 access-control-allow-origin: *
  </code></pre>
         </details>         <pre>
@@ -1692,7 +1928,7 @@ access-control-allow-origin: *
                 <input type="text"
                name="phone"
                data-endpoint="GETapi-v1-user-firstByPhone--phone-"
-               value="labore"
+               value="maxime"
                data-component="url" hidden>
     <br>
 
@@ -1712,14 +1948,14 @@ access-control-allow-origin: *
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/v1/user/checkCode/a/id" \
+    --get "http://localhost:8000/api/v1/user/checkCode/tempore/quia" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/v1/user/checkCode/a/id"
+    "http://localhost:8000/api/v1/user/checkCode/tempore/quia"
 );
 
 const headers = {
@@ -1745,7 +1981,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 56
+x-ratelimit-remaining: 55
 access-control-allow-origin: *
  </code></pre>
         </details>         <pre>
@@ -1802,7 +2038,7 @@ access-control-allow-origin: *
                 <input type="text"
                name="phone"
                data-endpoint="GETapi-v1-user-checkCode--phone---code-"
-               value="a"
+               value="tempore"
                data-component="url" hidden>
     <br>
 
@@ -1814,7 +2050,7 @@ access-control-allow-origin: *
                 <input type="text"
                name="code"
                data-endpoint="GETapi-v1-user-checkCode--phone---code-"
-               value="id"
+               value="quia"
                data-component="url" hidden>
     <br>
 
@@ -1834,14 +2070,14 @@ access-control-allow-origin: *
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/v1/user/resetPassword/suscipit" \
+    --get "http://localhost:8000/api/v1/user/resetPassword/ut" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/v1/user/resetPassword/suscipit"
+    "http://localhost:8000/api/v1/user/resetPassword/ut"
 );
 
 const headers = {
@@ -1858,7 +2094,7 @@ fetch(url, {
 
 <span id="example-responses-GETapi-v1-user-resetPassword--phone-">
             <blockquote>
-            <p>Example response (401):</p>
+            <p>Example response (200):</p>
         </blockquote>
                 <details class="annotation">
             <summary>
@@ -1867,14 +2103,14 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 55
+x-ratelimit-remaining: 54
 access-control-allow-origin: *
  </code></pre>
         </details>         <pre>
 
 <code class="language-json">{
-    &quot;phone&quot;: &quot;suscipit&quot;,
-    &quot;code&quot;: 1041,
+    &quot;phone&quot;: &quot;ut&quot;,
+    &quot;code&quot;: 1215,
     &quot;status&quot;: &quot;code_sent&quot;
 }</code>
  </pre>
@@ -1926,7 +2162,7 @@ access-control-allow-origin: *
                 <input type="text"
                name="phone"
                data-endpoint="GETapi-v1-user-resetPassword--phone-"
-               value="suscipit"
+               value="ut"
                data-component="url" hidden>
     <br>
 
@@ -1946,14 +2182,14 @@ access-control-allow-origin: *
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/v1/user/sendRegisterCode/officiis" \
+    --get "http://localhost:8000/api/v1/user/sendRegisterCode/ipsa" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/v1/user/sendRegisterCode/officiis"
+    "http://localhost:8000/api/v1/user/sendRegisterCode/ipsa"
 );
 
 const headers = {
@@ -1970,7 +2206,7 @@ fetch(url, {
 
 <span id="example-responses-GETapi-v1-user-sendRegisterCode--phone-">
             <blockquote>
-            <p>Example response (401):</p>
+            <p>Example response (200):</p>
         </blockquote>
                 <details class="annotation">
             <summary>
@@ -1979,14 +2215,14 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 54
+x-ratelimit-remaining: 53
 access-control-allow-origin: *
  </code></pre>
         </details>         <pre>
 
 <code class="language-json">{
-    &quot;phone&quot;: &quot;officiis&quot;,
-    &quot;code&quot;: 1690,
+    &quot;phone&quot;: &quot;ipsa&quot;,
+    &quot;code&quot;: 8582,
     &quot;status&quot;: &quot;not_registered&quot;
 }</code>
  </pre>
@@ -2038,7 +2274,7 @@ access-control-allow-origin: *
                 <input type="text"
                name="phone"
                data-endpoint="GETapi-v1-user-sendRegisterCode--phone-"
-               value="officiis"
+               value="ipsa"
                data-component="url" hidden>
     <br>
 
@@ -2058,14 +2294,14 @@ access-control-allow-origin: *
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/v1/user/resendRegisterCode/aut" \
+    --get "http://localhost:8000/api/v1/user/resendRegisterCode/et" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/v1/user/resendRegisterCode/aut"
+    "http://localhost:8000/api/v1/user/resendRegisterCode/et"
 );
 
 const headers = {
@@ -2082,7 +2318,7 @@ fetch(url, {
 
 <span id="example-responses-GETapi-v1-user-resendRegisterCode--phone-">
             <blockquote>
-            <p>Example response (401):</p>
+            <p>Example response (200):</p>
         </blockquote>
                 <details class="annotation">
             <summary>
@@ -2091,14 +2327,14 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 53
+x-ratelimit-remaining: 52
 access-control-allow-origin: *
  </code></pre>
         </details>         <pre>
 
 <code class="language-json">{
-    &quot;phone&quot;: &quot;aut&quot;,
-    &quot;code&quot;: 2524,
+    &quot;phone&quot;: &quot;et&quot;,
+    &quot;code&quot;: 4972,
     &quot;status&quot;: &quot;not_registered&quot;
 }</code>
  </pre>
@@ -2150,7 +2386,7 @@ access-control-allow-origin: *
                 <input type="text"
                name="phone"
                data-endpoint="GETapi-v1-user-resendRegisterCode--phone-"
-               value="aut"
+               value="et"
                data-component="url" hidden>
     <br>
 
@@ -2174,12 +2410,12 @@ access-control-allow-origin: *
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"language_id\": \"voluptatibus\",
-    \"region_id\": \"modi\",
-    \"name\": \"amet\",
-    \"surname\": \"expedita\",
-    \"phone\": \"non\",
-    \"push_notification\": true
+    \"language_id\": \"aliquid\",
+    \"region_id\": \"et\",
+    \"name\": \"ratione\",
+    \"surname\": \"deleniti\",
+    \"phone\": \"repellendus\",
+    \"push_notification\": false
 }"
 </code></pre></div>
 
@@ -2195,12 +2431,12 @@ const headers = {
 };
 
 let body = {
-    "language_id": "voluptatibus",
-    "region_id": "modi",
-    "name": "amet",
-    "surname": "expedita",
-    "phone": "non",
-    "push_notification": true
+    "language_id": "aliquid",
+    "region_id": "et",
+    "name": "ratione",
+    "surname": "deleniti",
+    "phone": "repellendus",
+    "push_notification": false
 };
 
 fetch(url, {
@@ -2260,7 +2496,7 @@ fetch(url, {
                 <input type="text"
                name="language_id"
                data-endpoint="POSTapi-v1-user-create"
-               value="voluptatibus"
+               value="aliquid"
                data-component="body" hidden>
     <br>
 
@@ -2272,7 +2508,7 @@ fetch(url, {
                 <input type="text"
                name="region_id"
                data-endpoint="POSTapi-v1-user-create"
-               value="modi"
+               value="et"
                data-component="body" hidden>
     <br>
 
@@ -2284,7 +2520,7 @@ fetch(url, {
                 <input type="text"
                name="name"
                data-endpoint="POSTapi-v1-user-create"
-               value="amet"
+               value="ratione"
                data-component="body" hidden>
     <br>
 
@@ -2296,7 +2532,7 @@ fetch(url, {
                 <input type="text"
                name="surname"
                data-endpoint="POSTapi-v1-user-create"
-               value="expedita"
+               value="deleniti"
                data-component="body" hidden>
     <br>
 
@@ -2320,7 +2556,7 @@ fetch(url, {
                 <input type="text"
                name="phone"
                data-endpoint="POSTapi-v1-user-create"
-               value="non"
+               value="repellendus"
                data-component="body" hidden>
     <br>
 
@@ -2363,11 +2599,11 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost:8000/api/v1/user/update/ut" \
+    "http://localhost:8000/api/v1/user/update/dignissimos" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"language_id\": \"odio\",
+    \"language_id\": \"repudiandae\",
     \"push_notification\": true
 }"
 </code></pre></div>
@@ -2375,7 +2611,7 @@ fetch(url, {
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/v1/user/update/ut"
+    "http://localhost:8000/api/v1/user/update/dignissimos"
 );
 
 const headers = {
@@ -2384,7 +2620,7 @@ const headers = {
 };
 
 let body = {
-    "language_id": "odio",
+    "language_id": "repudiandae",
     "push_notification": true
 };
 
@@ -2445,7 +2681,7 @@ fetch(url, {
                 <input type="text"
                name="id"
                data-endpoint="POSTapi-v1-user-update--id-"
-               value="ut"
+               value="dignissimos"
                data-component="url" hidden>
     <br>
 <p>The ID of the update.</p>
@@ -2458,7 +2694,7 @@ fetch(url, {
                 <input type="text"
                name="language_id"
                data-endpoint="POSTapi-v1-user-update--id-"
-               value="odio"
+               value="repudiandae"
                data-component="body" hidden>
     <br>
 
@@ -2501,14 +2737,14 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/v1/user/auth/ipsam/sequi" \
+    --get "http://localhost:8000/api/v1/user/auth/rerum/modi" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/v1/user/auth/ipsam/sequi"
+    "http://localhost:8000/api/v1/user/auth/rerum/modi"
 );
 
 const headers = {
@@ -2534,7 +2770,7 @@ fetch(url, {
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 52
+x-ratelimit-remaining: 51
 access-control-allow-origin: *
  </code></pre>
         </details>         <pre>
@@ -2591,7 +2827,7 @@ access-control-allow-origin: *
                 <input type="text"
                name="phone"
                data-endpoint="GETapi-v1-user-auth--phone---password-"
-               value="ipsam"
+               value="rerum"
                data-component="url" hidden>
     <br>
 
@@ -2603,7 +2839,7 @@ access-control-allow-origin: *
                 <input type="text"
                name="password"
                data-endpoint="GETapi-v1-user-auth--phone---password-"
-               value="sequi"
+               value="modi"
                data-component="url" hidden>
     <br>
 
