@@ -67,7 +67,7 @@
     <script src="https://cdnjs.com/libraries/Chart.js"></script>
 
     @if(backpack_user()->{Contract::ROLE} === Contract::ADMIN)
-        <div class="h4 font-weight-bold text-center mt-4">Пользователей в систем</div>
+        <div class="h4 font-weight-bold text-center mt-4">Пользователей в системе</div>
         <div class="row">
             <div class="col-12 col-lg-4">
                 <div class="card mt-4">
