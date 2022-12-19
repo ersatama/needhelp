@@ -4,6 +4,13 @@ namespace App\Domain\Contracts;
 
 abstract class Contract
 {
+    const ORDER_BY_TYPES    =   [
+        self::ASC,
+        self::DESC
+    ];
+    const ASC   =   'asc';
+    const ORDER_BY_TYPE =   'order_by_type';
+    const ORDER_BY  =   'order_by';
     const QUESTION_ID   =   'question_id';
     const DESC  =   'desc';
     const IP    =   'ip';

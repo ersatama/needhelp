@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Domain\Contracts\Contract;
 use App\Domain\Contracts\QuestionContract;
+use App\Domain\Scopes\OrderBy;
 use App\Domain\Scopes\Page;
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -20,6 +21,7 @@ class Question extends Model
     protected static function booted(): void
     {
         static::addGlobalScope(new Page);
+        static::addGlobalScope(new OrderBy);
     }
 
     public function user(): BelongsTo
