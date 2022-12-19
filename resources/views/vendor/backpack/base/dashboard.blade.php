@@ -18,7 +18,7 @@
                         'class'         => 'card mb-2',
                         'wrapper'       =>  ['class' => 'col-sm-4'],
                         'value'         =>  '<span class="text-primary">' . UserRepositoryEloquent::count([]) . '</span>',
-                        'description'   => 'Все пользователи',
+                        'description'   => 'Пользователей в системе',
                         'progress'      => 100, // integer
                         'progressClass' => 'progress-bar bg-primary',
                     ],
@@ -27,7 +27,7 @@
                         'class'         => 'card mb-2',
                         'wrapper'       =>  ['class' => 'col-sm-4'],
                         'value'         =>  '<span class="text-primary">' . UserRepositoryEloquent::count([Contract::ROLE=>Contract::LAWYER]) . '</span>',
-                        'description'   => 'Все юристы',
+                        'description'   => 'Юристов в системе',
                         'progress'      => 100, // integer
                         'progressClass' => 'progress-bar bg-primary',
                     ],
@@ -36,7 +36,7 @@
                         'class'         => 'card mb-2',
                         'wrapper'       =>  ['class' => 'col-sm-4'],
                         'value'         =>  '<span class="text-danger">' . QuestionRepositoryEloquent::count([]) . '</span>',
-                        'description'   => 'Все вопросы',
+                        'description'   => 'Вопросов за все время',
                         'progress'      => 100, // integer
                         'progressClass' => 'progress-bar bg-danger',
                     ],
@@ -67,12 +67,12 @@
     <script src="https://cdnjs.com/libraries/Chart.js"></script>
 
     @if(backpack_user()->{Contract::ROLE} === Contract::ADMIN)
-        <div class="h4 font-weight-bold text-center mt-4">Пользователи</div>
+        <div class="h4 font-weight-bold text-center mt-4">Пользователей в систем</div>
         <div class="row">
             <div class="col-12 col-lg-4">
                 <div class="card mt-4">
                     <div class="card-header text-center">
-                        Зарегистрировано за последние 7 дней
+                        За последние 7 дней
                     </div>
                     <div class="card-body">
                         @php
@@ -116,7 +116,7 @@
             <div class="col-12 col-lg-4">
                 <div class="card mt-4">
                     <div class="card-header text-center">
-                        Зарегистрировано за последние 30 дней
+                        За последние 30 дней
                     </div>
                     <div class="card-body">
                         @php
@@ -207,7 +207,7 @@
                 </div>
             </div>
         </div>
-        <div class="h4 font-weight-bold text-center">Сумма</div>
+        <div class="h4 font-weight-bold text-center">Сумма всех оплат</div>
         <div class="row">
             <div class="col-12 col-lg-4">
                 <div class="card mt-3">
@@ -349,12 +349,12 @@
                 </div>
             </div>
         </div>
-        <div class="h4 font-weight-bold text-center">В обработке</div>
+        <div class="h4 font-weight-bold text-center">Вопросы со статусом “В обработке”</div>
         <div class="row">
             <div class="col-12 col-lg-4">
                 <div class="card mt-3">
                     <div class="card-header text-center">
-                        В обработке за последние 7 дней
+                        За последние 7 дней
                     </div>
                     <div class="card-body">
                         @php
@@ -401,7 +401,7 @@
             <div class="col-12 col-lg-4">
                 <div class="card mt-3">
                     <div class="card-header text-center">
-                        В обработке за последние 30 дней
+                        За последние 30 дней
                     </div>
                     <div class="card-body">
                         @php
@@ -495,12 +495,12 @@
                 </div>
             </div>
         </div>
-        <div class="h4 font-weight-bold text-center">Закрытые</div>
+        <div class="h4 font-weight-bold text-center">Вопросы со статусом “Закрыт”</div>
         <div class="row">
             <div class="col-12 col-lg-4">
                 <div class="card mt-3">
                     <div class="card-header text-center">
-                        Закрытые вопросы за последние 7 дней
+                        За последние 7 дней
                     </div>
                     <div class="card-body">
                         @php
@@ -547,7 +547,7 @@
             <div class="col-12 col-lg-4">
                 <div class="card mt-3">
                     <div class="card-header text-center">
-                        Закрытые вопросы за последние 30 дней
+                        За последние 30 дней
                     </div>
                     <div class="card-body">
                         @php
@@ -641,36 +641,42 @@
                 </div>
             </div>
         </div>
-        <div class="h4 font-weight-bold text-center">Общее</div>
+        <div class="h4 font-weight-bold text-center">Процент обычных и срочных вопросов</div>
         <div class="row">
             <div class="col-12 col-lg-6">
                 <div class="card mt-3">
                     <div class="card-header text-center">
-                        Статистика вопросов
+                        За последние 7 дней
                     </div>
                     <div class="card-body">
                         @php
-                            $notificationYear  =   QuestionRepositoryEloquent::openClosedPercentage();
-                            $status =   ['Отменен','В обработке','Закрыт'];
+                            $notificationWeek  =   QuestionRepositoryEloquent::openClosedPercentage([
+                                [Contract::IS_PAID,true],
+                                [Contract::CREATED_AT, '>', now()->subDays(7)->endOfDay()]
+                            ]);
+                            $status =   [
+                                1    =>  'Срочные вопросы',
+                                0   =>  'Обычные вопросы'
+                            ];
                         @endphp
-                        <canvas id="open-question-year" width="400" height="220" aria-label="Открытые вопросы за последние 365 дней"></canvas>
+                        <canvas id="doughnut-week" width="400" height="220"></canvas>
                         <script>
                             notifications = [
-                                    @foreach( $notificationYear as &$notification)
+                                @foreach( $notificationWeek as &$notification)
                                 {
-                                    status: '{{ $status[$notification['status']] }}',
+                                    is_important: '{{ $status[$notification['is_important']] }}',
                                     count: {{ $notification['count'] }}
                                 },
                                 @endforeach
                             ];
                             new Chart(
-                                document.getElementById('open-question-year'),
+                                document.getElementById('doughnut-week'),
                                 {
                                     type: 'doughnut',
                                     data: {
-                                        labels: notifications.map(row => row.status),
+                                        labels: notifications.map(row => row.is_important),
                                         datasets: [{
-                                            label: 'Открытые вопросы за последние 365 дней',
+                                            label: 'За последние 7 дней',
                                             data: notifications.map(row => row.count),
                                             backgroundColor: [
                                                 'purple',
@@ -699,35 +705,32 @@
             <div class="col-12 col-lg-6">
                 <div class="card mt-3">
                     <div class="card-header text-center">
-                        Пользователи
+                        За последние 30 дней
                     </div>
                     <div class="card-body">
                         @php
-                            $userGlobal =   UserRepositoryEloquent::rolePercentage();
-                            $roles  =   [
-                                Contract::ADMIN =>  'Администратор',
-                                Contract::USER  =>  'Пользователь',
-                                Contract::LAWYER    =>  'Юрист'
-                            ];
+                            $notificationMonth  =   QuestionRepositoryEloquent::openClosedPercentage([
+                                [Contract::IS_PAID,true],
+                                [Contract::CREATED_AT, '>', now()->subDays(30)->endOfDay()]
+                            ]);
                         @endphp
-                        <canvas id="user-global" width="400" height="220"></canvas>
+                        <canvas id="doughnut-month" width="400" height="220"></canvas>
                         <script>
                             notifications = [
-                                    @foreach( $userGlobal as &$notification)
+                                    @foreach( $notificationMonth as &$notification)
                                 {
-                                    role: '{{ $roles[$notification['role']] }}',
+                                    is_important: '{{ $status[$notification['is_important']] }}',
                                     count: {{ $notification['count'] }}
                                 },
                                 @endforeach
                             ];
                             new Chart(
-                                document.getElementById('user-global'),
+                                document.getElementById('doughnut-month'),
                                 {
                                     type: 'doughnut',
                                     data: {
-                                        labels: notifications.map(row => row.role),
+                                        labels: notifications.map(row => row.is_important),
                                         datasets: [{
-                                            label: 'Открытые вопросы за последние 365 дней',
                                             data: notifications.map(row => row.count),
                                             backgroundColor: [
                                                 'purple',
@@ -755,7 +758,7 @@
             </div>
         </div>
     @else
-        <div class="h4 font-weight-bold text-center">Количество отвеченных вопросов</div>
+        <div class="h4 font-weight-bold text-center">Вопросы со статусом “Закрыт”</div>
         <div class="row">
             <div class="col-12 col-lg-4">
                 <div class="card mt-3">
