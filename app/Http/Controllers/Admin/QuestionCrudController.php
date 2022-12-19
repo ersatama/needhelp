@@ -8,6 +8,7 @@ use App\Models\Question;
 use Backpack\CRUD\app\Exceptions\BackpackProRequiredException;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
+use Illuminate\Http\RedirectResponse;
 
 class QuestionCrudController extends CrudController
 {
@@ -16,29 +17,23 @@ class QuestionCrudController extends CrudController
     use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation { update as traitUpdate; }
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
 
-    /**
-     * Configure the CrudPanel object. Apply settings to all operations.
-     *
-     * @return void
-     * @throws BackpackProRequiredException
-     */
     public function setup(): void
     {
         CRUD::setModel(Question::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/question');
         CRUD::setEntityNameStrings('Вопрос', 'Вопросы');
-
+        $this->crud->setListView('vendor.backpack.base.crud.question.list');
         if (backpack_user()->{Contract::ROLE} === Contract::LAWYER) {
+            $this->crud->denyAccess('create');
             $this->crud->addClause('where', Contract::IS_PAID, true);
             $this->crud->addClause('where', Contract::STATUS, 1);
-        } else {
-            $this->crud->enableExportButtons();
+            $this->crud->setEditView('vendor.backpack.base.crud.question.edit');
         }
         $this->crud->orderBy(Contract::IS_IMPORTANT, Contract::DESC);
         $this->crud->orderBy(Contract::CREATED_AT, Contract::DESC);
     }
 
-    public function update(): array|\Illuminate\Http\RedirectResponse
+    public function update(): array|RedirectResponse
     {
         // do something before validation, before save, before everything; for example:
         // $this->crud->addField(['type' => 'hidden', 'name' => 'author_id']);
@@ -173,29 +168,32 @@ class QuestionCrudController extends CrudController
     {
         CRUD::column(Contract::ID)
             ->label('ID');
+        CRUD::column(Contract::CREATED_AT)
+            ->label('Создано');
         CRUD::column(Contract::USER)
-            ->label('Пользователь')->attribute(Contract::FULLNAME);
+            ->label('Пользователь')
+            ->attribute(Contract::FULLNAME);
         CRUD::column(Contract::LAWYER)
-            ->label('Юрист')->attribute(Contract::FULLNAME);
-        CRUD::column(Contract::PRICE)
-            ->label('Цена');
+            ->label('Юрист')
+            ->attribute(Contract::FULLNAME);
         CRUD::column(Contract::DESCRIPTION)
             ->label('Вопрос')->limit(1000000);
-        CRUD::column(Contract::ANSWER)
-            ->label('Ответ')->limit(1000000);
+        CRUD::column(Contract::PRICE)
+            ->label('Цена');
         CRUD::column(Contract::IS_IMPORTANT)
             ->type('select_from_array')
             ->label('Срочный вопрос')->options([
                 false => 'Нет',
                 true => 'Да'
             ]);
-        CRUD::column(Contract::IS_PAID)
-            ->type('select_from_array')
-            ->label('Оплачено')
-            ->options([
-                false => 'Нет',
-                true => 'Да'
-            ]);
+
+        CRUD::column(Contract::ANSWER)
+            ->label('Ответ')->limit(1000000);
+        CRUD::addColumn([   // Custom Field
+            'name'  => 'timer',
+            'label' => 'Таймер',
+            'type'  => ''
+        ]);
         CRUD::column(Contract::STATUS)
             ->type('select_from_array')
             ->label('Статус')

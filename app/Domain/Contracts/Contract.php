@@ -4,6 +4,7 @@ namespace App\Domain\Contracts;
 
 abstract class Contract
 {
+    const TIMER =   'timer';
     const ORDER_BY_TYPES    =   [
         self::ASC,
         self::DESC

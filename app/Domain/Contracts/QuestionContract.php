@@ -20,4 +20,7 @@ class QuestionContract extends Contract
         self::IS_NEW,
         self::ANSWERED_AT,
     ];
+    const APPENDS   =   [
+        self::TIMER
+    ];
 }
