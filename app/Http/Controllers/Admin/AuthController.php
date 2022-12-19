@@ -38,6 +38,6 @@ class AuthController extends BackPackLoginController
             backpack_auth()->login($user);
             return redirect('dashboard');
         }
-        return view('vendor.backpack.base.auth.login');
+        return view('vendor.backpack.base.auth.login',['username'=>'email']);
     }
 }

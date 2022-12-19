@@ -9,19 +9,21 @@
                     <form class="col-md-12 p-t-10" role="form" method="POST" action="{{ route('backpack.auth.login') }}">
                         {!! csrf_field() !!}
 
-                        <div class="form-group">
-                            <label class="control-label" for="{{ $username }}">{{ config('backpack.base.authentication_column_name') }}</label>
+                        @if($username)
+                            <div class="form-group">
+                                <label class="control-label" for="{{ $username }}">{{ config('backpack.base.authentication_column_name') }}</label>
 
-                            <div>
-                                <input type="text" class="form-control{{ $errors->has($username) ? ' is-invalid' : '' }}" name="{{ $username }}" value="{{ old($username) }}" id="{{ $username }}">
+                                <div>
+                                    <input type="text" class="form-control{{ $errors->has($username) ? ' is-invalid' : '' }}" name="{{ $username }}" value="{{ old($username) }}" id="{{ $username }}">
 
-                                @if ($errors->has($username))
-                                    <span class="invalid-feedback">
+                                    @if ($errors->has($username))
+                                        <span class="invalid-feedback">
                                         <strong>{{ $errors->first($username) }}</strong>
                                     </span>
-                                @endif
+                                    @endif
+                                </div>
                             </div>
-                        </div>
+                        @endif
 
                         <div class="form-group">
                             <label class="control-label" for="password">{{ trans('backpack::base.password') }}</label>
