@@ -10,8 +10,9 @@ class UpdateRequest extends MainRequest
     public function rules():array
     {
         return [
-            Contract::LANGUAGE_ID   =>  'required|exists:languages,id',
+            Contract::LANGUAGE_ID   =>  'nullable|exists:languages,id',
             Contract::PUSH_NOTIFICATION =>  'nullable|boolean',
+            Contract::PASSWORD  =>  'nullable'
         ];
     }
 
