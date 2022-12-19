@@ -135,6 +135,17 @@ class QuestionCrudController extends CrudController
             CRUD::field(Contract::CREATED_AT)->label('Создано')->type('date')->attributes([
                 Contract::READONLY  =>  Contract::READONLY
             ]);
+
+            CRUD::field(Contract::IS_IMPORTANT)
+                ->type('select_from_array')
+                ->label('Срочный вопрос')
+                ->options([
+                    false   =>  'Нет',
+                    true    =>  'Да'
+                ])->attributes([
+                    Contract::READONLY  =>  Contract::READONLY,
+                    'disabled'    => 'disabled',
+                ]);
             CRUD::field(Contract::PRICE)->label('Цена')->attributes([
                 Contract::READONLY  =>  Contract::READONLY
             ]);

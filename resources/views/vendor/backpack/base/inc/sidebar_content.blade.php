@@ -22,5 +22,5 @@
     <li class="nav-item"><a class="nav-link" href="{{ backpack_url('payment') }}"><i class="nav-icon las la-coins"></i> Платежи</a></li>
     <li class="nav-item"><a class="nav-link" href="{{ backpack_url('price') }}"><i class="nav-icon las la-money-bill-wave"></i> Цены</a></li>
 @else
-    <li class="nav-item"><a class="nav-link" href="{{ backpack_url('notification') }}"><i class="nav-iconla la-question"></i> Вопросы</a></li>
+    <li class="nav-item"><a class="nav-link" href="{{ backpack_url('question') }}"><i class="nav-icon la la-question"></i> Вопросы</a></li>
 @endif
