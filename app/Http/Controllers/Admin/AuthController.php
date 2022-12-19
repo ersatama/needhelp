@@ -31,7 +31,7 @@ class AuthController extends BackPackLoginController
         $request->validate([
             'email' => 'required|email|exists:users,email',
             'password' => 'required',
-            //'g-recaptcha-response' => ['required', new ReCaptcha]
+            'g-recaptcha-response' => ['required', new ReCaptcha]
         ]);
         $user   =   $this->userService->userRepository->firstByEmail($request->input(Contract::EMAIL));
         if (Hash::check($request->input(Contract::PASSWORD), $user->{Contract::PASSWORD})) {
