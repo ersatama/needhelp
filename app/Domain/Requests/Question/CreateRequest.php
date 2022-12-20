@@ -11,6 +11,7 @@ class CreateRequest extends MainRequest
     {
         return [
             Contract::USER_ID   =>  'required|exists:users,id',
+            Contract::PAYMENT_ID    =>  'required|exists:payments,id',
             Contract::PRICE     =>  'required',
             Contract::TITLE     =>  'required',
             Contract::IS_IMPORTANT  =>  'required|boolean',
@@ -21,7 +22,6 @@ class CreateRequest extends MainRequest
     {
         $data   =   $this->validator->validated();
         $data[Contract::CURRENCY_ID]    =   1;
-        $data[Contract::PAYMENT_ID] =   1;
         $data[Contract::IS_PAID]    =   true;
         $data[Contract::STATUS]     =   1;
         $data[Contract::IS_NEW]     =   true;
