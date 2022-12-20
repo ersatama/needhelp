@@ -72,13 +72,16 @@ class QuestionCrudController extends CrudController
 
     protected function setupShowOperation(): void
     {
+        CRUD::column(Contract::ANSWER)
+            ->label('Ответ')->limit(1000000);
         $this->extracted();
+        CRUD::column(Contract::ANSWER)
+            ->label('Ответ')->limit(1000000);
     }
 
 
     protected function setupListOperation(): void
     {
-
         $this->extracted();
     }
 
@@ -97,7 +100,7 @@ class QuestionCrudController extends CrudController
                 Contract::DATA_SOURCE   =>  url('api/v1/user/search')
             ]);
 
-            CRUD::field(Contract::DESCRIPTION)->label('Вопросы');
+            CRUD::field(Contract::TITLE)->label('Вопросы');
             CRUD::field(Contract::PRICE)->label('Цена')->type('number');
             CRUD::field(Contract::IS_IMPORTANT)
                 ->type('select_from_array')
@@ -150,7 +153,7 @@ class QuestionCrudController extends CrudController
                 ->attributes([
                     Contract::READONLY  =>  Contract::READONLY
                 ]);
-            CRUD::field(Contract::DESCRIPTION)->label('Вопрос')->attributes([
+            CRUD::field(Contract::TITLE)->label('Вопрос')->attributes([
                 Contract::READONLY  =>  Contract::READONLY
             ]);
             CRUD::field(Contract::ANSWER)->label('Ответ')->attributes([
