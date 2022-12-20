@@ -177,7 +177,7 @@ class QuestionCrudController extends CrudController
             ->label('Юрист')
             ->attribute(Contract::FULLNAME);
         CRUD::column(Contract::TITLE)
-            ->label('Вопрос')->limit(1000000);
+            ->label('Вопрос');
         CRUD::column(Contract::PRICE)
             ->label('Цена');
         CRUD::column(Contract::IS_IMPORTANT)
@@ -188,7 +188,7 @@ class QuestionCrudController extends CrudController
             ]);
 
         CRUD::column(Contract::ANSWER)
-            ->label('Ответ')->limit(1000000);
+            ->label('Ответ');
         CRUD::addColumn([   // Custom Field
             'name'  => 'timer',
             'label' => 'Таймер',
