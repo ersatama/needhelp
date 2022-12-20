@@ -22,7 +22,7 @@ class CreateRequest extends MainRequest
         $data   =   $this->validator->validated();
         $data[Contract::CURRENCY_ID]    =   1;
         $data[Contract::PAYMENT_ID] =   1;
-        $data[Contract::IS_PAID]    =   false;
+        $data[Contract::IS_PAID]    =   true;
         $data[Contract::STATUS]     =   1;
         $data[Contract::IS_NEW]     =   true;
         return $data;
