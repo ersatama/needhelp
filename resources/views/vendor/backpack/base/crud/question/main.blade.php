@@ -238,6 +238,7 @@
                 answered_page: 1,
 
                 is_paid: true,
+                take: 100,
 
                 user_id:  {{ backpack_user()->{\App\Domain\Contracts\Contract::ID} }},
                 role:  '{{ backpack_user()->{\App\Domain\Contracts\Contract::ROLE} }}',
@@ -280,7 +281,7 @@
                 },
                 getQuestions() {
                     axios
-                        .post('/api/v1/question/get?page='+this.page+'&order_by_type=desc&take=20',{
+                        .post('/api/v1/question/get?page='+this.page+'&order_by_type=desc&take='+this.take,{
                             is_paid: this.is_paid,
                             status: 1,
                         })
@@ -307,7 +308,7 @@
 
                 getAnsweredQuestions() {
                     axios
-                        .post('/api/v1/question/get?page='+this.answered_page+'&order_by=updated_at&order_by_type=desc&take=20',{
+                        .post('/api/v1/question/get?page='+this.answered_page+'&order_by=updated_at&order_by_type=desc&take='+this.take,{
                             is_paid: this.is_paid,
                             status: 2,
                             @if (backpack_user()->{\App\Domain\Contracts\Contract::ROLE} === 'lawyer')
