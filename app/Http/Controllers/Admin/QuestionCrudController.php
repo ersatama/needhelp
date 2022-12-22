@@ -22,7 +22,7 @@ class QuestionCrudController extends CrudController
         CRUD::setModel(Question::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/question');
         CRUD::setEntityNameStrings('Вопрос', 'Вопросы');
-        $this->crud->setListView('vendor.backpack.base.crud.question.list');
+        $this->crud->setListView('vendor.backpack.base.crud.question.main');
         if (backpack_user()->{Contract::ROLE} === Contract::LAWYER) {
             $this->crud->denyAccess('create');
             $this->crud->addClause('where', Contract::IS_PAID, true);
@@ -72,11 +72,45 @@ class QuestionCrudController extends CrudController
 
     protected function setupShowOperation(): void
     {
+        CRUD::column(Contract::ID)
+            ->label('ID');
+        CRUD::column(Contract::CREATED_AT)
+            ->label('Создано');
+        CRUD::column(Contract::USER)
+            ->label('Пользователь')
+            ->attribute(Contract::FULLNAME);
+        CRUD::column(Contract::LAWYER)
+            ->label('Юрист')
+            ->attribute(Contract::FULLNAME);
+        CRUD::column(Contract::TITLE)
+            ->label('Вопрос');
+        CRUD::column(Contract::PRICE)
+            ->label('Цена');
+        CRUD::column(Contract::IS_IMPORTANT)
+            ->type('select_from_array')
+            ->label('Срочный вопрос')->options([
+                false => 'Нет',
+                true => 'Да'
+            ]);
+
         CRUD::column(Contract::ANSWER)
             ->label('Ответ')->limit(1000000);
-        $this->extracted();
-        CRUD::column(Contract::ANSWER)
-            ->label('Ответ')->limit(1000000);
+        CRUD::addColumn([   // Custom Field
+            'name'  => 'timer',
+            'label' => 'Таймер',
+            'type'  => ''
+        ]);
+        CRUD::column(Contract::STATUS)
+            ->type('select_from_array')
+            ->label('Статус')
+            ->options([
+                0   =>  'Отменен',
+                1   =>  'В обработке',
+                2   =>  'Закрыт'
+            ]);
+        CRUD::column(Contract::STATUS)
+            ->type('date')
+            ->label('Отвечено');
     }
 
 
