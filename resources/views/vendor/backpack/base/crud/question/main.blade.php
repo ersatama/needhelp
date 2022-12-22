@@ -508,20 +508,16 @@
             z-index: 9998;
             top: 0;
             left: 0;
+            bottom: 0;
             width: 100%;
-            height: 100%;
             background-color: rgba(0, 0, 0, 0.8);
             transition: opacity 0.3s ease;
             overflow: auto;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             padding: 200px 0 200px 0;
         }
 
         .modal-wrapper {
-            display: table-cell;
-            vertical-align: middle;
+            display: block;
         }
 
         .modal-container {
