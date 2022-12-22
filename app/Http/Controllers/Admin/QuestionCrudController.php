@@ -83,7 +83,7 @@ class QuestionCrudController extends CrudController
             ->label('Юрист')
             ->attribute(Contract::FULLNAME);
         CRUD::column(Contract::TITLE)
-            ->label('Вопрос');
+            ->label('Вопрос')->limit(1000000);
         CRUD::column(Contract::PRICE)
             ->label('Цена');
         CRUD::column(Contract::IS_IMPORTANT)
