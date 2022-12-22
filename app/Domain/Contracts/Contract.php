@@ -21,6 +21,7 @@ abstract class Contract
     const IS_NEW    =   'is_new';
     const DATE  =   'date';
     const COUNT =   'count';
+    const DATA  =   'data';
     const READONLY  =   'readonly';
     const LIKE  =   'like';
     const Q =   'q';

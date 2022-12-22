@@ -94,6 +94,11 @@ trait RepositoryEloquent
         return $this->model::get();
     }
 
+    public function getWhereWith($where,$with)
+    {
+        return $this->model::with($with)->where($where)->get();
+    }
+
     public function getByCountryId($countryId)
     {
         return $this->model::where(Contract::COUNTRY_ID,$countryId)->get();

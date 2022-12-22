@@ -17,7 +17,6 @@ class Question extends Model
 
     protected $table    =   QuestionContract::TABLE;
     protected $fillable =   QuestionContract::FILLABLE;
-    protected $appends  =   QuestionContract::APPENDS;
 
     protected static function booted(): void
     {
@@ -33,10 +32,5 @@ class Question extends Model
     public function lawyer(): BelongsTo
     {
         return $this->belongsTo(User::class, Contract::LAWYER_ID, Contract::ID)->withoutGlobalScope(Page::class);
-    }
-
-    public function getTimerAttribute(): string
-    {
-        return strtotime($this->{Contract::CREATED_AT});
     }
 }

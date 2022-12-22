@@ -59,12 +59,14 @@ Route::controller(CityController::class)->group(function() {
 
 Route::controller(QuestionController::class)->group(function() {
     Route::prefix('question')->group(function() {
+        Route::post('get','get')->name('get');
         Route::get('priceDateBetween/{start}/{end}','priceDateBetween')->name('question.priceDateBetween');
         Route::get('countDateBetween/{start}/{end}','countDateBetween')->name('question.countDateBetween');
         Route::get('countDateBetweenClosed/{start}/{end}','countDateBetweenClosed')->name('question.countDateBetweenClosed');
         Route::get('getByUserId/{userId}','getByUserId')->name('question.getByUserId');
         Route::get('firstById/{id}','firstById')->name('question.firstById');
         Route::post('create','create')->name('question.create');
+        Route::post('update/{id}','update')->name('question.update');
     });
 });
 

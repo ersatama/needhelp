@@ -4,6 +4,9 @@ namespace App\Domain\Contracts;
 
 class ErrorContract extends Contract
 {
+    const QUESTION_ALREADY_ANSWERED =   [
+        self::MESSAGE   =>  'question already answered'
+    ];
     const NOT_FOUND =   [
         self::MESSAGE   =>  'not found'
     ];

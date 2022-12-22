@@ -22,7 +22,7 @@ class QuestionCrudController extends CrudController
         CRUD::setModel(Question::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/question');
         CRUD::setEntityNameStrings('Вопрос', 'Вопросы');
-        //$this->crud->setListView('vendor.backpack.base.crud.question.main');
+        $this->crud->setListView('vendor.backpack.base.crud.question.main');
         if (backpack_user()->{Contract::ROLE} === Contract::LAWYER) {
             $this->crud->denyAccess('create');
             $this->crud->addClause('where', Contract::IS_PAID, true);

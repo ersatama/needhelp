@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api;
 use App\Domain\Contracts\Contract;
 use App\Domain\Contracts\ErrorContract;
 use App\Domain\Requests\Question\CreateRequest;
+use App\Domain\Requests\Question\GetRequest;
+use App\Domain\Requests\Question\UpdateRequest;
 use App\Domain\Services\QuestionService;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Question\QuestionCollection;
@@ -21,6 +23,22 @@ class QuestionController extends Controller
     public function __construct(QuestionService $questionService)
     {
         $this->questionService  =   $questionService;
+    }
+
+    /**
+     * @hideFromAPIDocumentation
+     * get - Questions
+     *
+     * @group Questions
+     * @throws ValidationException
+     */
+    public function get(GetRequest $getRequest): Response|Application|ResponseFactory
+    {
+        $data   =   $getRequest->checked();
+        return response([
+            Contract::COUNT =>  $this->questionService->questionRepository->count($data),
+            Contract::DATA  =>  new QuestionCollection($this->questionService->questionRepository->getWhere($data))
+        ],200);
     }
 
     /**
@@ -90,7 +108,25 @@ class QuestionController extends Controller
      */
     public function create(CreateRequest $createRequest): QuestionResource
     {
-        $notification   =   $this->questionService->questionRepository->create($createRequest->checked());
-        return new QuestionResource($notification);
+        $question   =   $this->questionService->questionRepository->create($createRequest->checked());
+        return new QuestionResource($question);
+    }
+
+    /**
+     * update - Questions
+     *
+     * @group Questions
+     * @throws ValidationException
+     */
+    public function update($id, UpdateRequest $updateRequest): Response|QuestionResource|Application|ResponseFactory
+    {
+        $data   =    $updateRequest->checked();
+        if ($question = $this->questionService->questionRepository->firstById($id)) {
+            if ($data[Contract::ANSWER] && $question->{Contract::ANSWERED_AT}) {
+                return response(ErrorContract::QUESTION_ALREADY_ANSWERED, 400);
+            }
+            return new QuestionResource($this->questionService->questionRepository->update($id, $data));
+        }
+        return response(ErrorContract::NOT_FOUND, 404);
     }
 }

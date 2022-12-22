@@ -165,7 +165,6 @@
   <script>
       $(document).ready(function() {
           updateTimer();
-
       });
       let status    =   true;
       function updateTimer() {

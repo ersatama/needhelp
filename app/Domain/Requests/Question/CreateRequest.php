@@ -24,7 +24,7 @@ class CreateRequest extends MainRequest
         $data[Contract::CURRENCY_ID]    =   1;
         $data[Contract::IS_PAID]    =   true;
         $data[Contract::STATUS]     =   1;
-        $data[Contract::IS_NEW]     =   true;
+        $data[Contract::IS_NEW]     =   false;
         return $data;
     }
 }

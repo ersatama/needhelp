@@ -16,6 +16,11 @@ class QuestionRepositoryEloquent implements QuestionRepositoryInterface
         $this->model    =   $question;
     }
 
+    public function getWhere($where)
+    {
+        return $this->model::with('user','lawyer')->where($where)->get();
+    }
+
     public static function count($arr = [])
     {
         return Question::where($arr)->count();
