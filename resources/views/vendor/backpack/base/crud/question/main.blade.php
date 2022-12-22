@@ -93,7 +93,8 @@
             <div class="modal-mask">
                 <div class="modal-wrapper">
                     <div class="modal-container" v-if="view">
-                        <div class="modal-header-icon modal-header-icon-important"></div>
+                        <div class="modal-header-icon modal-header-icon-important" v-if="view.is_important"></div>
+                        <div class="modal-header-icon" v-else>?</div>
                         <div class="modal-header d-flex align-items-center justify-content-center pt-5 border-0 h5 m-0 pb-0" style="gap: 10px;">Вопрос <span class="font-weight-bold">#@{{view.id}}</span></div>
                         <div class="modal-body">
                             <div class="modal-body-card border mb-3">
@@ -163,7 +164,8 @@
             <div class="modal-mask">
                 <div class="modal-wrapper">
                     <div class="modal-container" v-if="answered_view">
-                        <div class="modal-header-icon modal-header-icon-important"></div>
+                        <div class="modal-header-icon modal-header-icon-important" v-if="answered_view.is_important"></div>
+                        <div class="modal-header-icon" v-else>?</div>
                         <div class="modal-header d-flex align-items-center justify-content-center pt-5 border-0 h5 m-0 pb-0" style="gap: 10px;">Вопрос <span class="font-weight-bold">#@{{answered_view.id}}</span></div>
                         <div class="modal-body">
                             <div class="modal-body-card border mb-3">
@@ -426,7 +428,7 @@
             justify-content: center;
             font-size: 26px;
             font-weight: bold;
-            color: #fff;
+            color: darkgreen;
             position: relative;
         }
         .question-header-icon-fire {
@@ -537,7 +539,7 @@
             top: -40px;
             left: 50%;
             transform: translate(-50%,0);
-            background: #0091c1;
+            background: #a3e8cd;
             border-radius: 100px;
             border: 10px solid #fff;
             display: flex;
@@ -545,7 +547,7 @@
             justify-content: center;
             font-size: 26px;
             font-weight: bold;
-            color: #fff;
+            color: darkgreen;
         }
         .modal-header-icon-important {
             background-image: url(/img/1.png);
