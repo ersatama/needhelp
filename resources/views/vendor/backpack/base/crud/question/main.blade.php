@@ -13,13 +13,9 @@
                 <div class="m-0 p-3 d-flex justify-content-center">
                     <div class="header-switcher d-flex">
                         <div class="header-switcher-item text-muted" :class="{'header-switcher-item-sel':(type)}" @click="type = true">В обработке</div>
-                        <div class="header-switcher-item text-muted" :class="{'header-switcher-item-sel':(!type)}" @click="type = false">
-                            @if(backpack_user()->{\App\Domain\Contracts\Contract::ROLE} === 'lawyer')
-                                Закрытые вами
-                            @else
-                                Закрытые
-                            @endif
-                        </div>
+                        @if(backpack_user()->{\App\Domain\Contracts\Contract::ROLE} !== 'lawyer')
+                            <div class="header-switcher-item text-muted" :class="{'header-switcher-item-sel':(!type)}" @click="type = false">Закрытые</div>
+                        @endif
                     </div>
                 </div>
             </div>
