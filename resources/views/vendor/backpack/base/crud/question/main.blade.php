@@ -6,9 +6,6 @@
 
 @section('content')
     <div id="app" class="my-4">
-        {{\Carbon\Carbon::parse(date('Y-m-d H:i:s'))->setTimezone('UTC')}}<br>
-        @{{ JSON.stringify(new Date().toISOString()) }}<br>
-        @{{ JSON.stringify(new Date()) }}
         <audio src="/audio/1.wav" ref="audio" preload="auto"></audio>
         <modal v-if="showModal" @close="showModal = false" @answer="answer" :view="view" :status="status" :role="role"></modal>
         <answered v-if="showAnsweredModal" @close="showAnsweredModal = false" :answered_view="answered_view" :role="role"></answered>
@@ -32,7 +29,7 @@
                             <div class="question-header-content-title font-weight-bold">#@{{ question.id }}</div>
                             <div class="question-header-content-description text-muted">@{{ question.created_at_readable }}</div>
                         </div>
-                        <div class="question-header-timer">15:29</div>
+                        <div class="question-header-timer" v-show="question.timerText">@{{ question.timerText }}</div>
                     </div>
                     <div class="question-main flex-grow-1">
                         <div class="question-main-title">@{{ question.title }}</div>
@@ -64,7 +61,6 @@
                             <div class="question-header-content-title font-weight-bold">#@{{ question.id }}</div>
                             <div class="question-header-content-description text-muted">@{{ question.created_at_readable }}</div>
                         </div>
-                        <div class="question-header-timer">15:29</div>
                     </div>
                     <div class="question-main flex-grow-1">
                         <div class="question-main-title">@{{ question.title }}</div>
@@ -272,6 +268,26 @@
                 window.removeEventListener('scroll', this.handleScroll);
             },
             methods: {
+                getTimeDiff(item) {
+                    let timezone    =   new Date(item.timezone);
+                    let now         =   new Date();
+                    let delta       =   Math.abs(now - timezone) / 1000;
+                    let minutes     =   Math.floor(delta / 60) % 60;
+                    delta           -=  minutes * 60;
+                    let seconds     =   Math.floor(delta % 60);
+                    if (minutes < 30) {
+                        return (minutes<10?'0'+minutes:minutes)+":"+(seconds<10?'0'+seconds:seconds);
+                    }
+                    return '30:00';
+                },
+                timerCheck() {
+                    this.questions.forEach((item,key) => {
+                        this.questions[key].timerText  =   this.getTimeDiff(item);
+                    });
+                    setTimeout(() => {
+                        this.timerCheck()
+                    },1000);
+                },
                 handleScroll(event) {
                     let bottomOfWindow = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop) + window.innerHeight > (document.documentElement.offsetHeight - 150)
                     if (bottomOfWindow) {
@@ -294,7 +310,7 @@
                 },
                 newQuestion(data) {
                     axios
-                        .get('/api/v1/question/firstById/'+data.data)
+                        .get('/api/v1/question/firstById/'+data.data+'?timezone='+Intl.DateTimeFormat().resolvedOptions().timeZone)
                         .then(response => {
                             this.updateQuestion(response.data.data);
                         })
@@ -379,7 +395,7 @@
                 answer() {
                     this.status =   true;
                     axios
-                        .post('/api/v1/question/update/'+this.view.id, {
+                        .post('/api/v1/question/update/'+this.view.id+'?timezone='+Intl.DateTimeFormat().resolvedOptions().timeZone, {
                             lawyer_id: this.user_id,
                             answer: this.view.answer,
                         })
@@ -404,6 +420,7 @@
                                 this.questionListAdd(response.data.data);
                                 this.count  =   response.data.count;
                                 this.hide();
+                                this.timerCheck();
                                 if (response.data.data.length === this.take) {
                                     this.questionAjaxStatus =   true;
                                 }
@@ -443,7 +460,7 @@
                     if (this.answeredQuestionAjaxStatus) {
                         this.answeredQuestionAjaxStatus =   false;
                         axios
-                            .post('/api/v1/question/get?page='+this.answered_page+'&order_by=updated_at&order_by_type=desc&take='+this.take,{
+                            .post('/api/v1/question/get?page='+this.answered_page+'&timezone='+Intl.DateTimeFormat().resolvedOptions().timeZone+'&order_by=updated_at&order_by_type=desc&take='+this.take,{
                                 is_paid: this.is_paid,
                                 status: 2,
                                 @if (backpack_user()->{\App\Domain\Contracts\Contract::ROLE} === 'lawyer')

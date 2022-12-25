@@ -18,7 +18,8 @@ class QuestionResource extends JsonResource
             Contract::CREATED_AT_READABLE   =>  $this->{Contract::CREATED_AT}->diffForHumans(),
             Contract::UPDATED_AT    =>  $this->{Contract::UPDATED_AT},
             Contract::USER  =>  new UserResource($this->{Contract::USER}),
-            Contract::LAWYER    =>  new UserResource($this->{Contract::LAWYER})
+            Contract::LAWYER    =>  new UserResource($this->{Contract::LAWYER}),
+            Contract::TIMER_TEXT    =>  null
         ];
         if (request()->has(Contract::TIMEZONE)) {
             $arr[Contract::TIMEZONE]    =   Carbon::createFromTimestamp(strtotime($this->{Contract::UPDATED_AT}))
