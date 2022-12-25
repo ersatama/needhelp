@@ -17,6 +17,7 @@ class QuestionResource extends JsonResource
             Contract::CREATED_AT    =>  $this->{Contract::CREATED_AT},
             Contract::CREATED_AT_READABLE   =>  $this->{Contract::CREATED_AT}->diffForHumans(),
             Contract::UPDATED_AT    =>  $this->{Contract::UPDATED_AT},
+            Contract::UPDATED_AT_READABLE   =>  $this->{Contract::CREATED_AT}->diffForHumans(),
             Contract::USER  =>  new UserResource($this->{Contract::USER}),
             Contract::LAWYER    =>  new UserResource($this->{Contract::LAWYER}),
             Contract::TIMER_TEXT    =>  null

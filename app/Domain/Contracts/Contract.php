@@ -50,6 +50,7 @@ abstract class Contract
     const UPDATED_AT    =   'updated_at';
     const CREATED_AT    =   'created_at';
     const CREATED_AT_READABLE   =   'created_at_readable';
+    const UPDATED_AT_READABLE   =   'updated_at_readable';
     const DELETED_AT    =   'deleted_at';
     const BLOCKED_AT    =   'blocked_at';
     const QUESTION  =   'question';

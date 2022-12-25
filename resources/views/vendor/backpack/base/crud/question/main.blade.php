@@ -114,7 +114,7 @@
                                 </div>
                                 <div class="modal-body-item border-top" v-if="view.answered_at">
                                     <div class="modal-body-item-key text-muted">Отвечено</div>
-                                    <div class="modal-body-item-value">@{{ view.answered_at }}</div>
+                                    <div class="modal-body-item-value">@{{ view.updated_at_readable }}</div>
                                 </div>
                             </div>
                             <div class="h6 font-weight-bold mb-2 text-center">Вопрос</div>
@@ -185,7 +185,7 @@
                                 </div>
                                 <div class="modal-body-item border-top" v-if="answered_view.answered_at">
                                     <div class="modal-body-item-key text-muted">Отвечено</div>
-                                    <div class="modal-body-item-value">@{{ answered_view.answered_at }}</div>
+                                    <div class="modal-body-item-value">@{{ answered_view.updated_at_readable }}</div>
                                 </div>
                             </div>
                             <div class="h6 font-weight-bold mb-2 text-center">Вопрос</div>
