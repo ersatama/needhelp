@@ -6,6 +6,9 @@
 
 @section('content')
     <div id="app" class="my-4">
+        {{date('Y-m-d H:i:s')}}<br>
+        @{{ JSON.stringify(new Date().toISOString()) }}<br>
+        @{{ JSON.stringify(new Date()) }}
         <audio src="/audio/1.wav" ref="audio" preload="auto"></audio>
         <modal v-if="showModal" @close="showModal = false" @answer="answer" :view="view" :status="status" :role="role"></modal>
         <answered v-if="showAnsweredModal" @close="showAnsweredModal = false" :answered_view="answered_view" :role="role"></answered>
