@@ -6,7 +6,7 @@
 
 @section('content')
     <div id="app" class="my-4">
-        {{date('Y-m-d H:i:s')}}<br>
+        {{\Carbon\Carbon::parse(date('Y-m-d H:i:s'))->setTimezone('UTC')}}<br>
         @{{ JSON.stringify(new Date().toISOString()) }}<br>
         @{{ JSON.stringify(new Date()) }}
         <audio src="/audio/1.wav" ref="audio" preload="auto"></audio>
