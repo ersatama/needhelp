@@ -98,7 +98,7 @@
                             <div class="modal-body-card border mb-3">
                                 <div class="modal-body-item border-bottom">
                                     <div class="modal-body-item-key text-muted">Дата создания</div>
-                                    <div class="modal-body-item-value">@{{ view.created_at }}</div>
+                                    <div class="modal-body-item-value">@{{ view.created_at_readable }}</div>
                                 </div>
                                 <div class="modal-body-item border-bottom">
                                     <div class="modal-body-item-key text-muted">Пользователь</div>
@@ -169,7 +169,7 @@
                             <div class="modal-body-card border mb-3">
                                 <div class="modal-body-item border-bottom">
                                     <div class="modal-body-item-key text-muted">Дата создания</div>
-                                    <div class="modal-body-item-value">@{{ answered_view.created_at }}</div>
+                                    <div class="modal-body-item-value">@{{ answered_view.created_at_readable }}</div>
                                 </div>
                                 <div class="modal-body-item border-bottom">
                                     <div class="modal-body-item-key text-muted">Пользователь</div>
