@@ -223,7 +223,7 @@
             template: "#answered"
         });
 
-        Pusher.logToConsole = true;
+        Pusher.logToConsole = false;
 
         let pusher = new Pusher('80efb945f55e47c2cc1d', {
             cluster: 'ap2'
@@ -396,7 +396,7 @@
                     if (this.questionAjaxStatus) {
                         this.questionAjaxStatus =   false;
                         axios
-                            .post('/api/v1/question/get?page='+this.page+'&order_by=is_important&order_by_type=desc&take='+this.take,{
+                            .post('/api/v1/question/get?page='+this.page+'&timezone='+Intl.DateTimeFormat().resolvedOptions().timeZone+'&order_by=is_important&order_by_type=desc&take='+this.take,{
                                 is_paid: this.is_paid,
                                 status: 1,
                             })

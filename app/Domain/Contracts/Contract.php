@@ -75,6 +75,7 @@ abstract class Contract
     const FULLNAME  =   'fullname';
     const ADMIN =   'admin';
     const LAWYER    =   'lawyer';
+    const TIMEZONE  =   'timezone';
     const MANAGER   =   'manager';
     const USER  =   'user';
     const SURNAME   =   'surname';
