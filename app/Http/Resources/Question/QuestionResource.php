@@ -14,6 +14,7 @@ class QuestionResource extends JsonResource
         $arr    =   [
             Contract::ID    =>  $this->{Contract::ID},
             Contract::CREATED_AT    =>  $this->{Contract::CREATED_AT},
+            Contract::CREATED_AT_READABLE   =>  $this->{Contract::CREATED_AT}->diffForHumans(),
             Contract::UPDATED_AT    =>  $this->{Contract::UPDATED_AT},
             Contract::USER  =>  new UserResource($this->{Contract::USER}),
             Contract::LAWYER    =>  new UserResource($this->{Contract::LAWYER})

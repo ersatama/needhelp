@@ -5,28 +5,29 @@
 @endsection
 
 @section('content')
-    <div id="app">
+    <div id="app" class="my-4">
+        <audio src="/audio/1.wav" ref="audio" preload="auto"></audio>
         <modal v-if="showModal" @close="showModal = false" @answer="answer" :view="view" :status="status" :role="role"></modal>
         <answered v-if="showAnsweredModal" @close="showAnsweredModal = false" :answered_view="answered_view" :role="role"></answered>
         <div class="bg-white border rounded">
             <div class="border-bottom p-2">
                 <div class="m-0 p-3 d-flex justify-content-center">
                     <div class="header-switcher d-flex">
-                        <div class="header-switcher-item text-muted" :class="{'header-switcher-item-sel':(type)}" @click="type = true">В обработке</div>
                         @if(backpack_user()->{\App\Domain\Contracts\Contract::ROLE} !== 'lawyer')
+                            <div class="header-switcher-item text-muted" :class="{'header-switcher-item-sel':(type)}" @click="type = true">В обработке</div>
                             <div class="header-switcher-item text-muted" :class="{'header-switcher-item-sel':(!type)}" @click="type = false">Закрытые</div>
                         @endif
                     </div>
                 </div>
             </div>
             <div class="questions" v-if="type">
-                <div class="question" v-for="(question,key) in questions" :key="key">
+                <div class="question" v-if="questions.length > 0" v-for="(question,key) in questions" :key="key">
                     <div class="question-header">
                         <div class="question-header-icon" v-if="!question.is_important">?</div>
                         <div class="question-header-icon question-header-icon-fire" v-else></div>
                         <div class="question-header-content">
                             <div class="question-header-content-title font-weight-bold">#@{{ question.id }}</div>
-                            <div class="question-header-content-description text-muted">@{{ question.created_at }}</div>
+                            <div class="question-header-content-description text-muted">@{{ question.created_at_readable }}</div>
                         </div>
                         <div class="question-header-timer">15:29</div>
                     </div>
@@ -49,9 +50,10 @@
                         <div class="question-button-detail" v-else @click="detail(question.id)">Предпросмотр</div>
                     </div>
                 </div>
+                <div class="question-empty" v-else>Пусто</div>
             </div>
             <div class="questions" v-else>
-                <div class="question" v-for="(question,key) in answeredQuestions" :key="key">
+                <div class="question" v-if="answeredQuestions.length > 0" v-for="(question,key) in answeredQuestions" :key="key">
                     <div class="question-header">
                         <div class="question-header-icon" v-if="!question.is_important">?</div>
                         <div class="question-header-icon question-header-icon-fire" v-else></div>
@@ -79,6 +81,7 @@
                         <div class="question-button-detail" @click="answerDetail(question.id)">Предпросмотр</div>
                     </div>
                 </div>
+                <div class="question-empty" v-else>Пусто</div>
             </div>
         </div>
     </div>
@@ -204,6 +207,7 @@
             </div>
         </transition>
     </script>
+    <script src="https://js.pusher.com/7.2/pusher.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
@@ -215,6 +219,18 @@
             props: ['answered_view','role'],
             template: "#answered"
         });
+
+        Pusher.logToConsole = true;
+
+        let pusher = new Pusher('80efb945f55e47c2cc1d', {
+            cluster: 'ap2'
+        });
+
+        let channel = pusher.subscribe('question-channel');
+        channel.bind('question-event', function(data) {
+            app.newQuestion(data);
+        });
+
         let app = new Vue({
             el: '#app',
             data: {
@@ -222,6 +238,7 @@
 
                 showModal: false,
                 questions: [],
+                questionAjaxStatus: true,
                 count: 0,
                 view: false,
                 status: false,
@@ -230,13 +247,14 @@
 
                 showAnsweredModal: false,
                 answeredQuestions: [],
+                answeredQuestionAjaxStatus: true,
                 answeredCount: 0,
                 answered_view: false,
                 answered_id: 0,
                 answered_page: 1,
 
                 is_paid: true,
-                take: 100,
+                take: 20,
 
                 user_id:  {{ backpack_user()->{\App\Domain\Contracts\Contract::ID} }},
                 role:  '{{ backpack_user()->{\App\Domain\Contracts\Contract::ROLE} }}',
@@ -245,8 +263,102 @@
             },
             created() {
                 this.refresh();
+                window.addEventListener('scroll', this.handleScroll);
+            },
+            destroyed () {
+                window.removeEventListener('scroll', this.handleScroll);
             },
             methods: {
+                handleScroll(event) {
+                    let bottomOfWindow = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop) + window.innerHeight > (document.documentElement.offsetHeight - 150)
+                    if (bottomOfWindow) {
+                        if (this.type) {
+                            this.page  =    this.page + 1;
+                            this.getQuestions();
+                        } else {
+                            this.answered_page  =   this.answered_page + 1;
+                            this.getAnsweredQuestions();
+                        }
+                    }
+                },
+                notifySound() {
+                    try {
+                        this.$refs.audio.play();
+                    }
+                    catch (e) {
+                        console.log(e);
+                    }
+                },
+                newQuestion(data) {
+                    axios
+                        .get('/api/v1/question/firstById/'+data.data)
+                        .then(response => {
+                            this.updateQuestion(response.data.data);
+                        })
+                        .catch(error => {
+                            console.log(error);
+                        });
+                },
+                updateQuestion(question) {
+                    let status, key, index;
+                    if (question.status === 1) {
+                        status  =   true;
+                        this.questions.forEach(item => {
+                            if (item.id === question.id) {
+                                status  =   false;
+                            }
+                        });
+                        if (status) {
+                            this.questions.unshift(question);
+                        }
+                        this.notifySound();
+                    } else if (question.status === 0) {
+                        key     =   -1;
+                        index   =   0;
+                        this.questions.forEach(item => {
+                            if (item.id === question.id) {
+                                key =   index;
+                            }
+                            index++;
+                        });
+                        if (key >= 0) {
+                            this.questions.splice(key, 1);
+                        }
+                        key     =   -1;
+                        index   =   0;
+                        this.answeredQuestions.forEach(item => {
+                            if (item.id === question.id) {
+                                key =   index;
+                            }
+                            index++;
+                        });
+                        if (key >= 0) {
+                            this.answeredQuestions.splice(key, 1);
+                        }
+                    } else if (question.status === 2) {
+                        key     =   -1;
+                        index   =   0;
+                        this.questions.forEach(item => {
+                            if (item.id === question.id) {
+                                key =   index;
+                            }
+                            index++;
+                        });
+                        if (key >= 0) {
+                            this.questions.splice(key, 1);
+                        }
+                        status  =   true;
+                        this.answeredQuestions.forEach(item => {
+                            if (item.id === question.id) {
+                                status  =   false;
+                            }
+                        });
+                        if (status) {
+                            this.answeredQuestions.unshift(question);
+                        }
+                        this.notifySound();
+                    }
+                },
                 refresh() {
                     this.getQuestions();
                     this.getAnsweredQuestions();
@@ -278,16 +390,37 @@
                         });
                 },
                 getQuestions() {
-                    axios
-                        .post('/api/v1/question/get?page='+this.page+'&order_by_type=desc&take='+this.take,{
-                            is_paid: this.is_paid,
-                            status: 1,
-                        })
-                        .then(response => {
-                            this.questions  =   response.data.data;
-                            this.count  =   response.data.count;
-                            this.hide();
+                    if (this.questionAjaxStatus) {
+                        this.questionAjaxStatus =   false;
+                        axios
+                            .post('/api/v1/question/get?page='+this.page+'&order_by=is_important&order_by_type=desc&take='+this.take,{
+                                is_paid: this.is_paid,
+                                status: 1,
+                            })
+                            .then(response => {
+                                this.questionListAdd(response.data.data);
+                                this.count  =   response.data.count;
+                                this.hide();
+                                if (response.data.data.length === this.take) {
+                                    this.questionAjaxStatus =   true;
+                                }
+                            });
+                    }
+                },
+                questionListAdd(questions) {
+                    let status;
+                    let list    =   this.questions;
+                    questions.forEach(item => {
+                        status  =   true;
+                        list.forEach(question => {
+                           if (item.id === question.id) {
+                               status   =   false;
+                           }
                         });
+                        if (status) {
+                            this.questions.push(item);
+                        }
+                    });
                 },
                 hide() {
                     this.status =   false;
@@ -303,21 +436,41 @@
                     this.status =   false;
                     this.showModal = true;
                 },
-
                 getAnsweredQuestions() {
-                    axios
-                        .post('/api/v1/question/get?page='+this.answered_page+'&order_by=updated_at&order_by_type=desc&take='+this.take,{
-                            is_paid: this.is_paid,
-                            status: 2,
-                            @if (backpack_user()->{\App\Domain\Contracts\Contract::ROLE} === 'lawyer')
-                            lawyer_id: {{backpack_user()->{\App\Domain\Contracts\Contract::ID} }},
-                            @endif
-                        })
-                        .then(response => {
-                            this.answeredQuestions  =   response.data.data;
-                            this.answeredCount  =   response.data.count;
-                            this.showAnsweredModal   =   false;
+                    if (this.answeredQuestionAjaxStatus) {
+                        this.answeredQuestionAjaxStatus =   false;
+                        axios
+                            .post('/api/v1/question/get?page='+this.answered_page+'&order_by=updated_at&order_by_type=desc&take='+this.take,{
+                                is_paid: this.is_paid,
+                                status: 2,
+                                @if (backpack_user()->{\App\Domain\Contracts\Contract::ROLE} === 'lawyer')
+                                lawyer_id: {{backpack_user()->{\App\Domain\Contracts\Contract::ID} }},
+                                @endif
+                            })
+                            .then(response => {
+                                this.answeredQuestionListAdd(response.data.data);
+                                this.answeredCount  =   response.data.count;
+                                this.showAnsweredModal   =   false;
+                                if (response.data.data.length === this.take) {
+                                    this.answeredQuestionAjaxStatus =   true;
+                                }
+                            });
+                    }
+                },
+                answeredQuestionListAdd(questions) {
+                    let status;
+                    let list    =   this.answeredQuestions;
+                    questions.forEach(item => {
+                        status  =   true;
+                        list.forEach(question => {
+                            if (item.id === question.id) {
+                                status   =   false;
+                            }
                         });
+                        if (status) {
+                            this.answeredQuestions.push(item);
+                        }
+                    });
                 },
                 answerDetail(id) {
                     this.answered_id    =   id;
@@ -461,6 +614,12 @@
             display: flex;
             justify-content: center;
             flex-direction: column;
+        }
+        .question-empty {
+            padding: 250px 0 250px 0;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
         }
         .question {
             display: flex;

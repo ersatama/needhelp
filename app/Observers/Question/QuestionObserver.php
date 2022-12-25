@@ -3,6 +3,8 @@
 namespace App\Observers\Question;
 
 use App\Domain\Contracts\Contract;
+use App\Events\QuestionEvent;
+use App\Jobs\QuestionJob;
 use App\Models\Notification;
 use App\Models\Question;
 
@@ -32,7 +34,7 @@ class QuestionObserver
      */
     public function updated(Question $question): void
     {
-        //
+
     }
 
     /**

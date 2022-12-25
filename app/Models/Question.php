@@ -7,13 +7,14 @@ use App\Domain\Contracts\QuestionContract;
 use App\Domain\Scopes\OrderBy;
 use App\Domain\Scopes\Page;
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
+use Illuminate\Database\Eloquent\Concerns\HasEvents;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Question extends Model
 {
-    use HasFactory, CrudTrait;
+    use HasFactory, CrudTrait, HasEvents;
 
     protected $table    =   QuestionContract::TABLE;
     protected $fillable =   QuestionContract::FILLABLE;

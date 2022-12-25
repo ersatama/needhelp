@@ -28,6 +28,6 @@ class QuestionRepositoryProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //Question::observe(QuestionObserver::class);
+        Question::observe(QuestionObserver::class);
     }
 }

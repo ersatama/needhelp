@@ -29,7 +29,7 @@ trait RepositoryEloquent
 
     public function update($id, $data)
     {
-        $this->model::where(Contract::ID, $id)->update($data);
+        $this->model::where(Contract::ID, $id)->first()->update($data);
         return $this->firstById($id);
     }
 
@@ -70,7 +70,7 @@ trait RepositoryEloquent
 
     public function updateByPhone($phone, $data)
     {
-        $this->model::where(Contract::PHONE, $phone)->update($data);
+        $this->model::where(Contract::PHONE, $phone)->first()->update($data);
         return $this->firstByPhone($phone);
     }
 

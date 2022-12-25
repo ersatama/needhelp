@@ -36,6 +36,9 @@ class AuthController extends BackPackLoginController
         $user   =   $this->userService->userRepository->firstByEmail($request->input(Contract::EMAIL));
         if (Hash::check($request->input(Contract::PASSWORD), $user->{Contract::PASSWORD})) {
             backpack_auth()->login($user);
+            if (backpack_user()->{Contract::ROLE} === 'lawyer') {
+                return redirect('question');
+            }
             return redirect('dashboard');
         }
         return view('vendor.backpack.base.auth.login',['username'=>'email']);

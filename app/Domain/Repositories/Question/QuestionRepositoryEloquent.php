@@ -4,6 +4,7 @@ namespace App\Domain\Repositories\Question;
 
 use App\Domain\Contracts\Contract;
 use App\Domain\Repositories\RepositoryEloquent;
+use App\Domain\Scopes\Page;
 use App\Models\Question;
 use Illuminate\Support\Facades\DB;
 
@@ -23,7 +24,7 @@ class QuestionRepositoryEloquent implements QuestionRepositoryInterface
 
     public static function count($arr = [])
     {
-        return Question::where($arr)->count();
+        return Question::where($arr)->withoutGlobalScope(Page::class)->count();
     }
 
     public static function countLastMonth($arr = [])

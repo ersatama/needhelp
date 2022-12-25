@@ -11,6 +11,7 @@ use App\Domain\Services\QuestionService;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Question\QuestionCollection;
 use App\Http\Resources\Question\QuestionResource;
+use App\Jobs\QuestionJob;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Http\Request;
@@ -109,6 +110,7 @@ class QuestionController extends Controller
     public function create(CreateRequest $createRequest): QuestionResource
     {
         $question   =   $this->questionService->questionRepository->create($createRequest->checked());
+        QuestionJob::dispatch($question);
         return new QuestionResource($question);
     }
 
@@ -125,7 +127,9 @@ class QuestionController extends Controller
             if ($data[Contract::ANSWER] && $question->{Contract::ANSWERED_AT}) {
                 return response(ErrorContract::QUESTION_ALREADY_ANSWERED, 400);
             }
-            return new QuestionResource($this->questionService->questionRepository->update($id, $data));
+            $question   =   $this->questionService->questionRepository->update($id, $data);
+            QuestionJob::dispatch($question);
+            return new QuestionResource($question);
         }
         return response(ErrorContract::NOT_FOUND, 404);
     }
