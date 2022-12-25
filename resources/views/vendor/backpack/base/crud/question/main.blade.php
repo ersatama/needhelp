@@ -59,7 +59,7 @@
                         <div class="question-header-icon question-header-icon-fire" v-else></div>
                         <div class="question-header-content">
                             <div class="question-header-content-title font-weight-bold">#@{{ question.id }}</div>
-                            <div class="question-header-content-description text-muted">@{{ question.created_at }}</div>
+                            <div class="question-header-content-description text-muted">@{{ question.created_at_readable }}</div>
                         </div>
                         <div class="question-header-timer">15:29</div>
                     </div>
