@@ -14,7 +14,7 @@
     </script>
     <div id="app" class="my-4">
         <audio src="/audio/1.wav" ref="audio" preload="auto"></audio>
-        <modal v-if="showModal" @close="showModal = false" @answer="answer" :view="view" :status="status" :role="role"></modal>
+        <modal v-if="showModal" @close="showModal = false" @answer="answer" :view="view" :status="status" :role="role" :agree="agree" :error-message="errorMessage" @checkbox="agree = !agree"></modal>
         <answered v-if="showAnsweredModal" @close="showAnsweredModal = false" :answered_view="answered_view" :role="role"></answered>
         <div class="bg-white border rounded">
             <div class="border-bottom p-2">
@@ -158,19 +158,22 @@
                             Произошла ошибка, проверьте подключение к интернету!
                         </div>
                         <div class="modal-footer d-flex justify-content-center flex-column" style="gap: 20px">
-                            <div class="form-check" v-if="role === 'lawyer' && !view.answered_at">
-                                <input class="form-check-input" type="checkbox" v-model="agree" id="agree" checked>
-                                <label class="form-check-label" for="agree">
+                            <div class="form-check mb-2" v-if="role === 'lawyer' && !view.answered_at">
+                                <input class="form-check-input" type="checkbox" v-model="agree" id="agree" @change="$emit('checkbox')">
+                                <label class="form-check-label" for="agree" onselectstart="return false;">
                                     я подтверждаю свой ответ на данный вопрос
                                 </label>
                             </div>
                             <div class=" d-flex justify-content-center" style="gap: 20px">
                                 <button class="modal-default-button btn btn-danger h6" @click="$emit('close')">Закрыть</button>
                                 <template v-if="role === 'lawyer' && !view.answered_at">
-                                    <button class="modal-default-button btn btn-success h6" @click="$emit('answer')" v-if="!status" :disabled="!agree">Ответить</button>
-                                    <button class="modal-default-button btn btn-success h6" disabled v-else>
-                                        <i class="fa fa-spinner fa-spin"></i> Сохранение ответа
-                                    </button>
+                                    <button class="modal-default-button btn btn-success h6" disabled v-if="!agree">Ответить</button>
+                                    <template v-else>
+                                        <button class="modal-default-button btn btn-success h6" @click="$emit('answer')" v-if="!status">Ответить</button>
+                                        <button class="modal-default-button btn btn-success h6" disabled v-else>
+                                            <i class="fa fa-spinner fa-spin"></i> Сохранение ответа
+                                        </button>
+                                    </template>
                                 </template>
                             </div>
                         </div>
@@ -233,7 +236,7 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
         Vue.component("modal", {
-            props: ['view','status','role'],
+            props: ['view','status','role','agree','errorMessage'],
             template: "#modal-template"
         });
         Vue.component("answered", {
