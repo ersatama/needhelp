@@ -219,7 +219,7 @@
             template: "#answered"
         });
 
-        Pusher.logToConsole = false;
+        Pusher.logToConsole = true;
 
         let pusher = new Pusher('80efb945f55e47c2cc1d', {
             cluster: 'ap2'
