@@ -22,8 +22,7 @@ return new class extends Migration
             $table->unsignedInteger(Contract::CURRENCY_ID)->default(1);
             $table->string(Contract::PAYMENT_ID)->nullable();
             $table->bigInteger(Contract::PRICE)->nullable()->default(0);
-            $table->string(Contract::TITLE)->nullable();
-            $table->text(Contract::DESCRIPTION)->nullable();
+            $table->text(Contract::TITLE)->nullable();
             $table->text(Contract::ANSWER)->nullable();
             $table->boolean(Contract::IS_IMPORTANT)->default(false)->nullable();
             $table->boolean(Contract::IS_PAID)->default(false)->nullable();

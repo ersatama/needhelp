@@ -5,6 +5,13 @@
 @endsection
 
 @section('content')
+    <script>
+        if (navigator.onLine) {
+            console.log('online');
+        } else {
+            console.log('offline');
+        }
+    </script>
     <div id="app" class="my-4">
         <audio src="/audio/1.wav" ref="audio" preload="auto"></audio>
         <modal v-if="showModal" @close="showModal = false" @answer="answer" :view="view" :status="status" :role="role"></modal>
@@ -21,65 +28,69 @@
                 </div>
             </div>
             <div class="questions" v-if="type">
-                <div class="question" v-if="questions.length > 0" v-for="(question,key) in questions" :key="key">
-                    <div class="question-header">
-                        <div class="question-header-icon" v-if="!question.is_important">?</div>
-                        <div class="question-header-icon question-header-icon-fire" v-else></div>
-                        <div class="question-header-content">
-                            <div class="question-header-content-title font-weight-bold">#@{{ question.id }}</div>
-                            <div class="question-header-content-description text-muted">@{{ question.created_at_readable }}</div>
+                <template v-if="questions.length > 0">
+                    <div class="question" v-for="(question,key) in questions" :key="key">
+                        <div class="question-header">
+                            <div class="question-header-icon" v-if="!question.is_important">?</div>
+                            <div class="question-header-icon question-header-icon-fire" v-else></div>
+                            <div class="question-header-content">
+                                <div class="question-header-content-title font-weight-bold">#@{{ question.id }}</div>
+                                <div class="question-header-content-description text-muted">@{{ question.created_at_readable }}</div>
+                            </div>
+                            <div class="question-header-timer" v-show="question.timerText">@{{ question.timerText }}</div>
                         </div>
-                        <div class="question-header-timer" v-show="question.timerText">@{{ question.timerText }}</div>
-                    </div>
-                    <div class="question-main flex-grow-1">
-                        <div class="question-main-title">@{{ question.title }}</div>
-                        <div class="question-main-detail" v-if="question.answered_at">@{{ question.answer }}</div>
-                    </div>
-                    <div class="question-body">
-                        <div class="question-body-user" v-if="question.user">
-                            <div class="question-body-user-icon">@{{ question.user.name[0] }}</div>
-                            <div class="question-body-user-title">@{{ question.user.name }} @{{ question.user.surname }}</div>
+                        <div class="question-main flex-grow-1">
+                            <div class="question-main-title">@{{ question.title }}</div>
+                            <div class="question-main-detail" v-if="question.answered_at">@{{ question.answer }}</div>
                         </div>
-                        <div class="question-body-user" v-if="question.lawyer">
-                            <div class="question-body-user-icon question-body-user-icon-lawyer">@{{ question.lawyer.name[0] }}</div>
-                            <div class="question-body-user-title question-body-user-title-lawyer">@{{ question.lawyer.name }} @{{ question.lawyer.surname }}</div>
+                        <div class="question-body">
+                            <div class="question-body-user" v-if="question.user">
+                                <div class="question-body-user-icon">@{{ question.user.name[0] }}</div>
+                                <div class="question-body-user-title">@{{ question.user.name }} @{{ question.user.surname }}</div>
+                            </div>
+                            <div class="question-body-user" v-if="question.lawyer">
+                                <div class="question-body-user-icon question-body-user-icon-lawyer">@{{ question.lawyer.name[0] }}</div>
+                                <div class="question-body-user-title question-body-user-title-lawyer">@{{ question.lawyer.name }} @{{ question.lawyer.surname }}</div>
+                            </div>
+                        </div>
+                        <div class="question-button">
+                            <div class="question-button-answer" v-if="role === 'lawyer' && !question.answered_at" @click="detail(question.id)">Ответить</div>
+                            <div class="question-button-detail" v-else @click="detail(question.id)">Предпросмотр</div>
                         </div>
                     </div>
-                    <div class="question-button">
-                        <div class="question-button-answer" v-if="role === 'lawyer' && !question.answered_at" @click="detail(question.id)">Ответить</div>
-                        <div class="question-button-detail" v-else @click="detail(question.id)">Предпросмотр</div>
-                    </div>
-                </div>
+                </template>
                 <div class="question-empty" v-else>Пусто</div>
             </div>
             <div class="questions" v-else>
-                <div class="question" v-if="answeredQuestions.length > 0" v-for="(question,key) in answeredQuestions" :key="key">
-                    <div class="question-header">
-                        <div class="question-header-icon" v-if="!question.is_important">?</div>
-                        <div class="question-header-icon question-header-icon-fire" v-else></div>
-                        <div class="question-header-content">
-                            <div class="question-header-content-title font-weight-bold">#@{{ question.id }}</div>
-                            <div class="question-header-content-description text-muted">@{{ question.created_at_readable }}</div>
+                <template v-if="answeredQuestions.length > 0">
+                    <div class="question" v-for="(question,key) in answeredQuestions" :key="key">
+                        <div class="question-header">
+                            <div class="question-header-icon" v-if="!question.is_important">?</div>
+                            <div class="question-header-icon question-header-icon-fire" v-else></div>
+                            <div class="question-header-content">
+                                <div class="question-header-content-title font-weight-bold">#@{{ question.id }}</div>
+                                <div class="question-header-content-description text-muted">@{{ question.created_at_readable }}</div>
+                            </div>
+                        </div>
+                        <div class="question-main flex-grow-1">
+                            <div class="question-main-title">@{{ question.title }}</div>
+                            <div class="question-main-detail" v-if="question.answered_at">@{{ question.answer }}</div>
+                        </div>
+                        <div class="question-body">
+                            <div class="question-body-user" v-if="question.user">
+                                <div class="question-body-user-icon">@{{ question.user.name[0] }}</div>
+                                <div class="question-body-user-title">@{{ question.user.name }} @{{ question.user.surname }}</div>
+                            </div>
+                            <div class="question-body-user" v-if="question.lawyer">
+                                <div class="question-body-user-icon question-body-user-icon-lawyer">@{{ question.lawyer.name[0] }}</div>
+                                <div class="question-body-user-title question-body-user-title-lawyer">@{{ question.lawyer.name }} @{{ question.lawyer.surname }}</div>
+                            </div>
+                        </div>
+                        <div class="question-button">
+                            <div class="question-button-detail" @click="answerDetail(question.id)">Предпросмотр</div>
                         </div>
                     </div>
-                    <div class="question-main flex-grow-1">
-                        <div class="question-main-title">@{{ question.title }}</div>
-                        <div class="question-main-detail" v-if="question.answered_at">@{{ question.answer }}</div>
-                    </div>
-                    <div class="question-body">
-                        <div class="question-body-user" v-if="question.user">
-                            <div class="question-body-user-icon">@{{ question.user.name[0] }}</div>
-                            <div class="question-body-user-title">@{{ question.user.name }} @{{ question.user.surname }}</div>
-                        </div>
-                        <div class="question-body-user" v-if="question.lawyer">
-                            <div class="question-body-user-icon question-body-user-icon-lawyer">@{{ question.lawyer.name[0] }}</div>
-                            <div class="question-body-user-title question-body-user-title-lawyer">@{{ question.lawyer.name }} @{{ question.lawyer.surname }}</div>
-                        </div>
-                    </div>
-                    <div class="question-button">
-                        <div class="question-button-detail" @click="answerDetail(question.id)">Предпросмотр</div>
-                    </div>
-                </div>
+                </template>
                 <div class="question-empty" v-else>Пусто</div>
             </div>
         </div>
@@ -143,14 +154,25 @@
                                 </template>
                             </template>
                         </div>
-                        <div class="modal-footer d-flex justify-content-center">
-                            <button class="modal-default-button btn btn-danger h6" @click="$emit('close')">Закрыть</button>
-                            <template v-if="role === 'lawyer' && !view.answered_at">
-                                <button class="modal-default-button btn btn-success h6" @click="$emit('answer')" v-if="!status">Ответить</button>
-                                <button class="modal-default-button btn btn-success h6" disabled v-else>
-                                    <i class="fa fa-spinner fa-spin"></i> Сохранение ответа
-                                </button>
-                            </template>
+                        <div class="bg-danger text-center py-3" v-if="errorMessage">
+                            Произошла ошибка, проверьте подключение к интернету!
+                        </div>
+                        <div class="modal-footer d-flex justify-content-center flex-column" style="gap: 20px">
+                            <div class="form-check" v-if="role === 'lawyer' && !view.answered_at">
+                                <input class="form-check-input" type="checkbox" v-model="agree" id="agree" checked>
+                                <label class="form-check-label" for="agree">
+                                    я подтверждаю свой ответ на данный вопрос
+                                </label>
+                            </div>
+                            <div class=" d-flex justify-content-center" style="gap: 20px">
+                                <button class="modal-default-button btn btn-danger h6" @click="$emit('close')">Закрыть</button>
+                                <template v-if="role === 'lawyer' && !view.answered_at">
+                                    <button class="modal-default-button btn btn-success h6" @click="$emit('answer')" v-if="!status" :disabled="!agree">Ответить</button>
+                                    <button class="modal-default-button btn btn-success h6" disabled v-else>
+                                        <i class="fa fa-spinner fa-spin"></i> Сохранение ответа
+                                    </button>
+                                </template>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -234,6 +256,8 @@
             el: '#app',
             data: {
                 type: true,
+                errorMessage: false,
+                agree: false,
 
                 showModal: false,
                 questions: [],
@@ -394,6 +418,7 @@
                 },
                 answer() {
                     this.status =   true;
+                    this.errorMessage   =   false;
                     axios
                         .post('/api/v1/question/update/'+this.view.id+'?timezone='+Intl.DateTimeFormat().resolvedOptions().timeZone, {
                             lawyer_id: this.user_id,
@@ -404,6 +429,7 @@
                             this.refresh();
                         })
                         .catch(error => {
+                            this.errorMessage   =   true;
                             this.status =   false;
                             this.refresh();
                         });
@@ -698,7 +724,7 @@
         }
 
         .modal-container {
-            width: 500px;
+            max-width: 650px;
             margin: 0 auto;
             background-color: #fff;
             border-radius: 10px;

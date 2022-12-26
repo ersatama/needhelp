@@ -12,7 +12,6 @@ class QuestionContract extends Contract
         self::PAYMENT_ID,
         self::PRICE,
         self::TITLE,
-        self::DESCRIPTION,
         self::ANSWER,
         self::IS_IMPORTANT,
         self::IS_PAID,
