@@ -140,7 +140,7 @@
                                         <label for="textarea">Ваш ответ</label>
                                     </div>
                                     <div class="modal-body-textarea">
-                                        <textarea class="mt-2" id="textarea" rows="8" v-model="view.answer" @keydown.enter="$emit('answer')"></textarea>
+                                        <textarea class="mt-2" id="textarea" rows="8" v-model="view.answer"></textarea>
                                     </div>
                                 </template>
                             </template>
@@ -727,7 +727,7 @@
         }
 
         .modal-container {
-            max-width: 650px;
+            max-width: 1000px;
             margin: 0 auto;
             background-color: #fff;
             border-radius: 10px;
@@ -803,7 +803,7 @@
             outline: none;
             background: #fafafa;
             padding: 15px;
-            overflow: hidden;
+            overflow: auto;
         }
         .modal-default-button {
             float: right;

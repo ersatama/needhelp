@@ -17,7 +17,9 @@
                         'type'          => 'progress_white',
                         'class'         => 'card mb-2',
                         'wrapper'       =>  ['class' => 'col-sm-4'],
-                        'value'         =>  '<span class="text-primary">' . UserRepositoryEloquent::count([]) . '</span>',
+                        'value'         =>  '<span class="text-primary">' . UserRepositoryEloquent::count([
+                            Contract::ROLE  =>  Contract::USER
+]) . '</span>',
                         'description'   => 'Пользователей в системе',
                         'progress'      => 100, // integer
                         'progressClass' => 'progress-bar bg-primary',
@@ -35,7 +37,9 @@
                         'type'          => 'progress_white',
                         'class'         => 'card mb-2',
                         'wrapper'       =>  ['class' => 'col-sm-4'],
-                        'value'         =>  '<span class="text-danger">' . QuestionRepositoryEloquent::count([]) . '</span>',
+                        'value'         =>  '<span class="text-danger">' . QuestionRepositoryEloquent::count([
+                            Contract::IS_PAID   =>  true
+]) . '</span>',
                         'description'   => 'Вопросов за все время',
                         'progress'      => 100, // integer
                         'progressClass' => 'progress-bar bg-danger',

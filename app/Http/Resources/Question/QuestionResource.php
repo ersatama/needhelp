@@ -15,9 +15,9 @@ class QuestionResource extends JsonResource
         $arr    =   [
             Contract::ID    =>  $this->{Contract::ID},
             Contract::CREATED_AT    =>  $this->{Contract::CREATED_AT},
-            Contract::CREATED_AT_READABLE   =>  $this->{Contract::CREATED_AT}->diffForHumans(),
+            Contract::CREATED_AT_READABLE   =>  $this->convertDatetime($this->{Contract::CREATED_AT}),
             Contract::UPDATED_AT    =>  $this->{Contract::UPDATED_AT},
-            Contract::UPDATED_AT_READABLE   =>  $this->{Contract::CREATED_AT}->diffForHumans(),
+            Contract::UPDATED_AT_READABLE   =>  $this->convertDatetime($this->{Contract::UPDATED_AT}),
             Contract::USER  =>  new UserResource($this->{Contract::USER}),
             Contract::LAWYER    =>  new UserResource($this->{Contract::LAWYER}),
             Contract::TIMER_TEXT    =>  null
@@ -31,5 +31,13 @@ class QuestionResource extends JsonResource
             $arr[$value]    =   $this->{$value};
         }
         return $arr;
+    }
+
+    public function convertDatetime($datetime): string
+    {
+        $data   =   explode(' ', $datetime);
+        $date   =   explode('-', $data[0]);
+        $time   =   explode(':', $data[1]);
+        return $time[0] . ':' . $time[1] . ' ' . $date[2] . '.' . $date[1] . '.' . $date[0];
     }
 }
