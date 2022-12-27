@@ -280,7 +280,7 @@
                 answered_page: 1,
 
                 is_paid: true,
-                take: 20,
+                take: 50,
 
                 user_id:  {{ backpack_user()->{\App\Domain\Contracts\Contract::ID} }},
                 role:  '{{ backpack_user()->{\App\Domain\Contracts\Contract::ROLE} }}',
@@ -319,10 +319,8 @@
                     let bottomOfWindow = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop) + window.innerHeight > (document.documentElement.offsetHeight - 150)
                     if (bottomOfWindow) {
                         if (this.type) {
-                            this.page  =    this.page + 1;
                             this.getQuestions();
                         } else {
-                            this.answered_page  =   this.answered_page + 1;
                             this.getAnsweredQuestions();
                         }
                     }
@@ -450,9 +448,8 @@
                                 this.count  =   response.data.count;
                                 this.hide();
                                 this.timerCheck();
-                                if (response.data.data.length === this.take) {
-                                    this.questionAjaxStatus =   true;
-                                }
+                                this.page  =    this.page + 1;
+                                this.questionAjaxStatus =   true;
                             });
                     }
                 },
@@ -500,9 +497,8 @@
                                 this.answeredQuestionListAdd(response.data.data);
                                 this.answeredCount  =   response.data.count;
                                 this.showAnsweredModal   =   false;
-                                if (response.data.data.length === this.take) {
-                                    this.answeredQuestionAjaxStatus =   true;
-                                }
+                                this.answered_page  =   this.answered_page + 1;
+                                this.answeredQuestionAjaxStatus =   true;
                             });
                     }
                 },
