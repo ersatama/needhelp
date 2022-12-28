@@ -25,52 +25,14 @@ class QuestionRepositoryEloquent implements QuestionRepositoryInterface
 
     public function getWhere($where): Collection|array
     {
-        $data   =   [];
-        foreach ($where as $key=>$value) {
-            if ($key !== Contract::SEARCH) {
-                $data[] =   [$key, $value];
-            }
-        }
-        $query  =   $this->model::with('user','lawyer');
-        if (array_key_exists(Contract::SEARCH, $where)) {
-            $query->where(array_merge($data, [
-                [Contract::ID, 'like', $where[Contract::SEARCH] . '%']
-            ]));
-            $query->orWhere(array_merge($data, [
-                [Contract::ANSWER, 'like', $where[Contract::SEARCH] . '%']
-            ]));
-            $query->orWhere(array_merge($data, [
-                [Contract::TITLE, 'like', $where[Contract::SEARCH] . '%']
-            ]));
-        } else {
-            $query->where($data);
-        }
-        return $query->withoutGlobalScope(Page::class)->get();
+        $query = $this->getBuilder($where);
+        return $query->get();
     }
 
-    public function countQuestion($where)
+    public function countQuestion($where): int
     {
-        $data   =   [];
-        foreach ($where as $key=>$value) {
-            if ($key !== Contract::SEARCH) {
-                $data[] =   [$key, $value];
-            }
-        }
-        $query  =   $this->model::with('user','lawyer');
-        if (array_key_exists(Contract::SEARCH, $where)) {
-            $query->where(array_merge($data, [
-                [Contract::ID, 'like', $where[Contract::SEARCH] . '%']
-            ]));
-            $query->orWhere(array_merge($data, [
-                [Contract::ANSWER, 'like', $where[Contract::SEARCH] . '%']
-            ]));
-            $query->orWhere(array_merge($data, [
-                [Contract::TITLE, 'like', $where[Contract::SEARCH] . '%']
-            ]));
-        } else {
-            $query->where($data);
-        }
-        return $query->count();
+        $query = $this->getBuilder($where);
+        return $query->withoutGlobalScope(Page::class)->count();
     }
 
     public static function count($arr = [])
@@ -193,5 +155,34 @@ class QuestionRepositoryEloquent implements QuestionRepositoryInterface
             ->where(Contract::IS_PAID, true)
             ->whereBetween(Contract::CREATED_AT, [$start.' 00:00:00',$end.' 23:59:59'])
             ->groupBy(DB::raw("DATE_FORMAT(created_at, '%Y-%m-%d')"))->get();
+    }
+
+    /**
+     * @param $where
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function getBuilder($where): \Illuminate\Database\Eloquent\Builder
+    {
+        $data = [];
+        foreach ($where as $key => $value) {
+            if ($key !== Contract::SEARCH) {
+                $data[] = [$key, $value];
+            }
+        }
+        $query = $this->model::with('user', 'lawyer');
+        if (array_key_exists(Contract::SEARCH, $where)) {
+            $query->where(array_merge($data, [
+                [Contract::ID, 'like', $where[Contract::SEARCH] . '%']
+            ]));
+            $query->orWhere(array_merge($data, [
+                [Contract::ANSWER, 'like', $where[Contract::SEARCH] . '%']
+            ]));
+            $query->orWhere(array_merge($data, [
+                [Contract::TITLE, 'like', $where[Contract::SEARCH] . '%']
+            ]));
+        } else {
+            $query->where($data);
+        }
+        return $query;
     }
 }
