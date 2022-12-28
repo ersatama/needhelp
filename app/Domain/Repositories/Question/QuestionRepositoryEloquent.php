@@ -70,7 +70,7 @@ class QuestionRepositoryEloquent implements QuestionRepositoryInterface
         } else {
             $query->where($data);
         }
-        return $query->withoutGlobalScope(Page::class)->count();
+        return $query->count();
     }
 
     public static function count($arr = [])
