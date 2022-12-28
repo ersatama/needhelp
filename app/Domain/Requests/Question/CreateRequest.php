@@ -13,7 +13,7 @@ class CreateRequest extends MainRequest
             Contract::USER_ID   =>  'required|exists:users,id',
             Contract::PAYMENT_ID    =>  'required|exists:payments,id',
             Contract::PRICE     =>  'required',
-            Contract::TITLE     =>  'required|string|max:5000',
+            Contract::TITLE     =>  'required|string|max:10000',
             Contract::IS_IMPORTANT  =>  'required|boolean',
         ];
     }
