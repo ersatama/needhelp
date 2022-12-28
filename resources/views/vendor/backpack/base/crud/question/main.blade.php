@@ -346,8 +346,10 @@
                     let bottomOfWindow = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop) + window.innerHeight > (document.documentElement.offsetHeight - 150)
                     if (bottomOfWindow) {
                         if (this.type) {
+                            this.questionAjaxStatus =   true;
                             this.getQuestions();
                         } else {
+                            this.answeredQuestionAjaxStatus =   true;
                             this.getAnsweredQuestions();
                         }
                     }
