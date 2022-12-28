@@ -37,7 +37,7 @@ class QuestionController extends Controller
     {
         $data   =   $getRequest->checked();
         return response([
-            Contract::COUNT =>  $this->questionService->questionRepository->count($data),
+            Contract::COUNT =>  $this->questionService->questionRepository->countQuestion($data),
             Contract::DATA  =>  new QuestionCollection($this->questionService->questionRepository->getWhere($data))
         ],200);
     }

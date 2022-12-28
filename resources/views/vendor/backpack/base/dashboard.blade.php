@@ -50,21 +50,20 @@
         @endphp
     @else
         @php
-            /*$widgets['before_content'][]    =   [
+            $widgets['after_content'][]    =   [
             'type'    => 'div',
             'class'   => 'row',
             'content' => [
                     [
                         'type'          => 'progress_white',
                         'class'         => 'card mb-2',
-                        'value'         =>  '<span class="text-success">' . QuestionRepositoryEloquent::sum(Contract::PRICE,[Contract::IS_PAID=>true,Contract::LAWYER_ID=>backpack_user()->{Contract::ID}]) . ' KZT</span>',
-                        'description'   => 'Сумма всех оплат',
+                        'value'         =>  '<span class="text-success">' . QuestionRepositoryEloquent::lawyerCountToday([Contract::LAWYER_ID=>backpack_user()->{Contract::ID},Contract::CREATED_AT=>\Carbon\Carbon::today()]) . '</span>',
+                        'description'   => 'Отвечено на вопросы сегодня',
                         'progress'      => 100, // integer
                         'progressClass' => 'progress-bar bg-success',
-                        'hint'          => QuestionRepositoryEloquent::sumLastMonth(Contract::PRICE,[Contract::IS_PAID=>true,Contract::LAWYER_ID=>backpack_user()->{Contract::ID}]) . ' KZT Сумма за последние 30 дней',
                     ],
                 ],
-            ];*/
+            ];
         @endphp
     @endif
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>

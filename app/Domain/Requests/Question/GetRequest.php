@@ -11,7 +11,8 @@ class GetRequest extends MainRequest
     {
         return [
             Contract::IS_PAID   =>  'nullable|boolean',
-            Contract::STATUS    =>  'nullable'
+            Contract::STATUS    =>  'nullable',
+            Contract::SEARCH    =>  'nullable'
         ];
     }
 
@@ -20,7 +21,7 @@ class GetRequest extends MainRequest
         $data   =   $this->validator->validated();
         $arr    =   [];
         foreach ($data as $key => $value) {
-            $arr[]  =   [$key,$value];
+            $arr[$key]  =   $value;
         }
         return $arr;
     }

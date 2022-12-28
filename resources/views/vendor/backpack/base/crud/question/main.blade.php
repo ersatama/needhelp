@@ -18,13 +18,17 @@
         <answered v-if="showAnsweredModal" @close="showAnsweredModal = false" :answered_view="answered_view" :role="role"></answered>
         <div class="bg-white border rounded">
             <div class="border-bottom p-2">
-                <div class="m-0 p-3 d-flex justify-content-center">
-                    <div class="header-switcher d-flex">
-                        @if(backpack_user()->{\App\Domain\Contracts\Contract::ROLE} !== 'lawyer')
+                <div class="m-0 p-3 d-flex justify-content-center" style="gap: 20px;">
+                    @if(backpack_user()->{\App\Domain\Contracts\Contract::ROLE} !== 'lawyer')
+                        <div class="header-switcher d-flex">
                             <div class="header-switcher-item text-muted" :class="{'header-switcher-item-sel':(type)}" @click="type = true">В обработке</div>
                             <div class="header-switcher-item text-muted" :class="{'header-switcher-item-sel':(!type)}" @click="type = false">Закрытые</div>
-                        @endif
-                    </div>
+                        </div>
+                        <div class="header-search">
+                            <div class="header-search-icon"></div>
+                            <input type="text" class="header-search-input" placeholder="id, вопрос, ответ" v-model="search">
+                        </div>
+                    @endif
                 </div>
             </div>
             <div class="questions" v-if="type">
@@ -285,7 +289,21 @@
                 user_id:  {{ backpack_user()->{\App\Domain\Contracts\Contract::ID} }},
                 role:  '{{ backpack_user()->{\App\Domain\Contracts\Contract::ROLE} }}',
 
-
+                search: '',
+                timeout: null,
+            },
+            watch: {
+                type(value, oldValue) {
+                      if (value !== oldValue) {
+                          this.updateSearch();
+                      }
+                },
+                search(value, oldValue) {
+                    clearTimeout(this.timeout);
+                    if (value !== oldValue) {
+                        this.timeout    =   setTimeout(this.updateSearch(), 800);
+                    }
+                }
             },
             created() {
                 this.refresh();
@@ -295,6 +313,15 @@
                 window.removeEventListener('scroll', this.handleScroll);
             },
             methods: {
+                updateSearch() {
+                    if (this.type) {
+                        this.page   =   1;
+                        this.getQuestions();
+                    } else {
+                        this.answered_page  =   1;
+                        this.getAnsweredQuestions();
+                    }
+                },
                 getTimeDiff(item) {
                     let timezone    =   new Date(item.timezone);
                     let now         =   new Date();
@@ -438,13 +465,21 @@
                 getQuestions() {
                     if (this.questionAjaxStatus) {
                         this.questionAjaxStatus =   false;
+                        let data    =   {
+                            is_paid: this.is_paid,
+                            status: 1,
+                        };
+                        if (this.search.trim() !== '') {
+                            data.search =   this.search;
+                        }
                         axios
-                            .post('/api/v1/question/get?page='+this.page+'&timezone='+Intl.DateTimeFormat().resolvedOptions().timeZone+'&order_by=is_important&order_by_type=desc&take='+this.take,{
-                                is_paid: this.is_paid,
-                                status: 1,
-                            })
+                            .post('/api/v1/question/get?page='+this.page+'&timezone='+Intl.DateTimeFormat().resolvedOptions().timeZone+'&order_by=is_important&order_by_type=desc&take='+this.take, data)
                             .then(response => {
-                                this.questionListAdd(response.data.data);
+                                if (this.page === 1) {
+                                    this.questions  =   response.data.data;
+                                } else {
+                                    this.questionListAdd(response.data.data);
+                                }
                                 this.count  =   response.data.count;
                                 this.hide();
                                 this.timerCheck();
@@ -485,16 +520,24 @@
                 getAnsweredQuestions() {
                     if (this.answeredQuestionAjaxStatus) {
                         this.answeredQuestionAjaxStatus =   false;
+                        let data    =   {
+                            is_paid: this.is_paid,
+                            status: 2,
+                            @if (backpack_user()->{\App\Domain\Contracts\Contract::ROLE} === 'lawyer')
+                            lawyer_id: {{backpack_user()->{\App\Domain\Contracts\Contract::ID} }},
+                            @endif
+                        };
+                        if (this.search.trim() !== '') {
+                            data.search =   this.search;
+                        }
                         axios
-                            .post('/api/v1/question/get?page='+this.answered_page+'&timezone='+Intl.DateTimeFormat().resolvedOptions().timeZone+'&order_by=updated_at&order_by_type=desc&take='+this.take,{
-                                is_paid: this.is_paid,
-                                status: 2,
-                                @if (backpack_user()->{\App\Domain\Contracts\Contract::ROLE} === 'lawyer')
-                                lawyer_id: {{backpack_user()->{\App\Domain\Contracts\Contract::ID} }},
-                                @endif
-                            })
+                            .post('/api/v1/question/get?page='+this.answered_page+'&timezone='+Intl.DateTimeFormat().resolvedOptions().timeZone+'&order_by=updated_at&order_by_type=desc&take='+this.take, data)
                             .then(response => {
-                                this.answeredQuestionListAdd(response.data.data);
+                                if (this.answered_page === 1) {
+                                    this.answeredQuestions  =   response.data.data;
+                                } else {
+                                    this.answeredQuestionListAdd(response.data.data);
+                                }
                                 this.answeredCount  =   response.data.count;
                                 this.showAnsweredModal   =   false;
                                 this.answered_page  =   this.answered_page + 1;
@@ -533,6 +576,49 @@
 @section('after_styles')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
+        .header-search-icon {
+            position: absolute;
+            width: 37px;
+            height: 37px;
+            background: #fff;
+            right: 5px;
+            top: 5px;
+            border-radius: 30px;
+            box-shadow: 0 0 5px 1px rgba(0,0,0,.2);
+        }
+        .header-search-icon:before, .header-search-icon:after {
+            content: '';
+            position: absolute;
+        }
+        .header-search-icon:before {
+            width: 14px;
+            height: 14px;
+            border: 2px solid #0091c1;
+            left: 10px;
+            top: 10px;
+            border-radius: 15px;
+        }
+        .header-search-icon:after {
+            width: 2px;
+            height: 6px;
+            background: #0091c1;
+            top: 20px;
+            left: 22px;
+            transform: rotate(-45deg);
+        }
+        .header-search {
+            position: relative;
+        }
+        .header-search-input {
+            border-radius: 50px;
+            padding: 0 50px 0 20px;
+            border: none;
+            background: #efefef;
+            font-size: 14px;
+            width: 250px;
+            height: 100%;
+            outline: none;
+        }
         .header-switcher-item {
             padding: 8px 10px 8px 10px;
             cursor: pointer;

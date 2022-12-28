@@ -6,6 +6,7 @@ use App\Domain\Contracts\Contract;
 use App\Domain\Repositories\RepositoryEloquent;
 use App\Domain\Scopes\Page;
 use App\Models\Question;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
 
 class QuestionRepositoryEloquent implements QuestionRepositoryInterface
@@ -17,9 +18,59 @@ class QuestionRepositoryEloquent implements QuestionRepositoryInterface
         $this->model    =   $question;
     }
 
-    public function getWhere($where)
+    public static function lawyerCountToday($where)
     {
-        return $this->model::with('user','lawyer')->where($where)->get();
+        return Question::where($where)->withoutGlobalScope(Page::class)->count();
+    }
+
+    public function getWhere($where): Collection|array
+    {
+        $data   =   [];
+        foreach ($where as $key=>$value) {
+            if ($key !== Contract::SEARCH) {
+                $data[] =   [$key, $value];
+            }
+        }
+        $query  =   $this->model::with('user','lawyer');
+        if (array_key_exists(Contract::SEARCH, $where)) {
+            $query->where(array_merge($data, [
+                [Contract::ID, 'like', $where[Contract::SEARCH] . '%']
+            ]));
+            $query->orWhere(array_merge($data, [
+                [Contract::ANSWER, 'like', $where[Contract::SEARCH] . '%']
+            ]));
+            $query->orWhere(array_merge($data, [
+                [Contract::TITLE, 'like', $where[Contract::SEARCH] . '%']
+            ]));
+        } else {
+            $query->where($data);
+        }
+        return $query->withoutGlobalScope(Page::class)->get();
+    }
+
+    public function countQuestion($where)
+    {
+        $data   =   [];
+        foreach ($where as $key=>$value) {
+            if ($key !== Contract::SEARCH) {
+                $data[] =   [$key, $value];
+            }
+        }
+        $query  =   $this->model::with('user','lawyer');
+        if (array_key_exists(Contract::SEARCH, $where)) {
+            $query->where(array_merge($data, [
+                [Contract::ID, 'like', $where[Contract::SEARCH] . '%']
+            ]));
+            $query->orWhere(array_merge($data, [
+                [Contract::ANSWER, 'like', $where[Contract::SEARCH] . '%']
+            ]));
+            $query->orWhere(array_merge($data, [
+                [Contract::TITLE, 'like', $where[Contract::SEARCH] . '%']
+            ]));
+        } else {
+            $query->where($data);
+        }
+        return $query->withoutGlobalScope(Page::class)->count();
     }
 
     public static function count($arr = [])

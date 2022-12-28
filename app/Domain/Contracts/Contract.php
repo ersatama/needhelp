@@ -32,6 +32,7 @@ abstract class Contract
     const IS_PAID   =   'is_paid';
     const IS_IMPORTANT  =   'is_important';
     const STATUS    =   'status';
+    const SEARCH    =   'search';
     const CODE  =   'code';
     const DESCRIPTION   =   'description';
     const CURRENCY_ID   =   'currency_id';
