@@ -284,7 +284,7 @@
                 answered_page: 1,
 
                 is_paid: true,
-                take: 50,
+                take: 20,
 
                 user_id:  {{ backpack_user()->{\App\Domain\Contracts\Contract::ID} }},
                 role:  '{{ backpack_user()->{\App\Domain\Contracts\Contract::ROLE} }}',
