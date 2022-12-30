@@ -6,7 +6,7 @@ class Smsc
 {
     const URL   =   'https://smsc.kz/sys/send.php';
     const LOGIN =   'needhelp';
-    const PASS  =   'Az123456';
+    const PASS  =   'raxwij-6ridte-kowwAs';
 
     public static function sendCode($phone, $code): void
     {
