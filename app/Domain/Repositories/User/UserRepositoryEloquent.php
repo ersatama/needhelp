@@ -17,9 +17,9 @@ class UserRepositoryEloquent implements UserRepositoryInterface
         $this->model    =   $user;
     }
 
-    public static function count($arr = [])
+    public static function count($where = [])
     {
-        return User::where($arr)->count();
+        return User::where($where)->count();
     }
 
     public static function countLastMonth($arr = [])

@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Middleware\IpAddressMiddleware;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Response;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,4 +22,10 @@ Route::get('/', function () {
 
 Route::controller(AuthController::class)->group(function() {
     Route::post('login','login')->name('backpack.auth.login');
+});
+
+Route::get('/terms', function () {
+    return Response::make(file_get_contents('docs/terms.pdf'), 200, [
+        'content-type'=>'application/pdf',
+    ]);
 });

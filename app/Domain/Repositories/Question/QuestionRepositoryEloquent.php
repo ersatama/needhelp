@@ -35,9 +35,9 @@ class QuestionRepositoryEloquent implements QuestionRepositoryInterface
         return $query->withoutGlobalScope(Page::class)->count();
     }
 
-    public static function count($arr = [])
+    public static function count($where = [])
     {
-        return Question::where($arr)->withoutGlobalScope(Page::class)->count();
+        return Question::where($where)->withoutGlobalScope(Page::class)->count();
     }
 
     public static function countLastMonth($arr = [])
