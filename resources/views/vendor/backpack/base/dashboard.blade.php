@@ -644,6 +644,157 @@
                 </div>
             </div>
         </div>
+        <div class="h4 font-weight-bold text-center">Среднее время на ответ</div>
+        <div class="row">
+            <div class="col-12 col-lg-4">
+                <div class="card mt-3">
+                    <div class="card-header text-center">
+                        Среднее время на ответ за последние 7 дней
+                    </div>
+                    <div class="card-body">
+                        @php
+                            $notifications  =   QuestionRepositoryEloquent::averageTime([
+                                [Contract::CREATED_AT, '>', now()->subDays(7)->endOfDay()],
+                                [Contract::IS_PAID,true],
+                                [Contract::STATUS,2]
+                                ]);
+                        @endphp
+                        <canvas id="average-week" width="400" height="220" aria-label="Среднее время на ответ 7 дней"></canvas>
+                        <script>
+                            notifications = [
+                                    @foreach( $notifications as &$value)
+                                {
+                                    day: '{{ \Carbon\Carbon::parse($value['date'])->diffForHumans() }} • {{ $value['average'] }}',
+                                    count: {{ $value['count'] }}
+                                },
+                                @endforeach
+                            ];
+                            new Chart(
+                                document.getElementById('average-week'),
+                                {
+                                    type: 'line',
+                                    data: {
+                                        labels: notifications.map(row => row.day),
+                                        datasets: [{
+                                            label: 'Среднее время на ответ',
+                                            data: notifications.map(row => row.count),
+                                            fill: false,
+                                            borderColor: 'rgb(75, 192, 192)',
+                                            tension: 1
+                                        }]
+                                    },
+                                    options: {
+                                        legend: {
+                                            display: false
+                                        },
+                                    }
+                                }
+                            );
+                        </script>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-4">
+                <div class="card mt-3">
+                    <div class="card-header text-center">
+                        Среднее время на ответ за последние 30 дней
+                    </div>
+                    <div class="card-body">
+                        @php
+                            $notifications  =   QuestionRepositoryEloquent::averageTime([
+                                [Contract::CREATED_AT, '>', now()->subDays(30)->endOfDay()],
+                                [Contract::IS_PAID,true],
+                                [Contract::STATUS,2]
+                                ]);
+                        @endphp
+                        <canvas id="average-month" width="400" height="220" aria-label="Среднее время на ответ 7 дней"></canvas>
+                        <script>
+                            notifications = [
+                                    @foreach( $notifications as &$value)
+                                {
+                                    day: '{{ \Carbon\Carbon::parse($value['date'])->diffForHumans() }} • {{ $value['average'] }}',
+                                    count: {{ $value['count'] }}
+                                },
+                                @endforeach
+                            ];
+                            new Chart(
+                                document.getElementById('average-month'),
+                                {
+                                    type: 'line',
+                                    data: {
+                                        labels: notifications.map(row => row.day),
+                                        datasets: [{
+                                            label: 'Среднее время на ответ',
+                                            data: notifications.map(row => row.count),
+                                            fill: false,
+                                            borderColor: 'rgb(75, 192, 192)',
+                                            tension: 1
+                                        }]
+                                    },
+                                    options: {
+                                        legend: {
+                                            display: false
+                                        },
+                                    }
+                                }
+                            );
+                        </script>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-4">
+                <div class="card mt-3">
+                    @php
+                        $startClosed  =   date("Y-m-d", strtotime("-365 day"));
+                        $endClosed    =   date("Y-m-d");
+                        $averageEndBetween  =   QuestionRepositoryEloquent::averageTimeBetweenClosedWhere($startClosed,$endClosed,[
+                            [Contract::IS_PAID,true],
+                            [Contract::STATUS,2]
+                        ]);
+                    @endphp
+                    <div class="card-header text-center d-flex align-items-center justify-content-center head-date">
+                        <label for="from-average" class="h6 m-0">От</label>
+                        <input type="text" class="input-date" id="from-average" name="from-lawyer-average" value="{{$startClosed}}" readonly>
+                        <label for="to-average" class="h6 m-0">До</label>
+                        <input type="text" class="input-date" id="to-average" name="to-lawyer-average" value="{{$endClosed}}" readonly>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="average-between" width="400" height="220"></canvas>
+                        <script>
+                            let averageDate = [
+                                    @foreach( $averageEndBetween as &$value)
+                                {
+                                    date: '{{ $value['date'] }} • {{ $value['average'] }}',
+                                    count: {{ $value['count'] }}
+                                },
+                                @endforeach
+                            ];
+                            new Chart(
+                                document.getElementById('average-between'),
+                                {
+                                    type: 'line',
+                                    data: {
+                                        labels: averageDate.map(row => row.date),
+                                        datasets: [{
+                                            label: 'За выбранный период',
+                                            data: averageDate.map(row => row.count),
+                                            fill: false,
+                                            borderColor: 'rgb(75, 192, 192)',
+                                            tension: 0.1
+                                        }]
+                                    },
+                                    options: {
+                                        legend: {
+                                            display: false
+                                        },
+                                    }
+                                }
+                            );
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="h4 font-weight-bold text-center">Процент обычных и срочных вопросов</div>
         <div class="row">
             <div class="col-12 col-lg-6">
@@ -872,13 +1023,13 @@
                         ]);
                     @endphp
                     <div class="card-header text-center d-flex align-items-center justify-content-center head-date">
-                        <label for="from_close" class="h6 m-0">От</label>
-                        <input type="text" class="input-date" id="from_close" name="from-close" value="{{$startClosed}}" readonly>
-                        <label for="to_close" class="h6 m-0">До</label>
-                        <input type="text" class="input-date" id="to_close" name="to-close" value="{{$endClosed}}" readonly>
+                        <label for="from-lawyer-close" class="h6 m-0">От</label>
+                        <input type="text" class="input-date" id="from-lawyer-close" name="from-lawyer-close" value="{{$startClosed}}" readonly>
+                        <label for="to-lawyer-close" class="h6 m-0">До</label>
+                        <input type="text" class="input-date" id="to-lawyer-close" name="to-lawyer-close" value="{{$endClosed}}" readonly>
                     </div>
                     <div class="card-body">
-                        <canvas id="closed-question-between" width="400" height="220"></canvas>
+                        <canvas id="closed-question-between-lawyer" width="400" height="220"></canvas>
                         <script>
                             let closeDate = [
                                     @foreach( $countEndBetween as &$notification)
@@ -889,7 +1040,7 @@
                                 @endforeach
                             ];
                             new Chart(
-                                document.getElementById('closed-question-between'),
+                                document.getElementById('closed-question-between-lawyer'),
                                 {
                                     type: 'line',
                                     data: {
@@ -897,6 +1048,162 @@
                                         datasets: [{
                                             label: 'За выбранный период',
                                             data: closeDate.map(row => row.count),
+                                            fill: false,
+                                            borderColor: 'rgb(75, 192, 192)',
+                                            tension: 0.1
+                                        }]
+                                    },
+                                    options: {
+                                        legend: {
+                                            display: false
+                                        },
+                                    }
+                                }
+                            );
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="h4 font-weight-bold text-center">Среднее время на ответ</div>
+        <div class="row">
+            <div class="col-12 col-lg-4">
+                <div class="card mt-3">
+                    <div class="card-header text-center">
+                        Среднее время на ответ за последние 7 дней
+                    </div>
+                    <div class="card-body">
+                        @php
+                            $notifications  =   QuestionRepositoryEloquent::averageTime([
+                                [Contract::LAWYER_ID, backpack_user()->{Contract::ID}],
+                                [Contract::CREATED_AT, '>', now()->subDays(7)->endOfDay()],
+                                [Contract::IS_PAID,true],
+                                [Contract::STATUS,2]
+                                ]);
+                        @endphp
+                        <canvas id="average-week-lawyer" width="400" height="220" aria-label="Среднее время на ответ 7 дней"></canvas>
+                        <script>
+                            notifications = [
+                                @foreach( $notifications as &$value)
+                                {
+                                    day: '{{ \Carbon\Carbon::parse($value['date'])->diffForHumans() }} • {{ $value['average'] }}',
+                                    count: {{ $value['count'] }}
+                                },
+                                @endforeach
+                            ];
+                            new Chart(
+                                document.getElementById('average-week-lawyer'),
+                                {
+                                    type: 'line',
+                                    data: {
+                                        labels: notifications.map(row => row.day),
+                                        datasets: [{
+                                            text: 'sdasd',
+                                            label: 'Среднее время на ответ',
+                                            data: notifications.map(row => row.count),
+                                            fill: false,
+                                            borderColor: 'rgb(75, 192, 192)',
+                                            tension: 1
+                                        }]
+                                    },
+                                    options: {
+                                        legend: {
+                                            display: false
+                                        },
+                                    }
+                                }
+                            );
+                        </script>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-4">
+                <div class="card mt-3">
+                    <div class="card-header text-center">
+                        Среднее время на ответ за последние 30 дней
+                    </div>
+                    <div class="card-body">
+                        @php
+                            $notifications  =   QuestionRepositoryEloquent::averageTime([
+                                [Contract::LAWYER_ID, backpack_user()->{Contract::ID}],
+                                [Contract::CREATED_AT, '>', now()->subDays(30)->endOfDay()],
+                                [Contract::IS_PAID,true],
+                                [Contract::STATUS,2]
+                                ]);
+                        @endphp
+                        <canvas id="average-month-lawyer" width="400" height="220" aria-label="Среднее время на ответ 7 дней"></canvas>
+                        <script>
+                            notifications = [
+                                    @foreach( $notifications as &$value)
+                                {
+                                    day: '{{ \Carbon\Carbon::parse($value['date'])->diffForHumans() }} • {{ $value['average'] }}',
+                                    count: {{ $value['count'] }}
+                                },
+                                @endforeach
+                            ];
+                            new Chart(
+                                document.getElementById('average-month-lawyer'),
+                                {
+                                    type: 'line',
+                                    data: {
+                                        labels: notifications.map(row => row.day),
+                                        datasets: [{
+                                            text: 'sdasd',
+                                            label: 'Среднее время на ответ',
+                                            data: notifications.map(row => row.count),
+                                            fill: false,
+                                            borderColor: 'rgb(75, 192, 192)',
+                                            tension: 1
+                                        }]
+                                    },
+                                    options: {
+                                        legend: {
+                                            display: false
+                                        },
+                                    }
+                                }
+                            );
+                        </script>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-4">
+                <div class="card mt-3">
+                    @php
+                        $startClosed  =   date("Y-m-d", strtotime("-365 day"));
+                        $endClosed    =   date("Y-m-d");
+                        $averageEndBetween  =   QuestionRepositoryEloquent::averageTimeBetweenClosedWhere($startClosed,$endClosed,[
+                            [Contract::LAWYER_ID, backpack_user()->{Contract::ID}],
+                            [Contract::IS_PAID,true],
+                            [Contract::STATUS,2]
+                        ]);
+                    @endphp
+                    <div class="card-header text-center d-flex align-items-center justify-content-center head-date">
+                        <label for="from-lawyer-average" class="h6 m-0">От</label>
+                        <input type="text" class="input-date" id="from-lawyer-average" name="from-lawyer-average" value="{{$startClosed}}" readonly>
+                        <label for="to-lawyer-average" class="h6 m-0">До</label>
+                        <input type="text" class="input-date" id="to-lawyer-average" name="to-lawyer-average" value="{{$endClosed}}" readonly>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="average-lawyer-between" width="400" height="220"></canvas>
+                        <script>
+                            let averageDate = [
+                                    @foreach( $averageEndBetween as &$value)
+                                {
+                                    date: '{{ $value['date'] }} • {{ $value['average'] }}',
+                                    count: {{ $value['count'] }}
+                                },
+                                @endforeach
+                            ];
+                            new Chart(
+                                document.getElementById('average-lawyer-between'),
+                                {
+                                    type: 'line',
+                                    data: {
+                                        labels: averageDate.map(row => row.date),
+                                        datasets: [{
+                                            label: 'За выбранный период',
+                                            data: averageDate.map(row => row.count),
                                             fill: false,
                                             borderColor: 'rgb(75, 192, 192)',
                                             tension: 0.1
@@ -1015,6 +1322,72 @@
                     getCloseDate()
                 });
 
+            let from_lawyer_close = $("#from-lawyer-close").datepicker({
+                defaultDate: "+1w",
+                changeMonth: true,
+                numberOfMonths: 1,
+                dateFormat: dateFormat
+            })
+                .on( "change", function() {
+                    from_close.datepicker( "option", "maxDate", getDate( this ) );
+                    getCloseLawyerDate()
+                });
+
+            let to_lawyer_close = $("#to-lawyer-close").datepicker({
+                defaultDate: "+1w",
+                changeMonth: true,
+                numberOfMonths: 1,
+                dateFormat: dateFormat
+            })
+                .on( "change", function() {
+                    from_close.datepicker( "option", "maxDate", getDate( this ) );
+                    getCloseLawyerDate()
+                });
+
+            let from_lawyer_average = $("#from-lawyer-average").datepicker({
+                defaultDate: "+1w",
+                changeMonth: true,
+                numberOfMonths: 1,
+                dateFormat: dateFormat
+            })
+                .on( "change", function() {
+                    from_close.datepicker( "option", "maxDate", getDate( this ) );
+                    getAverageLawyerDate()
+                });
+
+            let to_lawyer_average = $("#to-lawyer-average").datepicker({
+                defaultDate: "+1w",
+                changeMonth: true,
+                numberOfMonths: 1,
+                dateFormat: dateFormat
+            })
+                .on( "change", function() {
+                    from_close.datepicker( "option", "maxDate", getDate( this ) );
+                    getAverageLawyerDate()
+                });
+
+            let from_average = $("#from-average").datepicker({
+                defaultDate: "+1w",
+                changeMonth: true,
+                numberOfMonths: 1,
+                dateFormat: dateFormat
+            })
+                .on( "change", function() {
+                    from_close.datepicker( "option", "maxDate", getDate( this ) );
+                    getAverageDate()
+                });
+
+            let to_average = $("#to-average").datepicker({
+                defaultDate: "+1w",
+                changeMonth: true,
+                numberOfMonths: 1,
+                dateFormat: dateFormat
+            })
+                .on( "change", function() {
+                    from_close.datepicker( "option", "maxDate", getDate( this ) );
+                    getAverageDate()
+                });
+
             function getDate( element ) {
                 let date;
                 try {
@@ -1045,6 +1418,11 @@
                                     tension: 0.1
                                 }]
                             },
+                            options: {
+                                legend: {
+                                    display: false
+                                },
+                            }
                         }
                     );
                 });
@@ -1070,6 +1448,11 @@
                                     tension: 0.1
                                 }]
                             },
+                            options: {
+                                legend: {
+                                    display: false
+                                },
+                            }
                         }
                     );
                 });
@@ -1095,6 +1478,11 @@
                                     tension: 1
                                 }]
                             },
+                            options: {
+                                legend: {
+                                    display: false
+                                },
+                            }
                         }
                     );
                 });
@@ -1120,11 +1508,119 @@
                                     tension: 1
                                 }]
                             },
+                            options: {
+                                legend: {
+                                    display: false
+                                },
+                            }
                         }
                     );
                 });
             }
         }
+        function getCloseLawyerDate() {
+            let closeStart   =   $( "#from-lawyer-close" ).val();
+            let closeEnd     =   $( "#to-lawyer-close" ).val();
+            let lawyer       =   '{{ backpack_user()->{Contract::ID} }}';
+            if (closeStart !== '' && closeEnd !== '') {
+                $.get( "/api/v1/question/countDateLawyerBetweenClosed/"+lawyer+"/"+closeStart+"/"+closeEnd, function( data ) {
+                    closeDate = data;
+                    new Chart(
+                        document.getElementById('closed-question-between-lawyer'),
+                        {
+                            type: 'line',
+                            data: {
+                                labels: closeDate.map(row => row.date),
+                                datasets: [{
+                                    label: 'За выбранный период',
+                                    data: closeDate.map(row => row.count),
+                                    fill: false,
+                                    borderColor: 'rgb(75, 192, 192)',
+                                    tension: 1
+                                }]
+                            },
+                            options: {
+                                legend: {
+                                    display: false
+                                },
+                            }
+                        }
+                    );
+                });
+            }
+        }
+
+        function getAverageLawyerDate() {
+            let closeStart   =   $( "#from-lawyer-average" ).val();
+            let closeEnd     =   $( "#to-lawyer-average" ).val();
+            let lawyer       =   '{{ backpack_user()->{Contract::ID} }}';
+            if (closeStart !== '' && closeEnd !== '') {
+                $.get( "/api/v1/question/countDateAverageBetweenClosed/"+lawyer+"/"+closeStart+"/"+closeEnd, function( data ) {
+                    let averageLawyer = data;
+                    let arr =   [];
+                    for (const [key, value] of Object.entries(averageLawyer)) {
+                        arr.push(value);
+                    }
+                    new Chart(
+                        document.getElementById('average-lawyer-between'),
+                        {
+                            type: 'line',
+                            data: {
+                                labels: arr.map(row => row.date + ' • ' + row.average),
+                                datasets: [{
+                                    label: 'За выбранный период',
+                                    data: arr.map(row => row.count),
+                                    fill: false,
+                                    borderColor: 'rgb(75, 192, 192)',
+                                    tension: 1
+                                }]
+                            },
+                            options: {
+                                legend: {
+                                    display: false
+                                },
+                            }
+                        }
+                    );
+                });
+            }
+        }
+
+        function getAverageDate() {
+            let closeStart   =   $( "#from-average" ).val();
+            let closeEnd     =   $( "#to-average" ).val();
+            if (closeStart !== '' && closeEnd !== '') {
+                $.get( "/api/v1/question/averageBetweenClosed/"+closeStart+"/"+closeEnd, function( data ) {
+                    let averageLawyer = data;
+                    let arr =   [];
+                    for (const [key, value] of Object.entries(averageLawyer)) {
+                        arr.push(value);
+                    }
+                    new Chart(
+                        document.getElementById('average-between'),
+                        {
+                            type: 'line',
+                            data: {
+                                labels: arr.map(row => row.date + ' • ' + row.average),
+                                datasets: [{
+                                    label: 'За выбранный период',
+                                    data: arr.map(row => row.count),
+                                    fill: false,
+                                    borderColor: 'rgb(75, 192, 192)',
+                                    tension: 1
+                                }]
+                            },
+                            options: {
+                                legend: {
+                                    display: false
+                                },
+                            }
+                        }
+                    );
+                });
+            }
+        }
+
     </script>
 @endsection
 

@@ -62,6 +62,9 @@ Route::controller(QuestionController::class)->group(function() {
         Route::post('get','get')->name('get');
         Route::get('priceDateBetween/{start}/{end}','priceDateBetween')->name('question.priceDateBetween');
         Route::get('countDateBetween/{start}/{end}','countDateBetween')->name('question.countDateBetween');
+        Route::get('averageBetweenClosed/{start}/{end}','averageBetweenClosed')->name('averageBetweenClosed');
+        Route::get('countDateLawyerBetweenClosed/{lawyerId}/{start}/{end}','countDateLawyerBetweenClosed')->name('question.countDateLawyerBetweenClosed');
+        Route::get('countDateAverageBetweenClosed/{lawyerId}/{start}/{end}','countDateAverageBetweenClosed')->name('question.countDateAverageBetweenClosed');
         Route::get('countDateBetweenClosed/{start}/{end}','countDateBetweenClosed')->name('question.countDateBetweenClosed');
         Route::get('getByUserId/{userId}','getByUserId')->name('question.getByUserId');
         Route::get('firstById/{id}','firstById')->name('question.firstById');

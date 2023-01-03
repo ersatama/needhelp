@@ -44,6 +44,39 @@ class QuestionController extends Controller
 
     /**
      * @hideFromAPIDocumentation
+     * averageBetweenClosed - Questions
+     *
+     * @group Questions
+     */
+    public function averageBetweenClosed($start, $end)
+    {
+        return $this->questionService->questionRepository::averageBetweenClosed($start, $end);
+    }
+
+    /**
+     * @hideFromAPIDocumentation
+     * countDateAverageBetweenClosed - Questions
+     *
+     * @group Questions
+     */
+    public function countDateAverageBetweenClosed($lawyerId, $start, $end)
+    {
+        return $this->questionService->questionRepository::countDateAverageBetweenClosed($lawyerId, $start, $end);
+    }
+
+    /**
+     * @hideFromAPIDocumentation
+     * countLawyerDateBetweenClosed - Questions
+     *
+     * @group Questions
+     */
+    public function countDateLawyerBetweenClosed($lawyerId, $start, $end)
+    {
+        return $this->questionService->questionRepository::countDateLawyerBetweenClosed($lawyerId, $start, $end);
+    }
+
+    /**
+     * @hideFromAPIDocumentation
      * countDateBetweenClosed - Questions
      *
      * @group Questions

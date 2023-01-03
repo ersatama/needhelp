@@ -6,6 +6,9 @@ use App\Domain\Contracts\Contract;
 use App\Domain\Repositories\RepositoryEloquent;
 use App\Domain\Scopes\Page;
 use App\Models\Question;
+use Carbon\Carbon;
+use DateTime;
+use Exception;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
 
@@ -21,6 +24,40 @@ class QuestionRepositoryEloquent implements QuestionRepositoryInterface
     public static function lawyerCountToday($where)
     {
         return Question::where($where)->withoutGlobalScope(Page::class)->count();
+    }
+
+    /**
+     * @param $questions
+     * @return array
+     * @throws Exception
+     */
+    public static function getQuestion($questions): array
+    {
+        $arr = [];
+        foreach ($questions as &$question) {
+            $parsedDate = Carbon::createFromFormat('Y-m-d H:i:s', $question->{Contract::CREATED_AT})->format('Y-m-d H:i:s');
+            $splitDate = explode(' ', $parsedDate);
+            $date = new DateTime($question->{Contract::CREATED_AT});
+            $answeredDate = new DateTime($question->{Contract::ANSWERED_AT});
+            $interval = $date->diff($answeredDate);
+            $interval = $interval->s;
+            if (!array_key_exists($splitDate[0], $arr)) {
+                $arr[$splitDate[0]] = [
+                    Contract::DATE => $splitDate[0],
+                    Contract::COUNT => 1,
+                    Contract::AVERAGE => $interval,
+                ];
+            } else {
+                $arr[$splitDate[0]][Contract::COUNT] = $arr[$splitDate[0]][Contract::COUNT] + 1;
+                $arr[$splitDate[0]][Contract::AVERAGE] = $arr[$splitDate[0]][Contract::AVERAGE] + $interval;
+            }
+        }
+
+        foreach ($arr as $key => $value) {
+            $time = round($value[Contract::AVERAGE] / $value[Contract::COUNT]);
+            $arr[$key][Contract::AVERAGE] = sprintf('%02d:%02d:%02d', ($time / 3600), ($time / 60 % 60), $time % 60);
+        }
+        return $arr;
     }
 
     public function getWhere($where): Collection|array
@@ -67,10 +104,61 @@ class QuestionRepositoryEloquent implements QuestionRepositoryInterface
         return Question::where(Contract::LAWYER_ID, $lawyerId)->get();
     }
 
+    public static function averageTimeBetweenClosedWhere($start, $end, $where)
+    {
+        $questions  =   Question::select(DB::raw(Contract::CREATED_AT),DB::raw(Contract::ANSWERED_AT))
+            ->where($where)
+            ->whereBetween(Contract::CREATED_AT, [$start.' 00:00:00',$end.' 23:59:59'])
+            ->get();
+        return self::getQuestion($questions);
+    }
+
     public static function countDateBetweenClosedWhere($start, $end, $where)
     {
         return Question::select(DB::raw('count(id) as count'),DB::raw("DATE_FORMAT(created_at, '%Y-%m-%d') as date"))
             ->where($where)
+            ->whereBetween(Contract::CREATED_AT, [$start.' 00:00:00',$end.' 23:59:59'])
+            ->groupBy(DB::raw("DATE_FORMAT(created_at, '%Y-%m-%d')"))->get();
+    }
+
+    public static function averageBetweenClosed($start, $end)
+    {
+        $questions  =   Question::select(DB::raw(Contract::CREATED_AT),DB::raw(Contract::ANSWERED_AT))
+            ->where([
+                [Contract::IS_PAID,true],
+                [Contract::STATUS,2]
+            ])
+            ->whereBetween(Contract::CREATED_AT, [$start.' 00:00:00',$end.' 23:59:59'])
+            ->orderBy(Contract::CREATED_AT, Contract::DESC)
+            ->get();
+        return self::getQuestion($questions);
+    }
+
+    /**
+     * @throws Exception
+     */
+    public static function countDateAverageBetweenClosed($lawyerId, $start, $end): array
+    {
+        $questions  =   Question::select(DB::raw(Contract::CREATED_AT),DB::raw(Contract::ANSWERED_AT))
+            ->where([
+                [Contract::LAWYER_ID, $lawyerId],
+                [Contract::IS_PAID,true],
+                [Contract::STATUS,2]
+            ])
+            ->whereBetween(Contract::CREATED_AT, [$start.' 00:00:00',$end.' 23:59:59'])
+            ->orderBy(Contract::CREATED_AT, Contract::DESC)
+            ->get();
+        return self::getQuestion($questions);
+    }
+
+    public static function countDateLawyerBetweenClosed($lawyerId, $start, $end)
+    {
+        return Question::select(DB::raw('count(id) as count'),DB::raw("DATE_FORMAT(created_at, '%Y-%m-%d') as date"))
+            ->where([
+                [Contract::LAWYER_ID, $lawyerId],
+                [Contract::IS_PAID,true],
+                [Contract::STATUS,2]
+            ])
             ->whereBetween(Contract::CREATED_AT, [$start.' 00:00:00',$end.' 23:59:59'])
             ->groupBy(DB::raw("DATE_FORMAT(created_at, '%Y-%m-%d')"))->get();
     }
@@ -110,6 +198,18 @@ class QuestionRepositoryEloquent implements QuestionRepositoryInterface
             ->where($where)
             ->groupBy(Contract::IS_IMPORTANT)
             ->get();
+    }
+
+    /**
+     * @throws Exception
+     */
+    public static function averageTime($where = [])
+    {
+        $questions  =   Question::select(DB::raw(Contract::CREATED_AT),DB::raw(Contract::ANSWERED_AT))
+            ->where($where)
+            ->orderBy(Contract::CREATED_AT, Contract::DESC)
+            ->get();
+        return self::getQuestion($questions);
     }
 
     public static function countWhere($where = [])

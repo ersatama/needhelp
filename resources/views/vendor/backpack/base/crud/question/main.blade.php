@@ -5,13 +5,6 @@
 @endsection
 
 @section('content')
-    <script>
-        if (navigator.onLine) {
-            console.log('online');
-        } else {
-            console.log('offline');
-        }
-    </script>
     <div id="app" class="my-4">
         <audio src="/audio/1.wav" ref="audio" preload="auto"></audio>
         <modal v-if="showModal" @close="showModal = false" @answer="answer" :view="view" :status="status" :role="role" :agree="agree" :error-message="errorMessage" @checkbox="agree = !agree"></modal>
