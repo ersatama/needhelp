@@ -129,7 +129,6 @@ class QuestionRepositoryEloquent implements QuestionRepositoryInterface
                 [Contract::STATUS,2]
             ])
             ->whereBetween(Contract::CREATED_AT, [$start.' 00:00:00',$end.' 23:59:59'])
-            ->orderBy(Contract::CREATED_AT, Contract::DESC)
             ->get();
         return self::getQuestion($questions);
     }
@@ -146,7 +145,6 @@ class QuestionRepositoryEloquent implements QuestionRepositoryInterface
                 [Contract::STATUS,2]
             ])
             ->whereBetween(Contract::CREATED_AT, [$start.' 00:00:00',$end.' 23:59:59'])
-            ->orderBy(Contract::CREATED_AT, Contract::DESC)
             ->get();
         return self::getQuestion($questions);
     }
@@ -207,7 +205,6 @@ class QuestionRepositoryEloquent implements QuestionRepositoryInterface
     {
         $questions  =   Question::select(DB::raw(Contract::CREATED_AT),DB::raw(Contract::ANSWERED_AT))
             ->where($where)
-            ->orderBy(Contract::CREATED_AT, Contract::DESC)
             ->get();
         return self::getQuestion($questions);
     }
