@@ -324,9 +324,7 @@
                         return '00:00';
                     }
                     let diff    =   limit - secs;
-                    if (item.id === 39) {
-                        console.log( );
-                    }
+                    return Math.floor(diff / 60) + ':' + (diff % 60);
                 },
                 timerCheck() {
                     this.questions.forEach((item,key) => {
