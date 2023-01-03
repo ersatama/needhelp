@@ -318,14 +318,15 @@
                 getTimeDiff(item) {
                     let timezone    =   new Date(item.timezone);
                     let now         =   new Date();
-                    let delta       =   Math.abs(now - timezone) / 1000;
-                    let minutes     =   Math.floor(delta / 60) % 60;
-                    delta           -=  minutes * 60;
-                    let seconds     =   Math.floor(delta % 60);
-                    if (minutes < 30) {
-                        return (minutes<10?'0'+minutes:minutes)+":"+(seconds<10?'0'+seconds:seconds);
+                    let secs        =   Math.floor((now.getTime() - timezone.getTime()) / 1000);
+                    let limit       =   item.is_important?1800:3600;
+                    if (secs > limit) {
+                        return '00:00';
                     }
-                    return '30:00';
+                    let diff    =   limit - secs;
+                    if (item.id === 39) {
+                        console.log( );
+                    }
                 },
                 timerCheck() {
                     this.questions.forEach((item,key) => {
