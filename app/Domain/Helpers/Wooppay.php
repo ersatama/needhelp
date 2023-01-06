@@ -97,7 +97,7 @@ class Wooppay
         return false;
     }
 
-    public function status(\App\Models\Wooppay $wooppay)
+    public function status(\App\Models\Wooppay $wooppayModel)
     {
         if ($wooppay = $this->auth($this->paymentService->paymentRepository->firstById(self::PAYMENT_ID))) {
             try {
@@ -105,9 +105,10 @@ class Wooppay
                     'Authorization: '.$wooppay[Contract::TOKEN],
                     'Content-Type: application/json'
                 ],[
-                    Contract::OPERATION_IDS =>  [$wooppay->{Contract::OPERATION_ID}]
+                    Contract::OPERATION_IDS =>  [$wooppayModel->{Contract::OPERATION_ID}]
                 ]));
                 $status =   json_decode($status, true);
+                Log::info('status', [$status]);
                 if (sizeof($status) > 0) {
                     return $status;
                 }
