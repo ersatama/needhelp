@@ -1,5 +1,9 @@
 <?php
 
+use Alexboo\Wooppay\Options;
+use Alexboo\Wooppay\Reference;
+use Alexboo\Wooppay\Request\CashCreateInvoiceRequest;
+use Alexboo\Wooppay\Wooppay;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Middleware\IpAddressMiddleware;
 use Illuminate\Support\Facades\Route;
@@ -17,6 +21,28 @@ use Illuminate\Support\Facades\Response;
 */
 
 Route::get('/', function () {
+    $wooppay =  new Wooppay();
+    $options = new Options('test_merch', 'A12345678a', null, null, true);
+    $wooppay->connect($options);
+    $request = new CashCreateInvoiceRequest([
+        'amount' => 1000,
+        'deathDate' => 1000,
+        'description' => 'test payment',
+        'referenceId' => 1,
+        'backUrl' => '/back',
+        'requestUrl' => '/request',
+    ]);
+    $data = $wooppay->cash_createInvoice($request);
+    if ($data->error_code == Reference::ERROR_NO_ERRORS) {
+        $operationId = $data->response->operationId;
+        echo 'ok';
+    } else {
+        print_r($data);
+        echo '<br>';
+        echo 'empty';
+    }
+
+    return 'hello world!';
     return view('welcome');
 });
 

@@ -4,6 +4,20 @@ namespace App\Domain\Contracts;
 
 abstract class Contract
 {
+    const OPERATION_URL =   'operation_url';
+    const BACK_URL  =   'back_url';
+    const REQUEST_URL   =   'request_url';
+    const TOKEN =   'token';
+    const CREATE    =   'create';
+    const AUTH  =   'auth';
+    const RESPONSE  =   'response';
+    const URL   =   'url';
+    const OPERATION_ID  =   'operation_id';
+    const REPLENISHMENT_ID  =   'replenishment_id';
+    const INVOICE_ID    =   'invoice_id';
+    const KEY   =   'key';
+    const VALUE =   'value';
+    const EXPIRE_AT =   'expire_at';
     const TIMER =   'timer';
     const ORDER_BY_TYPES    =   [
         self::ASC,
@@ -36,6 +50,14 @@ abstract class Contract
     const SEARCH    =   'search';
     const CODE  =   'code';
     const DESCRIPTION   =   'description';
+    const DEATH_DATE    =   'death_date';
+    const MERCHANT_NAME =   'merchant_name';
+    const REFERENCE_ID  =   'reference_id';
+    const USER_PHONE    =   'user_phone';
+    const AMOUNT    =   'amount';
+    const CARD_FORBIDDEN    =   'card_forbidden';
+    const OPTION    =   'option';
+    const PREFIX    =   'prefix';
     const CURRENCY_ID   =   'currency_id';
     const PAYMENT_ID    =   'payment_id';
     const ANSWER    =   'answer';
@@ -79,6 +101,7 @@ abstract class Contract
     const ADMIN =   'admin';
     const LAWYER    =   'lawyer';
     const TIMER_TEXT    =   'timerText';
+    const WOOPPAY   =   'wooppay';
     const TIMEZONE  =   'timezone';
     const MANAGER   =   'manager';
     const USER  =   'user';

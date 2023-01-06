@@ -5,6 +5,7 @@ namespace App\Http\Resources\Question;
 use App\Domain\Contracts\Contract;
 use App\Domain\Contracts\QuestionContract;
 use App\Http\Resources\User\UserResource;
+use App\Http\Resources\Wooppay\WooppayResource;
 use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -20,7 +21,8 @@ class QuestionResource extends JsonResource
             Contract::UPDATED_AT_READABLE   =>  $this->convertDatetime($this->{Contract::UPDATED_AT}),
             Contract::USER  =>  new UserResource($this->{Contract::USER}),
             Contract::LAWYER    =>  new UserResource($this->{Contract::LAWYER}),
-            Contract::TIMER_TEXT    =>  null
+            Contract::TIMER_TEXT    =>  null,
+            Contract::WOOPPAY   =>  new WooppayResource($this->{Contract::WOOPPAY})
         ];
         if (request()->has(Contract::TIMEZONE)) {
             $arr[Contract::TIMEZONE]    =   Carbon::createFromTimestamp(strtotime($this->{Contract::UPDATED_AT}))

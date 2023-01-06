@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\DB;
 
 trait RepositoryEloquent
 {
+    public function firstByKey($key)
+    {
+        return $this->model::where(Contract::KEY, $key)->first();
+    }
+
     public function forceDeleteById($id): void
     {
         $this->model::where(Contract::ID,$id)

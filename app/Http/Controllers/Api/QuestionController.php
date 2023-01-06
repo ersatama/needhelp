@@ -4,26 +4,41 @@ namespace App\Http\Controllers\Api;
 
 use App\Domain\Contracts\Contract;
 use App\Domain\Contracts\ErrorContract;
+use App\Domain\Helpers\Wooppay;
 use App\Domain\Requests\Question\CreateRequest;
 use App\Domain\Requests\Question\GetRequest;
 use App\Domain\Requests\Question\UpdateRequest;
+use App\Domain\Services\PaymentService;
 use App\Domain\Services\QuestionService;
+use App\Domain\Services\UserService;
+use App\Domain\Services\WooppayService;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Question\QuestionCollection;
 use App\Http\Resources\Question\QuestionResource;
 use App\Jobs\QuestionJob;
+use Exception;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\ValidationException;
 
 class QuestionController extends Controller
 {
     protected QuestionService $questionService;
-    public function __construct(QuestionService $questionService)
+    protected UserService $userService;
+    protected PaymentService $paymentService;
+    protected WooppayService $wooppayService;
+    protected Wooppay $wooppay;
+
+    public function __construct(QuestionService $questionService, UserService $userService, PaymentService $paymentService, WooppayService $wooppayService, Wooppay $wooppay)
     {
         $this->questionService  =   $questionService;
+        $this->userService      =   $userService;
+        $this->paymentService   =   $paymentService;
+        $this->wooppayService   =   $wooppayService;
+        $this->wooppay          =   $wooppay;
     }
 
     /**
@@ -48,7 +63,7 @@ class QuestionController extends Controller
      *
      * @group Questions
      */
-    public function averageBetweenClosed($start, $end)
+    public function averageBetweenClosed($start, $end): array
     {
         return $this->questionService->questionRepository::averageBetweenClosed($start, $end);
     }
@@ -58,8 +73,9 @@ class QuestionController extends Controller
      * countDateAverageBetweenClosed - Questions
      *
      * @group Questions
+     * @throws Exception
      */
-    public function countDateAverageBetweenClosed($lawyerId, $start, $end)
+    public function countDateAverageBetweenClosed($lawyerId, $start, $end): array
     {
         return $this->questionService->questionRepository::countDateAverageBetweenClosed($lawyerId, $start, $end);
     }
@@ -140,11 +156,19 @@ class QuestionController extends Controller
      * @group Questions
      * @throws ValidationException
      */
-    public function create(CreateRequest $createRequest): QuestionResource
+    public function create(CreateRequest $createRequest): Response|QuestionResource|Application|ResponseFactory
     {
-        $question   =   $this->questionService->questionRepository->create($createRequest->checked());
-        QuestionJob::dispatch($question);
-        return new QuestionResource($question);
+        if ($question = $this->questionService->questionRepository->create($createRequest->checked())) {
+            $user   =   $this->userService->userRepository->firstById($question->{Contract::USER_ID});
+            $wooppayInvoice = $this->wooppay->invoice($question, $user);
+            if ($user && $question->{Contract::PAYMENT_ID} === 1 && $wooppayInvoice) {
+                $this->wooppayService->invoiceCreate($question, $wooppayInvoice);
+                //QuestionJob::dispatch($question);
+                return new QuestionResource($question);
+            }
+            return response(ErrorContract::ERROR_PAYMENT, 400);
+        }
+        return response(ErrorContract::ERROR, 400);
     }
 
     /**

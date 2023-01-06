@@ -207,6 +207,8 @@ return [
         App\Providers\Repositories\NotificationRepositoryProvider::class,
         App\Providers\Repositories\PaymentRepositoryProvider::class,
         App\Providers\Repositories\PriceRepositoryProvider::class,
+        App\Providers\Repositories\WooppayRepositoryProvider::class,
+        App\Providers\Repositories\TemporaryVariableRepositoryProvider::class,
     ],
 
     /*

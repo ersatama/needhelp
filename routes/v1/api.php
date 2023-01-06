@@ -10,6 +10,7 @@ use App\Http\Controllers\Api\QuestionController;
 use App\Http\Controllers\Api\NotificationHistoryController;
 use App\Http\Controllers\Api\RegionController;
 use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\WooppayController;
 use Illuminate\Support\Facades\Route;
 
 Route::controller(UserController::class)->group(function() {
@@ -70,6 +71,13 @@ Route::controller(QuestionController::class)->group(function() {
         Route::get('firstById/{id}','firstById')->name('question.firstById');
         Route::post('create','create')->name('question.create');
         Route::post('update/{id}','update')->name('question.update');
+    });
+});
+
+Route::controller(WooppayController::class)->group(function() {
+    Route::prefix('wooppay')->group(function() {
+        Route::any('request','request')->name('wooppay.request');
+        Route::any('back','back')->name('wooppay.back');
     });
 });
 

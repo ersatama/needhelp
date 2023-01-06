@@ -11,7 +11,7 @@ class CreateRequest extends MainRequest
     {
         return [
             Contract::USER_ID   =>  'required|exists:users,id',
-            Contract::PAYMENT_ID    =>  'required|exists:payments,id',
+            Contract::PAYMENT_ID    =>  'required|integer|exists:payments,id',
             Contract::PRICE     =>  'required',
             Contract::TITLE     =>  'required|string|max:10000',
             Contract::IS_IMPORTANT  =>  'required|boolean',
@@ -21,9 +21,10 @@ class CreateRequest extends MainRequest
     public function checked(): array
     {
         $data   =   $this->validator->validated();
+        $data[Contract::PAYMENT_ID] =   intval($data[Contract::PAYMENT_ID]);
         $data[Contract::CURRENCY_ID]    =   1;
-        $data[Contract::IS_PAID]    =   true;
-        $data[Contract::STATUS]     =   1;
+        $data[Contract::IS_PAID]    =   false;
+        $data[Contract::STATUS]     =   0;
         $data[Contract::IS_NEW]     =   false;
         return $data;
     }

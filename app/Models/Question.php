@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Concerns\HasEvents;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Question extends Model
 {
@@ -33,5 +34,10 @@ class Question extends Model
     public function lawyer(): BelongsTo
     {
         return $this->belongsTo(User::class, Contract::LAWYER_ID, Contract::ID)->withoutGlobalScope(Page::class);
+    }
+
+    public function wooppay(): HasOne
+    {
+        return $this->hasOne(Wooppay::class)->withoutGlobalScope(Page::class);
     }
 }
