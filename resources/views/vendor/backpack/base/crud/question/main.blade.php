@@ -375,8 +375,8 @@
                         });
                         if (status) {
                             this.questions.unshift(question);
+                            this.notifySound();
                         }
-                        this.notifySound();
                     } else if (question.status === 0) {
                         key     =   -1;
                         index   =   0;
@@ -420,8 +420,8 @@
                         });
                         if (status) {
                             this.answeredQuestions.unshift(question);
+                            this.notifySound();
                         }
-                        this.notifySound();
                     }
                 },
                 refresh() {
