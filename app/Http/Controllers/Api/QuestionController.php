@@ -163,7 +163,6 @@ class QuestionController extends Controller
             $wooppayInvoice = $this->wooppay->invoice($question, $user);
             if ($user && $question->{Contract::PAYMENT_ID} === 1 && $wooppayInvoice) {
                 $this->wooppayService->invoiceCreate($question, $wooppayInvoice);
-                //QuestionJob::dispatch($question);
                 return new QuestionResource($question);
             }
             return response(ErrorContract::ERROR_PAYMENT, 400);

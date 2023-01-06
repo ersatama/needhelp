@@ -108,9 +108,8 @@ class Wooppay
                     Contract::OPERATION_IDS =>  [$wooppayModel->{Contract::OPERATION_ID}]
                 ]));
                 $status =   json_decode($status, true);
-                Log::info('status', [$status]);
                 if (sizeof($status) > 0) {
-                    return $status;
+                    return $status[0];
                 }
             } catch (Exception $exception) {
 
