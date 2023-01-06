@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\DB;
 
 trait RepositoryEloquent
 {
+    public function firstByQuestionId($questionId)
+    {
+        return $this->model::where(Contract::QUESTION_ID, $questionId)->first();
+    }
+
     public function firstByKey($key)
     {
         return $this->model::where(Contract::KEY, $key)->first();

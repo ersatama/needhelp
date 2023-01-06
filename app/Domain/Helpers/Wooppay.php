@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Log;
 
 class Wooppay
 {
+    const PAYMENT_ID    =   1;
     protected PaymentService $paymentService;
     protected TemporaryVariableService $temporaryVariableService;
 
@@ -68,7 +69,7 @@ class Wooppay
 
     public function invoice(Question $question, User $user): bool|array
     {
-        if ($wooppay = $this->auth($this->paymentService->paymentRepository->firstById($question->{Contract::PAYMENT_ID}))) {
+        if ($wooppay = $this->auth($this->paymentService->paymentRepository->firstById(self::PAYMENT_ID))) {
             try {
                 $invoice    =   Curl::withOpt($this->requestBody(config('wooppay.create'),[
                     'Authorization: '.$wooppay[Contract::TOKEN],
@@ -88,6 +89,27 @@ class Wooppay
                 $invoice    =   json_decode($invoice, true);
                 if (array_key_exists(Contract::OPERATION_URL, $invoice) && array_key_exists(Contract::RESPONSE, $invoice)) {
                     return $invoice;
+                }
+            } catch (Exception $exception) {
+
+            }
+        }
+        return false;
+    }
+
+    public function status(\App\Models\Wooppay $wooppay)
+    {
+        if ($wooppay = $this->auth($this->paymentService->paymentRepository->firstById(self::PAYMENT_ID))) {
+            try {
+                $status =   Curl::withOpt($this->requestBody(config('wooppay.status'),[
+                    'Authorization: '.$wooppay[Contract::TOKEN],
+                    'Content-Type: application/json'
+                ],[
+                    Contract::OPERATION_IDS =>  [$wooppay->{Contract::OPERATION_ID}]
+                ]));
+                $status =   json_decode($status, true);
+                if (sizeof($status) > 0) {
+                    return $status;
                 }
             } catch (Exception $exception) {
 

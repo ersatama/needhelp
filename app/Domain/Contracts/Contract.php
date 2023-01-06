@@ -13,6 +13,7 @@ abstract class Contract
     const RESPONSE  =   'response';
     const URL   =   'url';
     const OPERATION_ID  =   'operation_id';
+    const OPERATION_IDS =   'operation_ids';
     const REPLENISHMENT_ID  =   'replenishment_id';
     const INVOICE_ID    =   'invoice_id';
     const KEY   =   'key';
