@@ -31,7 +31,7 @@ class Wooppay
             return json_decode($wooppay->{Contract::VALUE}, true);
         } else {
             try {
-                $auth   =   curl::withOpt($this->requestBody(config('wooppay.auth'),[
+                $auth   =   Curl::withOpt($this->requestBody(config('wooppay.auth'),[
                     'Content-Type: application/json'
                 ],[
                     Contract::LOGIN     =>  $payment->{Contract::LOGIN},
@@ -70,7 +70,7 @@ class Wooppay
     {
         if ($wooppay = $this->auth($this->paymentService->paymentRepository->firstById($question->{Contract::PAYMENT_ID}))) {
             try {
-                $invoice    =   curl::withOpt($this->requestBody(config('wooppay.create'),[
+                $invoice    =   Curl::withOpt($this->requestBody(config('wooppay.create'),[
                     'Authorization: '.$wooppay[Contract::TOKEN],
                     'Content-Type: application/json'
                 ],[
