@@ -79,7 +79,7 @@ class Wooppay
                     Contract::AMOUNT            =>  $question->{Contract::PRICE},
                     Contract::USER_PHONE        =>  $user->{Contract::PHONE},
                     Contract::CARD_FORBIDDEN    =>  config('wooppay.card_forbidden'),
-                    Contract::REQUEST_URL       =>  config('wooppay.request_url'),
+                    Contract::REQUEST_URL       =>  config('wooppay.request_url') . '?' . Contract::ID . '=' . $question->{Contract::ID},
                     Contract::BACK_URL          =>  config('wooppay.back_url'),
                     Contract::DESCRIPTION       =>  config('wooppay.description'),
                     Contract::OPTION            =>  config('wooppay.option'),
