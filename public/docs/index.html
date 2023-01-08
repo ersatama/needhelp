@@ -23,6 +23,8 @@
         /* starts out as display none and is replaced with js later  */
                     body .content .bash-example code { display: none; }
                     body .content .javascript-example code { display: none; }
+                    body .content .php-example code { display: none; }
+                    body .content .python-example code { display: none; }
             </style>
 
     <script>
@@ -36,7 +38,7 @@
 
 </head>
 
-<body data-languages="[&quot;bash&quot;,&quot;javascript&quot;]">
+<body data-languages="[&quot;bash&quot;,&quot;javascript&quot;,&quot;php&quot;,&quot;python&quot;]">
 
 <a href="#" id="nav-button">
     <span>
@@ -49,6 +51,8 @@
             <div class="lang-selector">
                                             <button type="button" class="lang-button" data-language-name="bash">bash</button>
                                             <button type="button" class="lang-button" data-language-name="javascript">javascript</button>
+                                            <button type="button" class="lang-button" data-language-name="php">php</button>
+                                            <button type="button" class="lang-button" data-language-name="python">python</button>
                     </div>
     
     <div class="search">
@@ -94,6 +98,12 @@
                                                     <li class="tocify-item level-2" data-unique="endpoints-GETapi-user">
                                 <a href="#endpoints-GETapi-user">GET api/user</a>
                             </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-v1-wooppay-request">
+                                <a href="#endpoints-GETapi-v1-wooppay-request">GET api/v1/wooppay/request</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-v1-wooppay-back">
+                                <a href="#endpoints-GETapi-v1-wooppay-back">GET api/v1/wooppay/back</a>
+                            </li>
                                                                         </ul>
                             </ul>
                     <ul id="tocify-header-language" class="tocify-header">
@@ -129,6 +139,16 @@
                             </li>
                                                                         </ul>
                             </ul>
+                    <ul id="tocify-header-price" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="price">
+                    <a href="#price">Price</a>
+                </li>
+                                    <ul id="tocify-subheader-price" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="price-GETapi-v1-price-get">
+                                <a href="#price-GETapi-v1-price-get">get - Price</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
                     <ul id="tocify-header-questions" class="tocify-header">
                 <li class="tocify-item level-1" data-unique="questions">
                     <a href="#questions">Questions</a>
@@ -142,6 +162,9 @@
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="questions-POSTapi-v1-question-create">
                                 <a href="#questions-POSTapi-v1-question-create">create - Questions</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="questions-POSTapi-v1-question-update--id-">
+                                <a href="#questions-POSTapi-v1-question-update--id-">update - Questions</a>
                             </li>
                                                                         </ul>
                             </ul>
@@ -203,7 +226,7 @@
                             <li><a href="http://github.com/knuckleswtf/scribe">Documentation powered by Scribe ✍</a></li>
                     </ul>
         <ul class="toc-footer" id="last-updated">
-        <li>Last updated: December 18, 2022</li>
+        <li>Last updated: January 8, 2023</li>
     </ul>
 </div>
 
@@ -239,14 +262,14 @@ You can switch the language used with the tabs at the top right (or from the nav
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/v1/city/getByRegionId/sit" \
+    --get "http://localhost:8000/api/v1/city/getByRegionId/ut" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/v1/city/getByRegionId/sit"
+    "http://localhost:8000/api/v1/city/getByRegionId/ut"
 );
 
 const headers = {
@@ -258,6 +281,35 @@ fetch(url, {
     method: "GET",
     headers,
 }).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;get(
+    'http://localhost:8000/api/v1/city/getByRegionId/ut',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+
+<div class="python-example">
+    <pre><code class="language-python">import requests
+import json
+
+url = 'http://localhost:8000/api/v1/city/getByRegionId/ut'
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
+}
+
+response = requests.request('GET', url, headers=headers)
+response.json()</code></pre></div>
 
 </span>
 
@@ -271,8 +323,8 @@ fetch(url, {
             </summary>
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
-x-ratelimit-limit: 60
-x-ratelimit-remaining: 47
+x-ratelimit-limit: 180
+x-ratelimit-remaining: 167
 access-control-allow-origin: *
  </code></pre>
         </details>         <pre>
@@ -329,7 +381,7 @@ access-control-allow-origin: *
                 <input type="text"
                name="regionId"
                data-endpoint="GETapi-v1-city-getByRegionId--regionId-"
-               value="sit"
+               value="ut"
                data-component="url" hidden>
     <br>
 
@@ -373,6 +425,35 @@ fetch(url, {
     headers,
 }).then(response =&gt; response.json());</code></pre></div>
 
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;get(
+    'http://localhost:8000/api/v1/country/get',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+
+<div class="python-example">
+    <pre><code class="language-python">import requests
+import json
+
+url = 'http://localhost:8000/api/v1/country/get'
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
+}
+
+response = requests.request('GET', url, headers=headers)
+response.json()</code></pre></div>
+
 </span>
 
 <span id="example-responses-GETapi-v1-country-get">
@@ -385,8 +466,8 @@ fetch(url, {
             </summary>
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
-x-ratelimit-limit: 60
-x-ratelimit-remaining: 49
+x-ratelimit-limit: 180
+x-ratelimit-remaining: 169
 access-control-allow-origin: *
  </code></pre>
         </details>         <pre>
@@ -474,6 +555,35 @@ fetch(url, {
     headers,
 }).then(response =&gt; response.json());</code></pre></div>
 
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;get(
+    'http://localhost:8000/api/user',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+
+<div class="python-example">
+    <pre><code class="language-python">import requests
+import json
+
+url = 'http://localhost:8000/api/user'
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
+}
+
+response = requests.request('GET', url, headers=headers)
+response.json()</code></pre></div>
+
 </span>
 
 <span id="example-responses-GETapi-user">
@@ -536,6 +646,294 @@ access-control-allow-origin: *
         </p>
                     </form>
 
+                    <h2 id="endpoints-GETapi-v1-wooppay-request">GET api/v1/wooppay/request</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-v1-wooppay-request">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost:8000/api/v1/wooppay/request" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8000/api/v1/wooppay/request"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;get(
+    'http://localhost:8000/api/v1/wooppay/request',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+
+<div class="python-example">
+    <pre><code class="language-python">import requests
+import json
+
+url = 'http://localhost:8000/api/v1/wooppay/request'
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
+}
+
+response = requests.request('GET', url, headers=headers)
+response.json()</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-v1-wooppay-request">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary>
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">content-type: text/html; charset=UTF-8
+cache-control: no-cache, private
+x-ratelimit-limit: 180
+x-ratelimit-remaining: 164
+access-control-allow-origin: *
+ </code></pre>
+        </details>         <pre>
+
+<code class="language-json"></code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-v1-wooppay-request" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-v1-wooppay-request"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-wooppay-request"></code></pre>
+</span>
+<span id="execution-error-GETapi-v1-wooppay-request" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-wooppay-request"></code></pre>
+</span>
+<form id="form-GETapi-v1-wooppay-request" data-method="GET"
+      data-path="api/v1/wooppay/request"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-wooppay-request', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-v1-wooppay-request"
+                    onclick="tryItOut('GETapi-v1-wooppay-request');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-v1-wooppay-request"
+                    onclick="cancelTryOut('GETapi-v1-wooppay-request');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-v1-wooppay-request" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/v1/wooppay/request</code></b>
+        </p>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/v1/wooppay/request</code></b>
+        </p>
+            <p>
+            <small class="badge badge-darkblue">PUT</small>
+            <b><code>api/v1/wooppay/request</code></b>
+        </p>
+            <p>
+            <small class="badge badge-purple">PATCH</small>
+            <b><code>api/v1/wooppay/request</code></b>
+        </p>
+            <p>
+            <small class="badge badge-red">DELETE</small>
+            <b><code>api/v1/wooppay/request</code></b>
+        </p>
+            <p>
+            <small class="badge badge-grey">OPTIONS</small>
+            <b><code>api/v1/wooppay/request</code></b>
+        </p>
+                    </form>
+
+                    <h2 id="endpoints-GETapi-v1-wooppay-back">GET api/v1/wooppay/back</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-v1-wooppay-back">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost:8000/api/v1/wooppay/back" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8000/api/v1/wooppay/back"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;get(
+    'http://localhost:8000/api/v1/wooppay/back',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+
+<div class="python-example">
+    <pre><code class="language-python">import requests
+import json
+
+url = 'http://localhost:8000/api/v1/wooppay/back'
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
+}
+
+response = requests.request('GET', url, headers=headers)
+response.json()</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-v1-wooppay-back">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary>
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">content-type: text/html; charset=UTF-8
+cache-control: no-cache, private
+x-ratelimit-limit: 180
+x-ratelimit-remaining: 163
+access-control-allow-origin: *
+ </code></pre>
+        </details>         <pre>
+
+<code class="language-json"></code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-v1-wooppay-back" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-v1-wooppay-back"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-wooppay-back"></code></pre>
+</span>
+<span id="execution-error-GETapi-v1-wooppay-back" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-wooppay-back"></code></pre>
+</span>
+<form id="form-GETapi-v1-wooppay-back" data-method="GET"
+      data-path="api/v1/wooppay/back"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-wooppay-back', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-v1-wooppay-back"
+                    onclick="tryItOut('GETapi-v1-wooppay-back');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-v1-wooppay-back"
+                    onclick="cancelTryOut('GETapi-v1-wooppay-back');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-v1-wooppay-back" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/v1/wooppay/back</code></b>
+        </p>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/v1/wooppay/back</code></b>
+        </p>
+            <p>
+            <small class="badge badge-darkblue">PUT</small>
+            <b><code>api/v1/wooppay/back</code></b>
+        </p>
+            <p>
+            <small class="badge badge-purple">PATCH</small>
+            <b><code>api/v1/wooppay/back</code></b>
+        </p>
+            <p>
+            <small class="badge badge-red">DELETE</small>
+            <b><code>api/v1/wooppay/back</code></b>
+        </p>
+            <p>
+            <small class="badge badge-grey">OPTIONS</small>
+            <b><code>api/v1/wooppay/back</code></b>
+        </p>
+                    </form>
+
                 <h1 id="language">Language</h1>
 
     
@@ -573,6 +971,35 @@ fetch(url, {
     headers,
 }).then(response =&gt; response.json());</code></pre></div>
 
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;get(
+    'http://localhost:8000/api/v1/language/get',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+
+<div class="python-example">
+    <pre><code class="language-python">import requests
+import json
+
+url = 'http://localhost:8000/api/v1/language/get'
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
+}
+
+response = requests.request('GET', url, headers=headers)
+response.json()</code></pre></div>
+
 </span>
 
 <span id="example-responses-GETapi-v1-language-get">
@@ -585,8 +1012,8 @@ fetch(url, {
             </summary>
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
-x-ratelimit-limit: 60
-x-ratelimit-remaining: 50
+x-ratelimit-limit: 180
+x-ratelimit-remaining: 170
 access-control-allow-origin: *
  </code></pre>
         </details>         <pre>
@@ -679,14 +1106,14 @@ access-control-allow-origin: *
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/v1/notification/getByUserId/ut" \
+    --get "http://localhost:8000/api/v1/notification/getByUserId/dignissimos" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/v1/notification/getByUserId/ut"
+    "http://localhost:8000/api/v1/notification/getByUserId/dignissimos"
 );
 
 const headers = {
@@ -698,6 +1125,35 @@ fetch(url, {
     method: "GET",
     headers,
 }).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;get(
+    'http://localhost:8000/api/v1/notification/getByUserId/dignissimos',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+
+<div class="python-example">
+    <pre><code class="language-python">import requests
+import json
+
+url = 'http://localhost:8000/api/v1/notification/getByUserId/dignissimos'
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
+}
+
+response = requests.request('GET', url, headers=headers)
+response.json()</code></pre></div>
 
 </span>
 
@@ -711,8 +1167,8 @@ fetch(url, {
             </summary>
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
-x-ratelimit-limit: 60
-x-ratelimit-remaining: 44
+x-ratelimit-limit: 180
+x-ratelimit-remaining: 162
 access-control-allow-origin: *
  </code></pre>
         </details>         <pre>
@@ -769,7 +1225,7 @@ access-control-allow-origin: *
                 <input type="text"
                name="userId"
                data-endpoint="GETapi-v1-notification-getByUserId--userId-"
-               value="ut"
+               value="dignissimos"
                data-component="url" hidden>
     <br>
 
@@ -789,14 +1245,14 @@ access-control-allow-origin: *
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/v1/notification/firstById/maiores" \
+    --get "http://localhost:8000/api/v1/notification/firstById/quia" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/v1/notification/firstById/maiores"
+    "http://localhost:8000/api/v1/notification/firstById/quia"
 );
 
 const headers = {
@@ -808,6 +1264,35 @@ fetch(url, {
     method: "GET",
     headers,
 }).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;get(
+    'http://localhost:8000/api/v1/notification/firstById/quia',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+
+<div class="python-example">
+    <pre><code class="language-python">import requests
+import json
+
+url = 'http://localhost:8000/api/v1/notification/firstById/quia'
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
+}
+
+response = requests.request('GET', url, headers=headers)
+response.json()</code></pre></div>
 
 </span>
 
@@ -821,8 +1306,8 @@ fetch(url, {
             </summary>
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
-x-ratelimit-limit: 60
-x-ratelimit-remaining: 43
+x-ratelimit-limit: 180
+x-ratelimit-remaining: 161
 access-control-allow-origin: *
  </code></pre>
         </details>         <pre>
@@ -879,7 +1364,7 @@ access-control-allow-origin: *
                 <input type="text"
                name="id"
                data-endpoint="GETapi-v1-notification-firstById--id-"
-               value="maiores"
+               value="quia"
                data-component="url" hidden>
     <br>
 <p>The ID of the firstById.</p>
@@ -923,6 +1408,35 @@ fetch(url, {
     headers,
 }).then(response =&gt; response.json());</code></pre></div>
 
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;get(
+    'http://localhost:8000/api/v1/payment/get',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+
+<div class="python-example">
+    <pre><code class="language-python">import requests
+import json
+
+url = 'http://localhost:8000/api/v1/payment/get'
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
+}
+
+response = requests.request('GET', url, headers=headers)
+response.json()</code></pre></div>
+
 </span>
 
 <span id="example-responses-GETapi-v1-payment-get">
@@ -935,8 +1449,8 @@ fetch(url, {
             </summary>
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
-x-ratelimit-limit: 60
-x-ratelimit-remaining: 42
+x-ratelimit-limit: 180
+x-ratelimit-remaining: 160
 access-control-allow-origin: *
  </code></pre>
         </details>         <pre>
@@ -1000,6 +1514,144 @@ access-control-allow-origin: *
         </p>
                     </form>
 
+                <h1 id="price">Price</h1>
+
+    
+
+                                <h2 id="price-GETapi-v1-price-get">get - Price</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-v1-price-get">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost:8000/api/v1/price/get" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8000/api/v1/price/get"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;get(
+    'http://localhost:8000/api/v1/price/get',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+
+<div class="python-example">
+    <pre><code class="language-python">import requests
+import json
+
+url = 'http://localhost:8000/api/v1/price/get'
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
+}
+
+response = requests.request('GET', url, headers=headers)
+response.json()</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-v1-price-get">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary>
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 180
+x-ratelimit-remaining: 159
+access-control-allow-origin: *
+ </code></pre>
+        </details>         <pre>
+
+<code class="language-json">{
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: 1,
+            &quot;created_at&quot;: &quot;2022-12-18T13:57:35.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2022-12-18T13:57:35.000000Z&quot;,
+            &quot;price&quot;: &quot;3000&quot;,
+            &quot;important_price&quot;: &quot;4500&quot;
+        }
+    ]
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-v1-price-get" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-v1-price-get"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-v1-price-get"></code></pre>
+</span>
+<span id="execution-error-GETapi-v1-price-get" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-v1-price-get"></code></pre>
+</span>
+<form id="form-GETapi-v1-price-get" data-method="GET"
+      data-path="api/v1/price/get"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-v1-price-get', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-v1-price-get"
+                    onclick="tryItOut('GETapi-v1-price-get');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-v1-price-get"
+                    onclick="cancelTryOut('GETapi-v1-price-get');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-v1-price-get" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/v1/price/get</code></b>
+        </p>
+                    </form>
+
                 <h1 id="questions">Questions</h1>
 
     
@@ -1017,14 +1669,14 @@ access-control-allow-origin: *
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/v1/question/getByUserId/perspiciatis" \
+    --get "http://localhost:8000/api/v1/question/getByUserId/rerum" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/v1/question/getByUserId/perspiciatis"
+    "http://localhost:8000/api/v1/question/getByUserId/rerum"
 );
 
 const headers = {
@@ -1036,6 +1688,35 @@ fetch(url, {
     method: "GET",
     headers,
 }).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;get(
+    'http://localhost:8000/api/v1/question/getByUserId/rerum',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+
+<div class="python-example">
+    <pre><code class="language-python">import requests
+import json
+
+url = 'http://localhost:8000/api/v1/question/getByUserId/rerum'
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
+}
+
+response = requests.request('GET', url, headers=headers)
+response.json()</code></pre></div>
 
 </span>
 
@@ -1049,8 +1730,8 @@ fetch(url, {
             </summary>
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
-x-ratelimit-limit: 60
-x-ratelimit-remaining: 46
+x-ratelimit-limit: 180
+x-ratelimit-remaining: 166
 access-control-allow-origin: *
  </code></pre>
         </details>         <pre>
@@ -1107,7 +1788,7 @@ access-control-allow-origin: *
                 <input type="text"
                name="userId"
                data-endpoint="GETapi-v1-question-getByUserId--userId-"
-               value="perspiciatis"
+               value="rerum"
                data-component="url" hidden>
     <br>
 
@@ -1127,14 +1808,14 @@ access-control-allow-origin: *
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/v1/question/firstById/consectetur" \
+    --get "http://localhost:8000/api/v1/question/firstById/est" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/v1/question/firstById/consectetur"
+    "http://localhost:8000/api/v1/question/firstById/est"
 );
 
 const headers = {
@@ -1146,6 +1827,35 @@ fetch(url, {
     method: "GET",
     headers,
 }).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;get(
+    'http://localhost:8000/api/v1/question/firstById/est',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+
+<div class="python-example">
+    <pre><code class="language-python">import requests
+import json
+
+url = 'http://localhost:8000/api/v1/question/firstById/est'
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
+}
+
+response = requests.request('GET', url, headers=headers)
+response.json()</code></pre></div>
 
 </span>
 
@@ -1159,8 +1869,8 @@ fetch(url, {
             </summary>
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
-x-ratelimit-limit: 60
-x-ratelimit-remaining: 45
+x-ratelimit-limit: 180
+x-ratelimit-remaining: 165
 access-control-allow-origin: *
  </code></pre>
         </details>         <pre>
@@ -1217,7 +1927,7 @@ access-control-allow-origin: *
                 <input type="text"
                name="id"
                data-endpoint="GETapi-v1-question-firstById--id-"
-               value="consectetur"
+               value="est"
                data-component="url" hidden>
     <br>
 <p>The ID of the firstById.</p>
@@ -1241,10 +1951,11 @@ access-control-allow-origin: *
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"user_id\": \"aut\",
-    \"price\": \"placeat\",
-    \"title\": \"laborum\",
-    \"is_important\": false
+    \"user_id\": \"voluptates\",
+    \"payment_id\": 11,
+    \"price\": \"qui\",
+    \"title\": \"ajaifyecnsupkcuwyvprhtyftpsabjycluxsolaqcwwpabwtjaiibitswscsyzufpqcdylvauvmscchjesxpcmzjsihdtwjjttovubrqwtykrricghydkidaaljlxbuvklfyjpkwvcdpfrjlmcnkwstgxqphqoandoizpesixxpapxazxhqkflbktjktsmrencajvrjuevetpwxypjnuwqveoizbimxzbnnebjjhnwvxbrgecgsmrnwwqtjudpykrzjvwxpvcnejtzcfpnvuzgabzceawirlfenolmmzbcmydkeudrjeegkdgyspplioqemgmcgojlhopakgmdszkvzwoobzxcyatvteavhothiaoobpdphpwhyqnlozzkfhzwnzntvmvcmdylwnvqlmoofwweffajvkluomxfporhhxoucumsuhwjehmzrsjyqwfoavgmvhezbjkxvhajcjfqyucpydugeiyyyhqesdyavurczqrmueplcwemkquzaaumubdpdlbnrtpcfrhuhdovvofeymcswjilhvbpwedwmguifkpjkhplutwjrgikutudmzgcdrpcjiwxtpmxjewdfbraxryvvftmxzxgdvzqauxuptjsfohkijnkyyectrtiebzzznyxzmtexldyybdgpcjcucfsvuhysqibasytjvudmkjwygwspdkbllvurgunysluijpnsalidutmacqkuvlpfutcaaiquwbeebvdiqmsfpkmkcsvrwsoqlvunairhiujldzchwrorzqhnuhhzfrxxlfiokorlcdbfymndriaycyekwvwwhzfkjhgmlljyahjgodcsdzqiulptbljiqxhaldhtsheoaqyvknvkacktosixfevtsrmskvzaczzoqpzypmpvssmrpomikxdqwezhipgetztscmnhfutuhinysntcknkssjlnwwypfbkobhgjyfqdaoohcdzpaqsdwxrvlcqiktwzqyztnujshjxgynaprgypclqjyywfshmacgimawsgsfoxvwsyxjvcsdmiygyrwhzmjtkyotkoqplhwhwskxwepolkfwuebrtceohwaklsziepembslerifoeogpczabijcwhnvtfmwwrylwvuhojpgxjzqnlxdhnscedanswsuyclissgxcfpvtcnxxryutsezylyaivuwttmifuevpbygxlppeomximrjzhvsuoxbkcykugnonsvmbjzabdogtnithvtwdhhvtnmryywdcqbpfgmtqfyekrbiuxikappjgboqholqkftesihymzofgengthxahszezoxwicstfphrjymlrdjzoxfxjwdmvcddvoxipipywapyadlikhcqnwvkjnjxzinrzzktfrcctiubwxuxzyqmssbgaystniheqgzfanuauxxxrkzikgakxxghyacdozlpuozgpupjugauayukxknnixxvuqzobcfcpogdktigcvrjkhgleiviofpjapvkwqcsbewsqyiuepzuuuzqhzucwruibahivyyechdrrobjpygtzdjzbrzrakehfqupckksqqujxtbfbuswtnxzexbergtpatgbrpvwjvzbmwuoxoibwahuqlubmawvkpcbfscncwyanbwzxslnnnvsicpdtqhhpshoyjwtimumjujqcmckjsldkacljaxmjvfcwibohihnzmdohufytjlnnakaoaeqzbxnnfwvpcertautsygkumidlkuovbthcqbzoosqjlmoobymvesptkfygahxmbcixbffzforioquawelfzgmlkndoojqecbiupenjjfxmnhxorfogdwqhrklehxwjajncmemfxvtbdaimiyscduswgbtwyrqabptvjhdarqzrqksuvmmpvxhgsnfojsnwzlsjmxxqfufcouqzrrmessfkmmhhybvpkovgacwjbxctpqqwurqmlgcgdixqtvwtvdztjmbvnpxqkccfoqvaubvmuhuyoyirfijqtgdwwzxdtgpfumhezntbgkmgggndyepkeyqrmdpjeukjjfeaiqhvicqebtxmkxomptlhwicwmgpbjesfaiywvfeeccklgenzrrugnrokxizvbvmpednjkvcptxxepnxzyzqmkxlsjmibfearqjvocvpnkazvmytjzwoolsjuxzkiheatdpnyohhqcbfuuvrgwhdmyqomwsqdjkelvhhauicdphvdzduvrjrrgpnsgdypnascabcbtevzpognxbagfxbuymabvvqwghfohsvjlreifmfizvypebwqwxyigobcvuhvjywmcghmglkttbpzzipwlbbaqqmdrjpjxvvokvlnceuosirupjkaaaotiuceoyvuktrvaobgjleabbyeenockbusezgfkhjgmozklwldswywlifxdlfxgqdejfrbuvydsnpdgxposncwlgftlrdsxfmwiezhqakjpvjfzxcccfokbdohdisefnmahzxfeteqdukmqextvmeflzqttxjcvwytkpnbqbyqdbttrxnmywixarddtlwecmsguxelqlssuecwnxbybbajmmxgznumrjmjuwistavvkdmrzsvxztoxeujxwnklvbdzsanitpctkhgmoorxrqcscbstskiouxnipfrxwfvetrhcxzzzfkyxzzvezxmmpvvggrhfbcdiyezbkbsrzxsgcbeitkxgirarbjkvtpgqbvtgzpigppyuztmeybaildknqamlrxlyadgxgbtunqcygcujdohvxyoxmfvpteudnnxjmauniyjhaldnxxulwtrcgmhoievwllqqdcomhufzjklglbvypgqxfobcrjgtojtcglfmojnqftrsqkbbkjelnenyeggdjbqdctofynnszvrnayfwjvgqvotimyfsjdpcdygdlbptnxewwfemgzhbaywdennrzaxlxrqnmtmfdigmhvyubanmsyszvhwjcnrzjijqngvcrugagoodrwvwiolpcscevsbanyhbkyrlmoyhgtjcfgbxbzvkyzzdhqwotgkkianppkfwabomduioahaekakoqacutsmibzdqtqbcocbuwlwclkihzaybotupgzmseeqtyceyirdyofpjavdafameoumopwjpypmxtvzoloabgyqghaishcihfszlmxuhvuytfmikwxxndokayhqjbbgljzspwrqytcvylrfpwovxxffuotqtekyoqkthuwurktxgtpxchpccbrstjrtbdvbkqsuzurysezhgelzeeiumqkodfreepnyveibynnwnihnrjjsmmdyfgetxirduiwreojyrgozntkyvyzcujxmnjudqiyoeiysvevqexnrcytsbtifmagyhdjonfpseiufneeejzaozzausiokkgteqyafqkmgabwuvhorbnsdnnzhsdgfzirdokpovhlbsaaciyczugglklxhehmpeilknsaskfazmkbxwzhrcafgkhwwgmgpnmcwypfxirygiqnkidqsojflqecmkljrrskffzdnombikqjarbnjvhuxughspvkjdvfmsqezjyzrsqzqwafkgdpvpjpcahlxxlzloubbqsbbxgpjytfdgaqsedsyixgckqyzgfavcxukvizcdccyaxiyerzcbdybxnqkhhihjshiewwhlvtfrfzybgzqfbtmcfpqwullygduvxhecbinwnnmxqjpfnytablhctfawwvxiqujhmzolmmqzrjhnpztygzqmeuxlwfdwlvmcjybcyupwnuvdcrytvrllrdeqomkrzfcmyytxhsdjkhjrymdtjqxyyotlfckeehbquitbfyzettlqdzjoxeczobndxxshdnzglzesydbxiqytqkxaanrmgwbeatisceofohooinnhdfdsjxwiylfbnxmryotayikotxidojqhncvpmqonxznxtctsnctbcuvaugomwxvgljgwsuoemzhvniqqvhqrzskgddaphdyqbzdvkxridwgkvcmasqenrzevyjqvfaqbrqcoauxvhjvwrsnkggrrtsbyknvspetreilugplodrqljpuhwncyyauaayddhygpacsawbhihilkiizpkqupcyrrwlmsftisjykipsnwlpskugieqgjdqtcyyqflqamlswhcvkemmklvykmbhgrifcpggqngeefuzwupejmbqykwxgjrhtxnlvrevbxnadziwtckzfmhnsdomuahrjmedqkaivzsbshcnsucyzyjkznywjuekamthdbbqysxwedbmxavfhvmnwvemuioepotlmlgwcwoahserqrsvurzhycmiktullbslvmqjqnozvqwdybjivdvsxgeznmyindftiedkhkcmfkrblnyhrtkorpymmdvtvbrpdigcsgyhgviolnxjngbzousifgbloqeubiatjbihnvzxleiljajphevzoakfycrcgznekdudskjponswvbvbosirsuwvhjxocmvfyodqbtbbyfsmtytznkixrygbmeiiixuspfddlwdwgzxfarjrnwnlauejtmlpdvlmdtfrgavvnvdraioqriqljiknmkihcgljtfauwbxzzqbutjptbpxmtazstvbwqwrlwatljoptvgyxtfrmzbxgzhqwxrznklipwrqkxmoxvqfhkzytufdfcbsdmgwypkgqwhhyatiyokvmfddivbwygauanbogzbtoynwompjphbalwwglmshxpfginixsiiputlbqrwpinpegjioyivvtivoupalgmdmihkamkfiqblvwyeboakkbvmzdeihnethwcjnysiwpqijpgdflduezchfzrmvuslzrylzknivzkxkoobpttdowczfyamdqkzqureymgtpnxvtvimrddftewlrkolnrwguddyrscslfutbutrrzymjvtaexthgxaomtiodpyrgtcfcmfvhelwljswvkvyhmxlhrbhustevqoinxrbmtrnbhttxipvosmyrqwbmbdfzyozbvtcpdgejsidqoszrrknobrqrwkdxrfflpiwcjmgwomhfqatjkhaazmcjhzchfvinzpphbusonfwxkeupzxkfuoirbqqookwczseqwqtiznonsfmrcsaafjwtpzdhgmgqrktmftwzfifmevfjxbnmkxzinrjgrowfssqcngypwyzvvopszfhxastsnfmmoginqjwgvhjwdpophnmhkzefckqfwzcwasomslucjybkhgjwzyarsapqjbebrcopztksgirnhjxzxxbclqdqtoqsjtwbleeuzhesnkyrgedzwqzkzlfyrvdnfdsztohcxaugrtrddvucepzpllohbngyjtcmmmskuxeedvjgayssqmacdvgderzdncmbnibsbuplzbusjqetptktcntquaepkvjggxixkiqyprxuvthlhekbmuurbkupkwwmfmflwjbisrvurkjyfosmuybrcsslwdtfyeklbbumoudsuatwrtlsxmhxvmcsfohtppqpeylrcamhfbffqtvajokfhmnommfyqqfaxlzzkauhtpvxokqvipweedhlhrryjiovrfmavypynhpviqtpjvlwyioluevfbumeuseezuozhpqzlnghgsgiprfmxwpphmssauzozendbpwvzdiapqtsrrszhzdfoqcczsfvzmnkxuyyduogtxyxvrrslnvtnftwpzjzwlqidviemxynienqfdwcidietoaxnojkwpyyrzibdalgxiwifgtkkcbqoczmnrxlubjoqvlqrypqmlnnvjidxzfazycojjtywusiygfquwbadkgonydtkmasuvnvqtysphihvuojjknkstfizirzwypwdxbhvsfceldmdpryqyinoimhcfcoteplpbwxxzmzuawzarhgxerkfgvqykseeeqllypuqkazjinldqsheympaoxtkxjrgeivlbxkjnorudklgskbqhfbktpqgrcryiftzkvsnbdszeukrglujmjvoakdemvbdvwmspsonncwyrjmsnwpctrvyluthhohnldviqgloxmgtbjsmlkzdotuaabmjjkvmbrhzwbuhghychsoxuqxvizaxdxcvrdwlswoopcniqkckwwtsbgmvwtwmdrcuekasdiwqhnbpdupojppuvsdpzegpqhbyfrptognjipykpmmzyoheagtqqnuupkgvjhisjxoqwtshrhlqpzezrotaoajiaqdwlyorhzqvypqecosmxtbxahomltlpkdqtwahajxagxjzdiatwjmjalawcijmpllygyvxjkubcgajtimznjdxjoturvhihahjoxvtvsscaofgtfmzkvxrmqqhvmximyptjdyrthlyzaymtghaaznopftwhqifobobzgzuzeobkwtpoaeaustopqseleekiicfciwjkaxuizhcmvwgyzpessyuboqthokmsvstgubvdkawelcylnwatnfknbfrduutxbimkjpennsjncdhtjkokbikowjxjpokpxoscpedcfbchrhqtulrfjxbugjidmryzddlhtzzqbhglgqgzbuogrtfngyhoozxaqwjaykczjsxsxpvnnbirqmxrfyisqqlwjavhfjvhvqkztlqvdtlkqatvtryozreoebywfcibdjyocekqiiakxcafufarahhqvnylbytyuwxjfjzkjebxumoauekrpgfgrnvuwmscvjyhoryivfetsvqwynvkhojmvthlxksmlaqubtdpjeqkdeitgzzqssbmcqjrgqitopoqhhiqmmtvzlkpbndyonievrtslcxebrqfdinggttbfipdkoedxiwspwqnehdsgnpluayvwmmhlhzghzvvugwrzyxeimkwuukkkaguwjcifzgrmnqldauahrzlseijyzcqtmggtnjcxditxnsqmmomsebjmpxinnxzctrvyzqonidevdygzffjsjpvcitnvzjeomfqoisyotlhfgxtdyruayupszfbnooquapeuxbcmudydawltivqvzdezjsrkhnqawkviailmgfhyxaxqkcanbmgktiflhvdhpptrikkgzxsvpfehwphtaqbasjmbaohdfzcoxiapjllcdhbodbdxxukhlddvwdmnmzdftachtgtivvmcobswhymmkelxmydggdiujyeyvwjbfawxaumwkvqltlgizrkqvcccttkvmkhndbmdagshipdjhmxshkysfrkexrtvczqyusfsiljpnpmrukbkzzcfxwifcxqtncpdesxbjvqnejqfnzldwfzbbbqobgebawriiqabazynewqovmbtkoaypfbqutqynfqpshfpjlrvhqyvnjhwaminascizhxhnaipiexplqvxcniadeczxlafxwnohtfryynwhmeymcjkoruxenxisxrmqsrqgamssqmulwwhbqprnxsovdzbvkkkhdlrsvbgmriwgsywmhguhwctmqfkyeoqxmnxnyhnbzdbmkcvdgsyovfiuqhxrrjowqbnswgqdzjbcxguesypfanjntjvrogygnttfyrtcolbsgytnoqjzwsxstdfghcvbodxxivgbxgnyysqqaewipumlspqtyqbockiitawczqiaaewrtkueqgekqbnzdgxhpgbvptzonvydlrveamboisdracjtkgrcofsrikggeckvmhcpuphqamtqjdexdudahapkkhfrrgnoweuwmvffulmctfhbubefpgkgddfvixycyhuleinamskjtwgpacrnyrhbdmnyejniedsszerrlotipguisnpexvtmznllunscrzpocbgiawnspptwbexfauabmexgxprurcywcsnmzspkwpjsxtztcbbmoabzwqdovkmbqwrstvpidgpozzyyhbewvzdssxcrtjgkfffwdzkuyozctzwcphoqjbfgmvcaxlaufzymopevjzszmdevanvpzziguckploteenwfptxtbqokaycmqizxbnvjcedzsodgffnlubzehtrjfgxzecqglayatfvfbevgxvqhfbwsvftrgrwmbblsiefcosvfrdjijqvqzyfykncaartjoatwsacynpnttrbeczbpyejworujtxnhlnbjkhieedbotjeqefqayixgdmvpgbzhynpgnfowyptqvopfwwjprprdxcqpqjjgtthzcawesstqxztloppwruvhwfhnbuixmnrqcjorjscrlxpjteuxekyhabsyyqxgllglefeviwurpwvzyopynswkmhisgvlpdhdelrfduqvlrkycxdlefwmdfblfhhffrtpwpfecdvuqasegyiwjzpoyqagvlkuuflfphbzlbpmgkznepwpvxltwbnzewqghscvvuwfmziatyvznwjzrqpxevibjnimtkjmcnlehaycxtjrmxhoghprsdbgvzshzzjyuahkqnwnavahojmnmijqoogqvwudzdtblhzkbqooasrfxerjjjruplfmtptggwfpdcronbqueadmkqeowkzmsbezsblwoomjmmmlkcuzhdukogtobimrkoamihatoeqitzxlwuonchundduywaiswoftatfqskohrefojslxnovxhcssxuakpauzjvlidyvaeeyzvfnfaubymrtplrmkcsjewbwkfrrpopdqcvioavqzdsryycqoxizzbuyblcvqvgrnhdguppdlseqytnhszmvsgstopadcjyqhkteonhzxtd\",
+    \"is_important\": true
 }"
 </code></pre></div>
 
@@ -1260,10 +1971,11 @@ const headers = {
 };
 
 let body = {
-    "user_id": "aut",
-    "price": "placeat",
-    "title": "laborum",
-    "is_important": false
+    "user_id": "voluptates",
+    "payment_id": 11,
+    "price": "qui",
+    "title": "ajaifyecnsupkcuwyvprhtyftpsabjycluxsolaqcwwpabwtjaiibitswscsyzufpqcdylvauvmscchjesxpcmzjsihdtwjjttovubrqwtykrricghydkidaaljlxbuvklfyjpkwvcdpfrjlmcnkwstgxqphqoandoizpesixxpapxazxhqkflbktjktsmrencajvrjuevetpwxypjnuwqveoizbimxzbnnebjjhnwvxbrgecgsmrnwwqtjudpykrzjvwxpvcnejtzcfpnvuzgabzceawirlfenolmmzbcmydkeudrjeegkdgyspplioqemgmcgojlhopakgmdszkvzwoobzxcyatvteavhothiaoobpdphpwhyqnlozzkfhzwnzntvmvcmdylwnvqlmoofwweffajvkluomxfporhhxoucumsuhwjehmzrsjyqwfoavgmvhezbjkxvhajcjfqyucpydugeiyyyhqesdyavurczqrmueplcwemkquzaaumubdpdlbnrtpcfrhuhdovvofeymcswjilhvbpwedwmguifkpjkhplutwjrgikutudmzgcdrpcjiwxtpmxjewdfbraxryvvftmxzxgdvzqauxuptjsfohkijnkyyectrtiebzzznyxzmtexldyybdgpcjcucfsvuhysqibasytjvudmkjwygwspdkbllvurgunysluijpnsalidutmacqkuvlpfutcaaiquwbeebvdiqmsfpkmkcsvrwsoqlvunairhiujldzchwrorzqhnuhhzfrxxlfiokorlcdbfymndriaycyekwvwwhzfkjhgmlljyahjgodcsdzqiulptbljiqxhaldhtsheoaqyvknvkacktosixfevtsrmskvzaczzoqpzypmpvssmrpomikxdqwezhipgetztscmnhfutuhinysntcknkssjlnwwypfbkobhgjyfqdaoohcdzpaqsdwxrvlcqiktwzqyztnujshjxgynaprgypclqjyywfshmacgimawsgsfoxvwsyxjvcsdmiygyrwhzmjtkyotkoqplhwhwskxwepolkfwuebrtceohwaklsziepembslerifoeogpczabijcwhnvtfmwwrylwvuhojpgxjzqnlxdhnscedanswsuyclissgxcfpvtcnxxryutsezylyaivuwttmifuevpbygxlppeomximrjzhvsuoxbkcykugnonsvmbjzabdogtnithvtwdhhvtnmryywdcqbpfgmtqfyekrbiuxikappjgboqholqkftesihymzofgengthxahszezoxwicstfphrjymlrdjzoxfxjwdmvcddvoxipipywapyadlikhcqnwvkjnjxzinrzzktfrcctiubwxuxzyqmssbgaystniheqgzfanuauxxxrkzikgakxxghyacdozlpuozgpupjugauayukxknnixxvuqzobcfcpogdktigcvrjkhgleiviofpjapvkwqcsbewsqyiuepzuuuzqhzucwruibahivyyechdrrobjpygtzdjzbrzrakehfqupckksqqujxtbfbuswtnxzexbergtpatgbrpvwjvzbmwuoxoibwahuqlubmawvkpcbfscncwyanbwzxslnnnvsicpdtqhhpshoyjwtimumjujqcmckjsldkacljaxmjvfcwibohihnzmdohufytjlnnakaoaeqzbxnnfwvpcertautsygkumidlkuovbthcqbzoosqjlmoobymvesptkfygahxmbcixbffzforioquawelfzgmlkndoojqecbiupenjjfxmnhxorfogdwqhrklehxwjajncmemfxvtbdaimiyscduswgbtwyrqabptvjhdarqzrqksuvmmpvxhgsnfojsnwzlsjmxxqfufcouqzrrmessfkmmhhybvpkovgacwjbxctpqqwurqmlgcgdixqtvwtvdztjmbvnpxqkccfoqvaubvmuhuyoyirfijqtgdwwzxdtgpfumhezntbgkmgggndyepkeyqrmdpjeukjjfeaiqhvicqebtxmkxomptlhwicwmgpbjesfaiywvfeeccklgenzrrugnrokxizvbvmpednjkvcptxxepnxzyzqmkxlsjmibfearqjvocvpnkazvmytjzwoolsjuxzkiheatdpnyohhqcbfuuvrgwhdmyqomwsqdjkelvhhauicdphvdzduvrjrrgpnsgdypnascabcbtevzpognxbagfxbuymabvvqwghfohsvjlreifmfizvypebwqwxyigobcvuhvjywmcghmglkttbpzzipwlbbaqqmdrjpjxvvokvlnceuosirupjkaaaotiuceoyvuktrvaobgjleabbyeenockbusezgfkhjgmozklwldswywlifxdlfxgqdejfrbuvydsnpdgxposncwlgftlrdsxfmwiezhqakjpvjfzxcccfokbdohdisefnmahzxfeteqdukmqextvmeflzqttxjcvwytkpnbqbyqdbttrxnmywixarddtlwecmsguxelqlssuecwnxbybbajmmxgznumrjmjuwistavvkdmrzsvxztoxeujxwnklvbdzsanitpctkhgmoorxrqcscbstskiouxnipfrxwfvetrhcxzzzfkyxzzvezxmmpvvggrhfbcdiyezbkbsrzxsgcbeitkxgirarbjkvtpgqbvtgzpigppyuztmeybaildknqamlrxlyadgxgbtunqcygcujdohvxyoxmfvpteudnnxjmauniyjhaldnxxulwtrcgmhoievwllqqdcomhufzjklglbvypgqxfobcrjgtojtcglfmojnqftrsqkbbkjelnenyeggdjbqdctofynnszvrnayfwjvgqvotimyfsjdpcdygdlbptnxewwfemgzhbaywdennrzaxlxrqnmtmfdigmhvyubanmsyszvhwjcnrzjijqngvcrugagoodrwvwiolpcscevsbanyhbkyrlmoyhgtjcfgbxbzvkyzzdhqwotgkkianppkfwabomduioahaekakoqacutsmibzdqtqbcocbuwlwclkihzaybotupgzmseeqtyceyirdyofpjavdafameoumopwjpypmxtvzoloabgyqghaishcihfszlmxuhvuytfmikwxxndokayhqjbbgljzspwrqytcvylrfpwovxxffuotqtekyoqkthuwurktxgtpxchpccbrstjrtbdvbkqsuzurysezhgelzeeiumqkodfreepnyveibynnwnihnrjjsmmdyfgetxirduiwreojyrgozntkyvyzcujxmnjudqiyoeiysvevqexnrcytsbtifmagyhdjonfpseiufneeejzaozzausiokkgteqyafqkmgabwuvhorbnsdnnzhsdgfzirdokpovhlbsaaciyczugglklxhehmpeilknsaskfazmkbxwzhrcafgkhwwgmgpnmcwypfxirygiqnkidqsojflqecmkljrrskffzdnombikqjarbnjvhuxughspvkjdvfmsqezjyzrsqzqwafkgdpvpjpcahlxxlzloubbqsbbxgpjytfdgaqsedsyixgckqyzgfavcxukvizcdccyaxiyerzcbdybxnqkhhihjshiewwhlvtfrfzybgzqfbtmcfpqwullygduvxhecbinwnnmxqjpfnytablhctfawwvxiqujhmzolmmqzrjhnpztygzqmeuxlwfdwlvmcjybcyupwnuvdcrytvrllrdeqomkrzfcmyytxhsdjkhjrymdtjqxyyotlfckeehbquitbfyzettlqdzjoxeczobndxxshdnzglzesydbxiqytqkxaanrmgwbeatisceofohooinnhdfdsjxwiylfbnxmryotayikotxidojqhncvpmqonxznxtctsnctbcuvaugomwxvgljgwsuoemzhvniqqvhqrzskgddaphdyqbzdvkxridwgkvcmasqenrzevyjqvfaqbrqcoauxvhjvwrsnkggrrtsbyknvspetreilugplodrqljpuhwncyyauaayddhygpacsawbhihilkiizpkqupcyrrwlmsftisjykipsnwlpskugieqgjdqtcyyqflqamlswhcvkemmklvykmbhgrifcpggqngeefuzwupejmbqykwxgjrhtxnlvrevbxnadziwtckzfmhnsdomuahrjmedqkaivzsbshcnsucyzyjkznywjuekamthdbbqysxwedbmxavfhvmnwvemuioepotlmlgwcwoahserqrsvurzhycmiktullbslvmqjqnozvqwdybjivdvsxgeznmyindftiedkhkcmfkrblnyhrtkorpymmdvtvbrpdigcsgyhgviolnxjngbzousifgbloqeubiatjbihnvzxleiljajphevzoakfycrcgznekdudskjponswvbvbosirsuwvhjxocmvfyodqbtbbyfsmtytznkixrygbmeiiixuspfddlwdwgzxfarjrnwnlauejtmlpdvlmdtfrgavvnvdraioqriqljiknmkihcgljtfauwbxzzqbutjptbpxmtazstvbwqwrlwatljoptvgyxtfrmzbxgzhqwxrznklipwrqkxmoxvqfhkzytufdfcbsdmgwypkgqwhhyatiyokvmfddivbwygauanbogzbtoynwompjphbalwwglmshxpfginixsiiputlbqrwpinpegjioyivvtivoupalgmdmihkamkfiqblvwyeboakkbvmzdeihnethwcjnysiwpqijpgdflduezchfzrmvuslzrylzknivzkxkoobpttdowczfyamdqkzqureymgtpnxvtvimrddftewlrkolnrwguddyrscslfutbutrrzymjvtaexthgxaomtiodpyrgtcfcmfvhelwljswvkvyhmxlhrbhustevqoinxrbmtrnbhttxipvosmyrqwbmbdfzyozbvtcpdgejsidqoszrrknobrqrwkdxrfflpiwcjmgwomhfqatjkhaazmcjhzchfvinzpphbusonfwxkeupzxkfuoirbqqookwczseqwqtiznonsfmrcsaafjwtpzdhgmgqrktmftwzfifmevfjxbnmkxzinrjgrowfssqcngypwyzvvopszfhxastsnfmmoginqjwgvhjwdpophnmhkzefckqfwzcwasomslucjybkhgjwzyarsapqjbebrcopztksgirnhjxzxxbclqdqtoqsjtwbleeuzhesnkyrgedzwqzkzlfyrvdnfdsztohcxaugrtrddvucepzpllohbngyjtcmmmskuxeedvjgayssqmacdvgderzdncmbnibsbuplzbusjqetptktcntquaepkvjggxixkiqyprxuvthlhekbmuurbkupkwwmfmflwjbisrvurkjyfosmuybrcsslwdtfyeklbbumoudsuatwrtlsxmhxvmcsfohtppqpeylrcamhfbffqtvajokfhmnommfyqqfaxlzzkauhtpvxokqvipweedhlhrryjiovrfmavypynhpviqtpjvlwyioluevfbumeuseezuozhpqzlnghgsgiprfmxwpphmssauzozendbpwvzdiapqtsrrszhzdfoqcczsfvzmnkxuyyduogtxyxvrrslnvtnftwpzjzwlqidviemxynienqfdwcidietoaxnojkwpyyrzibdalgxiwifgtkkcbqoczmnrxlubjoqvlqrypqmlnnvjidxzfazycojjtywusiygfquwbadkgonydtkmasuvnvqtysphihvuojjknkstfizirzwypwdxbhvsfceldmdpryqyinoimhcfcoteplpbwxxzmzuawzarhgxerkfgvqykseeeqllypuqkazjinldqsheympaoxtkxjrgeivlbxkjnorudklgskbqhfbktpqgrcryiftzkvsnbdszeukrglujmjvoakdemvbdvwmspsonncwyrjmsnwpctrvyluthhohnldviqgloxmgtbjsmlkzdotuaabmjjkvmbrhzwbuhghychsoxuqxvizaxdxcvrdwlswoopcniqkckwwtsbgmvwtwmdrcuekasdiwqhnbpdupojppuvsdpzegpqhbyfrptognjipykpmmzyoheagtqqnuupkgvjhisjxoqwtshrhlqpzezrotaoajiaqdwlyorhzqvypqecosmxtbxahomltlpkdqtwahajxagxjzdiatwjmjalawcijmpllygyvxjkubcgajtimznjdxjoturvhihahjoxvtvsscaofgtfmzkvxrmqqhvmximyptjdyrthlyzaymtghaaznopftwhqifobobzgzuzeobkwtpoaeaustopqseleekiicfciwjkaxuizhcmvwgyzpessyuboqthokmsvstgubvdkawelcylnwatnfknbfrduutxbimkjpennsjncdhtjkokbikowjxjpokpxoscpedcfbchrhqtulrfjxbugjidmryzddlhtzzqbhglgqgzbuogrtfngyhoozxaqwjaykczjsxsxpvnnbirqmxrfyisqqlwjavhfjvhvqkztlqvdtlkqatvtryozreoebywfcibdjyocekqiiakxcafufarahhqvnylbytyuwxjfjzkjebxumoauekrpgfgrnvuwmscvjyhoryivfetsvqwynvkhojmvthlxksmlaqubtdpjeqkdeitgzzqssbmcqjrgqitopoqhhiqmmtvzlkpbndyonievrtslcxebrqfdinggttbfipdkoedxiwspwqnehdsgnpluayvwmmhlhzghzvvugwrzyxeimkwuukkkaguwjcifzgrmnqldauahrzlseijyzcqtmggtnjcxditxnsqmmomsebjmpxinnxzctrvyzqonidevdygzffjsjpvcitnvzjeomfqoisyotlhfgxtdyruayupszfbnooquapeuxbcmudydawltivqvzdezjsrkhnqawkviailmgfhyxaxqkcanbmgktiflhvdhpptrikkgzxsvpfehwphtaqbasjmbaohdfzcoxiapjllcdhbodbdxxukhlddvwdmnmzdftachtgtivvmcobswhymmkelxmydggdiujyeyvwjbfawxaumwkvqltlgizrkqvcccttkvmkhndbmdagshipdjhmxshkysfrkexrtvczqyusfsiljpnpmrukbkzzcfxwifcxqtncpdesxbjvqnejqfnzldwfzbbbqobgebawriiqabazynewqovmbtkoaypfbqutqynfqpshfpjlrvhqyvnjhwaminascizhxhnaipiexplqvxcniadeczxlafxwnohtfryynwhmeymcjkoruxenxisxrmqsrqgamssqmulwwhbqprnxsovdzbvkkkhdlrsvbgmriwgsywmhguhwctmqfkyeoqxmnxnyhnbzdbmkcvdgsyovfiuqhxrrjowqbnswgqdzjbcxguesypfanjntjvrogygnttfyrtcolbsgytnoqjzwsxstdfghcvbodxxivgbxgnyysqqaewipumlspqtyqbockiitawczqiaaewrtkueqgekqbnzdgxhpgbvptzonvydlrveamboisdracjtkgrcofsrikggeckvmhcpuphqamtqjdexdudahapkkhfrrgnoweuwmvffulmctfhbubefpgkgddfvixycyhuleinamskjtwgpacrnyrhbdmnyejniedsszerrlotipguisnpexvtmznllunscrzpocbgiawnspptwbexfauabmexgxprurcywcsnmzspkwpjsxtztcbbmoabzwqdovkmbqwrstvpidgpozzyyhbewvzdssxcrtjgkfffwdzkuyozctzwcphoqjbfgmvcaxlaufzymopevjzszmdevanvpzziguckploteenwfptxtbqokaycmqizxbnvjcedzsodgffnlubzehtrjfgxzecqglayatfvfbevgxvqhfbwsvftrgrwmbblsiefcosvfrdjijqvqzyfykncaartjoatwsacynpnttrbeczbpyejworujtxnhlnbjkhieedbotjeqefqayixgdmvpgbzhynpgnfowyptqvopfwwjprprdxcqpqjjgtthzcawesstqxztloppwruvhwfhnbuixmnrqcjorjscrlxpjteuxekyhabsyyqxgllglefeviwurpwvzyopynswkmhisgvlpdhdelrfduqvlrkycxdlefwmdfblfhhffrtpwpfecdvuqasegyiwjzpoyqagvlkuuflfphbzlbpmgkznepwpvxltwbnzewqghscvvuwfmziatyvznwjzrqpxevibjnimtkjmcnlehaycxtjrmxhoghprsdbgvzshzzjyuahkqnwnavahojmnmijqoogqvwudzdtblhzkbqooasrfxerjjjruplfmtptggwfpdcronbqueadmkqeowkzmsbezsblwoomjmmmlkcuzhdukogtobimrkoamihatoeqitzxlwuonchundduywaiswoftatfqskohrefojslxnovxhcssxuakpauzjvlidyvaeeyzvfnfaubymrtplrmkcsjewbwkfrrpopdqcvioavqzdsryycqoxizzbuyblcvqvgrnhdguppdlseqytnhszmvsgstopadcjyqhkteonhzxtd",
+    "is_important": true
 };
 
 fetch(url, {
@@ -1271,6 +1983,49 @@ fetch(url, {
     headers,
     body: JSON.stringify(body),
 }).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;post(
+    'http://localhost:8000/api/v1/question/create',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'user_id' =&gt; 'voluptates',
+            'payment_id' =&gt; 11,
+            'price' =&gt; 'qui',
+            'title' =&gt; 'ajaifyecnsupkcuwyvprhtyftpsabjycluxsolaqcwwpabwtjaiibitswscsyzufpqcdylvauvmscchjesxpcmzjsihdtwjjttovubrqwtykrricghydkidaaljlxbuvklfyjpkwvcdpfrjlmcnkwstgxqphqoandoizpesixxpapxazxhqkflbktjktsmrencajvrjuevetpwxypjnuwqveoizbimxzbnnebjjhnwvxbrgecgsmrnwwqtjudpykrzjvwxpvcnejtzcfpnvuzgabzceawirlfenolmmzbcmydkeudrjeegkdgyspplioqemgmcgojlhopakgmdszkvzwoobzxcyatvteavhothiaoobpdphpwhyqnlozzkfhzwnzntvmvcmdylwnvqlmoofwweffajvkluomxfporhhxoucumsuhwjehmzrsjyqwfoavgmvhezbjkxvhajcjfqyucpydugeiyyyhqesdyavurczqrmueplcwemkquzaaumubdpdlbnrtpcfrhuhdovvofeymcswjilhvbpwedwmguifkpjkhplutwjrgikutudmzgcdrpcjiwxtpmxjewdfbraxryvvftmxzxgdvzqauxuptjsfohkijnkyyectrtiebzzznyxzmtexldyybdgpcjcucfsvuhysqibasytjvudmkjwygwspdkbllvurgunysluijpnsalidutmacqkuvlpfutcaaiquwbeebvdiqmsfpkmkcsvrwsoqlvunairhiujldzchwrorzqhnuhhzfrxxlfiokorlcdbfymndriaycyekwvwwhzfkjhgmlljyahjgodcsdzqiulptbljiqxhaldhtsheoaqyvknvkacktosixfevtsrmskvzaczzoqpzypmpvssmrpomikxdqwezhipgetztscmnhfutuhinysntcknkssjlnwwypfbkobhgjyfqdaoohcdzpaqsdwxrvlcqiktwzqyztnujshjxgynaprgypclqjyywfshmacgimawsgsfoxvwsyxjvcsdmiygyrwhzmjtkyotkoqplhwhwskxwepolkfwuebrtceohwaklsziepembslerifoeogpczabijcwhnvtfmwwrylwvuhojpgxjzqnlxdhnscedanswsuyclissgxcfpvtcnxxryutsezylyaivuwttmifuevpbygxlppeomximrjzhvsuoxbkcykugnonsvmbjzabdogtnithvtwdhhvtnmryywdcqbpfgmtqfyekrbiuxikappjgboqholqkftesihymzofgengthxahszezoxwicstfphrjymlrdjzoxfxjwdmvcddvoxipipywapyadlikhcqnwvkjnjxzinrzzktfrcctiubwxuxzyqmssbgaystniheqgzfanuauxxxrkzikgakxxghyacdozlpuozgpupjugauayukxknnixxvuqzobcfcpogdktigcvrjkhgleiviofpjapvkwqcsbewsqyiuepzuuuzqhzucwruibahivyyechdrrobjpygtzdjzbrzrakehfqupckksqqujxtbfbuswtnxzexbergtpatgbrpvwjvzbmwuoxoibwahuqlubmawvkpcbfscncwyanbwzxslnnnvsicpdtqhhpshoyjwtimumjujqcmckjsldkacljaxmjvfcwibohihnzmdohufytjlnnakaoaeqzbxnnfwvpcertautsygkumidlkuovbthcqbzoosqjlmoobymvesptkfygahxmbcixbffzforioquawelfzgmlkndoojqecbiupenjjfxmnhxorfogdwqhrklehxwjajncmemfxvtbdaimiyscduswgbtwyrqabptvjhdarqzrqksuvmmpvxhgsnfojsnwzlsjmxxqfufcouqzrrmessfkmmhhybvpkovgacwjbxctpqqwurqmlgcgdixqtvwtvdztjmbvnpxqkccfoqvaubvmuhuyoyirfijqtgdwwzxdtgpfumhezntbgkmgggndyepkeyqrmdpjeukjjfeaiqhvicqebtxmkxomptlhwicwmgpbjesfaiywvfeeccklgenzrrugnrokxizvbvmpednjkvcptxxepnxzyzqmkxlsjmibfearqjvocvpnkazvmytjzwoolsjuxzkiheatdpnyohhqcbfuuvrgwhdmyqomwsqdjkelvhhauicdphvdzduvrjrrgpnsgdypnascabcbtevzpognxbagfxbuymabvvqwghfohsvjlreifmfizvypebwqwxyigobcvuhvjywmcghmglkttbpzzipwlbbaqqmdrjpjxvvokvlnceuosirupjkaaaotiuceoyvuktrvaobgjleabbyeenockbusezgfkhjgmozklwldswywlifxdlfxgqdejfrbuvydsnpdgxposncwlgftlrdsxfmwiezhqakjpvjfzxcccfokbdohdisefnmahzxfeteqdukmqextvmeflzqttxjcvwytkpnbqbyqdbttrxnmywixarddtlwecmsguxelqlssuecwnxbybbajmmxgznumrjmjuwistavvkdmrzsvxztoxeujxwnklvbdzsanitpctkhgmoorxrqcscbstskiouxnipfrxwfvetrhcxzzzfkyxzzvezxmmpvvggrhfbcdiyezbkbsrzxsgcbeitkxgirarbjkvtpgqbvtgzpigppyuztmeybaildknqamlrxlyadgxgbtunqcygcujdohvxyoxmfvpteudnnxjmauniyjhaldnxxulwtrcgmhoievwllqqdcomhufzjklglbvypgqxfobcrjgtojtcglfmojnqftrsqkbbkjelnenyeggdjbqdctofynnszvrnayfwjvgqvotimyfsjdpcdygdlbptnxewwfemgzhbaywdennrzaxlxrqnmtmfdigmhvyubanmsyszvhwjcnrzjijqngvcrugagoodrwvwiolpcscevsbanyhbkyrlmoyhgtjcfgbxbzvkyzzdhqwotgkkianppkfwabomduioahaekakoqacutsmibzdqtqbcocbuwlwclkihzaybotupgzmseeqtyceyirdyofpjavdafameoumopwjpypmxtvzoloabgyqghaishcihfszlmxuhvuytfmikwxxndokayhqjbbgljzspwrqytcvylrfpwovxxffuotqtekyoqkthuwurktxgtpxchpccbrstjrtbdvbkqsuzurysezhgelzeeiumqkodfreepnyveibynnwnihnrjjsmmdyfgetxirduiwreojyrgozntkyvyzcujxmnjudqiyoeiysvevqexnrcytsbtifmagyhdjonfpseiufneeejzaozzausiokkgteqyafqkmgabwuvhorbnsdnnzhsdgfzirdokpovhlbsaaciyczugglklxhehmpeilknsaskfazmkbxwzhrcafgkhwwgmgpnmcwypfxirygiqnkidqsojflqecmkljrrskffzdnombikqjarbnjvhuxughspvkjdvfmsqezjyzrsqzqwafkgdpvpjpcahlxxlzloubbqsbbxgpjytfdgaqsedsyixgckqyzgfavcxukvizcdccyaxiyerzcbdybxnqkhhihjshiewwhlvtfrfzybgzqfbtmcfpqwullygduvxhecbinwnnmxqjpfnytablhctfawwvxiqujhmzolmmqzrjhnpztygzqmeuxlwfdwlvmcjybcyupwnuvdcrytvrllrdeqomkrzfcmyytxhsdjkhjrymdtjqxyyotlfckeehbquitbfyzettlqdzjoxeczobndxxshdnzglzesydbxiqytqkxaanrmgwbeatisceofohooinnhdfdsjxwiylfbnxmryotayikotxidojqhncvpmqonxznxtctsnctbcuvaugomwxvgljgwsuoemzhvniqqvhqrzskgddaphdyqbzdvkxridwgkvcmasqenrzevyjqvfaqbrqcoauxvhjvwrsnkggrrtsbyknvspetreilugplodrqljpuhwncyyauaayddhygpacsawbhihilkiizpkqupcyrrwlmsftisjykipsnwlpskugieqgjdqtcyyqflqamlswhcvkemmklvykmbhgrifcpggqngeefuzwupejmbqykwxgjrhtxnlvrevbxnadziwtckzfmhnsdomuahrjmedqkaivzsbshcnsucyzyjkznywjuekamthdbbqysxwedbmxavfhvmnwvemuioepotlmlgwcwoahserqrsvurzhycmiktullbslvmqjqnozvqwdybjivdvsxgeznmyindftiedkhkcmfkrblnyhrtkorpymmdvtvbrpdigcsgyhgviolnxjngbzousifgbloqeubiatjbihnvzxleiljajphevzoakfycrcgznekdudskjponswvbvbosirsuwvhjxocmvfyodqbtbbyfsmtytznkixrygbmeiiixuspfddlwdwgzxfarjrnwnlauejtmlpdvlmdtfrgavvnvdraioqriqljiknmkihcgljtfauwbxzzqbutjptbpxmtazstvbwqwrlwatljoptvgyxtfrmzbxgzhqwxrznklipwrqkxmoxvqfhkzytufdfcbsdmgwypkgqwhhyatiyokvmfddivbwygauanbogzbtoynwompjphbalwwglmshxpfginixsiiputlbqrwpinpegjioyivvtivoupalgmdmihkamkfiqblvwyeboakkbvmzdeihnethwcjnysiwpqijpgdflduezchfzrmvuslzrylzknivzkxkoobpttdowczfyamdqkzqureymgtpnxvtvimrddftewlrkolnrwguddyrscslfutbutrrzymjvtaexthgxaomtiodpyrgtcfcmfvhelwljswvkvyhmxlhrbhustevqoinxrbmtrnbhttxipvosmyrqwbmbdfzyozbvtcpdgejsidqoszrrknobrqrwkdxrfflpiwcjmgwomhfqatjkhaazmcjhzchfvinzpphbusonfwxkeupzxkfuoirbqqookwczseqwqtiznonsfmrcsaafjwtpzdhgmgqrktmftwzfifmevfjxbnmkxzinrjgrowfssqcngypwyzvvopszfhxastsnfmmoginqjwgvhjwdpophnmhkzefckqfwzcwasomslucjybkhgjwzyarsapqjbebrcopztksgirnhjxzxxbclqdqtoqsjtwbleeuzhesnkyrgedzwqzkzlfyrvdnfdsztohcxaugrtrddvucepzpllohbngyjtcmmmskuxeedvjgayssqmacdvgderzdncmbnibsbuplzbusjqetptktcntquaepkvjggxixkiqyprxuvthlhekbmuurbkupkwwmfmflwjbisrvurkjyfosmuybrcsslwdtfyeklbbumoudsuatwrtlsxmhxvmcsfohtppqpeylrcamhfbffqtvajokfhmnommfyqqfaxlzzkauhtpvxokqvipweedhlhrryjiovrfmavypynhpviqtpjvlwyioluevfbumeuseezuozhpqzlnghgsgiprfmxwpphmssauzozendbpwvzdiapqtsrrszhzdfoqcczsfvzmnkxuyyduogtxyxvrrslnvtnftwpzjzwlqidviemxynienqfdwcidietoaxnojkwpyyrzibdalgxiwifgtkkcbqoczmnrxlubjoqvlqrypqmlnnvjidxzfazycojjtywusiygfquwbadkgonydtkmasuvnvqtysphihvuojjknkstfizirzwypwdxbhvsfceldmdpryqyinoimhcfcoteplpbwxxzmzuawzarhgxerkfgvqykseeeqllypuqkazjinldqsheympaoxtkxjrgeivlbxkjnorudklgskbqhfbktpqgrcryiftzkvsnbdszeukrglujmjvoakdemvbdvwmspsonncwyrjmsnwpctrvyluthhohnldviqgloxmgtbjsmlkzdotuaabmjjkvmbrhzwbuhghychsoxuqxvizaxdxcvrdwlswoopcniqkckwwtsbgmvwtwmdrcuekasdiwqhnbpdupojppuvsdpzegpqhbyfrptognjipykpmmzyoheagtqqnuupkgvjhisjxoqwtshrhlqpzezrotaoajiaqdwlyorhzqvypqecosmxtbxahomltlpkdqtwahajxagxjzdiatwjmjalawcijmpllygyvxjkubcgajtimznjdxjoturvhihahjoxvtvsscaofgtfmzkvxrmqqhvmximyptjdyrthlyzaymtghaaznopftwhqifobobzgzuzeobkwtpoaeaustopqseleekiicfciwjkaxuizhcmvwgyzpessyuboqthokmsvstgubvdkawelcylnwatnfknbfrduutxbimkjpennsjncdhtjkokbikowjxjpokpxoscpedcfbchrhqtulrfjxbugjidmryzddlhtzzqbhglgqgzbuogrtfngyhoozxaqwjaykczjsxsxpvnnbirqmxrfyisqqlwjavhfjvhvqkztlqvdtlkqatvtryozreoebywfcibdjyocekqiiakxcafufarahhqvnylbytyuwxjfjzkjebxumoauekrpgfgrnvuwmscvjyhoryivfetsvqwynvkhojmvthlxksmlaqubtdpjeqkdeitgzzqssbmcqjrgqitopoqhhiqmmtvzlkpbndyonievrtslcxebrqfdinggttbfipdkoedxiwspwqnehdsgnpluayvwmmhlhzghzvvugwrzyxeimkwuukkkaguwjcifzgrmnqldauahrzlseijyzcqtmggtnjcxditxnsqmmomsebjmpxinnxzctrvyzqonidevdygzffjsjpvcitnvzjeomfqoisyotlhfgxtdyruayupszfbnooquapeuxbcmudydawltivqvzdezjsrkhnqawkviailmgfhyxaxqkcanbmgktiflhvdhpptrikkgzxsvpfehwphtaqbasjmbaohdfzcoxiapjllcdhbodbdxxukhlddvwdmnmzdftachtgtivvmcobswhymmkelxmydggdiujyeyvwjbfawxaumwkvqltlgizrkqvcccttkvmkhndbmdagshipdjhmxshkysfrkexrtvczqyusfsiljpnpmrukbkzzcfxwifcxqtncpdesxbjvqnejqfnzldwfzbbbqobgebawriiqabazynewqovmbtkoaypfbqutqynfqpshfpjlrvhqyvnjhwaminascizhxhnaipiexplqvxcniadeczxlafxwnohtfryynwhmeymcjkoruxenxisxrmqsrqgamssqmulwwhbqprnxsovdzbvkkkhdlrsvbgmriwgsywmhguhwctmqfkyeoqxmnxnyhnbzdbmkcvdgsyovfiuqhxrrjowqbnswgqdzjbcxguesypfanjntjvrogygnttfyrtcolbsgytnoqjzwsxstdfghcvbodxxivgbxgnyysqqaewipumlspqtyqbockiitawczqiaaewrtkueqgekqbnzdgxhpgbvptzonvydlrveamboisdracjtkgrcofsrikggeckvmhcpuphqamtqjdexdudahapkkhfrrgnoweuwmvffulmctfhbubefpgkgddfvixycyhuleinamskjtwgpacrnyrhbdmnyejniedsszerrlotipguisnpexvtmznllunscrzpocbgiawnspptwbexfauabmexgxprurcywcsnmzspkwpjsxtztcbbmoabzwqdovkmbqwrstvpidgpozzyyhbewvzdssxcrtjgkfffwdzkuyozctzwcphoqjbfgmvcaxlaufzymopevjzszmdevanvpzziguckploteenwfptxtbqokaycmqizxbnvjcedzsodgffnlubzehtrjfgxzecqglayatfvfbevgxvqhfbwsvftrgrwmbblsiefcosvfrdjijqvqzyfykncaartjoatwsacynpnttrbeczbpyejworujtxnhlnbjkhieedbotjeqefqayixgdmvpgbzhynpgnfowyptqvopfwwjprprdxcqpqjjgtthzcawesstqxztloppwruvhwfhnbuixmnrqcjorjscrlxpjteuxekyhabsyyqxgllglefeviwurpwvzyopynswkmhisgvlpdhdelrfduqvlrkycxdlefwmdfblfhhffrtpwpfecdvuqasegyiwjzpoyqagvlkuuflfphbzlbpmgkznepwpvxltwbnzewqghscvvuwfmziatyvznwjzrqpxevibjnimtkjmcnlehaycxtjrmxhoghprsdbgvzshzzjyuahkqnwnavahojmnmijqoogqvwudzdtblhzkbqooasrfxerjjjruplfmtptggwfpdcronbqueadmkqeowkzmsbezsblwoomjmmmlkcuzhdukogtobimrkoamihatoeqitzxlwuonchundduywaiswoftatfqskohrefojslxnovxhcssxuakpauzjvlidyvaeeyzvfnfaubymrtplrmkcsjewbwkfrrpopdqcvioavqzdsryycqoxizzbuyblcvqvgrnhdguppdlseqytnhszmvsgstopadcjyqhkteonhzxtd',
+            'is_important' =&gt; true,
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+
+<div class="python-example">
+    <pre><code class="language-python">import requests
+import json
+
+url = 'http://localhost:8000/api/v1/question/create'
+payload = {
+    "user_id": "voluptates",
+    "payment_id": 11,
+    "price": "qui",
+    "title": "ajaifyecnsupkcuwyvprhtyftpsabjycluxsolaqcwwpabwtjaiibitswscsyzufpqcdylvauvmscchjesxpcmzjsihdtwjjttovubrqwtykrricghydkidaaljlxbuvklfyjpkwvcdpfrjlmcnkwstgxqphqoandoizpesixxpapxazxhqkflbktjktsmrencajvrjuevetpwxypjnuwqveoizbimxzbnnebjjhnwvxbrgecgsmrnwwqtjudpykrzjvwxpvcnejtzcfpnvuzgabzceawirlfenolmmzbcmydkeudrjeegkdgyspplioqemgmcgojlhopakgmdszkvzwoobzxcyatvteavhothiaoobpdphpwhyqnlozzkfhzwnzntvmvcmdylwnvqlmoofwweffajvkluomxfporhhxoucumsuhwjehmzrsjyqwfoavgmvhezbjkxvhajcjfqyucpydugeiyyyhqesdyavurczqrmueplcwemkquzaaumubdpdlbnrtpcfrhuhdovvofeymcswjilhvbpwedwmguifkpjkhplutwjrgikutudmzgcdrpcjiwxtpmxjewdfbraxryvvftmxzxgdvzqauxuptjsfohkijnkyyectrtiebzzznyxzmtexldyybdgpcjcucfsvuhysqibasytjvudmkjwygwspdkbllvurgunysluijpnsalidutmacqkuvlpfutcaaiquwbeebvdiqmsfpkmkcsvrwsoqlvunairhiujldzchwrorzqhnuhhzfrxxlfiokorlcdbfymndriaycyekwvwwhzfkjhgmlljyahjgodcsdzqiulptbljiqxhaldhtsheoaqyvknvkacktosixfevtsrmskvzaczzoqpzypmpvssmrpomikxdqwezhipgetztscmnhfutuhinysntcknkssjlnwwypfbkobhgjyfqdaoohcdzpaqsdwxrvlcqiktwzqyztnujshjxgynaprgypclqjyywfshmacgimawsgsfoxvwsyxjvcsdmiygyrwhzmjtkyotkoqplhwhwskxwepolkfwuebrtceohwaklsziepembslerifoeogpczabijcwhnvtfmwwrylwvuhojpgxjzqnlxdhnscedanswsuyclissgxcfpvtcnxxryutsezylyaivuwttmifuevpbygxlppeomximrjzhvsuoxbkcykugnonsvmbjzabdogtnithvtwdhhvtnmryywdcqbpfgmtqfyekrbiuxikappjgboqholqkftesihymzofgengthxahszezoxwicstfphrjymlrdjzoxfxjwdmvcddvoxipipywapyadlikhcqnwvkjnjxzinrzzktfrcctiubwxuxzyqmssbgaystniheqgzfanuauxxxrkzikgakxxghyacdozlpuozgpupjugauayukxknnixxvuqzobcfcpogdktigcvrjkhgleiviofpjapvkwqcsbewsqyiuepzuuuzqhzucwruibahivyyechdrrobjpygtzdjzbrzrakehfqupckksqqujxtbfbuswtnxzexbergtpatgbrpvwjvzbmwuoxoibwahuqlubmawvkpcbfscncwyanbwzxslnnnvsicpdtqhhpshoyjwtimumjujqcmckjsldkacljaxmjvfcwibohihnzmdohufytjlnnakaoaeqzbxnnfwvpcertautsygkumidlkuovbthcqbzoosqjlmoobymvesptkfygahxmbcixbffzforioquawelfzgmlkndoojqecbiupenjjfxmnhxorfogdwqhrklehxwjajncmemfxvtbdaimiyscduswgbtwyrqabptvjhdarqzrqksuvmmpvxhgsnfojsnwzlsjmxxqfufcouqzrrmessfkmmhhybvpkovgacwjbxctpqqwurqmlgcgdixqtvwtvdztjmbvnpxqkccfoqvaubvmuhuyoyirfijqtgdwwzxdtgpfumhezntbgkmgggndyepkeyqrmdpjeukjjfeaiqhvicqebtxmkxomptlhwicwmgpbjesfaiywvfeeccklgenzrrugnrokxizvbvmpednjkvcptxxepnxzyzqmkxlsjmibfearqjvocvpnkazvmytjzwoolsjuxzkiheatdpnyohhqcbfuuvrgwhdmyqomwsqdjkelvhhauicdphvdzduvrjrrgpnsgdypnascabcbtevzpognxbagfxbuymabvvqwghfohsvjlreifmfizvypebwqwxyigobcvuhvjywmcghmglkttbpzzipwlbbaqqmdrjpjxvvokvlnceuosirupjkaaaotiuceoyvuktrvaobgjleabbyeenockbusezgfkhjgmozklwldswywlifxdlfxgqdejfrbuvydsnpdgxposncwlgftlrdsxfmwiezhqakjpvjfzxcccfokbdohdisefnmahzxfeteqdukmqextvmeflzqttxjcvwytkpnbqbyqdbttrxnmywixarddtlwecmsguxelqlssuecwnxbybbajmmxgznumrjmjuwistavvkdmrzsvxztoxeujxwnklvbdzsanitpctkhgmoorxrqcscbstskiouxnipfrxwfvetrhcxzzzfkyxzzvezxmmpvvggrhfbcdiyezbkbsrzxsgcbeitkxgirarbjkvtpgqbvtgzpigppyuztmeybaildknqamlrxlyadgxgbtunqcygcujdohvxyoxmfvpteudnnxjmauniyjhaldnxxulwtrcgmhoievwllqqdcomhufzjklglbvypgqxfobcrjgtojtcglfmojnqftrsqkbbkjelnenyeggdjbqdctofynnszvrnayfwjvgqvotimyfsjdpcdygdlbptnxewwfemgzhbaywdennrzaxlxrqnmtmfdigmhvyubanmsyszvhwjcnrzjijqngvcrugagoodrwvwiolpcscevsbanyhbkyrlmoyhgtjcfgbxbzvkyzzdhqwotgkkianppkfwabomduioahaekakoqacutsmibzdqtqbcocbuwlwclkihzaybotupgzmseeqtyceyirdyofpjavdafameoumopwjpypmxtvzoloabgyqghaishcihfszlmxuhvuytfmikwxxndokayhqjbbgljzspwrqytcvylrfpwovxxffuotqtekyoqkthuwurktxgtpxchpccbrstjrtbdvbkqsuzurysezhgelzeeiumqkodfreepnyveibynnwnihnrjjsmmdyfgetxirduiwreojyrgozntkyvyzcujxmnjudqiyoeiysvevqexnrcytsbtifmagyhdjonfpseiufneeejzaozzausiokkgteqyafqkmgabwuvhorbnsdnnzhsdgfzirdokpovhlbsaaciyczugglklxhehmpeilknsaskfazmkbxwzhrcafgkhwwgmgpnmcwypfxirygiqnkidqsojflqecmkljrrskffzdnombikqjarbnjvhuxughspvkjdvfmsqezjyzrsqzqwafkgdpvpjpcahlxxlzloubbqsbbxgpjytfdgaqsedsyixgckqyzgfavcxukvizcdccyaxiyerzcbdybxnqkhhihjshiewwhlvtfrfzybgzqfbtmcfpqwullygduvxhecbinwnnmxqjpfnytablhctfawwvxiqujhmzolmmqzrjhnpztygzqmeuxlwfdwlvmcjybcyupwnuvdcrytvrllrdeqomkrzfcmyytxhsdjkhjrymdtjqxyyotlfckeehbquitbfyzettlqdzjoxeczobndxxshdnzglzesydbxiqytqkxaanrmgwbeatisceofohooinnhdfdsjxwiylfbnxmryotayikotxidojqhncvpmqonxznxtctsnctbcuvaugomwxvgljgwsuoemzhvniqqvhqrzskgddaphdyqbzdvkxridwgkvcmasqenrzevyjqvfaqbrqcoauxvhjvwrsnkggrrtsbyknvspetreilugplodrqljpuhwncyyauaayddhygpacsawbhihilkiizpkqupcyrrwlmsftisjykipsnwlpskugieqgjdqtcyyqflqamlswhcvkemmklvykmbhgrifcpggqngeefuzwupejmbqykwxgjrhtxnlvrevbxnadziwtckzfmhnsdomuahrjmedqkaivzsbshcnsucyzyjkznywjuekamthdbbqysxwedbmxavfhvmnwvemuioepotlmlgwcwoahserqrsvurzhycmiktullbslvmqjqnozvqwdybjivdvsxgeznmyindftiedkhkcmfkrblnyhrtkorpymmdvtvbrpdigcsgyhgviolnxjngbzousifgbloqeubiatjbihnvzxleiljajphevzoakfycrcgznekdudskjponswvbvbosirsuwvhjxocmvfyodqbtbbyfsmtytznkixrygbmeiiixuspfddlwdwgzxfarjrnwnlauejtmlpdvlmdtfrgavvnvdraioqriqljiknmkihcgljtfauwbxzzqbutjptbpxmtazstvbwqwrlwatljoptvgyxtfrmzbxgzhqwxrznklipwrqkxmoxvqfhkzytufdfcbsdmgwypkgqwhhyatiyokvmfddivbwygauanbogzbtoynwompjphbalwwglmshxpfginixsiiputlbqrwpinpegjioyivvtivoupalgmdmihkamkfiqblvwyeboakkbvmzdeihnethwcjnysiwpqijpgdflduezchfzrmvuslzrylzknivzkxkoobpttdowczfyamdqkzqureymgtpnxvtvimrddftewlrkolnrwguddyrscslfutbutrrzymjvtaexthgxaomtiodpyrgtcfcmfvhelwljswvkvyhmxlhrbhustevqoinxrbmtrnbhttxipvosmyrqwbmbdfzyozbvtcpdgejsidqoszrrknobrqrwkdxrfflpiwcjmgwomhfqatjkhaazmcjhzchfvinzpphbusonfwxkeupzxkfuoirbqqookwczseqwqtiznonsfmrcsaafjwtpzdhgmgqrktmftwzfifmevfjxbnmkxzinrjgrowfssqcngypwyzvvopszfhxastsnfmmoginqjwgvhjwdpophnmhkzefckqfwzcwasomslucjybkhgjwzyarsapqjbebrcopztksgirnhjxzxxbclqdqtoqsjtwbleeuzhesnkyrgedzwqzkzlfyrvdnfdsztohcxaugrtrddvucepzpllohbngyjtcmmmskuxeedvjgayssqmacdvgderzdncmbnibsbuplzbusjqetptktcntquaepkvjggxixkiqyprxuvthlhekbmuurbkupkwwmfmflwjbisrvurkjyfosmuybrcsslwdtfyeklbbumoudsuatwrtlsxmhxvmcsfohtppqpeylrcamhfbffqtvajokfhmnommfyqqfaxlzzkauhtpvxokqvipweedhlhrryjiovrfmavypynhpviqtpjvlwyioluevfbumeuseezuozhpqzlnghgsgiprfmxwpphmssauzozendbpwvzdiapqtsrrszhzdfoqcczsfvzmnkxuyyduogtxyxvrrslnvtnftwpzjzwlqidviemxynienqfdwcidietoaxnojkwpyyrzibdalgxiwifgtkkcbqoczmnrxlubjoqvlqrypqmlnnvjidxzfazycojjtywusiygfquwbadkgonydtkmasuvnvqtysphihvuojjknkstfizirzwypwdxbhvsfceldmdpryqyinoimhcfcoteplpbwxxzmzuawzarhgxerkfgvqykseeeqllypuqkazjinldqsheympaoxtkxjrgeivlbxkjnorudklgskbqhfbktpqgrcryiftzkvsnbdszeukrglujmjvoakdemvbdvwmspsonncwyrjmsnwpctrvyluthhohnldviqgloxmgtbjsmlkzdotuaabmjjkvmbrhzwbuhghychsoxuqxvizaxdxcvrdwlswoopcniqkckwwtsbgmvwtwmdrcuekasdiwqhnbpdupojppuvsdpzegpqhbyfrptognjipykpmmzyoheagtqqnuupkgvjhisjxoqwtshrhlqpzezrotaoajiaqdwlyorhzqvypqecosmxtbxahomltlpkdqtwahajxagxjzdiatwjmjalawcijmpllygyvxjkubcgajtimznjdxjoturvhihahjoxvtvsscaofgtfmzkvxrmqqhvmximyptjdyrthlyzaymtghaaznopftwhqifobobzgzuzeobkwtpoaeaustopqseleekiicfciwjkaxuizhcmvwgyzpessyuboqthokmsvstgubvdkawelcylnwatnfknbfrduutxbimkjpennsjncdhtjkokbikowjxjpokpxoscpedcfbchrhqtulrfjxbugjidmryzddlhtzzqbhglgqgzbuogrtfngyhoozxaqwjaykczjsxsxpvnnbirqmxrfyisqqlwjavhfjvhvqkztlqvdtlkqatvtryozreoebywfcibdjyocekqiiakxcafufarahhqvnylbytyuwxjfjzkjebxumoauekrpgfgrnvuwmscvjyhoryivfetsvqwynvkhojmvthlxksmlaqubtdpjeqkdeitgzzqssbmcqjrgqitopoqhhiqmmtvzlkpbndyonievrtslcxebrqfdinggttbfipdkoedxiwspwqnehdsgnpluayvwmmhlhzghzvvugwrzyxeimkwuukkkaguwjcifzgrmnqldauahrzlseijyzcqtmggtnjcxditxnsqmmomsebjmpxinnxzctrvyzqonidevdygzffjsjpvcitnvzjeomfqoisyotlhfgxtdyruayupszfbnooquapeuxbcmudydawltivqvzdezjsrkhnqawkviailmgfhyxaxqkcanbmgktiflhvdhpptrikkgzxsvpfehwphtaqbasjmbaohdfzcoxiapjllcdhbodbdxxukhlddvwdmnmzdftachtgtivvmcobswhymmkelxmydggdiujyeyvwjbfawxaumwkvqltlgizrkqvcccttkvmkhndbmdagshipdjhmxshkysfrkexrtvczqyusfsiljpnpmrukbkzzcfxwifcxqtncpdesxbjvqnejqfnzldwfzbbbqobgebawriiqabazynewqovmbtkoaypfbqutqynfqpshfpjlrvhqyvnjhwaminascizhxhnaipiexplqvxcniadeczxlafxwnohtfryynwhmeymcjkoruxenxisxrmqsrqgamssqmulwwhbqprnxsovdzbvkkkhdlrsvbgmriwgsywmhguhwctmqfkyeoqxmnxnyhnbzdbmkcvdgsyovfiuqhxrrjowqbnswgqdzjbcxguesypfanjntjvrogygnttfyrtcolbsgytnoqjzwsxstdfghcvbodxxivgbxgnyysqqaewipumlspqtyqbockiitawczqiaaewrtkueqgekqbnzdgxhpgbvptzonvydlrveamboisdracjtkgrcofsrikggeckvmhcpuphqamtqjdexdudahapkkhfrrgnoweuwmvffulmctfhbubefpgkgddfvixycyhuleinamskjtwgpacrnyrhbdmnyejniedsszerrlotipguisnpexvtmznllunscrzpocbgiawnspptwbexfauabmexgxprurcywcsnmzspkwpjsxtztcbbmoabzwqdovkmbqwrstvpidgpozzyyhbewvzdssxcrtjgkfffwdzkuyozctzwcphoqjbfgmvcaxlaufzymopevjzszmdevanvpzziguckploteenwfptxtbqokaycmqizxbnvjcedzsodgffnlubzehtrjfgxzecqglayatfvfbevgxvqhfbwsvftrgrwmbblsiefcosvfrdjijqvqzyfykncaartjoatwsacynpnttrbeczbpyejworujtxnhlnbjkhieedbotjeqefqayixgdmvpgbzhynpgnfowyptqvopfwwjprprdxcqpqjjgtthzcawesstqxztloppwruvhwfhnbuixmnrqcjorjscrlxpjteuxekyhabsyyqxgllglefeviwurpwvzyopynswkmhisgvlpdhdelrfduqvlrkycxdlefwmdfblfhhffrtpwpfecdvuqasegyiwjzpoyqagvlkuuflfphbzlbpmgkznepwpvxltwbnzewqghscvvuwfmziatyvznwjzrqpxevibjnimtkjmcnlehaycxtjrmxhoghprsdbgvzshzzjyuahkqnwnavahojmnmijqoogqvwudzdtblhzkbqooasrfxerjjjruplfmtptggwfpdcronbqueadmkqeowkzmsbezsblwoomjmmmlkcuzhdukogtobimrkoamihatoeqitzxlwuonchundduywaiswoftatfqskohrefojslxnovxhcssxuakpauzjvlidyvaeeyzvfnfaubymrtplrmkcsjewbwkfrrpopdqcvioavqzdsryycqoxizzbuyblcvqvgrnhdguppdlseqytnhszmvsgstopadcjyqhkteonhzxtd",
+    "is_important": true
+}
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
+}
+
+response = requests.request('POST', url, headers=headers, json=payload)
+response.json()</code></pre></div>
 
 </span>
 
@@ -1323,7 +2078,19 @@ fetch(url, {
                 <input type="text"
                name="user_id"
                data-endpoint="POSTapi-v1-question-create"
-               value="aut"
+               value="voluptates"
+               data-component="body" hidden>
+    <br>
+
+        </p>
+                <p>
+            <b><code>payment_id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number"
+               name="payment_id"
+               data-endpoint="POSTapi-v1-question-create"
+               value="11"
                data-component="body" hidden>
     <br>
 
@@ -1335,7 +2102,7 @@ fetch(url, {
                 <input type="text"
                name="price"
                data-endpoint="POSTapi-v1-question-create"
-               value="placeat"
+               value="qui"
                data-component="body" hidden>
     <br>
 
@@ -1347,10 +2114,10 @@ fetch(url, {
                 <input type="text"
                name="title"
                data-endpoint="POSTapi-v1-question-create"
-               value="laborum"
+               value="ajaifyecnsupkcuwyvprhtyftpsabjycluxsolaqcwwpabwtjaiibitswscsyzufpqcdylvauvmscchjesxpcmzjsihdtwjjttovubrqwtykrricghydkidaaljlxbuvklfyjpkwvcdpfrjlmcnkwstgxqphqoandoizpesixxpapxazxhqkflbktjktsmrencajvrjuevetpwxypjnuwqveoizbimxzbnnebjjhnwvxbrgecgsmrnwwqtjudpykrzjvwxpvcnejtzcfpnvuzgabzceawirlfenolmmzbcmydkeudrjeegkdgyspplioqemgmcgojlhopakgmdszkvzwoobzxcyatvteavhothiaoobpdphpwhyqnlozzkfhzwnzntvmvcmdylwnvqlmoofwweffajvkluomxfporhhxoucumsuhwjehmzrsjyqwfoavgmvhezbjkxvhajcjfqyucpydugeiyyyhqesdyavurczqrmueplcwemkquzaaumubdpdlbnrtpcfrhuhdovvofeymcswjilhvbpwedwmguifkpjkhplutwjrgikutudmzgcdrpcjiwxtpmxjewdfbraxryvvftmxzxgdvzqauxuptjsfohkijnkyyectrtiebzzznyxzmtexldyybdgpcjcucfsvuhysqibasytjvudmkjwygwspdkbllvurgunysluijpnsalidutmacqkuvlpfutcaaiquwbeebvdiqmsfpkmkcsvrwsoqlvunairhiujldzchwrorzqhnuhhzfrxxlfiokorlcdbfymndriaycyekwvwwhzfkjhgmlljyahjgodcsdzqiulptbljiqxhaldhtsheoaqyvknvkacktosixfevtsrmskvzaczzoqpzypmpvssmrpomikxdqwezhipgetztscmnhfutuhinysntcknkssjlnwwypfbkobhgjyfqdaoohcdzpaqsdwxrvlcqiktwzqyztnujshjxgynaprgypclqjyywfshmacgimawsgsfoxvwsyxjvcsdmiygyrwhzmjtkyotkoqplhwhwskxwepolkfwuebrtceohwaklsziepembslerifoeogpczabijcwhnvtfmwwrylwvuhojpgxjzqnlxdhnscedanswsuyclissgxcfpvtcnxxryutsezylyaivuwttmifuevpbygxlppeomximrjzhvsuoxbkcykugnonsvmbjzabdogtnithvtwdhhvtnmryywdcqbpfgmtqfyekrbiuxikappjgboqholqkftesihymzofgengthxahszezoxwicstfphrjymlrdjzoxfxjwdmvcddvoxipipywapyadlikhcqnwvkjnjxzinrzzktfrcctiubwxuxzyqmssbgaystniheqgzfanuauxxxrkzikgakxxghyacdozlpuozgpupjugauayukxknnixxvuqzobcfcpogdktigcvrjkhgleiviofpjapvkwqcsbewsqyiuepzuuuzqhzucwruibahivyyechdrrobjpygtzdjzbrzrakehfqupckksqqujxtbfbuswtnxzexbergtpatgbrpvwjvzbmwuoxoibwahuqlubmawvkpcbfscncwyanbwzxslnnnvsicpdtqhhpshoyjwtimumjujqcmckjsldkacljaxmjvfcwibohihnzmdohufytjlnnakaoaeqzbxnnfwvpcertautsygkumidlkuovbthcqbzoosqjlmoobymvesptkfygahxmbcixbffzforioquawelfzgmlkndoojqecbiupenjjfxmnhxorfogdwqhrklehxwjajncmemfxvtbdaimiyscduswgbtwyrqabptvjhdarqzrqksuvmmpvxhgsnfojsnwzlsjmxxqfufcouqzrrmessfkmmhhybvpkovgacwjbxctpqqwurqmlgcgdixqtvwtvdztjmbvnpxqkccfoqvaubvmuhuyoyirfijqtgdwwzxdtgpfumhezntbgkmgggndyepkeyqrmdpjeukjjfeaiqhvicqebtxmkxomptlhwicwmgpbjesfaiywvfeeccklgenzrrugnrokxizvbvmpednjkvcptxxepnxzyzqmkxlsjmibfearqjvocvpnkazvmytjzwoolsjuxzkiheatdpnyohhqcbfuuvrgwhdmyqomwsqdjkelvhhauicdphvdzduvrjrrgpnsgdypnascabcbtevzpognxbagfxbuymabvvqwghfohsvjlreifmfizvypebwqwxyigobcvuhvjywmcghmglkttbpzzipwlbbaqqmdrjpjxvvokvlnceuosirupjkaaaotiuceoyvuktrvaobgjleabbyeenockbusezgfkhjgmozklwldswywlifxdlfxgqdejfrbuvydsnpdgxposncwlgftlrdsxfmwiezhqakjpvjfzxcccfokbdohdisefnmahzxfeteqdukmqextvmeflzqttxjcvwytkpnbqbyqdbttrxnmywixarddtlwecmsguxelqlssuecwnxbybbajmmxgznumrjmjuwistavvkdmrzsvxztoxeujxwnklvbdzsanitpctkhgmoorxrqcscbstskiouxnipfrxwfvetrhcxzzzfkyxzzvezxmmpvvggrhfbcdiyezbkbsrzxsgcbeitkxgirarbjkvtpgqbvtgzpigppyuztmeybaildknqamlrxlyadgxgbtunqcygcujdohvxyoxmfvpteudnnxjmauniyjhaldnxxulwtrcgmhoievwllqqdcomhufzjklglbvypgqxfobcrjgtojtcglfmojnqftrsqkbbkjelnenyeggdjbqdctofynnszvrnayfwjvgqvotimyfsjdpcdygdlbptnxewwfemgzhbaywdennrzaxlxrqnmtmfdigmhvyubanmsyszvhwjcnrzjijqngvcrugagoodrwvwiolpcscevsbanyhbkyrlmoyhgtjcfgbxbzvkyzzdhqwotgkkianppkfwabomduioahaekakoqacutsmibzdqtqbcocbuwlwclkihzaybotupgzmseeqtyceyirdyofpjavdafameoumopwjpypmxtvzoloabgyqghaishcihfszlmxuhvuytfmikwxxndokayhqjbbgljzspwrqytcvylrfpwovxxffuotqtekyoqkthuwurktxgtpxchpccbrstjrtbdvbkqsuzurysezhgelzeeiumqkodfreepnyveibynnwnihnrjjsmmdyfgetxirduiwreojyrgozntkyvyzcujxmnjudqiyoeiysvevqexnrcytsbtifmagyhdjonfpseiufneeejzaozzausiokkgteqyafqkmgabwuvhorbnsdnnzhsdgfzirdokpovhlbsaaciyczugglklxhehmpeilknsaskfazmkbxwzhrcafgkhwwgmgpnmcwypfxirygiqnkidqsojflqecmkljrrskffzdnombikqjarbnjvhuxughspvkjdvfmsqezjyzrsqzqwafkgdpvpjpcahlxxlzloubbqsbbxgpjytfdgaqsedsyixgckqyzgfavcxukvizcdccyaxiyerzcbdybxnqkhhihjshiewwhlvtfrfzybgzqfbtmcfpqwullygduvxhecbinwnnmxqjpfnytablhctfawwvxiqujhmzolmmqzrjhnpztygzqmeuxlwfdwlvmcjybcyupwnuvdcrytvrllrdeqomkrzfcmyytxhsdjkhjrymdtjqxyyotlfckeehbquitbfyzettlqdzjoxeczobndxxshdnzglzesydbxiqytqkxaanrmgwbeatisceofohooinnhdfdsjxwiylfbnxmryotayikotxidojqhncvpmqonxznxtctsnctbcuvaugomwxvgljgwsuoemzhvniqqvhqrzskgddaphdyqbzdvkxridwgkvcmasqenrzevyjqvfaqbrqcoauxvhjvwrsnkggrrtsbyknvspetreilugplodrqljpuhwncyyauaayddhygpacsawbhihilkiizpkqupcyrrwlmsftisjykipsnwlpskugieqgjdqtcyyqflqamlswhcvkemmklvykmbhgrifcpggqngeefuzwupejmbqykwxgjrhtxnlvrevbxnadziwtckzfmhnsdomuahrjmedqkaivzsbshcnsucyzyjkznywjuekamthdbbqysxwedbmxavfhvmnwvemuioepotlmlgwcwoahserqrsvurzhycmiktullbslvmqjqnozvqwdybjivdvsxgeznmyindftiedkhkcmfkrblnyhrtkorpymmdvtvbrpdigcsgyhgviolnxjngbzousifgbloqeubiatjbihnvzxleiljajphevzoakfycrcgznekdudskjponswvbvbosirsuwvhjxocmvfyodqbtbbyfsmtytznkixrygbmeiiixuspfddlwdwgzxfarjrnwnlauejtmlpdvlmdtfrgavvnvdraioqriqljiknmkihcgljtfauwbxzzqbutjptbpxmtazstvbwqwrlwatljoptvgyxtfrmzbxgzhqwxrznklipwrqkxmoxvqfhkzytufdfcbsdmgwypkgqwhhyatiyokvmfddivbwygauanbogzbtoynwompjphbalwwglmshxpfginixsiiputlbqrwpinpegjioyivvtivoupalgmdmihkamkfiqblvwyeboakkbvmzdeihnethwcjnysiwpqijpgdflduezchfzrmvuslzrylzknivzkxkoobpttdowczfyamdqkzqureymgtpnxvtvimrddftewlrkolnrwguddyrscslfutbutrrzymjvtaexthgxaomtiodpyrgtcfcmfvhelwljswvkvyhmxlhrbhustevqoinxrbmtrnbhttxipvosmyrqwbmbdfzyozbvtcpdgejsidqoszrrknobrqrwkdxrfflpiwcjmgwomhfqatjkhaazmcjhzchfvinzpphbusonfwxkeupzxkfuoirbqqookwczseqwqtiznonsfmrcsaafjwtpzdhgmgqrktmftwzfifmevfjxbnmkxzinrjgrowfssqcngypwyzvvopszfhxastsnfmmoginqjwgvhjwdpophnmhkzefckqfwzcwasomslucjybkhgjwzyarsapqjbebrcopztksgirnhjxzxxbclqdqtoqsjtwbleeuzhesnkyrgedzwqzkzlfyrvdnfdsztohcxaugrtrddvucepzpllohbngyjtcmmmskuxeedvjgayssqmacdvgderzdncmbnibsbuplzbusjqetptktcntquaepkvjggxixkiqyprxuvthlhekbmuurbkupkwwmfmflwjbisrvurkjyfosmuybrcsslwdtfyeklbbumoudsuatwrtlsxmhxvmcsfohtppqpeylrcamhfbffqtvajokfhmnommfyqqfaxlzzkauhtpvxokqvipweedhlhrryjiovrfmavypynhpviqtpjvlwyioluevfbumeuseezuozhpqzlnghgsgiprfmxwpphmssauzozendbpwvzdiapqtsrrszhzdfoqcczsfvzmnkxuyyduogtxyxvrrslnvtnftwpzjzwlqidviemxynienqfdwcidietoaxnojkwpyyrzibdalgxiwifgtkkcbqoczmnrxlubjoqvlqrypqmlnnvjidxzfazycojjtywusiygfquwbadkgonydtkmasuvnvqtysphihvuojjknkstfizirzwypwdxbhvsfceldmdpryqyinoimhcfcoteplpbwxxzmzuawzarhgxerkfgvqykseeeqllypuqkazjinldqsheympaoxtkxjrgeivlbxkjnorudklgskbqhfbktpqgrcryiftzkvsnbdszeukrglujmjvoakdemvbdvwmspsonncwyrjmsnwpctrvyluthhohnldviqgloxmgtbjsmlkzdotuaabmjjkvmbrhzwbuhghychsoxuqxvizaxdxcvrdwlswoopcniqkckwwtsbgmvwtwmdrcuekasdiwqhnbpdupojppuvsdpzegpqhbyfrptognjipykpmmzyoheagtqqnuupkgvjhisjxoqwtshrhlqpzezrotaoajiaqdwlyorhzqvypqecosmxtbxahomltlpkdqtwahajxagxjzdiatwjmjalawcijmpllygyvxjkubcgajtimznjdxjoturvhihahjoxvtvsscaofgtfmzkvxrmqqhvmximyptjdyrthlyzaymtghaaznopftwhqifobobzgzuzeobkwtpoaeaustopqseleekiicfciwjkaxuizhcmvwgyzpessyuboqthokmsvstgubvdkawelcylnwatnfknbfrduutxbimkjpennsjncdhtjkokbikowjxjpokpxoscpedcfbchrhqtulrfjxbugjidmryzddlhtzzqbhglgqgzbuogrtfngyhoozxaqwjaykczjsxsxpvnnbirqmxrfyisqqlwjavhfjvhvqkztlqvdtlkqatvtryozreoebywfcibdjyocekqiiakxcafufarahhqvnylbytyuwxjfjzkjebxumoauekrpgfgrnvuwmscvjyhoryivfetsvqwynvkhojmvthlxksmlaqubtdpjeqkdeitgzzqssbmcqjrgqitopoqhhiqmmtvzlkpbndyonievrtslcxebrqfdinggttbfipdkoedxiwspwqnehdsgnpluayvwmmhlhzghzvvugwrzyxeimkwuukkkaguwjcifzgrmnqldauahrzlseijyzcqtmggtnjcxditxnsqmmomsebjmpxinnxzctrvyzqonidevdygzffjsjpvcitnvzjeomfqoisyotlhfgxtdyruayupszfbnooquapeuxbcmudydawltivqvzdezjsrkhnqawkviailmgfhyxaxqkcanbmgktiflhvdhpptrikkgzxsvpfehwphtaqbasjmbaohdfzcoxiapjllcdhbodbdxxukhlddvwdmnmzdftachtgtivvmcobswhymmkelxmydggdiujyeyvwjbfawxaumwkvqltlgizrkqvcccttkvmkhndbmdagshipdjhmxshkysfrkexrtvczqyusfsiljpnpmrukbkzzcfxwifcxqtncpdesxbjvqnejqfnzldwfzbbbqobgebawriiqabazynewqovmbtkoaypfbqutqynfqpshfpjlrvhqyvnjhwaminascizhxhnaipiexplqvxcniadeczxlafxwnohtfryynwhmeymcjkoruxenxisxrmqsrqgamssqmulwwhbqprnxsovdzbvkkkhdlrsvbgmriwgsywmhguhwctmqfkyeoqxmnxnyhnbzdbmkcvdgsyovfiuqhxrrjowqbnswgqdzjbcxguesypfanjntjvrogygnttfyrtcolbsgytnoqjzwsxstdfghcvbodxxivgbxgnyysqqaewipumlspqtyqbockiitawczqiaaewrtkueqgekqbnzdgxhpgbvptzonvydlrveamboisdracjtkgrcofsrikggeckvmhcpuphqamtqjdexdudahapkkhfrrgnoweuwmvffulmctfhbubefpgkgddfvixycyhuleinamskjtwgpacrnyrhbdmnyejniedsszerrlotipguisnpexvtmznllunscrzpocbgiawnspptwbexfauabmexgxprurcywcsnmzspkwpjsxtztcbbmoabzwqdovkmbqwrstvpidgpozzyyhbewvzdssxcrtjgkfffwdzkuyozctzwcphoqjbfgmvcaxlaufzymopevjzszmdevanvpzziguckploteenwfptxtbqokaycmqizxbnvjcedzsodgffnlubzehtrjfgxzecqglayatfvfbevgxvqhfbwsvftrgrwmbblsiefcosvfrdjijqvqzyfykncaartjoatwsacynpnttrbeczbpyejworujtxnhlnbjkhieedbotjeqefqayixgdmvpgbzhynpgnfowyptqvopfwwjprprdxcqpqjjgtthzcawesstqxztloppwruvhwfhnbuixmnrqcjorjscrlxpjteuxekyhabsyyqxgllglefeviwurpwvzyopynswkmhisgvlpdhdelrfduqvlrkycxdlefwmdfblfhhffrtpwpfecdvuqasegyiwjzpoyqagvlkuuflfphbzlbpmgkznepwpvxltwbnzewqghscvvuwfmziatyvznwjzrqpxevibjnimtkjmcnlehaycxtjrmxhoghprsdbgvzshzzjyuahkqnwnavahojmnmijqoogqvwudzdtblhzkbqooasrfxerjjjruplfmtptggwfpdcronbqueadmkqeowkzmsbezsblwoomjmmmlkcuzhdukogtobimrkoamihatoeqitzxlwuonchundduywaiswoftatfqskohrefojslxnovxhcssxuakpauzjvlidyvaeeyzvfnfaubymrtplrmkcsjewbwkfrrpopdqcvioavqzdsryycqoxizzbuyblcvqvgrnhdguppdlseqytnhszmvsgstopadcjyqhkteonhzxtd"
                data-component="body" hidden>
     <br>
-
+<p>validation.max.</p>
         </p>
                 <p>
             <b><code>is_important</code></b>&nbsp;&nbsp;
@@ -1377,6 +2144,170 @@ fetch(url, {
         </p>
         </form>
 
+                    <h2 id="questions-POSTapi-v1-question-update--id-">update - Questions</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTapi-v1-question-update--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost:8000/api/v1/question/update/natus" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"lawyer_id\": \"ducimus\",
+    \"answer\": \"dolore\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8000/api/v1/question/update/natus"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "lawyer_id": "ducimus",
+    "answer": "dolore"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;post(
+    'http://localhost:8000/api/v1/question/update/natus',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'lawyer_id' =&gt; 'ducimus',
+            'answer' =&gt; 'dolore',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+
+<div class="python-example">
+    <pre><code class="language-python">import requests
+import json
+
+url = 'http://localhost:8000/api/v1/question/update/natus'
+payload = {
+    "lawyer_id": "ducimus",
+    "answer": "dolore"
+}
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
+}
+
+response = requests.request('POST', url, headers=headers, json=payload)
+response.json()</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-v1-question-update--id-">
+</span>
+<span id="execution-results-POSTapi-v1-question-update--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-v1-question-update--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-v1-question-update--id-"></code></pre>
+</span>
+<span id="execution-error-POSTapi-v1-question-update--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-v1-question-update--id-"></code></pre>
+</span>
+<form id="form-POSTapi-v1-question-update--id-" data-method="POST"
+      data-path="api/v1/question/update/{id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-v1-question-update--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-v1-question-update--id-"
+                    onclick="tryItOut('POSTapi-v1-question-update--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-v1-question-update--id-"
+                    onclick="cancelTryOut('POSTapi-v1-question-update--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-v1-question-update--id-" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/v1/question/update/{id}</code></b>
+        </p>
+                    <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <p>
+                <b><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text"
+               name="id"
+               data-endpoint="POSTapi-v1-question-update--id-"
+               value="natus"
+               data-component="url" hidden>
+    <br>
+<p>The ID of the update.</p>
+            </p>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <p>
+            <b><code>lawyer_id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text"
+               name="lawyer_id"
+               data-endpoint="POSTapi-v1-question-update--id-"
+               value="ducimus"
+               data-component="body" hidden>
+    <br>
+
+        </p>
+                <p>
+            <b><code>answer</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text"
+               name="answer"
+               data-endpoint="POSTapi-v1-question-update--id-"
+               value="dolore"
+               data-component="body" hidden>
+    <br>
+
+        </p>
+        </form>
+
                 <h1 id="region">Region</h1>
 
     
@@ -1394,14 +2325,14 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/v1/region/getByCountryId/id" \
+    --get "http://localhost:8000/api/v1/region/getByCountryId/et" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/v1/region/getByCountryId/id"
+    "http://localhost:8000/api/v1/region/getByCountryId/et"
 );
 
 const headers = {
@@ -1413,6 +2344,35 @@ fetch(url, {
     method: "GET",
     headers,
 }).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;get(
+    'http://localhost:8000/api/v1/region/getByCountryId/et',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+
+<div class="python-example">
+    <pre><code class="language-python">import requests
+import json
+
+url = 'http://localhost:8000/api/v1/region/getByCountryId/et'
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
+}
+
+response = requests.request('GET', url, headers=headers)
+response.json()</code></pre></div>
 
 </span>
 
@@ -1426,8 +2386,8 @@ fetch(url, {
             </summary>
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
-x-ratelimit-limit: 60
-x-ratelimit-remaining: 48
+x-ratelimit-limit: 180
+x-ratelimit-remaining: 168
 access-control-allow-origin: *
  </code></pre>
         </details>         <pre>
@@ -1484,7 +2444,7 @@ access-control-allow-origin: *
                 <input type="text"
                name="countryId"
                data-endpoint="GETapi-v1-region-getByCountryId--countryId-"
-               value="id"
+               value="et"
                data-component="url" hidden>
     <br>
 
@@ -1508,14 +2468,14 @@ access-control-allow-origin: *
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/v1/user/deleteByPhone/quia" \
+    --get "http://localhost:8000/api/v1/user/deleteByPhone/iste" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/v1/user/deleteByPhone/quia"
+    "http://localhost:8000/api/v1/user/deleteByPhone/iste"
 );
 
 const headers = {
@@ -1527,6 +2487,35 @@ fetch(url, {
     method: "GET",
     headers,
 }).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;get(
+    'http://localhost:8000/api/v1/user/deleteByPhone/iste',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+
+<div class="python-example">
+    <pre><code class="language-python">import requests
+import json
+
+url = 'http://localhost:8000/api/v1/user/deleteByPhone/iste'
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
+}
+
+response = requests.request('GET', url, headers=headers)
+response.json()</code></pre></div>
 
 </span>
 
@@ -1540,8 +2529,8 @@ fetch(url, {
             </summary>
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
-x-ratelimit-limit: 60
-x-ratelimit-remaining: 59
+x-ratelimit-limit: 180
+x-ratelimit-remaining: 179
 access-control-allow-origin: *
  </code></pre>
         </details>         <pre>
@@ -1598,7 +2587,7 @@ access-control-allow-origin: *
                 <input type="text"
                name="phone"
                data-endpoint="GETapi-v1-user-deleteByPhone--phone-"
-               value="quia"
+               value="iste"
                data-component="url" hidden>
     <br>
 
@@ -1618,14 +2607,14 @@ access-control-allow-origin: *
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/v1/user/restoreByPhone/non" \
+    --get "http://localhost:8000/api/v1/user/restoreByPhone/delectus" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/v1/user/restoreByPhone/non"
+    "http://localhost:8000/api/v1/user/restoreByPhone/delectus"
 );
 
 const headers = {
@@ -1637,6 +2626,35 @@ fetch(url, {
     method: "GET",
     headers,
 }).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;get(
+    'http://localhost:8000/api/v1/user/restoreByPhone/delectus',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+
+<div class="python-example">
+    <pre><code class="language-python">import requests
+import json
+
+url = 'http://localhost:8000/api/v1/user/restoreByPhone/delectus'
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
+}
+
+response = requests.request('GET', url, headers=headers)
+response.json()</code></pre></div>
 
 </span>
 
@@ -1650,8 +2668,8 @@ fetch(url, {
             </summary>
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
-x-ratelimit-limit: 60
-x-ratelimit-remaining: 58
+x-ratelimit-limit: 180
+x-ratelimit-remaining: 178
 access-control-allow-origin: *
  </code></pre>
         </details>         <pre>
@@ -1708,7 +2726,7 @@ access-control-allow-origin: *
                 <input type="text"
                name="phone"
                data-endpoint="GETapi-v1-user-restoreByPhone--phone-"
-               value="non"
+               value="delectus"
                data-component="url" hidden>
     <br>
 
@@ -1728,14 +2746,14 @@ access-control-allow-origin: *
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/v1/user/checkUserByPhone/totam" \
+    --get "http://localhost:8000/api/v1/user/checkUserByPhone/consequatur" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/v1/user/checkUserByPhone/totam"
+    "http://localhost:8000/api/v1/user/checkUserByPhone/consequatur"
 );
 
 const headers = {
@@ -1747,6 +2765,35 @@ fetch(url, {
     method: "GET",
     headers,
 }).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;get(
+    'http://localhost:8000/api/v1/user/checkUserByPhone/consequatur',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+
+<div class="python-example">
+    <pre><code class="language-python">import requests
+import json
+
+url = 'http://localhost:8000/api/v1/user/checkUserByPhone/consequatur'
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
+}
+
+response = requests.request('GET', url, headers=headers)
+response.json()</code></pre></div>
 
 </span>
 
@@ -1760,8 +2807,8 @@ fetch(url, {
             </summary>
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
-x-ratelimit-limit: 60
-x-ratelimit-remaining: 57
+x-ratelimit-limit: 180
+x-ratelimit-remaining: 177
 access-control-allow-origin: *
  </code></pre>
         </details>         <pre>
@@ -1818,7 +2865,7 @@ access-control-allow-origin: *
                 <input type="text"
                name="phone"
                data-endpoint="GETapi-v1-user-checkUserByPhone--phone-"
-               value="totam"
+               value="consequatur"
                data-component="url" hidden>
     <br>
 
@@ -1838,14 +2885,14 @@ access-control-allow-origin: *
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/v1/user/firstByPhone/maxime" \
+    --get "http://localhost:8000/api/v1/user/firstByPhone/aut" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/v1/user/firstByPhone/maxime"
+    "http://localhost:8000/api/v1/user/firstByPhone/aut"
 );
 
 const headers = {
@@ -1857,6 +2904,35 @@ fetch(url, {
     method: "GET",
     headers,
 }).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;get(
+    'http://localhost:8000/api/v1/user/firstByPhone/aut',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+
+<div class="python-example">
+    <pre><code class="language-python">import requests
+import json
+
+url = 'http://localhost:8000/api/v1/user/firstByPhone/aut'
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
+}
+
+response = requests.request('GET', url, headers=headers)
+response.json()</code></pre></div>
 
 </span>
 
@@ -1870,8 +2946,8 @@ fetch(url, {
             </summary>
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
-x-ratelimit-limit: 60
-x-ratelimit-remaining: 56
+x-ratelimit-limit: 180
+x-ratelimit-remaining: 176
 access-control-allow-origin: *
  </code></pre>
         </details>         <pre>
@@ -1928,7 +3004,7 @@ access-control-allow-origin: *
                 <input type="text"
                name="phone"
                data-endpoint="GETapi-v1-user-firstByPhone--phone-"
-               value="maxime"
+               value="aut"
                data-component="url" hidden>
     <br>
 
@@ -1948,14 +3024,14 @@ access-control-allow-origin: *
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/v1/user/checkCode/tempore/quia" \
+    --get "http://localhost:8000/api/v1/user/checkCode/non/recusandae" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/v1/user/checkCode/tempore/quia"
+    "http://localhost:8000/api/v1/user/checkCode/non/recusandae"
 );
 
 const headers = {
@@ -1967,6 +3043,35 @@ fetch(url, {
     method: "GET",
     headers,
 }).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;get(
+    'http://localhost:8000/api/v1/user/checkCode/non/recusandae',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+
+<div class="python-example">
+    <pre><code class="language-python">import requests
+import json
+
+url = 'http://localhost:8000/api/v1/user/checkCode/non/recusandae'
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
+}
+
+response = requests.request('GET', url, headers=headers)
+response.json()</code></pre></div>
 
 </span>
 
@@ -1980,8 +3085,8 @@ fetch(url, {
             </summary>
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
-x-ratelimit-limit: 60
-x-ratelimit-remaining: 55
+x-ratelimit-limit: 180
+x-ratelimit-remaining: 175
 access-control-allow-origin: *
  </code></pre>
         </details>         <pre>
@@ -2038,7 +3143,7 @@ access-control-allow-origin: *
                 <input type="text"
                name="phone"
                data-endpoint="GETapi-v1-user-checkCode--phone---code-"
-               value="tempore"
+               value="non"
                data-component="url" hidden>
     <br>
 
@@ -2050,7 +3155,7 @@ access-control-allow-origin: *
                 <input type="text"
                name="code"
                data-endpoint="GETapi-v1-user-checkCode--phone---code-"
-               value="quia"
+               value="recusandae"
                data-component="url" hidden>
     <br>
 
@@ -2070,14 +3175,14 @@ access-control-allow-origin: *
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/v1/user/resetPassword/ut" \
+    --get "http://localhost:8000/api/v1/user/resetPassword/cumque" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/v1/user/resetPassword/ut"
+    "http://localhost:8000/api/v1/user/resetPassword/cumque"
 );
 
 const headers = {
@@ -2089,6 +3194,35 @@ fetch(url, {
     method: "GET",
     headers,
 }).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;get(
+    'http://localhost:8000/api/v1/user/resetPassword/cumque',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+
+<div class="python-example">
+    <pre><code class="language-python">import requests
+import json
+
+url = 'http://localhost:8000/api/v1/user/resetPassword/cumque'
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
+}
+
+response = requests.request('GET', url, headers=headers)
+response.json()</code></pre></div>
 
 </span>
 
@@ -2102,15 +3236,15 @@ fetch(url, {
             </summary>
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
-x-ratelimit-limit: 60
-x-ratelimit-remaining: 54
+x-ratelimit-limit: 180
+x-ratelimit-remaining: 174
 access-control-allow-origin: *
  </code></pre>
         </details>         <pre>
 
 <code class="language-json">{
-    &quot;phone&quot;: &quot;ut&quot;,
-    &quot;code&quot;: 1215,
+    &quot;phone&quot;: &quot;cumque&quot;,
+    &quot;code&quot;: 2130,
     &quot;status&quot;: &quot;code_sent&quot;
 }</code>
  </pre>
@@ -2162,7 +3296,7 @@ access-control-allow-origin: *
                 <input type="text"
                name="phone"
                data-endpoint="GETapi-v1-user-resetPassword--phone-"
-               value="ut"
+               value="cumque"
                data-component="url" hidden>
     <br>
 
@@ -2182,14 +3316,14 @@ access-control-allow-origin: *
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/v1/user/sendRegisterCode/ipsa" \
+    --get "http://localhost:8000/api/v1/user/sendRegisterCode/voluptatum" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/v1/user/sendRegisterCode/ipsa"
+    "http://localhost:8000/api/v1/user/sendRegisterCode/voluptatum"
 );
 
 const headers = {
@@ -2201,6 +3335,35 @@ fetch(url, {
     method: "GET",
     headers,
 }).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;get(
+    'http://localhost:8000/api/v1/user/sendRegisterCode/voluptatum',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+
+<div class="python-example">
+    <pre><code class="language-python">import requests
+import json
+
+url = 'http://localhost:8000/api/v1/user/sendRegisterCode/voluptatum'
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
+}
+
+response = requests.request('GET', url, headers=headers)
+response.json()</code></pre></div>
 
 </span>
 
@@ -2214,15 +3377,15 @@ fetch(url, {
             </summary>
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
-x-ratelimit-limit: 60
-x-ratelimit-remaining: 53
+x-ratelimit-limit: 180
+x-ratelimit-remaining: 173
 access-control-allow-origin: *
  </code></pre>
         </details>         <pre>
 
 <code class="language-json">{
-    &quot;phone&quot;: &quot;ipsa&quot;,
-    &quot;code&quot;: 8582,
+    &quot;phone&quot;: &quot;voluptatum&quot;,
+    &quot;code&quot;: 7114,
     &quot;status&quot;: &quot;not_registered&quot;
 }</code>
  </pre>
@@ -2274,7 +3437,7 @@ access-control-allow-origin: *
                 <input type="text"
                name="phone"
                data-endpoint="GETapi-v1-user-sendRegisterCode--phone-"
-               value="ipsa"
+               value="voluptatum"
                data-component="url" hidden>
     <br>
 
@@ -2294,14 +3457,14 @@ access-control-allow-origin: *
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/v1/user/resendRegisterCode/et" \
+    --get "http://localhost:8000/api/v1/user/resendRegisterCode/quia" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/v1/user/resendRegisterCode/et"
+    "http://localhost:8000/api/v1/user/resendRegisterCode/quia"
 );
 
 const headers = {
@@ -2313,6 +3476,35 @@ fetch(url, {
     method: "GET",
     headers,
 }).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;get(
+    'http://localhost:8000/api/v1/user/resendRegisterCode/quia',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+
+<div class="python-example">
+    <pre><code class="language-python">import requests
+import json
+
+url = 'http://localhost:8000/api/v1/user/resendRegisterCode/quia'
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
+}
+
+response = requests.request('GET', url, headers=headers)
+response.json()</code></pre></div>
 
 </span>
 
@@ -2326,15 +3518,15 @@ fetch(url, {
             </summary>
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
-x-ratelimit-limit: 60
-x-ratelimit-remaining: 52
+x-ratelimit-limit: 180
+x-ratelimit-remaining: 172
 access-control-allow-origin: *
  </code></pre>
         </details>         <pre>
 
 <code class="language-json">{
-    &quot;phone&quot;: &quot;et&quot;,
-    &quot;code&quot;: 4972,
+    &quot;phone&quot;: &quot;quia&quot;,
+    &quot;code&quot;: 1223,
     &quot;status&quot;: &quot;not_registered&quot;
 }</code>
  </pre>
@@ -2386,7 +3578,7 @@ access-control-allow-origin: *
                 <input type="text"
                name="phone"
                data-endpoint="GETapi-v1-user-resendRegisterCode--phone-"
-               value="et"
+               value="quia"
                data-component="url" hidden>
     <br>
 
@@ -2410,11 +3602,11 @@ access-control-allow-origin: *
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"language_id\": \"aliquid\",
-    \"region_id\": \"et\",
-    \"name\": \"ratione\",
-    \"surname\": \"deleniti\",
-    \"phone\": \"repellendus\",
+    \"language_id\": \"blanditiis\",
+    \"region_id\": \"dolore\",
+    \"name\": \"rerum\",
+    \"surname\": \"ex\",
+    \"phone\": \"officiis\",
     \"push_notification\": false
 }"
 </code></pre></div>
@@ -2431,11 +3623,11 @@ const headers = {
 };
 
 let body = {
-    "language_id": "aliquid",
-    "region_id": "et",
-    "name": "ratione",
-    "surname": "deleniti",
-    "phone": "repellendus",
+    "language_id": "blanditiis",
+    "region_id": "dolore",
+    "name": "rerum",
+    "surname": "ex",
+    "phone": "officiis",
     "push_notification": false
 };
 
@@ -2444,6 +3636,51 @@ fetch(url, {
     headers,
     body: JSON.stringify(body),
 }).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;post(
+    'http://localhost:8000/api/v1/user/create',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'language_id' =&gt; 'blanditiis',
+            'region_id' =&gt; 'dolore',
+            'name' =&gt; 'rerum',
+            'surname' =&gt; 'ex',
+            'phone' =&gt; 'officiis',
+            'push_notification' =&gt; false,
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+
+<div class="python-example">
+    <pre><code class="language-python">import requests
+import json
+
+url = 'http://localhost:8000/api/v1/user/create'
+payload = {
+    "language_id": "blanditiis",
+    "region_id": "dolore",
+    "name": "rerum",
+    "surname": "ex",
+    "phone": "officiis",
+    "push_notification": false
+}
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
+}
+
+response = requests.request('POST', url, headers=headers, json=payload)
+response.json()</code></pre></div>
 
 </span>
 
@@ -2496,7 +3733,7 @@ fetch(url, {
                 <input type="text"
                name="language_id"
                data-endpoint="POSTapi-v1-user-create"
-               value="aliquid"
+               value="blanditiis"
                data-component="body" hidden>
     <br>
 
@@ -2508,7 +3745,7 @@ fetch(url, {
                 <input type="text"
                name="region_id"
                data-endpoint="POSTapi-v1-user-create"
-               value="et"
+               value="dolore"
                data-component="body" hidden>
     <br>
 
@@ -2520,7 +3757,7 @@ fetch(url, {
                 <input type="text"
                name="name"
                data-endpoint="POSTapi-v1-user-create"
-               value="ratione"
+               value="rerum"
                data-component="body" hidden>
     <br>
 
@@ -2532,7 +3769,7 @@ fetch(url, {
                 <input type="text"
                name="surname"
                data-endpoint="POSTapi-v1-user-create"
-               value="deleniti"
+               value="ex"
                data-component="body" hidden>
     <br>
 
@@ -2556,7 +3793,7 @@ fetch(url, {
                 <input type="text"
                name="phone"
                data-endpoint="POSTapi-v1-user-create"
-               value="repellendus"
+               value="officiis"
                data-component="body" hidden>
     <br>
 
@@ -2599,11 +3836,10 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost:8000/api/v1/user/update/dignissimos" \
+    "http://localhost:8000/api/v1/user/update/voluptatum" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"language_id\": \"repudiandae\",
     \"push_notification\": true
 }"
 </code></pre></div>
@@ -2611,7 +3847,7 @@ fetch(url, {
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/v1/user/update/dignissimos"
+    "http://localhost:8000/api/v1/user/update/voluptatum"
 );
 
 const headers = {
@@ -2620,7 +3856,6 @@ const headers = {
 };
 
 let body = {
-    "language_id": "repudiandae",
     "push_notification": true
 };
 
@@ -2629,6 +3864,41 @@ fetch(url, {
     headers,
     body: JSON.stringify(body),
 }).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;post(
+    'http://localhost:8000/api/v1/user/update/voluptatum',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+        'json' =&gt; [
+            'push_notification' =&gt; true,
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+
+<div class="python-example">
+    <pre><code class="language-python">import requests
+import json
+
+url = 'http://localhost:8000/api/v1/user/update/voluptatum'
+payload = {
+    "push_notification": true
+}
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
+}
+
+response = requests.request('POST', url, headers=headers, json=payload)
+response.json()</code></pre></div>
 
 </span>
 
@@ -2681,7 +3951,7 @@ fetch(url, {
                 <input type="text"
                name="id"
                data-endpoint="POSTapi-v1-user-update--id-"
-               value="dignissimos"
+               value="voluptatum"
                data-component="url" hidden>
     <br>
 <p>The ID of the update.</p>
@@ -2690,11 +3960,11 @@ fetch(url, {
         <p>
             <b><code>language_id</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
- &nbsp;
+<i>optional</i> &nbsp;
                 <input type="text"
                name="language_id"
                data-endpoint="POSTapi-v1-user-update--id-"
-               value="repudiandae"
+               value=""
                data-component="body" hidden>
     <br>
 
@@ -2722,6 +3992,18 @@ fetch(url, {
     <br>
 
         </p>
+                <p>
+            <b><code>password</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text"
+               name="password"
+               data-endpoint="POSTapi-v1-user-update--id-"
+               value=""
+               data-component="body" hidden>
+    <br>
+
+        </p>
         </form>
 
                     <h2 id="user-GETapi-v1-user-auth--phone---password-">auth Phone &amp; Password - User</h2>
@@ -2737,14 +4019,14 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost:8000/api/v1/user/auth/rerum/modi" \
+    --get "http://localhost:8000/api/v1/user/auth/nobis/quod" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost:8000/api/v1/user/auth/rerum/modi"
+    "http://localhost:8000/api/v1/user/auth/nobis/quod"
 );
 
 const headers = {
@@ -2756,6 +4038,35 @@ fetch(url, {
     method: "GET",
     headers,
 }).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;get(
+    'http://localhost:8000/api/v1/user/auth/nobis/quod',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+
+<div class="python-example">
+    <pre><code class="language-python">import requests
+import json
+
+url = 'http://localhost:8000/api/v1/user/auth/nobis/quod'
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json'
+}
+
+response = requests.request('GET', url, headers=headers)
+response.json()</code></pre></div>
 
 </span>
 
@@ -2769,8 +4080,8 @@ fetch(url, {
             </summary>
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
-x-ratelimit-limit: 60
-x-ratelimit-remaining: 51
+x-ratelimit-limit: 180
+x-ratelimit-remaining: 171
 access-control-allow-origin: *
  </code></pre>
         </details>         <pre>
@@ -2827,7 +4138,7 @@ access-control-allow-origin: *
                 <input type="text"
                name="phone"
                data-endpoint="GETapi-v1-user-auth--phone---password-"
-               value="rerum"
+               value="nobis"
                data-component="url" hidden>
     <br>
 
@@ -2839,7 +4150,7 @@ access-control-allow-origin: *
                 <input type="text"
                name="password"
                data-endpoint="GETapi-v1-user-auth--phone---password-"
-               value="modi"
+               value="quod"
                data-component="url" hidden>
     <br>
 
@@ -2854,6 +4165,8 @@ access-control-allow-origin: *
                     <div class="lang-selector">
                                                         <button type="button" class="lang-button" data-language-name="bash">bash</button>
                                                         <button type="button" class="lang-button" data-language-name="javascript">javascript</button>
+                                                        <button type="button" class="lang-button" data-language-name="php">php</button>
+                                                        <button type="button" class="lang-button" data-language-name="python">python</button>
                             </div>
             </div>
 </div>

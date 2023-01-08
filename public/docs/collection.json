@@ -10,7 +10,7 @@
     ],
     "info": {
         "name": "Laravel",
-        "_postman_id": "b2aa429d-9346-4ee3-a3cd-e2264eef76df",
+        "_postman_id": "65091983-49f0-4529-9445-691db003f91c",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -31,7 +31,7 @@
                                 {
                                     "id": "regionId",
                                     "key": "regionId",
-                                    "value": "sit",
+                                    "value": "ut",
                                     "description": ""
                                 }
                             ]
@@ -66,11 +66,11 @@
                                 },
                                 {
                                     "key": "x-ratelimit-limit",
-                                    "value": "60"
+                                    "value": "180"
                                 },
                                 {
                                     "key": "x-ratelimit-remaining",
-                                    "value": "47"
+                                    "value": "167"
                                 },
                                 {
                                     "key": "access-control-allow-origin",
@@ -128,11 +128,11 @@
                                 },
                                 {
                                     "key": "x-ratelimit-limit",
-                                    "value": "60"
+                                    "value": "180"
                                 },
                                 {
                                     "key": "x-ratelimit-remaining",
-                                    "value": "49"
+                                    "value": "169"
                                 },
                                 {
                                     "key": "access-control-allow-origin",
@@ -198,6 +198,118 @@
                             "name": ""
                         }
                     ]
+                },
+                {
+                    "name": "GET api\/v1\/wooppay\/request",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/wooppay\/request",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/wooppay\/request"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "content-type",
+                                    "value": "text\/html; charset=UTF-8"
+                                },
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "180"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "164"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "GET api\/v1\/wooppay\/back",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/wooppay\/back",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/wooppay\/back"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "content-type",
+                                    "value": "text\/html; charset=UTF-8"
+                                },
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "180"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "163"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "",
+                            "name": ""
+                        }
+                    ]
                 }
             ]
         },
@@ -244,11 +356,11 @@
                                 },
                                 {
                                     "key": "x-ratelimit-limit",
-                                    "value": "60"
+                                    "value": "180"
                                 },
                                 {
                                     "key": "x-ratelimit-remaining",
-                                    "value": "50"
+                                    "value": "170"
                                 },
                                 {
                                     "key": "access-control-allow-origin",
@@ -279,7 +391,7 @@
                                 {
                                     "id": "userId",
                                     "key": "userId",
-                                    "value": "ut",
+                                    "value": "dignissimos",
                                     "description": ""
                                 }
                             ]
@@ -314,11 +426,11 @@
                                 },
                                 {
                                     "key": "x-ratelimit-limit",
-                                    "value": "60"
+                                    "value": "180"
                                 },
                                 {
                                     "key": "x-ratelimit-remaining",
-                                    "value": "44"
+                                    "value": "162"
                                 },
                                 {
                                     "key": "access-control-allow-origin",
@@ -343,7 +455,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "maiores",
+                                    "value": "quia",
                                     "description": "The ID of the firstById."
                                 }
                             ]
@@ -378,11 +490,11 @@
                                 },
                                 {
                                     "key": "x-ratelimit-limit",
-                                    "value": "60"
+                                    "value": "180"
                                 },
                                 {
                                     "key": "x-ratelimit-remaining",
-                                    "value": "43"
+                                    "value": "161"
                                 },
                                 {
                                     "key": "access-control-allow-origin",
@@ -440,11 +552,11 @@
                                 },
                                 {
                                     "key": "x-ratelimit-limit",
-                                    "value": "60"
+                                    "value": "180"
                                 },
                                 {
                                     "key": "x-ratelimit-remaining",
-                                    "value": "42"
+                                    "value": "160"
                                 },
                                 {
                                     "key": "access-control-allow-origin",
@@ -453,6 +565,68 @@
                             ],
                             "code": 200,
                             "body": "{\"data\":[{\"id\":1,\"created_at\":\"2022-12-18T13:24:00.000000Z\",\"updated_at\":\"2022-12-18T13:24:00.000000Z\",\"title\":\"Wooppay\"},{\"id\":2,\"created_at\":\"2022-12-18T13:24:00.000000Z\",\"updated_at\":\"2022-12-18T13:24:00.000000Z\",\"title\":\"Kaspi\"}]}",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Price",
+            "description": "",
+            "item": [
+                {
+                    "name": "get - Price",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/price\/get",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/price\/get"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "180"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "159"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"data\":[{\"id\":1,\"created_at\":\"2022-12-18T13:57:35.000000Z\",\"updated_at\":\"2022-12-18T13:57:35.000000Z\",\"price\":\"3000\",\"important_price\":\"4500\"}]}",
                             "name": ""
                         }
                     ]
@@ -475,7 +649,7 @@
                                 {
                                     "id": "userId",
                                     "key": "userId",
-                                    "value": "perspiciatis",
+                                    "value": "rerum",
                                     "description": ""
                                 }
                             ]
@@ -510,11 +684,11 @@
                                 },
                                 {
                                     "key": "x-ratelimit-limit",
-                                    "value": "60"
+                                    "value": "180"
                                 },
                                 {
                                     "key": "x-ratelimit-remaining",
-                                    "value": "46"
+                                    "value": "166"
                                 },
                                 {
                                     "key": "access-control-allow-origin",
@@ -539,7 +713,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "consectetur",
+                                    "value": "est",
                                     "description": "The ID of the firstById."
                                 }
                             ]
@@ -574,11 +748,11 @@
                                 },
                                 {
                                     "key": "x-ratelimit-limit",
-                                    "value": "60"
+                                    "value": "180"
                                 },
                                 {
                                     "key": "x-ratelimit-remaining",
-                                    "value": "45"
+                                    "value": "165"
                                 },
                                 {
                                     "key": "access-control-allow-origin",
@@ -613,7 +787,46 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"user_id\":\"aut\",\"price\":\"placeat\",\"title\":\"laborum\",\"is_important\":false}"
+                            "raw": "{\"user_id\":\"voluptates\",\"payment_id\":11,\"price\":\"qui\",\"title\":\"ajaifyecnsupkcuwyvprhtyftpsabjycluxsolaqcwwpabwtjaiibitswscsyzufpqcdylvauvmscchjesxpcmzjsihdtwjjttovubrqwtykrricghydkidaaljlxbuvklfyjpkwvcdpfrjlmcnkwstgxqphqoandoizpesixxpapxazxhqkflbktjktsmrencajvrjuevetpwxypjnuwqveoizbimxzbnnebjjhnwvxbrgecgsmrnwwqtjudpykrzjvwxpvcnejtzcfpnvuzgabzceawirlfenolmmzbcmydkeudrjeegkdgyspplioqemgmcgojlhopakgmdszkvzwoobzxcyatvteavhothiaoobpdphpwhyqnlozzkfhzwnzntvmvcmdylwnvqlmoofwweffajvkluomxfporhhxoucumsuhwjehmzrsjyqwfoavgmvhezbjkxvhajcjfqyucpydugeiyyyhqesdyavurczqrmueplcwemkquzaaumubdpdlbnrtpcfrhuhdovvofeymcswjilhvbpwedwmguifkpjkhplutwjrgikutudmzgcdrpcjiwxtpmxjewdfbraxryvvftmxzxgdvzqauxuptjsfohkijnkyyectrtiebzzznyxzmtexldyybdgpcjcucfsvuhysqibasytjvudmkjwygwspdkbllvurgunysluijpnsalidutmacqkuvlpfutcaaiquwbeebvdiqmsfpkmkcsvrwsoqlvunairhiujldzchwrorzqhnuhhzfrxxlfiokorlcdbfymndriaycyekwvwwhzfkjhgmlljyahjgodcsdzqiulptbljiqxhaldhtsheoaqyvknvkacktosixfevtsrmskvzaczzoqpzypmpvssmrpomikxdqwezhipgetztscmnhfutuhinysntcknkssjlnwwypfbkobhgjyfqdaoohcdzpaqsdwxrvlcqiktwzqyztnujshjxgynaprgypclqjyywfshmacgimawsgsfoxvwsyxjvcsdmiygyrwhzmjtkyotkoqplhwhwskxwepolkfwuebrtceohwaklsziepembslerifoeogpczabijcwhnvtfmwwrylwvuhojpgxjzqnlxdhnscedanswsuyclissgxcfpvtcnxxryutsezylyaivuwttmifuevpbygxlppeomximrjzhvsuoxbkcykugnonsvmbjzabdogtnithvtwdhhvtnmryywdcqbpfgmtqfyekrbiuxikappjgboqholqkftesihymzofgengthxahszezoxwicstfphrjymlrdjzoxfxjwdmvcddvoxipipywapyadlikhcqnwvkjnjxzinrzzktfrcctiubwxuxzyqmssbgaystniheqgzfanuauxxxrkzikgakxxghyacdozlpuozgpupjugauayukxknnixxvuqzobcfcpogdktigcvrjkhgleiviofpjapvkwqcsbewsqyiuepzuuuzqhzucwruibahivyyechdrrobjpygtzdjzbrzrakehfqupckksqqujxtbfbuswtnxzexbergtpatgbrpvwjvzbmwuoxoibwahuqlubmawvkpcbfscncwyanbwzxslnnnvsicpdtqhhpshoyjwtimumjujqcmckjsldkacljaxmjvfcwibohihnzmdohufytjlnnakaoaeqzbxnnfwvpcertautsygkumidlkuovbthcqbzoosqjlmoobymvesptkfygahxmbcixbffzforioquawelfzgmlkndoojqecbiupenjjfxmnhxorfogdwqhrklehxwjajncmemfxvtbdaimiyscduswgbtwyrqabptvjhdarqzrqksuvmmpvxhgsnfojsnwzlsjmxxqfufcouqzrrmessfkmmhhybvpkovgacwjbxctpqqwurqmlgcgdixqtvwtvdztjmbvnpxqkccfoqvaubvmuhuyoyirfijqtgdwwzxdtgpfumhezntbgkmgggndyepkeyqrmdpjeukjjfeaiqhvicqebtxmkxomptlhwicwmgpbjesfaiywvfeeccklgenzrrugnrokxizvbvmpednjkvcptxxepnxzyzqmkxlsjmibfearqjvocvpnkazvmytjzwoolsjuxzkiheatdpnyohhqcbfuuvrgwhdmyqomwsqdjkelvhhauicdphvdzduvrjrrgpnsgdypnascabcbtevzpognxbagfxbuymabvvqwghfohsvjlreifmfizvypebwqwxyigobcvuhvjywmcghmglkttbpzzipwlbbaqqmdrjpjxvvokvlnceuosirupjkaaaotiuceoyvuktrvaobgjleabbyeenockbusezgfkhjgmozklwldswywlifxdlfxgqdejfrbuvydsnpdgxposncwlgftlrdsxfmwiezhqakjpvjfzxcccfokbdohdisefnmahzxfeteqdukmqextvmeflzqttxjcvwytkpnbqbyqdbttrxnmywixarddtlwecmsguxelqlssuecwnxbybbajmmxgznumrjmjuwistavvkdmrzsvxztoxeujxwnklvbdzsanitpctkhgmoorxrqcscbstskiouxnipfrxwfvetrhcxzzzfkyxzzvezxmmpvvggrhfbcdiyezbkbsrzxsgcbeitkxgirarbjkvtpgqbvtgzpigppyuztmeybaildknqamlrxlyadgxgbtunqcygcujdohvxyoxmfvpteudnnxjmauniyjhaldnxxulwtrcgmhoievwllqqdcomhufzjklglbvypgqxfobcrjgtojtcglfmojnqftrsqkbbkjelnenyeggdjbqdctofynnszvrnayfwjvgqvotimyfsjdpcdygdlbptnxewwfemgzhbaywdennrzaxlxrqnmtmfdigmhvyubanmsyszvhwjcnrzjijqngvcrugagoodrwvwiolpcscevsbanyhbkyrlmoyhgtjcfgbxbzvkyzzdhqwotgkkianppkfwabomduioahaekakoqacutsmibzdqtqbcocbuwlwclkihzaybotupgzmseeqtyceyirdyofpjavdafameoumopwjpypmxtvzoloabgyqghaishcihfszlmxuhvuytfmikwxxndokayhqjbbgljzspwrqytcvylrfpwovxxffuotqtekyoqkthuwurktxgtpxchpccbrstjrtbdvbkqsuzurysezhgelzeeiumqkodfreepnyveibynnwnihnrjjsmmdyfgetxirduiwreojyrgozntkyvyzcujxmnjudqiyoeiysvevqexnrcytsbtifmagyhdjonfpseiufneeejzaozzausiokkgteqyafqkmgabwuvhorbnsdnnzhsdgfzirdokpovhlbsaaciyczugglklxhehmpeilknsaskfazmkbxwzhrcafgkhwwgmgpnmcwypfxirygiqnkidqsojflqecmkljrrskffzdnombikqjarbnjvhuxughspvkjdvfmsqezjyzrsqzqwafkgdpvpjpcahlxxlzloubbqsbbxgpjytfdgaqsedsyixgckqyzgfavcxukvizcdccyaxiyerzcbdybxnqkhhihjshiewwhlvtfrfzybgzqfbtmcfpqwullygduvxhecbinwnnmxqjpfnytablhctfawwvxiqujhmzolmmqzrjhnpztygzqmeuxlwfdwlvmcjybcyupwnuvdcrytvrllrdeqomkrzfcmyytxhsdjkhjrymdtjqxyyotlfckeehbquitbfyzettlqdzjoxeczobndxxshdnzglzesydbxiqytqkxaanrmgwbeatisceofohooinnhdfdsjxwiylfbnxmryotayikotxidojqhncvpmqonxznxtctsnctbcuvaugomwxvgljgwsuoemzhvniqqvhqrzskgddaphdyqbzdvkxridwgkvcmasqenrzevyjqvfaqbrqcoauxvhjvwrsnkggrrtsbyknvspetreilugplodrqljpuhwncyyauaayddhygpacsawbhihilkiizpkqupcyrrwlmsftisjykipsnwlpskugieqgjdqtcyyqflqamlswhcvkemmklvykmbhgrifcpggqngeefuzwupejmbqykwxgjrhtxnlvrevbxnadziwtckzfmhnsdomuahrjmedqkaivzsbshcnsucyzyjkznywjuekamthdbbqysxwedbmxavfhvmnwvemuioepotlmlgwcwoahserqrsvurzhycmiktullbslvmqjqnozvqwdybjivdvsxgeznmyindftiedkhkcmfkrblnyhrtkorpymmdvtvbrpdigcsgyhgviolnxjngbzousifgbloqeubiatjbihnvzxleiljajphevzoakfycrcgznekdudskjponswvbvbosirsuwvhjxocmvfyodqbtbbyfsmtytznkixrygbmeiiixuspfddlwdwgzxfarjrnwnlauejtmlpdvlmdtfrgavvnvdraioqriqljiknmkihcgljtfauwbxzzqbutjptbpxmtazstvbwqwrlwatljoptvgyxtfrmzbxgzhqwxrznklipwrqkxmoxvqfhkzytufdfcbsdmgwypkgqwhhyatiyokvmfddivbwygauanbogzbtoynwompjphbalwwglmshxpfginixsiiputlbqrwpinpegjioyivvtivoupalgmdmihkamkfiqblvwyeboakkbvmzdeihnethwcjnysiwpqijpgdflduezchfzrmvuslzrylzknivzkxkoobpttdowczfyamdqkzqureymgtpnxvtvimrddftewlrkolnrwguddyrscslfutbutrrzymjvtaexthgxaomtiodpyrgtcfcmfvhelwljswvkvyhmxlhrbhustevqoinxrbmtrnbhttxipvosmyrqwbmbdfzyozbvtcpdgejsidqoszrrknobrqrwkdxrfflpiwcjmgwomhfqatjkhaazmcjhzchfvinzpphbusonfwxkeupzxkfuoirbqqookwczseqwqtiznonsfmrcsaafjwtpzdhgmgqrktmftwzfifmevfjxbnmkxzinrjgrowfssqcngypwyzvvopszfhxastsnfmmoginqjwgvhjwdpophnmhkzefckqfwzcwasomslucjybkhgjwzyarsapqjbebrcopztksgirnhjxzxxbclqdqtoqsjtwbleeuzhesnkyrgedzwqzkzlfyrvdnfdsztohcxaugrtrddvucepzpllohbngyjtcmmmskuxeedvjgayssqmacdvgderzdncmbnibsbuplzbusjqetptktcntquaepkvjggxixkiqyprxuvthlhekbmuurbkupkwwmfmflwjbisrvurkjyfosmuybrcsslwdtfyeklbbumoudsuatwrtlsxmhxvmcsfohtppqpeylrcamhfbffqtvajokfhmnommfyqqfaxlzzkauhtpvxokqvipweedhlhrryjiovrfmavypynhpviqtpjvlwyioluevfbumeuseezuozhpqzlnghgsgiprfmxwpphmssauzozendbpwvzdiapqtsrrszhzdfoqcczsfvzmnkxuyyduogtxyxvrrslnvtnftwpzjzwlqidviemxynienqfdwcidietoaxnojkwpyyrzibdalgxiwifgtkkcbqoczmnrxlubjoqvlqrypqmlnnvjidxzfazycojjtywusiygfquwbadkgonydtkmasuvnvqtysphihvuojjknkstfizirzwypwdxbhvsfceldmdpryqyinoimhcfcoteplpbwxxzmzuawzarhgxerkfgvqykseeeqllypuqkazjinldqsheympaoxtkxjrgeivlbxkjnorudklgskbqhfbktpqgrcryiftzkvsnbdszeukrglujmjvoakdemvbdvwmspsonncwyrjmsnwpctrvyluthhohnldviqgloxmgtbjsmlkzdotuaabmjjkvmbrhzwbuhghychsoxuqxvizaxdxcvrdwlswoopcniqkckwwtsbgmvwtwmdrcuekasdiwqhnbpdupojppuvsdpzegpqhbyfrptognjipykpmmzyoheagtqqnuupkgvjhisjxoqwtshrhlqpzezrotaoajiaqdwlyorhzqvypqecosmxtbxahomltlpkdqtwahajxagxjzdiatwjmjalawcijmpllygyvxjkubcgajtimznjdxjoturvhihahjoxvtvsscaofgtfmzkvxrmqqhvmximyptjdyrthlyzaymtghaaznopftwhqifobobzgzuzeobkwtpoaeaustopqseleekiicfciwjkaxuizhcmvwgyzpessyuboqthokmsvstgubvdkawelcylnwatnfknbfrduutxbimkjpennsjncdhtjkokbikowjxjpokpxoscpedcfbchrhqtulrfjxbugjidmryzddlhtzzqbhglgqgzbuogrtfngyhoozxaqwjaykczjsxsxpvnnbirqmxrfyisqqlwjavhfjvhvqkztlqvdtlkqatvtryozreoebywfcibdjyocekqiiakxcafufarahhqvnylbytyuwxjfjzkjebxumoauekrpgfgrnvuwmscvjyhoryivfetsvqwynvkhojmvthlxksmlaqubtdpjeqkdeitgzzqssbmcqjrgqitopoqhhiqmmtvzlkpbndyonievrtslcxebrqfdinggttbfipdkoedxiwspwqnehdsgnpluayvwmmhlhzghzvvugwrzyxeimkwuukkkaguwjcifzgrmnqldauahrzlseijyzcqtmggtnjcxditxnsqmmomsebjmpxinnxzctrvyzqonidevdygzffjsjpvcitnvzjeomfqoisyotlhfgxtdyruayupszfbnooquapeuxbcmudydawltivqvzdezjsrkhnqawkviailmgfhyxaxqkcanbmgktiflhvdhpptrikkgzxsvpfehwphtaqbasjmbaohdfzcoxiapjllcdhbodbdxxukhlddvwdmnmzdftachtgtivvmcobswhymmkelxmydggdiujyeyvwjbfawxaumwkvqltlgizrkqvcccttkvmkhndbmdagshipdjhmxshkysfrkexrtvczqyusfsiljpnpmrukbkzzcfxwifcxqtncpdesxbjvqnejqfnzldwfzbbbqobgebawriiqabazynewqovmbtkoaypfbqutqynfqpshfpjlrvhqyvnjhwaminascizhxhnaipiexplqvxcniadeczxlafxwnohtfryynwhmeymcjkoruxenxisxrmqsrqgamssqmulwwhbqprnxsovdzbvkkkhdlrsvbgmriwgsywmhguhwctmqfkyeoqxmnxnyhnbzdbmkcvdgsyovfiuqhxrrjowqbnswgqdzjbcxguesypfanjntjvrogygnttfyrtcolbsgytnoqjzwsxstdfghcvbodxxivgbxgnyysqqaewipumlspqtyqbockiitawczqiaaewrtkueqgekqbnzdgxhpgbvptzonvydlrveamboisdracjtkgrcofsrikggeckvmhcpuphqamtqjdexdudahapkkhfrrgnoweuwmvffulmctfhbubefpgkgddfvixycyhuleinamskjtwgpacrnyrhbdmnyejniedsszerrlotipguisnpexvtmznllunscrzpocbgiawnspptwbexfauabmexgxprurcywcsnmzspkwpjsxtztcbbmoabzwqdovkmbqwrstvpidgpozzyyhbewvzdssxcrtjgkfffwdzkuyozctzwcphoqjbfgmvcaxlaufzymopevjzszmdevanvpzziguckploteenwfptxtbqokaycmqizxbnvjcedzsodgffnlubzehtrjfgxzecqglayatfvfbevgxvqhfbwsvftrgrwmbblsiefcosvfrdjijqvqzyfykncaartjoatwsacynpnttrbeczbpyejworujtxnhlnbjkhieedbotjeqefqayixgdmvpgbzhynpgnfowyptqvopfwwjprprdxcqpqjjgtthzcawesstqxztloppwruvhwfhnbuixmnrqcjorjscrlxpjteuxekyhabsyyqxgllglefeviwurpwvzyopynswkmhisgvlpdhdelrfduqvlrkycxdlefwmdfblfhhffrtpwpfecdvuqasegyiwjzpoyqagvlkuuflfphbzlbpmgkznepwpvxltwbnzewqghscvvuwfmziatyvznwjzrqpxevibjnimtkjmcnlehaycxtjrmxhoghprsdbgvzshzzjyuahkqnwnavahojmnmijqoogqvwudzdtblhzkbqooasrfxerjjjruplfmtptggwfpdcronbqueadmkqeowkzmsbezsblwoomjmmmlkcuzhdukogtobimrkoamihatoeqitzxlwuonchundduywaiswoftatfqskohrefojslxnovxhcssxuakpauzjvlidyvaeeyzvfnfaubymrtplrmkcsjewbwkfrrpopdqcvioavqzdsryycqoxizzbuyblcvqvgrnhdguppdlseqytnhszmvsgstopadcjyqhkteonhzxtd\",\"is_important\":true}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "update - Questions",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/question\/update\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/question\/update\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "natus",
+                                    "description": "The ID of the update."
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"lawyer_id\":\"ducimus\",\"answer\":\"dolore\"}"
                         },
                         "description": "",
                         "auth": {
@@ -640,530 +853,6 @@
                                 {
                                     "id": "countryId",
                                     "key": "countryId",
-                                    "value": "id",
-                                    "description": ""
-                                }
-                            ]
-                        },
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": null,
-                        "description": "",
-                        "auth": {
-                            "type": "noauth"
-                        }
-                    },
-                    "response": [
-                        {
-                            "header": [
-                                {
-                                    "key": "cache-control",
-                                    "value": "no-cache, private"
-                                },
-                                {
-                                    "key": "content-type",
-                                    "value": "application\/json"
-                                },
-                                {
-                                    "key": "x-ratelimit-limit",
-                                    "value": "60"
-                                },
-                                {
-                                    "key": "x-ratelimit-remaining",
-                                    "value": "48"
-                                },
-                                {
-                                    "key": "access-control-allow-origin",
-                                    "value": "*"
-                                }
-                            ],
-                            "code": 200,
-                            "body": "{\"data\":[]}",
-                            "name": ""
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "name": "User",
-            "description": "",
-            "item": [
-                {
-                    "name": "deleteByPhone - User",
-                    "request": {
-                        "url": {
-                            "host": "{{baseUrl}}",
-                            "path": "api\/v1\/user\/deleteByPhone\/:phone",
-                            "query": [],
-                            "raw": "{{baseUrl}}\/api\/v1\/user\/deleteByPhone\/:phone",
-                            "variable": [
-                                {
-                                    "id": "phone",
-                                    "key": "phone",
-                                    "value": "quia",
-                                    "description": ""
-                                }
-                            ]
-                        },
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": null,
-                        "description": "",
-                        "auth": {
-                            "type": "noauth"
-                        }
-                    },
-                    "response": [
-                        {
-                            "header": [
-                                {
-                                    "key": "cache-control",
-                                    "value": "no-cache, private"
-                                },
-                                {
-                                    "key": "content-type",
-                                    "value": "application\/json"
-                                },
-                                {
-                                    "key": "x-ratelimit-limit",
-                                    "value": "60"
-                                },
-                                {
-                                    "key": "x-ratelimit-remaining",
-                                    "value": "59"
-                                },
-                                {
-                                    "key": "access-control-allow-origin",
-                                    "value": "*"
-                                }
-                            ],
-                            "code": 404,
-                            "body": "{\"message\":\"not found\"}",
-                            "name": ""
-                        }
-                    ]
-                },
-                {
-                    "name": "restoreByPhone - User",
-                    "request": {
-                        "url": {
-                            "host": "{{baseUrl}}",
-                            "path": "api\/v1\/user\/restoreByPhone\/:phone",
-                            "query": [],
-                            "raw": "{{baseUrl}}\/api\/v1\/user\/restoreByPhone\/:phone",
-                            "variable": [
-                                {
-                                    "id": "phone",
-                                    "key": "phone",
-                                    "value": "non",
-                                    "description": ""
-                                }
-                            ]
-                        },
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": null,
-                        "description": "",
-                        "auth": {
-                            "type": "noauth"
-                        }
-                    },
-                    "response": [
-                        {
-                            "header": [
-                                {
-                                    "key": "cache-control",
-                                    "value": "no-cache, private"
-                                },
-                                {
-                                    "key": "content-type",
-                                    "value": "application\/json"
-                                },
-                                {
-                                    "key": "x-ratelimit-limit",
-                                    "value": "60"
-                                },
-                                {
-                                    "key": "x-ratelimit-remaining",
-                                    "value": "58"
-                                },
-                                {
-                                    "key": "access-control-allow-origin",
-                                    "value": "*"
-                                }
-                            ],
-                            "code": 404,
-                            "body": "{\"message\":\"not found\"}",
-                            "name": ""
-                        }
-                    ]
-                },
-                {
-                    "name": "checkUserByPhone - User",
-                    "request": {
-                        "url": {
-                            "host": "{{baseUrl}}",
-                            "path": "api\/v1\/user\/checkUserByPhone\/:phone",
-                            "query": [],
-                            "raw": "{{baseUrl}}\/api\/v1\/user\/checkUserByPhone\/:phone",
-                            "variable": [
-                                {
-                                    "id": "phone",
-                                    "key": "phone",
-                                    "value": "totam",
-                                    "description": ""
-                                }
-                            ]
-                        },
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": null,
-                        "description": "",
-                        "auth": {
-                            "type": "noauth"
-                        }
-                    },
-                    "response": [
-                        {
-                            "header": [
-                                {
-                                    "key": "cache-control",
-                                    "value": "no-cache, private"
-                                },
-                                {
-                                    "key": "content-type",
-                                    "value": "application\/json"
-                                },
-                                {
-                                    "key": "x-ratelimit-limit",
-                                    "value": "60"
-                                },
-                                {
-                                    "key": "x-ratelimit-remaining",
-                                    "value": "57"
-                                },
-                                {
-                                    "key": "access-control-allow-origin",
-                                    "value": "*"
-                                }
-                            ],
-                            "code": 404,
-                            "body": "{\"message\":\"not found\"}",
-                            "name": ""
-                        }
-                    ]
-                },
-                {
-                    "name": "firstByPhone - User",
-                    "request": {
-                        "url": {
-                            "host": "{{baseUrl}}",
-                            "path": "api\/v1\/user\/firstByPhone\/:phone",
-                            "query": [],
-                            "raw": "{{baseUrl}}\/api\/v1\/user\/firstByPhone\/:phone",
-                            "variable": [
-                                {
-                                    "id": "phone",
-                                    "key": "phone",
-                                    "value": "maxime",
-                                    "description": ""
-                                }
-                            ]
-                        },
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": null,
-                        "description": "",
-                        "auth": {
-                            "type": "noauth"
-                        }
-                    },
-                    "response": [
-                        {
-                            "header": [
-                                {
-                                    "key": "cache-control",
-                                    "value": "no-cache, private"
-                                },
-                                {
-                                    "key": "content-type",
-                                    "value": "application\/json"
-                                },
-                                {
-                                    "key": "x-ratelimit-limit",
-                                    "value": "60"
-                                },
-                                {
-                                    "key": "x-ratelimit-remaining",
-                                    "value": "56"
-                                },
-                                {
-                                    "key": "access-control-allow-origin",
-                                    "value": "*"
-                                }
-                            ],
-                            "code": 404,
-                            "body": "{\"message\":\"not found\"}",
-                            "name": ""
-                        }
-                    ]
-                },
-                {
-                    "name": "checkCode - User",
-                    "request": {
-                        "url": {
-                            "host": "{{baseUrl}}",
-                            "path": "api\/v1\/user\/checkCode\/:phone\/:code",
-                            "query": [],
-                            "raw": "{{baseUrl}}\/api\/v1\/user\/checkCode\/:phone\/:code",
-                            "variable": [
-                                {
-                                    "id": "phone",
-                                    "key": "phone",
-                                    "value": "tempore",
-                                    "description": ""
-                                },
-                                {
-                                    "id": "code",
-                                    "key": "code",
-                                    "value": "quia",
-                                    "description": ""
-                                }
-                            ]
-                        },
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": null,
-                        "description": "",
-                        "auth": {
-                            "type": "noauth"
-                        }
-                    },
-                    "response": [
-                        {
-                            "header": [
-                                {
-                                    "key": "cache-control",
-                                    "value": "no-cache, private"
-                                },
-                                {
-                                    "key": "content-type",
-                                    "value": "application\/json"
-                                },
-                                {
-                                    "key": "x-ratelimit-limit",
-                                    "value": "60"
-                                },
-                                {
-                                    "key": "x-ratelimit-remaining",
-                                    "value": "55"
-                                },
-                                {
-                                    "key": "access-control-allow-origin",
-                                    "value": "*"
-                                }
-                            ],
-                            "code": 400,
-                            "body": "{\"message\":\"incorrect code\"}",
-                            "name": ""
-                        }
-                    ]
-                },
-                {
-                    "name": "resetPassword - User",
-                    "request": {
-                        "url": {
-                            "host": "{{baseUrl}}",
-                            "path": "api\/v1\/user\/resetPassword\/:phone",
-                            "query": [],
-                            "raw": "{{baseUrl}}\/api\/v1\/user\/resetPassword\/:phone",
-                            "variable": [
-                                {
-                                    "id": "phone",
-                                    "key": "phone",
-                                    "value": "ut",
-                                    "description": ""
-                                }
-                            ]
-                        },
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": null,
-                        "description": "",
-                        "auth": {
-                            "type": "noauth"
-                        }
-                    },
-                    "response": [
-                        {
-                            "header": [
-                                {
-                                    "key": "cache-control",
-                                    "value": "no-cache, private"
-                                },
-                                {
-                                    "key": "content-type",
-                                    "value": "application\/json"
-                                },
-                                {
-                                    "key": "x-ratelimit-limit",
-                                    "value": "60"
-                                },
-                                {
-                                    "key": "x-ratelimit-remaining",
-                                    "value": "54"
-                                },
-                                {
-                                    "key": "access-control-allow-origin",
-                                    "value": "*"
-                                }
-                            ],
-                            "code": 200,
-                            "body": "{\"phone\":\"ut\",\"code\":1215,\"status\":\"code_sent\"}",
-                            "name": ""
-                        }
-                    ]
-                },
-                {
-                    "name": "sendRegisterCode - User",
-                    "request": {
-                        "url": {
-                            "host": "{{baseUrl}}",
-                            "path": "api\/v1\/user\/sendRegisterCode\/:phone",
-                            "query": [],
-                            "raw": "{{baseUrl}}\/api\/v1\/user\/sendRegisterCode\/:phone",
-                            "variable": [
-                                {
-                                    "id": "phone",
-                                    "key": "phone",
-                                    "value": "ipsa",
-                                    "description": ""
-                                }
-                            ]
-                        },
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": null,
-                        "description": "",
-                        "auth": {
-                            "type": "noauth"
-                        }
-                    },
-                    "response": [
-                        {
-                            "header": [
-                                {
-                                    "key": "cache-control",
-                                    "value": "no-cache, private"
-                                },
-                                {
-                                    "key": "content-type",
-                                    "value": "application\/json"
-                                },
-                                {
-                                    "key": "x-ratelimit-limit",
-                                    "value": "60"
-                                },
-                                {
-                                    "key": "x-ratelimit-remaining",
-                                    "value": "53"
-                                },
-                                {
-                                    "key": "access-control-allow-origin",
-                                    "value": "*"
-                                }
-                            ],
-                            "code": 200,
-                            "body": "{\"phone\":\"ipsa\",\"code\":8582,\"status\":\"not_registered\"}",
-                            "name": ""
-                        }
-                    ]
-                },
-                {
-                    "name": "resendRegisterCode - User",
-                    "request": {
-                        "url": {
-                            "host": "{{baseUrl}}",
-                            "path": "api\/v1\/user\/resendRegisterCode\/:phone",
-                            "query": [],
-                            "raw": "{{baseUrl}}\/api\/v1\/user\/resendRegisterCode\/:phone",
-                            "variable": [
-                                {
-                                    "id": "phone",
-                                    "key": "phone",
                                     "value": "et",
                                     "description": ""
                                 }
@@ -1199,11 +888,11 @@
                                 },
                                 {
                                     "key": "x-ratelimit-limit",
-                                    "value": "60"
+                                    "value": "180"
                                 },
                                 {
                                     "key": "x-ratelimit-remaining",
-                                    "value": "52"
+                                    "value": "168"
                                 },
                                 {
                                     "key": "access-control-allow-origin",
@@ -1211,100 +900,30 @@
                                 }
                             ],
                             "code": 200,
-                            "body": "{\"phone\":\"et\",\"code\":4972,\"status\":\"not_registered\"}",
+                            "body": "{\"data\":[]}",
                             "name": ""
                         }
                     ]
-                },
+                }
+            ]
+        },
+        {
+            "name": "User",
+            "description": "",
+            "item": [
                 {
-                    "name": "create - User",
+                    "name": "deleteByPhone - User",
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/v1\/user\/create",
+                            "path": "api\/v1\/user\/deleteByPhone\/:phone",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/v1\/user\/create"
-                        },
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "{\"language_id\":\"aliquid\",\"region_id\":\"et\",\"name\":\"ratione\",\"surname\":\"deleniti\",\"phone\":\"repellendus\",\"push_notification\":false}"
-                        },
-                        "description": "",
-                        "auth": {
-                            "type": "noauth"
-                        }
-                    },
-                    "response": []
-                },
-                {
-                    "name": "update - User",
-                    "request": {
-                        "url": {
-                            "host": "{{baseUrl}}",
-                            "path": "api\/v1\/user\/update\/:id",
-                            "query": [],
-                            "raw": "{{baseUrl}}\/api\/v1\/user\/update\/:id",
-                            "variable": [
-                                {
-                                    "id": "id",
-                                    "key": "id",
-                                    "value": "dignissimos",
-                                    "description": "The ID of the update."
-                                }
-                            ]
-                        },
-                        "method": "POST",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": {
-                            "mode": "raw",
-                            "raw": "{\"language_id\":\"repudiandae\",\"push_notification\":true}"
-                        },
-                        "description": "",
-                        "auth": {
-                            "type": "noauth"
-                        }
-                    },
-                    "response": []
-                },
-                {
-                    "name": "auth Phone & Password - User",
-                    "request": {
-                        "url": {
-                            "host": "{{baseUrl}}",
-                            "path": "api\/v1\/user\/auth\/:phone\/:password",
-                            "query": [],
-                            "raw": "{{baseUrl}}\/api\/v1\/user\/auth\/:phone\/:password",
+                            "raw": "{{baseUrl}}\/api\/v1\/user\/deleteByPhone\/:phone",
                             "variable": [
                                 {
                                     "id": "phone",
                                     "key": "phone",
-                                    "value": "rerum",
-                                    "description": ""
-                                },
-                                {
-                                    "id": "password",
-                                    "key": "password",
-                                    "value": "modi",
+                                    "value": "iste",
                                     "description": ""
                                 }
                             ]
@@ -1339,11 +958,605 @@
                                 },
                                 {
                                     "key": "x-ratelimit-limit",
-                                    "value": "60"
+                                    "value": "180"
                                 },
                                 {
                                     "key": "x-ratelimit-remaining",
-                                    "value": "51"
+                                    "value": "179"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 404,
+                            "body": "{\"message\":\"not found\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "restoreByPhone - User",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/user\/restoreByPhone\/:phone",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/user\/restoreByPhone\/:phone",
+                            "variable": [
+                                {
+                                    "id": "phone",
+                                    "key": "phone",
+                                    "value": "delectus",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "180"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "178"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 404,
+                            "body": "{\"message\":\"not found\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "checkUserByPhone - User",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/user\/checkUserByPhone\/:phone",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/user\/checkUserByPhone\/:phone",
+                            "variable": [
+                                {
+                                    "id": "phone",
+                                    "key": "phone",
+                                    "value": "consequatur",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "180"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "177"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 404,
+                            "body": "{\"message\":\"not found\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "firstByPhone - User",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/user\/firstByPhone\/:phone",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/user\/firstByPhone\/:phone",
+                            "variable": [
+                                {
+                                    "id": "phone",
+                                    "key": "phone",
+                                    "value": "aut",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "180"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "176"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 404,
+                            "body": "{\"message\":\"not found\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "checkCode - User",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/user\/checkCode\/:phone\/:code",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/user\/checkCode\/:phone\/:code",
+                            "variable": [
+                                {
+                                    "id": "phone",
+                                    "key": "phone",
+                                    "value": "non",
+                                    "description": ""
+                                },
+                                {
+                                    "id": "code",
+                                    "key": "code",
+                                    "value": "recusandae",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "180"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "175"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 400,
+                            "body": "{\"message\":\"incorrect code\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "resetPassword - User",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/user\/resetPassword\/:phone",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/user\/resetPassword\/:phone",
+                            "variable": [
+                                {
+                                    "id": "phone",
+                                    "key": "phone",
+                                    "value": "cumque",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "180"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "174"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"phone\":\"cumque\",\"code\":2130,\"status\":\"code_sent\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "sendRegisterCode - User",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/user\/sendRegisterCode\/:phone",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/user\/sendRegisterCode\/:phone",
+                            "variable": [
+                                {
+                                    "id": "phone",
+                                    "key": "phone",
+                                    "value": "voluptatum",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "180"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "173"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"phone\":\"voluptatum\",\"code\":7114,\"status\":\"not_registered\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "resendRegisterCode - User",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/user\/resendRegisterCode\/:phone",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/user\/resendRegisterCode\/:phone",
+                            "variable": [
+                                {
+                                    "id": "phone",
+                                    "key": "phone",
+                                    "value": "quia",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "180"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "172"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"phone\":\"quia\",\"code\":1223,\"status\":\"not_registered\"}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "create - User",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/user\/create",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/user\/create"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"language_id\":\"blanditiis\",\"region_id\":\"dolore\",\"name\":\"rerum\",\"surname\":\"ex\",\"phone\":\"officiis\",\"push_notification\":false}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "update - User",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/user\/update\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/user\/update\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "voluptatum",
+                                    "description": "The ID of the update."
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"push_notification\":true}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "auth Phone & Password - User",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/v1\/user\/auth\/:phone\/:password",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/v1\/user\/auth\/:phone\/:password",
+                            "variable": [
+                                {
+                                    "id": "phone",
+                                    "key": "phone",
+                                    "value": "nobis",
+                                    "description": ""
+                                },
+                                {
+                                    "id": "password",
+                                    "key": "password",
+                                    "value": "quod",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "180"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "171"
                                 },
                                 {
                                     "key": "access-control-allow-origin",

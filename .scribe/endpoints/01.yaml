@@ -22,11 +22,11 @@ endpoints:
         name: phone
         description: ''
         required: true
-        example: quia
+        example: iste
         type: string
         custom: []
     cleanUrlParameters:
-      phone: quia
+      phone: iste
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -39,8 +39,8 @@ endpoints:
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
-          x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '59'
+          x-ratelimit-limit: '180'
+          x-ratelimit-remaining: '179'
           access-control-allow-origin: '*'
         description: null
         custom: []
@@ -71,11 +71,11 @@ endpoints:
         name: phone
         description: ''
         required: true
-        example: non
+        example: delectus
         type: string
         custom: []
     cleanUrlParameters:
-      phone: non
+      phone: delectus
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -88,8 +88,8 @@ endpoints:
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
-          x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '58'
+          x-ratelimit-limit: '180'
+          x-ratelimit-remaining: '178'
           access-control-allow-origin: '*'
         description: null
         custom: []
@@ -120,11 +120,11 @@ endpoints:
         name: phone
         description: ''
         required: true
-        example: totam
+        example: consequatur
         type: string
         custom: []
     cleanUrlParameters:
-      phone: totam
+      phone: consequatur
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -137,8 +137,8 @@ endpoints:
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
-          x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '57'
+          x-ratelimit-limit: '180'
+          x-ratelimit-remaining: '177'
           access-control-allow-origin: '*'
         description: null
         custom: []
@@ -169,11 +169,11 @@ endpoints:
         name: phone
         description: ''
         required: true
-        example: maxime
+        example: aut
         type: string
         custom: []
     cleanUrlParameters:
-      phone: maxime
+      phone: aut
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -186,8 +186,8 @@ endpoints:
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
-          x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '56'
+          x-ratelimit-limit: '180'
+          x-ratelimit-remaining: '176'
           access-control-allow-origin: '*'
         description: null
         custom: []
@@ -218,19 +218,19 @@ endpoints:
         name: phone
         description: ''
         required: true
-        example: tempore
+        example: non
         type: string
         custom: []
       code:
         name: code
         description: ''
         required: true
-        example: quia
+        example: recusandae
         type: string
         custom: []
     cleanUrlParameters:
-      phone: tempore
-      code: quia
+      phone: non
+      code: recusandae
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -243,8 +243,8 @@ endpoints:
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
-          x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '55'
+          x-ratelimit-limit: '180'
+          x-ratelimit-remaining: '175'
           access-control-allow-origin: '*'
         description: null
         custom: []
@@ -275,11 +275,11 @@ endpoints:
         name: phone
         description: ''
         required: true
-        example: ut
+        example: cumque
         type: string
         custom: []
     cleanUrlParameters:
-      phone: ut
+      phone: cumque
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -288,12 +288,12 @@ endpoints:
     responses:
       -
         status: 200
-        content: '{"phone":"ut","code":1215,"status":"code_sent"}'
+        content: '{"phone":"cumque","code":2130,"status":"code_sent"}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
-          x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '54'
+          x-ratelimit-limit: '180'
+          x-ratelimit-remaining: '174'
           access-control-allow-origin: '*'
         description: null
         custom: []
@@ -324,11 +324,11 @@ endpoints:
         name: phone
         description: ''
         required: true
-        example: ipsa
+        example: voluptatum
         type: string
         custom: []
     cleanUrlParameters:
-      phone: ipsa
+      phone: voluptatum
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -337,12 +337,12 @@ endpoints:
     responses:
       -
         status: 200
-        content: '{"phone":"ipsa","code":8582,"status":"not_registered"}'
+        content: '{"phone":"voluptatum","code":7114,"status":"not_registered"}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
-          x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '53'
+          x-ratelimit-limit: '180'
+          x-ratelimit-remaining: '173'
           access-control-allow-origin: '*'
         description: null
         custom: []
@@ -373,11 +373,11 @@ endpoints:
         name: phone
         description: ''
         required: true
-        example: et
+        example: quia
         type: string
         custom: []
     cleanUrlParameters:
-      phone: et
+      phone: quia
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -386,12 +386,12 @@ endpoints:
     responses:
       -
         status: 200
-        content: '{"phone":"et","code":4972,"status":"not_registered"}'
+        content: '{"phone":"quia","code":1223,"status":"not_registered"}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
-          x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '52'
+          x-ratelimit-limit: '180'
+          x-ratelimit-remaining: '172'
           access-control-allow-origin: '*'
         description: null
         custom: []
@@ -426,28 +426,28 @@ endpoints:
         name: language_id
         description: ''
         required: true
-        example: aliquid
+        example: blanditiis
         type: string
         custom: []
       region_id:
         name: region_id
         description: ''
         required: true
-        example: et
+        example: dolore
         type: string
         custom: []
       name:
         name: name
         description: ''
         required: true
-        example: ratione
+        example: rerum
         type: string
         custom: []
       surname:
         name: surname
         description: ''
         required: true
-        example: deleniti
+        example: ex
         type: string
         custom: []
       last_name:
@@ -461,7 +461,7 @@ endpoints:
         name: phone
         description: ''
         required: true
-        example: repellendus
+        example: officiis
         type: string
         custom: []
       push_notification:
@@ -472,11 +472,11 @@ endpoints:
         type: boolean
         custom: []
     cleanBodyParameters:
-      language_id: aliquid
-      region_id: et
-      name: ratione
-      surname: deleniti
-      phone: repellendus
+      language_id: blanditiis
+      region_id: dolore
+      name: rerum
+      surname: ex
+      phone: officiis
       push_notification: false
     fileParameters: []
     responses: []
@@ -507,19 +507,19 @@ endpoints:
         name: id
         description: 'The ID of the update.'
         required: true
-        example: dignissimos
+        example: voluptatum
         type: string
         custom: []
     cleanUrlParameters:
-      id: dignissimos
+      id: voluptatum
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
       language_id:
         name: language_id
         description: ''
-        required: true
-        example: repudiandae
+        required: false
+        example: null
         type: string
         custom: []
       push_notification:
@@ -529,8 +529,14 @@ endpoints:
         example: true
         type: boolean
         custom: []
+      password:
+        name: password
+        description: ''
+        required: false
+        example: null
+        type: string
+        custom: []
     cleanBodyParameters:
-      language_id: repudiandae
       push_notification: true
     fileParameters: []
     responses: []
@@ -561,19 +567,19 @@ endpoints:
         name: phone
         description: ''
         required: true
-        example: rerum
+        example: nobis
         type: string
         custom: []
       password:
         name: password
         description: ''
         required: true
-        example: modi
+        example: quod
         type: string
         custom: []
     cleanUrlParameters:
-      phone: rerum
-      password: modi
+      phone: nobis
+      password: quod
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -586,8 +592,8 @@ endpoints:
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
-          x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '51'
+          x-ratelimit-limit: '180'
+          x-ratelimit-remaining: '171'
           access-control-allow-origin: '*'
         description: null
         custom: []

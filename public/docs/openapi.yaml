@@ -47,7 +47,7 @@ paths:
         in: path
         name: regionId
         description: ''
-        example: sit
+        example: ut
         required: true
         schema:
           type: string
@@ -118,6 +118,66 @@ paths:
                   message:
                     type: string
                     example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+  /api/v1/wooppay/request:
+    get:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: ''
+      tags:
+        - Endpoints
+      security: []
+  /api/v1/wooppay/back:
+    get:
+      summary: ''
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: ''
       tags:
         - Endpoints
       security: []
@@ -240,7 +300,7 @@ paths:
         in: path
         name: userId
         description: ''
-        example: ut
+        example: dignissimos
         required: true
         schema:
           type: string
@@ -284,7 +344,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the firstById.'
-        example: maiores
+        example: quia
         required: true
         schema:
           type: string
@@ -345,6 +405,55 @@ paths:
       tags:
         - Payment
       security: []
+  /api/v1/price/get:
+    get:
+      summary: 'get - Price'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      id: 1
+                      created_at: '2022-12-18T13:57:35.000000Z'
+                      updated_at: '2022-12-18T13:57:35.000000Z'
+                      price: '3000'
+                      important_price: '4500'
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        created_at: '2022-12-18T13:57:35.000000Z'
+                        updated_at: '2022-12-18T13:57:35.000000Z'
+                        price: '3000'
+                        important_price: '4500'
+                    items:
+                      type: object
+      tags:
+        - Price
+      security: []
   '/api/v1/question/getByUserId/{userId}':
     get:
       summary: 'getByUserId - Questions'
@@ -385,7 +494,7 @@ paths:
         in: path
         name: userId
         description: ''
-        example: perspiciatis
+        example: rerum
         required: true
         schema:
           type: string
@@ -429,7 +538,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the firstById.'
-        example: consectetur
+        example: est
         required: true
         schema:
           type: string
@@ -465,25 +574,80 @@ paths:
                 user_id:
                   type: string
                   description: ''
-                  example: aut
+                  example: voluptates
+                payment_id:
+                  type: integer
+                  description: ''
+                  example: 11
                 price:
                   type: string
                   description: ''
-                  example: placeat
+                  example: qui
                 title:
                   type: string
-                  description: ''
-                  example: laborum
+                  description: validation.max.
+                  example: ajaifyecnsupkcuwyvprhtyftpsabjycluxsolaqcwwpabwtjaiibitswscsyzufpqcdylvauvmscchjesxpcmzjsihdtwjjttovubrqwtykrricghydkidaaljlxbuvklfyjpkwvcdpfrjlmcnkwstgxqphqoandoizpesixxpapxazxhqkflbktjktsmrencajvrjuevetpwxypjnuwqveoizbimxzbnnebjjhnwvxbrgecgsmrnwwqtjudpykrzjvwxpvcnejtzcfpnvuzgabzceawirlfenolmmzbcmydkeudrjeegkdgyspplioqemgmcgojlhopakgmdszkvzwoobzxcyatvteavhothiaoobpdphpwhyqnlozzkfhzwnzntvmvcmdylwnvqlmoofwweffajvkluomxfporhhxoucumsuhwjehmzrsjyqwfoavgmvhezbjkxvhajcjfqyucpydugeiyyyhqesdyavurczqrmueplcwemkquzaaumubdpdlbnrtpcfrhuhdovvofeymcswjilhvbpwedwmguifkpjkhplutwjrgikutudmzgcdrpcjiwxtpmxjewdfbraxryvvftmxzxgdvzqauxuptjsfohkijnkyyectrtiebzzznyxzmtexldyybdgpcjcucfsvuhysqibasytjvudmkjwygwspdkbllvurgunysluijpnsalidutmacqkuvlpfutcaaiquwbeebvdiqmsfpkmkcsvrwsoqlvunairhiujldzchwrorzqhnuhhzfrxxlfiokorlcdbfymndriaycyekwvwwhzfkjhgmlljyahjgodcsdzqiulptbljiqxhaldhtsheoaqyvknvkacktosixfevtsrmskvzaczzoqpzypmpvssmrpomikxdqwezhipgetztscmnhfutuhinysntcknkssjlnwwypfbkobhgjyfqdaoohcdzpaqsdwxrvlcqiktwzqyztnujshjxgynaprgypclqjyywfshmacgimawsgsfoxvwsyxjvcsdmiygyrwhzmjtkyotkoqplhwhwskxwepolkfwuebrtceohwaklsziepembslerifoeogpczabijcwhnvtfmwwrylwvuhojpgxjzqnlxdhnscedanswsuyclissgxcfpvtcnxxryutsezylyaivuwttmifuevpbygxlppeomximrjzhvsuoxbkcykugnonsvmbjzabdogtnithvtwdhhvtnmryywdcqbpfgmtqfyekrbiuxikappjgboqholqkftesihymzofgengthxahszezoxwicstfphrjymlrdjzoxfxjwdmvcddvoxipipywapyadlikhcqnwvkjnjxzinrzzktfrcctiubwxuxzyqmssbgaystniheqgzfanuauxxxrkzikgakxxghyacdozlpuozgpupjugauayukxknnixxvuqzobcfcpogdktigcvrjkhgleiviofpjapvkwqcsbewsqyiuepzuuuzqhzucwruibahivyyechdrrobjpygtzdjzbrzrakehfqupckksqqujxtbfbuswtnxzexbergtpatgbrpvwjvzbmwuoxoibwahuqlubmawvkpcbfscncwyanbwzxslnnnvsicpdtqhhpshoyjwtimumjujqcmckjsldkacljaxmjvfcwibohihnzmdohufytjlnnakaoaeqzbxnnfwvpcertautsygkumidlkuovbthcqbzoosqjlmoobymvesptkfygahxmbcixbffzforioquawelfzgmlkndoojqecbiupenjjfxmnhxorfogdwqhrklehxwjajncmemfxvtbdaimiyscduswgbtwyrqabptvjhdarqzrqksuvmmpvxhgsnfojsnwzlsjmxxqfufcouqzrrmessfkmmhhybvpkovgacwjbxctpqqwurqmlgcgdixqtvwtvdztjmbvnpxqkccfoqvaubvmuhuyoyirfijqtgdwwzxdtgpfumhezntbgkmgggndyepkeyqrmdpjeukjjfeaiqhvicqebtxmkxomptlhwicwmgpbjesfaiywvfeeccklgenzrrugnrokxizvbvmpednjkvcptxxepnxzyzqmkxlsjmibfearqjvocvpnkazvmytjzwoolsjuxzkiheatdpnyohhqcbfuuvrgwhdmyqomwsqdjkelvhhauicdphvdzduvrjrrgpnsgdypnascabcbtevzpognxbagfxbuymabvvqwghfohsvjlreifmfizvypebwqwxyigobcvuhvjywmcghmglkttbpzzipwlbbaqqmdrjpjxvvokvlnceuosirupjkaaaotiuceoyvuktrvaobgjleabbyeenockbusezgfkhjgmozklwldswywlifxdlfxgqdejfrbuvydsnpdgxposncwlgftlrdsxfmwiezhqakjpvjfzxcccfokbdohdisefnmahzxfeteqdukmqextvmeflzqttxjcvwytkpnbqbyqdbttrxnmywixarddtlwecmsguxelqlssuecwnxbybbajmmxgznumrjmjuwistavvkdmrzsvxztoxeujxwnklvbdzsanitpctkhgmoorxrqcscbstskiouxnipfrxwfvetrhcxzzzfkyxzzvezxmmpvvggrhfbcdiyezbkbsrzxsgcbeitkxgirarbjkvtpgqbvtgzpigppyuztmeybaildknqamlrxlyadgxgbtunqcygcujdohvxyoxmfvpteudnnxjmauniyjhaldnxxulwtrcgmhoievwllqqdcomhufzjklglbvypgqxfobcrjgtojtcglfmojnqftrsqkbbkjelnenyeggdjbqdctofynnszvrnayfwjvgqvotimyfsjdpcdygdlbptnxewwfemgzhbaywdennrzaxlxrqnmtmfdigmhvyubanmsyszvhwjcnrzjijqngvcrugagoodrwvwiolpcscevsbanyhbkyrlmoyhgtjcfgbxbzvkyzzdhqwotgkkianppkfwabomduioahaekakoqacutsmibzdqtqbcocbuwlwclkihzaybotupgzmseeqtyceyirdyofpjavdafameoumopwjpypmxtvzoloabgyqghaishcihfszlmxuhvuytfmikwxxndokayhqjbbgljzspwrqytcvylrfpwovxxffuotqtekyoqkthuwurktxgtpxchpccbrstjrtbdvbkqsuzurysezhgelzeeiumqkodfreepnyveibynnwnihnrjjsmmdyfgetxirduiwreojyrgozntkyvyzcujxmnjudqiyoeiysvevqexnrcytsbtifmagyhdjonfpseiufneeejzaozzausiokkgteqyafqkmgabwuvhorbnsdnnzhsdgfzirdokpovhlbsaaciyczugglklxhehmpeilknsaskfazmkbxwzhrcafgkhwwgmgpnmcwypfxirygiqnkidqsojflqecmkljrrskffzdnombikqjarbnjvhuxughspvkjdvfmsqezjyzrsqzqwafkgdpvpjpcahlxxlzloubbqsbbxgpjytfdgaqsedsyixgckqyzgfavcxukvizcdccyaxiyerzcbdybxnqkhhihjshiewwhlvtfrfzybgzqfbtmcfpqwullygduvxhecbinwnnmxqjpfnytablhctfawwvxiqujhmzolmmqzrjhnpztygzqmeuxlwfdwlvmcjybcyupwnuvdcrytvrllrdeqomkrzfcmyytxhsdjkhjrymdtjqxyyotlfckeehbquitbfyzettlqdzjoxeczobndxxshdnzglzesydbxiqytqkxaanrmgwbeatisceofohooinnhdfdsjxwiylfbnxmryotayikotxidojqhncvpmqonxznxtctsnctbcuvaugomwxvgljgwsuoemzhvniqqvhqrzskgddaphdyqbzdvkxridwgkvcmasqenrzevyjqvfaqbrqcoauxvhjvwrsnkggrrtsbyknvspetreilugplodrqljpuhwncyyauaayddhygpacsawbhihilkiizpkqupcyrrwlmsftisjykipsnwlpskugieqgjdqtcyyqflqamlswhcvkemmklvykmbhgrifcpggqngeefuzwupejmbqykwxgjrhtxnlvrevbxnadziwtckzfmhnsdomuahrjmedqkaivzsbshcnsucyzyjkznywjuekamthdbbqysxwedbmxavfhvmnwvemuioepotlmlgwcwoahserqrsvurzhycmiktullbslvmqjqnozvqwdybjivdvsxgeznmyindftiedkhkcmfkrblnyhrtkorpymmdvtvbrpdigcsgyhgviolnxjngbzousifgbloqeubiatjbihnvzxleiljajphevzoakfycrcgznekdudskjponswvbvbosirsuwvhjxocmvfyodqbtbbyfsmtytznkixrygbmeiiixuspfddlwdwgzxfarjrnwnlauejtmlpdvlmdtfrgavvnvdraioqriqljiknmkihcgljtfauwbxzzqbutjptbpxmtazstvbwqwrlwatljoptvgyxtfrmzbxgzhqwxrznklipwrqkxmoxvqfhkzytufdfcbsdmgwypkgqwhhyatiyokvmfddivbwygauanbogzbtoynwompjphbalwwglmshxpfginixsiiputlbqrwpinpegjioyivvtivoupalgmdmihkamkfiqblvwyeboakkbvmzdeihnethwcjnysiwpqijpgdflduezchfzrmvuslzrylzknivzkxkoobpttdowczfyamdqkzqureymgtpnxvtvimrddftewlrkolnrwguddyrscslfutbutrrzymjvtaexthgxaomtiodpyrgtcfcmfvhelwljswvkvyhmxlhrbhustevqoinxrbmtrnbhttxipvosmyrqwbmbdfzyozbvtcpdgejsidqoszrrknobrqrwkdxrfflpiwcjmgwomhfqatjkhaazmcjhzchfvinzpphbusonfwxkeupzxkfuoirbqqookwczseqwqtiznonsfmrcsaafjwtpzdhgmgqrktmftwzfifmevfjxbnmkxzinrjgrowfssqcngypwyzvvopszfhxastsnfmmoginqjwgvhjwdpophnmhkzefckqfwzcwasomslucjybkhgjwzyarsapqjbebrcopztksgirnhjxzxxbclqdqtoqsjtwbleeuzhesnkyrgedzwqzkzlfyrvdnfdsztohcxaugrtrddvucepzpllohbngyjtcmmmskuxeedvjgayssqmacdvgderzdncmbnibsbuplzbusjqetptktcntquaepkvjggxixkiqyprxuvthlhekbmuurbkupkwwmfmflwjbisrvurkjyfosmuybrcsslwdtfyeklbbumoudsuatwrtlsxmhxvmcsfohtppqpeylrcamhfbffqtvajokfhmnommfyqqfaxlzzkauhtpvxokqvipweedhlhrryjiovrfmavypynhpviqtpjvlwyioluevfbumeuseezuozhpqzlnghgsgiprfmxwpphmssauzozendbpwvzdiapqtsrrszhzdfoqcczsfvzmnkxuyyduogtxyxvrrslnvtnftwpzjzwlqidviemxynienqfdwcidietoaxnojkwpyyrzibdalgxiwifgtkkcbqoczmnrxlubjoqvlqrypqmlnnvjidxzfazycojjtywusiygfquwbadkgonydtkmasuvnvqtysphihvuojjknkstfizirzwypwdxbhvsfceldmdpryqyinoimhcfcoteplpbwxxzmzuawzarhgxerkfgvqykseeeqllypuqkazjinldqsheympaoxtkxjrgeivlbxkjnorudklgskbqhfbktpqgrcryiftzkvsnbdszeukrglujmjvoakdemvbdvwmspsonncwyrjmsnwpctrvyluthhohnldviqgloxmgtbjsmlkzdotuaabmjjkvmbrhzwbuhghychsoxuqxvizaxdxcvrdwlswoopcniqkckwwtsbgmvwtwmdrcuekasdiwqhnbpdupojppuvsdpzegpqhbyfrptognjipykpmmzyoheagtqqnuupkgvjhisjxoqwtshrhlqpzezrotaoajiaqdwlyorhzqvypqecosmxtbxahomltlpkdqtwahajxagxjzdiatwjmjalawcijmpllygyvxjkubcgajtimznjdxjoturvhihahjoxvtvsscaofgtfmzkvxrmqqhvmximyptjdyrthlyzaymtghaaznopftwhqifobobzgzuzeobkwtpoaeaustopqseleekiicfciwjkaxuizhcmvwgyzpessyuboqthokmsvstgubvdkawelcylnwatnfknbfrduutxbimkjpennsjncdhtjkokbikowjxjpokpxoscpedcfbchrhqtulrfjxbugjidmryzddlhtzzqbhglgqgzbuogrtfngyhoozxaqwjaykczjsxsxpvnnbirqmxrfyisqqlwjavhfjvhvqkztlqvdtlkqatvtryozreoebywfcibdjyocekqiiakxcafufarahhqvnylbytyuwxjfjzkjebxumoauekrpgfgrnvuwmscvjyhoryivfetsvqwynvkhojmvthlxksmlaqubtdpjeqkdeitgzzqssbmcqjrgqitopoqhhiqmmtvzlkpbndyonievrtslcxebrqfdinggttbfipdkoedxiwspwqnehdsgnpluayvwmmhlhzghzvvugwrzyxeimkwuukkkaguwjcifzgrmnqldauahrzlseijyzcqtmggtnjcxditxnsqmmomsebjmpxinnxzctrvyzqonidevdygzffjsjpvcitnvzjeomfqoisyotlhfgxtdyruayupszfbnooquapeuxbcmudydawltivqvzdezjsrkhnqawkviailmgfhyxaxqkcanbmgktiflhvdhpptrikkgzxsvpfehwphtaqbasjmbaohdfzcoxiapjllcdhbodbdxxukhlddvwdmnmzdftachtgtivvmcobswhymmkelxmydggdiujyeyvwjbfawxaumwkvqltlgizrkqvcccttkvmkhndbmdagshipdjhmxshkysfrkexrtvczqyusfsiljpnpmrukbkzzcfxwifcxqtncpdesxbjvqnejqfnzldwfzbbbqobgebawriiqabazynewqovmbtkoaypfbqutqynfqpshfpjlrvhqyvnjhwaminascizhxhnaipiexplqvxcniadeczxlafxwnohtfryynwhmeymcjkoruxenxisxrmqsrqgamssqmulwwhbqprnxsovdzbvkkkhdlrsvbgmriwgsywmhguhwctmqfkyeoqxmnxnyhnbzdbmkcvdgsyovfiuqhxrrjowqbnswgqdzjbcxguesypfanjntjvrogygnttfyrtcolbsgytnoqjzwsxstdfghcvbodxxivgbxgnyysqqaewipumlspqtyqbockiitawczqiaaewrtkueqgekqbnzdgxhpgbvptzonvydlrveamboisdracjtkgrcofsrikggeckvmhcpuphqamtqjdexdudahapkkhfrrgnoweuwmvffulmctfhbubefpgkgddfvixycyhuleinamskjtwgpacrnyrhbdmnyejniedsszerrlotipguisnpexvtmznllunscrzpocbgiawnspptwbexfauabmexgxprurcywcsnmzspkwpjsxtztcbbmoabzwqdovkmbqwrstvpidgpozzyyhbewvzdssxcrtjgkfffwdzkuyozctzwcphoqjbfgmvcaxlaufzymopevjzszmdevanvpzziguckploteenwfptxtbqokaycmqizxbnvjcedzsodgffnlubzehtrjfgxzecqglayatfvfbevgxvqhfbwsvftrgrwmbblsiefcosvfrdjijqvqzyfykncaartjoatwsacynpnttrbeczbpyejworujtxnhlnbjkhieedbotjeqefqayixgdmvpgbzhynpgnfowyptqvopfwwjprprdxcqpqjjgtthzcawesstqxztloppwruvhwfhnbuixmnrqcjorjscrlxpjteuxekyhabsyyqxgllglefeviwurpwvzyopynswkmhisgvlpdhdelrfduqvlrkycxdlefwmdfblfhhffrtpwpfecdvuqasegyiwjzpoyqagvlkuuflfphbzlbpmgkznepwpvxltwbnzewqghscvvuwfmziatyvznwjzrqpxevibjnimtkjmcnlehaycxtjrmxhoghprsdbgvzshzzjyuahkqnwnavahojmnmijqoogqvwudzdtblhzkbqooasrfxerjjjruplfmtptggwfpdcronbqueadmkqeowkzmsbezsblwoomjmmmlkcuzhdukogtobimrkoamihatoeqitzxlwuonchundduywaiswoftatfqskohrefojslxnovxhcssxuakpauzjvlidyvaeeyzvfnfaubymrtplrmkcsjewbwkfrrpopdqcvioavqzdsryycqoxizzbuyblcvqvgrnhdguppdlseqytnhszmvsgstopadcjyqhkteonhzxtd
                 is_important:
                   type: boolean
                   description: ''
-                  example: false
+                  example: true
               required:
                 - user_id
+                - payment_id
                 - price
                 - title
                 - is_important
       security: []
+  '/api/v1/question/update/{id}':
+    post:
+      summary: 'update - Questions'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Questions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                lawyer_id:
+                  type: string
+                  description: ''
+                  example: ducimus
+                answer:
+                  type: string
+                  description: ''
+                  example: dolore
+              required:
+                - lawyer_id
+                - answer
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the update.'
+        example: natus
+        required: true
+        schema:
+          type: string
   '/api/v1/region/getByCountryId/{countryId}':
     get:
       summary: 'getCountryId - Region'
@@ -524,7 +688,7 @@ paths:
         in: path
         name: countryId
         description: ''
-        example: id
+        example: et
         required: true
         schema:
           type: string
@@ -568,7 +732,7 @@ paths:
         in: path
         name: phone
         description: ''
-        example: quia
+        example: iste
         required: true
         schema:
           type: string
@@ -612,7 +776,7 @@ paths:
         in: path
         name: phone
         description: ''
-        example: non
+        example: delectus
         required: true
         schema:
           type: string
@@ -656,7 +820,7 @@ paths:
         in: path
         name: phone
         description: ''
-        example: totam
+        example: consequatur
         required: true
         schema:
           type: string
@@ -700,7 +864,7 @@ paths:
         in: path
         name: phone
         description: ''
-        example: maxime
+        example: aut
         required: true
         schema:
           type: string
@@ -744,7 +908,7 @@ paths:
         in: path
         name: phone
         description: ''
-        example: tempore
+        example: non
         required: true
         schema:
           type: string
@@ -752,7 +916,7 @@ paths:
         in: path
         name: code
         description: ''
-        example: quia
+        example: recusandae
         required: true
         schema:
           type: string
@@ -783,16 +947,16 @@ paths:
               schema:
                 type: object
                 example:
-                  phone: ut
-                  code: 1215
+                  phone: cumque
+                  code: 2130
                   status: code_sent
                 properties:
                   phone:
                     type: string
-                    example: ut
+                    example: cumque
                   code:
                     type: integer
-                    example: 1215
+                    example: 2130
                   status:
                     type: string
                     example: code_sent
@@ -804,7 +968,7 @@ paths:
         in: path
         name: phone
         description: ''
-        example: ut
+        example: cumque
         required: true
         schema:
           type: string
@@ -835,16 +999,16 @@ paths:
               schema:
                 type: object
                 example:
-                  phone: ipsa
-                  code: 8582
+                  phone: voluptatum
+                  code: 7114
                   status: not_registered
                 properties:
                   phone:
                     type: string
-                    example: ipsa
+                    example: voluptatum
                   code:
                     type: integer
-                    example: 8582
+                    example: 7114
                   status:
                     type: string
                     example: not_registered
@@ -856,7 +1020,7 @@ paths:
         in: path
         name: phone
         description: ''
-        example: ipsa
+        example: voluptatum
         required: true
         schema:
           type: string
@@ -887,16 +1051,16 @@ paths:
               schema:
                 type: object
                 example:
-                  phone: et
-                  code: 4972
+                  phone: quia
+                  code: 1223
                   status: not_registered
                 properties:
                   phone:
                     type: string
-                    example: et
+                    example: quia
                   code:
                     type: integer
-                    example: 4972
+                    example: 1223
                   status:
                     type: string
                     example: not_registered
@@ -908,7 +1072,7 @@ paths:
         in: path
         name: phone
         description: ''
-        example: et
+        example: quia
         required: true
         schema:
           type: string
@@ -944,19 +1108,19 @@ paths:
                 language_id:
                   type: string
                   description: ''
-                  example: aliquid
+                  example: blanditiis
                 region_id:
                   type: string
                   description: ''
-                  example: et
+                  example: dolore
                 name:
                   type: string
                   description: ''
-                  example: ratione
+                  example: rerum
                 surname:
                   type: string
                   description: ''
-                  example: deleniti
+                  example: ex
                 last_name:
                   type: string
                   description: ''
@@ -964,7 +1128,7 @@ paths:
                 phone:
                   type: string
                   description: ''
-                  example: repellendus
+                  example: officiis
                 push_notification:
                   type: boolean
                   description: ''
@@ -999,7 +1163,7 @@ paths:
       tags:
         - User
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
@@ -1008,20 +1172,22 @@ paths:
                 language_id:
                   type: string
                   description: ''
-                  example: repudiandae
+                  example: null
                 push_notification:
                   type: boolean
                   description: ''
                   example: true
-              required:
-                - language_id
+                password:
+                  type: string
+                  description: ''
+                  example: null
       security: []
     parameters:
       -
         in: path
         name: id
         description: 'The ID of the update.'
-        example: dignissimos
+        example: voluptatum
         required: true
         schema:
           type: string
@@ -1065,7 +1231,7 @@ paths:
         in: path
         name: phone
         description: ''
-        example: rerum
+        example: nobis
         required: true
         schema:
           type: string
@@ -1073,7 +1239,7 @@ paths:
         in: path
         name: password
         description: ''
-        example: modi
+        example: quod
         required: true
         schema:
           type: string
@@ -1095,6 +1261,9 @@ tags:
     description: ''
   -
     name: Payment
+    description: ''
+  -
+    name: Price
     description: ''
   -
     name: Questions

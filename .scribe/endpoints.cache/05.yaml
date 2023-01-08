@@ -24,11 +24,11 @@ endpoints:
         name: regionId
         description: ''
         required: true
-        example: sit
+        example: ut
         type: string
         custom: []
     cleanUrlParameters:
-      regionId: sit
+      regionId: ut
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -41,8 +41,8 @@ endpoints:
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
-          x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '47'
+          x-ratelimit-limit: '180'
+          x-ratelimit-remaining: '167'
           access-control-allow-origin: '*'
         description: null
         custom: []

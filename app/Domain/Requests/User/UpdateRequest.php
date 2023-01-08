@@ -4,6 +4,7 @@ namespace App\Domain\Requests\User;
 
 use App\Domain\Contracts\Contract;
 use App\Domain\Requests\MainRequest;
+use Illuminate\Support\Facades\Hash;
 
 class UpdateRequest extends MainRequest
 {
@@ -18,6 +19,10 @@ class UpdateRequest extends MainRequest
 
     public function checked(): array
     {
-        return $this->validator->validated();
+        $data   =   $this->validator->validated();
+        if (array_key_exists(Contract::PASSWORD, $data)) {
+            $data[Contract::PASSWORD]   =   Hash::make($data[Contract::PASSWORD]);
+        }
+        return $data;
     }
 }
