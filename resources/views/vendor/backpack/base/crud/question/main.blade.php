@@ -866,6 +866,7 @@
             text-align: justify;
             text-indent: 20px;
             white-space: pre-wrap;
+            word-break: break-word;
         }
         .modal-body-textarea {
             font-size: 14px;
