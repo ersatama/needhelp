@@ -3,6 +3,7 @@
 namespace App\Domain\Repositories;
 
 use App\Domain\Contracts\Contract;
+use App\Domain\Scopes\IsPaid;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
 
@@ -10,7 +11,7 @@ trait RepositoryEloquent
 {
     public function firstByQuestionId($questionId)
     {
-        return $this->model::where(Contract::QUESTION_ID, $questionId)->first();
+        return $this->model::where(Contract::QUESTION_ID, $questionId)->withoutGlobalScope(IsPaid::class)->first();
     }
 
     public function firstByKey($key)
