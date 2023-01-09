@@ -356,9 +356,9 @@
                 },
                 newQuestion(data) {
                     axios
-                        .get('/api/v1/question/firstById/'+data.data+'?timezone='+Intl.DateTimeFormat().resolvedOptions().timeZone)
+                        .get('/api/v1/question/firstById/'+data.data.id+'?timezone='+Intl.DateTimeFormat().resolvedOptions().timeZone)
                         .then(response => {
-                            this.updateQuestion(response.data.data.id);
+                            this.updateQuestion(response.data.data);
                         })
                         .catch(error => {
                             console.log(error);
