@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Domain\Contracts\Contract;
 use App\Domain\Contracts\QuestionContract;
+use App\Domain\Scopes\IsPaid;
 use App\Domain\Scopes\OrderBy;
 use App\Domain\Scopes\Page;
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
@@ -24,6 +25,7 @@ class Question extends Model
     {
         static::addGlobalScope(new Page);
         static::addGlobalScope(new OrderBy);
+        static::addGlobalScope(new IsPaid);
     }
 
     public function user(): BelongsTo
