@@ -38,6 +38,12 @@ class WooppayController extends Controller
                             Contract::STATUS    =>  1
                         ]);
                         QuestionJob::dispatch($question);
+                    } elseif (in_array($wooppayStatus,[17,20])) {
+                        $question   =   $this->questionService->questionRepository->update($questionId,[
+                            Contract::IS_PAID   =>  false,
+                            Contract::STATUS    =>  0
+                        ]);
+                        QuestionJob::dispatch($question);
                     }
                 }
             }

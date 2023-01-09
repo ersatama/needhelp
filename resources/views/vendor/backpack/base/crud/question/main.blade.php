@@ -358,7 +358,7 @@
                     axios
                         .get('/api/v1/question/firstById/'+data.data+'?timezone='+Intl.DateTimeFormat().resolvedOptions().timeZone)
                         .then(response => {
-                            this.updateQuestion(response.data.data);
+                            this.updateQuestion(response.data.data.id);
                         })
                         .catch(error => {
                             console.log(error);

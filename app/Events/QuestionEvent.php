@@ -16,11 +16,14 @@ class QuestionEvent implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public int $data;
+    public array $data;
 
     public function __construct(Question $question)
     {
-        $this->data =   $question->{Contract::ID};
+        $this->data =   [
+            Contract::ID    =>  $question->{Contract::ID},
+            Contract::IS_PAID   =>  $question->{Contract::IS_PAID}
+        ];
     }
 
     public function broadcastOn(): array
