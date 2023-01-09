@@ -2,7 +2,9 @@
 
 namespace App\Domain\Repositories\Wooppay;
 
+use App\Domain\Contracts\Contract;
 use App\Domain\Repositories\RepositoryEloquent;
+use App\Domain\Scopes\IsPaid;
 use App\Models\Wooppay;
 
 class WooppayRepositoryEloquent implements WooppayRepositoryInterface
@@ -12,5 +14,10 @@ class WooppayRepositoryEloquent implements WooppayRepositoryInterface
     public function __construct(Wooppay $wooppay)
     {
         $this->model    =   $wooppay;
+    }
+
+    public function firstByQuestionId($questionId)
+    {
+        return $this->model::where(Contract::QUESTION_ID, $questionId)->withoutGlobalScope(IsPaid::class)->first();
     }
 }
