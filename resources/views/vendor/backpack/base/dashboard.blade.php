@@ -57,8 +57,8 @@
                     [
                         'type'          => 'progress_white',
                         'class'         => 'card mb-2',
-                        'value'         =>  '<span class="text-success">' . QuestionRepositoryEloquent::lawyerCountToday([Contract::LAWYER_ID=>backpack_user()->{Contract::ID},Contract::CREATED_AT=>\Carbon\Carbon::today()]) . '</span>',
-                        'description'   => 'Отвечено на вопросы сегодня',
+                        'value'         =>  '<span class="text-success">' . QuestionRepositoryEloquent::lawyerCountToday(backpack_user()->{Contract::ID}) . '</span>',
+                        'description'   => 'Отвечено на вопросы сегодня'.\Carbon\Carbon::today(),
                         'progress'      => 100, // integer
                         'progressClass' => 'progress-bar bg-success',
                     ],

@@ -21,9 +21,10 @@ class QuestionRepositoryEloquent implements QuestionRepositoryInterface
         $this->model    =   $question;
     }
 
-    public static function lawyerCountToday($where)
+    public static function lawyerCountToday($lawyerId)
     {
-        return Question::where($where)->withoutGlobalScope(Page::class)->count();
+        return Question::where(Contract::LAWYER_ID, $lawyerId)->where(Contract::UPDATED_AT,'like',date('Y-m-d').'%')
+            ->withoutGlobalScope(Page::class)->count();
     }
 
     /**

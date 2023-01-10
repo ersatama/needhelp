@@ -11,7 +11,7 @@
         <answered v-if="showAnsweredModal" @close="showAnsweredModal = false" :answered_view="answered_view" :role="role"></answered>
         <div class="bg-white border rounded">
             <div class="border-bottom p-2">
-                <div class="m-0 p-3 d-flex justify-content-center" style="gap: 20px;">
+                <div class="m-0 p-3 d-flex justify-content-center header-flex" style="gap: 20px;">
                     @if(backpack_user()->{\App\Domain\Contracts\Contract::ROLE} !== 'lawyer')
                         <div class="header-switcher d-flex">
                             <div class="header-switcher-item text-muted" :class="{'header-switcher-item-sel':(type)}" @click="type = true">В обработке</div>
@@ -756,6 +756,18 @@
             cursor: pointer;
         }
         @media (max-width: 1300px) {
+            .header-flex {
+                flex-direction: column;
+            }
+            .header-switcher {
+                width: max-content;
+                margin: 0 auto 0 auto;
+            }
+            .header-search {
+                height: 47px;
+                width: max-content;
+                margin: 0 auto 0 auto;
+            }
             .question {
                 padding: 10px;
                 flex-direction: column;
