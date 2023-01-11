@@ -4,6 +4,10 @@ namespace App\Domain\Contracts;
 
 abstract class Contract
 {
+    const PARAMETERS    =   'parameters';
+    const ADDITIONAL    =   'additional';
+    const TYPE_ID   =   'type_od';
+    const IMAGE =   'image';
     const OPERATION_URL =   'operation_url';
     const BACK_URL  =   'back_url';
     const REQUEST_URL   =   'request_url';
@@ -17,7 +21,10 @@ abstract class Contract
     const REPLENISHMENT_ID  =   'replenishment_id';
     const INVOICE_ID    =   'invoice_id';
     const KEY   =   'key';
+    const FIELD =   'field';
+    const TAG   =   'tag';
     const VALUE =   'value';
+    const RELATION  =   'relation';
     const EXPIRE_AT =   'expire_at';
     const TIMER =   'timer';
     const ORDER_BY_TYPES    =   [

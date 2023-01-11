@@ -7,6 +7,7 @@ use App\Events\QuestionEvent;
 use App\Jobs\QuestionJob;
 use App\Models\Notification;
 use App\Models\Question;
+use Illuminate\Support\Facades\Log;
 
 class QuestionObserver
 {
@@ -18,12 +19,7 @@ class QuestionObserver
      */
     public function created(Question $question): void
     {
-        Notification::create([
-            Contract::USER_ID   =>  $question->{Contract::USER_ID},
-            Contract::TYPE  =>  1,
-            Contract::QUESTION_ID   =>  $question->{Contract::ID},
-            Contract::STATUS    =>  true
-        ]);
+
     }
 
     /**
@@ -34,7 +30,14 @@ class QuestionObserver
      */
     public function updated(Question $question): void
     {
-
+        if (trim($question->{Contract::ANSWER}) !== '' && $question->{Contract::LAWYER_ID}) {
+            Notification::create([
+                Contract::USER_ID   =>  $question->{Contract::USER_ID},
+                Contract::TYPE  =>  1,
+                Contract::QUESTION_ID   =>  $question->{Contract::ID},
+                Contract::STATUS    =>  true
+            ]);
+        }
     }
 
     /**
