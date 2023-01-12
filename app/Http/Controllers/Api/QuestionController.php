@@ -184,8 +184,8 @@ class QuestionController extends Controller
                 return response(ErrorContract::QUESTION_ALREADY_ANSWERED, 400);
             } else if (!$question->{Contract::LAWYER_ID} || $question->{Contract::LAWYER_ID} === $data[Contract::LAWYER_ID] || (!$data[Contract::LAWYER_ID] && !$question->{Contract::ANSWERED_AT})) {
                 $question   =   $this->questionService->questionRepository->update($id, $data);
+                QuestionJob::dispatch($question);
             }
-            QuestionJob::dispatch($question);
             return new QuestionResource($question);
         }
         return response(ErrorContract::NOT_FOUND, 404);
