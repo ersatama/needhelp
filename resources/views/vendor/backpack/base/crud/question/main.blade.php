@@ -7,8 +7,8 @@
 @section('content')
     <div id="app" class="my-4">
         <audio src="/audio/1.wav" ref="audio" preload="auto"></audio>
-        <modal v-if="showModal" @close="showModal = false" @answer="answer" :view="view" :status="status" :role="role" :agree="agree" :error-message="errorMessage" @checkbox="agree = !agree"></modal>
-        <answered v-if="showAnsweredModal" @close="showAnsweredModal = false" :answered_view="answered_view" :role="role"></answered>
+        <modal v-if="showModal" @close="showModal = false" @answer="answer" @accept="accept" @reject="reject" :user_id="user_id" :view="view" :status="status" :role="role" :agree="agree" :error-message="errorMessage" @checkbox="agree = !agree" ></modal>
+        <answered v-if="showAnsweredModal" @close="showAnsweredModal = false" :answered_view="answered_view" :role="role" :user_id="user_id"></answered>
         <div class="bg-white border rounded">
             <div class="border-bottom p-2">
                 <div class="m-0 p-3 d-flex justify-content-center header-flex" style="gap: 20px;">
@@ -37,7 +37,7 @@
                             <div class="question-header-timer" v-show="question.timerText">@{{ question.timerText }}</div>
                         </div>
                         <div class="question-main flex-grow-1">
-                            <div class="question-main-title">@{{ question.title }}</div>
+                            <div class="question-main-title">@{{ question.title.substr(0,100) }}...</div>
                             <div class="question-main-detail" v-if="question.answered_at">@{{ question.answer }}</div>
                         </div>
                         <div class="question-body">
@@ -51,7 +51,14 @@
                             </div>
                         </div>
                         <div class="question-button">
-                            <div class="question-button-answer" v-if="role === 'lawyer' && !question.answered_at" @click="detail(question.id)">Ответить</div>
+                            <div class="question-button-answer" v-if="role === 'lawyer' && !question.answered_at" @click="detail(question.id)">
+                                <template v-if="question.lawyer_id === user_id">
+                                    Ответить
+                                </template>
+                                <template v-else>
+                                    Предпросмотр
+                                </template>
+                            </div>
                             <div class="question-button-detail" v-else @click="detail(question.id)">Предпросмотр</div>
                         </div>
                     </div>
@@ -126,19 +133,23 @@
                                 </div>
                             </div>
                             <div class="h6 font-weight-bold mb-2 text-center">Вопрос</div>
-                            <div class="modal-body-title text-muted mb-2">@{{view.title.trim()}}</div>
+                            <div class="modal-body-title text-muted mb-2" v-if="view.lawyer_id && user_id === view.lawyer_id">@{{view.title.trim()}}</div>
+                            <div class="modal-body-title text-muted mb-2" v-else>@{{view.title.trim().substr(0,100)}} ...</div>
                             <template v-if="role === 'lawyer'">
                                 <template v-if="view.answered_at">
                                     <div class="h6 font-weight-bold mb-2 text-center">Ответ</div>
-                                    <div class="modal-body-title">@{{view.answer.trim()}}</div>
+                                    <div class="modal-body-title" v-if="view.lawyer_id && user_id === view.lawyer_id">@{{view.answer.trim()}}</div>
+                                    <div class="p-3 text-center border bg-secondary text-dark rounded h6 m-0 mt-4 font-weight-bold" v-else>Ждет ответа</div>
                                 </template>
                                 <template v-else>
-                                    <div class="h6 font-weight-bold mb-2 text-center">
-                                        <label for="textarea">Ваш ответ</label>
-                                    </div>
-                                    <div class="modal-body-textarea">
-                                        <textarea class="mt-2" id="textarea" rows="8" v-model="view.answer"></textarea>
-                                    </div>
+                                    <template v-if="view.lawyer_id && user_id === view.lawyer_id">
+                                        <div class="h6 font-weight-bold mb-2 text-center">
+                                            <label for="textarea">Ваш ответ</label>
+                                        </div>
+                                        <div class="modal-body-textarea">
+                                            <textarea class="mt-2" id="textarea" rows="8" v-model="view.answer"></textarea>
+                                        </div>
+                                    </template>
                                 </template>
                             </template>
                             <template v-else>
@@ -155,24 +166,43 @@
                             Произошла ошибка, проверьте подключение к интернету!
                         </div>
                         <div class="modal-footer d-flex justify-content-center flex-column" style="gap: 20px">
-                            <div class="form-check mb-2" v-if="role === 'lawyer' && !view.answered_at">
-                                <input class="form-check-input" type="checkbox" v-model="agree" id="agree" @change="$emit('checkbox')">
-                                <label class="form-check-label" for="agree" onselectstart="return false;">
-                                    я подтверждаю свой ответ на данный вопрос
-                                </label>
-                            </div>
-                            <div class=" d-flex justify-content-center" style="gap: 20px">
-                                <button class="modal-default-button btn btn-danger h6" @click="$emit('close')">Закрыть</button>
-                                <template v-if="role === 'lawyer' && !view.answered_at">
-                                    <button class="modal-default-button btn btn-success h6" disabled v-if="!agree">Ответить</button>
-                                    <template v-else>
-                                        <button class="modal-default-button btn btn-success h6" @click="$emit('answer')" v-if="!status">Ответить</button>
+                            <template v-if="view.lawyer_id && view.lawyer_id === user_id">
+                                <div class="form-check mb-2" v-if="role === 'lawyer' && !view.answered_at">
+                                    <input class="form-check-input" type="checkbox" v-model="agree" id="agree" @change="$emit('checkbox')">
+                                    <label class="form-check-label" for="agree" onselectstart="return false;">
+                                        я подтверждаю свой ответ на данный вопрос
+                                    </label>
+                                </div>
+                                <div class=" d-flex justify-content-center" style="gap: 20px">
+                                    <button class="modal-default-button btn btn-danger h6" @click="$emit('close')">Закрыть</button>
+                                    <template v-if="role === 'lawyer' && !view.answered_at">
+                                        <template v-if="!status">
+                                            <button class="modal-default-button btn btn-info h6" @click="$emit('reject')">Отказаться от вопроса</button>
+                                            <button class="modal-default-button btn btn-success h6" disabled v-if="!agree">Ответить</button>
+                                            <button class="modal-default-button btn btn-success h6" @click="$emit('answer')" v-else>Ответить</button>
+                                        </template>
                                         <button class="modal-default-button btn btn-success h6" disabled v-else>
-                                            <i class="fa fa-spinner fa-spin"></i> Сохранение ответа
+                                            <i class="fa fa-spinner fa-spin"></i> Загрузка ...
                                         </button>
                                     </template>
-                                </template>
-                            </div>
+                                </div>
+                            </template>
+                            <template v-else-if="view.lawyer_id && view.lawyer_id !== user_id">
+                                <div class=" d-flex justify-content-center" style="gap: 20px">
+                                    <button class="modal-default-button btn btn-danger h6" @click="$emit('close')">Закрыть</button>
+                                </div>
+                            </template>
+                            <template v-else>
+                                <div class=" d-flex justify-content-center" style="gap: 20px">
+                                    <button class="modal-default-button btn btn-danger h6" @click="$emit('close')">Закрыть</button>
+                                    <template v-if="!status">
+                                        <button class="modal-default-button btn btn-success h6" @click="$emit('accept')">Принять вопрос</button>
+                                    </template>
+                                    <button class="modal-default-button btn btn-success h6" disabled v-else>
+                                        <i class="fa fa-spinner fa-spin"></i> Загрузка ...
+                                    </button>
+                                </div>
+                            </template>
                         </div>
                     </div>
                 </div>
@@ -233,11 +263,11 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
         Vue.component("modal", {
-            props: ['view','status','role','agree','errorMessage'],
+            props: ['view','status','role','agree','errorMessage','user_id'],
             template: "#modal-template"
         });
         Vue.component("answered", {
-            props: ['answered_view','role'],
+            props: ['answered_view','role','user_id'],
             template: "#answered"
         });
 
@@ -437,6 +467,42 @@
                     if (this.view.id === question.id) {
                         this.detail(question.id);
                     }
+                },
+                reject() {
+                    this.status =   true;
+                    this.errorMessage   =   false;
+                    axios
+                        .post('/api/v1/question/update/'+this.view.id+'?timezone='+Intl.DateTimeFormat().resolvedOptions().timeZone, {
+                            lawyer_id: null,
+                        })
+                        .then(response => {
+                            this.status =   false;
+                            this.errorMessage   =   false;
+                            this.questionReplace(response.data.data);
+                        })
+                        .catch(error => {
+                            this.errorMessage   =   true;
+                            this.status =   false;
+                            this.refresh();
+                        });
+                },
+                accept() {
+                    this.status =   true;
+                    this.errorMessage   =   false;
+                    axios
+                        .post('/api/v1/question/update/'+this.view.id+'?timezone='+Intl.DateTimeFormat().resolvedOptions().timeZone, {
+                            lawyer_id: this.user_id,
+                        })
+                        .then(response => {
+                            this.status =   false;
+                            this.errorMessage   =   false;
+                            this.questionReplace(response.data.data);
+                        })
+                        .catch(error => {
+                            this.errorMessage   =   true;
+                            this.status =   false;
+                            this.refresh();
+                        });
                 },
                 answer() {
                     this.status =   true;
