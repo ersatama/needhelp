@@ -3,29 +3,29 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Domain\Contracts\Contract;
-use App\Http\Requests\AdminRequest;
+use App\Http\Requests\ModeratorRequest;
 use App\Http\Requests\UserRequest;
-use App\Models\User;
+use Backpack\CRUD\app\Exceptions\BackpackProRequiredException;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
-class AdminCrudController extends UserCrudController
+class ModeratorCrudController extends UserCrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
-    use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
 
-    public function setup() :void
+    public function setup(): void
     {
-        CRUD::setModel(User::class);
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/admin');
-        CRUD::setEntityNameStrings('Администратор', 'Администраторы');
+        CRUD::setModel(\App\Models\User::class);
+        CRUD::setRoute(config('backpack.base.route_prefix') . '/moderator');
+        CRUD::setEntityNameStrings('Модератор', 'Модераторы');
         $this->crud->enableExportButtons();
-        $this->crud->addClause('where', Contract::ROLE, Contract::ADMIN);
+        $this->crud->addClause('where', Contract::ROLE, Contract::MODERATOR);
         $this->crud->setShowView('vendor.backpack.base.crud.user.show');
     }
+
 
     protected function setupCreateOperation(): void
     {
@@ -42,7 +42,7 @@ class AdminCrudController extends UserCrudController
                 Contract::MODERATOR =>  'Модератор',
                 Contract::USER      =>  'Пользователь'
             ])
-            ->default(Contract::ADMIN);
+            ->default(Contract::MODERATOR);
         CRUD::field(Contract::NAME)->label('Имя');
         CRUD::field(Contract::SURNAME)->label('Фамилия');
         CRUD::field(Contract::LAST_NAME)->label('Отчество');

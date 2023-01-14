@@ -14,9 +14,14 @@
         <a href="javascript: window.print();" class="btn float-right"><i class="la la-print"></i></a>
         <h2>
             <span class="text-capitalize"><?php echo $crud->getHeading() ?? $crud->entity_name_plural; ?></span>
-            <small><?php echo $crud->getSubheading() ?? mb_ucfirst(trans('backpack::crud.preview')).' '.$crud->entity_name; ?>.</small>
+            <small><?php echo $crud->getSubheading() ?? mb_ucfirst(trans('backpack::crud.preview')).' '.$crud->entity_name; ?>
+
+                .</small>
             <?php if($crud->hasAccess('list')): ?>
-                <small class=""><a href="<?php echo e(url($crud->route)); ?>" class="font-sm"><i class="la la-angle-double-left"></i> <?php echo e(trans('backpack::crud.back_to_all')); ?> <span><?php echo e($crud->entity_name_plural); ?></span></a></small>
+                <small class=""><a href="<?php echo e(url($crud->route)); ?>" class="font-sm"><i
+                            class="la la-angle-double-left"></i> <?php echo e(trans('backpack::crud.back_to_all')); ?>
+
+                        <span><?php echo e($crud->entity_name_plural); ?></span></a></small>
             <?php endif; ?>
         </h2>
     </section>
@@ -26,19 +31,25 @@
     <div class="row">
         <div class="<?php echo e($crud->getShowContentClass()); ?>">
 
-
+            
             <div class="">
                 <?php if($crud->model->translationEnabled()): ?>
                     <div class="row">
                         <div class="col-md-12 mb-2">
-
+                            
                             <div class="btn-group float-right">
-                                <button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <?php echo e(trans('backpack::crud.language')); ?>: <?php echo e($crud->model->getAvailableLocales()[request()->input('_locale')?request()->input('_locale'):App::getLocale()]); ?> &nbsp; <span class="caret"></span>
+                                <button type="button" class="btn btn-sm btn-primary dropdown-toggle"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <?php echo e(trans('backpack::crud.language')); ?>
+
+                                    : <?php echo e($crud->model->getAvailableLocales()[request()->input('_locale')?request()->input('_locale'):App::getLocale()]); ?>
+
+                                    &nbsp; <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu">
                                     <?php $__currentLoopData = $crud->model->getAvailableLocales(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $locale): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                        <a class="dropdown-item" href="<?php echo e(url($crud->route.'/'.$entry->getKey().'/show')); ?>?_locale=<?php echo e($key); ?>"><?php echo e($locale); ?></a>
+                                        <a class="dropdown-item"
+                                           href="<?php echo e(url($crud->route.'/'.$entry->getKey().'/show')); ?>?_locale=<?php echo e($key); ?>"><?php echo e($locale); ?></a>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </ul>
                             </div>
@@ -125,23 +136,32 @@
                     <tr>
                         <th scope="row" class="fsize"><?php echo e($question->{Contract::ID}); ?></th>
                         <td class="fsize">
-                            <?php if($question->{Contract::IS_IMPORTANT}): ?> <div class="text-danger">Срочный</div> <?php endif; ?>
+                            <?php if($question->{Contract::IS_IMPORTANT}): ?>
+                                <div class="text-danger">Срочный</div>
+                            <?php endif; ?>
                             <?php if($question->{Contract::IS_PAID}): ?>
-                                <div class="<?php if($question->{Contract::STATUS} === 2): ?> bg-success <?php elseif($question->{Contract::STATUS} === 1): ?> bg-info <?php else: ?> bg-danger <?php endif; ?> rounded text-center mb-2"><?php echo e($status[$question->{Contract::STATUS}]); ?></div>
-                                <?php if($question->{Contract::PAYMENT_ID}): ?> <div class="font-weight-bold"><?php echo e($question->{Contract::PAYMENT_ID}); ?></div> <?php endif; ?>
+                                <div
+                                    class="<?php if($question->{Contract::STATUS} === 2): ?> bg-success <?php elseif($question->{Contract::STATUS} === 1): ?> bg-info <?php else: ?> bg-danger <?php endif; ?> rounded text-center mb-2"><?php echo e($status[$question->{Contract::STATUS}]); ?></div>
+                                <?php if($question->{Contract::PAYMENT_ID}): ?>
+                                    <div class="font-weight-bold"><?php echo e($question->{Contract::PAYMENT_ID}); ?></div>
+                                <?php endif; ?>
                             <?php else: ?>
                                 <div class="bg-secondary rounded text-center mb-2">Не оплачено</div>
                             <?php endif; ?>
-                            <?php if($question->{Contract::PRICE} > 0): ?> <div class="font-weight-bold text-success"><?php echo e($question->{Contract::PRICE}); ?> kzt</div> <?php endif; ?>
+                            <?php if($question->{Contract::PRICE} > 0): ?>
+                                <div class="font-weight-bold text-success"><?php echo e($question->{Contract::PRICE}); ?> kzt</div>
+                            <?php endif; ?>
                         </td>
                         <td class="fsize" width="33%">
-                            <div class="text-info font-weight-bold border-bottom pb-2 mb-2"><?php echo e(Carbon::createFromTimeStamp(strtotime($question->{Contract::CREATED_AT}))->diffForHumans()); ?></div>
-                            <?php echo e($question->{Contract::DESCRIPTION}); ?>
+                            <div
+                                class="text-info font-weight-bold border-bottom pb-2 mb-2"><?php echo e(Carbon::createFromTimeStamp(strtotime($question->{Contract::CREATED_AT}))->diffForHumans()); ?></div>
+                            <?php echo e($question->{Contract::TITLE}); ?>
 
                         </td>
                         <td class="fsize" width="33%">
                             <?php if($question->{Contract::STATUS} === 2): ?>
-                                <div class="text-info font-weight-bold border-bottom pb-2 mb-2"><?php echo e(Carbon::createFromTimeStamp(strtotime($question->{Contract::ANSWERED_AT}))->diffForHumans()); ?></div>
+                                <div
+                                    class="text-info font-weight-bold border-bottom pb-2 mb-2"><?php echo e(Carbon::createFromTimeStamp(strtotime($question->{Contract::ANSWERED_AT}))->diffForHumans()); ?></div>
                             <?php endif; ?>
                             <?php echo e($question->{Contract::ANSWER}); ?>
 
@@ -149,11 +169,14 @@
                         <td class="fsize">
                             <?php if($user): ?>
                                 <?php if($user->{Contract::ROLE} === Contract::LAWYER): ?>
-                                    <a href="/lawyer/<?php echo e($user->{Contract::ID}); ?>/show" class="text-info"><u><?php echo e($user->{Contract::NAME}); ?> <?php echo e($user->{Contract::SURNAME}); ?></u></a>
+                                    <a href="/lawyer/<?php echo e($user->{Contract::ID}); ?>/show"
+                                       class="text-info"><u><?php echo e($user->{Contract::NAME}); ?> <?php echo e($user->{Contract::SURNAME}); ?></u></a>
                                 <?php elseif($user->{Contract::ROLE} === Contract::ADMIN): ?>
-                                    <a href="/admin/<?php echo e($user->{Contract::ID}); ?>/show" class="text-info"><u><?php echo e($user->{Contract::NAME}); ?> <?php echo e($user->{Contract::SURNAME}); ?></u></a>
+                                    <a href="/admin/<?php echo e($user->{Contract::ID}); ?>/show"
+                                       class="text-info"><u><?php echo e($user->{Contract::NAME}); ?> <?php echo e($user->{Contract::SURNAME}); ?></u></a>
                                 <?php elseif($user->{Contract::ROLE} === Contract::USER): ?>
-                                    <a href="/user/<?php echo e($user->{Contract::ID}); ?>/show" class="text-info"><u><?php echo e($user->{Contract::NAME}); ?> <?php echo e($user->{Contract::SURNAME}); ?></u></a>
+                                    <a href="/user/<?php echo e($user->{Contract::ID}); ?>/show"
+                                       class="text-info"><u><?php echo e($user->{Contract::NAME}); ?> <?php echo e($user->{Contract::SURNAME}); ?></u></a>
                                 <?php endif; ?>
                             <?php endif; ?>
                         </td>

@@ -62,6 +62,7 @@ class LawyerCrudController extends CrudController
             ->type(Contract::SELECT_FROM_ARRAY)
             ->options([
                 Contract::ADMIN     =>  'Администратор',
+                Contract::MODERATOR =>  'Модератор',
                 Contract::LAWYER    =>  'Юрист',
                 Contract::USER      =>  'Пользователь'
             ])

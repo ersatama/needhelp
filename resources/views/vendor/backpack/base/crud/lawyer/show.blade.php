@@ -153,7 +153,7 @@
                         <td class="fsize" width="33%">
                             <div
                                 class="text-info font-weight-bold border-bottom pb-2 mb-2">{{  Carbon::createFromTimeStamp(strtotime($question->{Contract::CREATED_AT}))->diffForHumans() }}</div>
-                            {{ $question->{Contract::DESCRIPTION} }}
+                            {{ $question->{Contract::TITLE} }}
                         </td>
                         <td class="fsize" width="33%">
                             @if($question->{Contract::STATUS} === 2)

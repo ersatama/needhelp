@@ -37,7 +37,8 @@
                             <div class="question-header-timer" v-show="question.timerText">@{{ question.timerText }}</div>
                         </div>
                         <div class="question-main flex-grow-1">
-                            <div class="question-main-title">@{{ question.title.substr(0,100) }}...</div>
+                            <div class="question-main-title" v-if="['admin','moderator'].includes(role) || question.lawyer_id === user_id">@{{ question.title }}...</div>
+                            <div class="question-main-title" v-else>@{{ question.title.substr(0,100) }}...</div>
                             <div class="question-main-detail" v-if="question.answered_at">@{{ question.answer }}</div>
                         </div>
                         <div class="question-body">
@@ -133,7 +134,7 @@
                                 </div>
                             </div>
                             <div class="h6 font-weight-bold mb-2 text-center">Вопрос</div>
-                            <div class="modal-body-title text-muted mb-2" v-if="view.lawyer_id && user_id === view.lawyer_id">@{{view.title.trim()}}</div>
+                            <div class="modal-body-title text-muted mb-2" v-if="(view.lawyer_id && user_id === view.lawyer_id) || ['admin','moderator'].includes(role)">@{{view.title.trim()}}</div>
                             <div class="modal-body-title text-muted mb-2" v-else>@{{view.title.trim().substr(0,100)}} ...</div>
                             <template v-if="role === 'lawyer'">
                                 <template v-if="view.answered_at">
@@ -195,12 +196,12 @@
                             <template v-else>
                                 <div class=" d-flex justify-content-center" style="gap: 20px">
                                     <button class="modal-default-button btn btn-danger h6" @click="$emit('close')">Закрыть</button>
-                                    <template v-if="!status">
-                                        <button class="modal-default-button btn btn-success h6" @click="$emit('accept')">Принять вопрос</button>
+                                    <template v-if="!view.lawyer_id && role === 'lawyer'">
+                                        <button class="modal-default-button btn btn-success h6" @click="$emit('accept')" v-if="!status">Принять вопрос</button>
+                                        <button class="modal-default-button btn btn-success h6" disabled v-else>
+                                            <i class="fa fa-spinner fa-spin"></i> Загрузка ...
+                                        </button>
                                     </template>
-                                    <button class="modal-default-button btn btn-success h6" disabled v-else>
-                                        <i class="fa fa-spinner fa-spin"></i> Загрузка ...
-                                    </button>
                                 </div>
                             </template>
                         </div>

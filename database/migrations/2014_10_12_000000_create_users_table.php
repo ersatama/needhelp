@@ -22,6 +22,7 @@ return new class extends Migration
             $table->unsignedInteger(Contract::CITY_ID)->nullable();
             $table->enum(Contract::ROLE, [
                 Contract::ADMIN,
+                Contract::MODERATOR,
                 Contract::LAWYER,
                 Contract::USER
             ])->default(Contract::USER);

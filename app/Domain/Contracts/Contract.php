@@ -107,6 +107,7 @@ abstract class Contract
     const ROLE  =   'role';
     const FULLNAME  =   'fullname';
     const ADMIN =   'admin';
+    const MODERATOR =   'moderator';
     const LAWYER    =   'lawyer';
     const TIMER_TEXT    =   'timerText';
     const WOOPPAY   =   'wooppay';
