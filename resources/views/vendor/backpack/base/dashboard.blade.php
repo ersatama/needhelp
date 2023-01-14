@@ -809,8 +809,8 @@
                                 [Contract::CREATED_AT, '>', now()->subDays(7)->endOfDay()]
                             ]);
                             $status =   [
-                                1    =>  'Срочные вопросы',
-                                0   =>  'Обычные вопросы'
+                                false => 'Обычные вопросы',
+                                true => 'Срочные вопросы',
                             ];
                         @endphp
                         <canvas id="doughnut-week" width="400" height="220"></canvas>
@@ -836,16 +836,6 @@
                                                 'purple',
                                                 'magenta',
                                                 'darkcyan',
-                                                'grey',
-                                                'orange',
-                                                'lime',
-                                                'brown',
-                                                'blue',
-                                                'red',
-                                                'skyblue',
-                                                'green',
-                                                'pink',
-                                                'Gold',
                                             ],
                                             hoverOffset: 4
                                         }]
@@ -870,7 +860,7 @@
                         @endphp
                         <canvas id="doughnut-month" width="400" height="220"></canvas>
                         <script>
-                            notifications = [
+                            notMonth = [
                                     @foreach( $notificationMonth as &$notification)
                                 {
                                     is_important: '{{ $status[$notification['is_important']] }}',
@@ -883,23 +873,13 @@
                                 {
                                     type: 'doughnut',
                                     data: {
-                                        labels: notifications.map(row => row.is_important),
+                                        labels: notMonth.map(row => row.is_important),
                                         datasets: [{
-                                            data: notifications.map(row => row.count),
+                                            data: notMonth.map(row => row.count),
                                             backgroundColor: [
-                                                'purple',
-                                                'magenta',
-                                                'darkcyan',
-                                                'grey',
-                                                'orange',
-                                                'lime',
-                                                'brown',
-                                                'blue',
-                                                'red',
                                                 'skyblue',
+                                                'orange',
                                                 'green',
-                                                'pink',
-                                                'Gold',
                                             ],
                                             hoverOffset: 4
                                         }]

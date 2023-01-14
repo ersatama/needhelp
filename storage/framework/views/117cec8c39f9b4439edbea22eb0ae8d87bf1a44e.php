@@ -823,8 +823,8 @@
                                 [Contract::CREATED_AT, '>', now()->subDays(7)->endOfDay()]
                             ]);
                             $status =   [
-                                1    =>  'Срочные вопросы',
-                                0   =>  'Обычные вопросы'
+                                false => 'Обычные вопросы',
+                                true => 'Срочные вопросы',
                             ];
                         ?>
                         <canvas id="doughnut-week" width="400" height="220"></canvas>
@@ -851,16 +851,6 @@
                                                 'purple',
                                                 'magenta',
                                                 'darkcyan',
-                                                'grey',
-                                                'orange',
-                                                'lime',
-                                                'brown',
-                                                'blue',
-                                                'red',
-                                                'skyblue',
-                                                'green',
-                                                'pink',
-                                                'Gold',
                                             ],
                                             hoverOffset: 4
                                         }]
@@ -885,7 +875,7 @@
                         ?>
                         <canvas id="doughnut-month" width="400" height="220"></canvas>
                         <script>
-                            notifications = [
+                            notMonth = [
                                     <?php $__currentLoopData = $notificationMonth; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as &$notification): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 {
                                     is_important: '<?php echo e($status[$notification['is_important']]); ?>',
@@ -899,23 +889,13 @@
                                 {
                                     type: 'doughnut',
                                     data: {
-                                        labels: notifications.map(row => row.is_important),
+                                        labels: notMonth.map(row => row.is_important),
                                         datasets: [{
-                                            data: notifications.map(row => row.count),
+                                            data: notMonth.map(row => row.count),
                                             backgroundColor: [
-                                                'purple',
-                                                'magenta',
-                                                'darkcyan',
-                                                'grey',
-                                                'orange',
-                                                'lime',
-                                                'brown',
-                                                'blue',
-                                                'red',
                                                 'skyblue',
+                                                'orange',
                                                 'green',
-                                                'pink',
-                                                'Gold',
                                             ],
                                             hoverOffset: 4
                                         }]
