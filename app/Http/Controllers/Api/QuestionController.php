@@ -182,7 +182,7 @@ class QuestionController extends Controller
         if ($question = $this->questionService->questionRepository->firstById($id)) {
             if ($question->{Contract::ANSWER} && $question->{Contract::ANSWERED_AT}) {
                 return response(ErrorContract::QUESTION_ALREADY_ANSWERED, 400);
-            } else if (!$question->{Contract::LAWYER_ID} || $question->{Contract::LAWYER_ID} === $data[Contract::LAWYER_ID]) {
+            } else {
                 $question   =   $this->questionService->questionRepository->update($id, $data);
                 QuestionJob::dispatch($question);
             }
