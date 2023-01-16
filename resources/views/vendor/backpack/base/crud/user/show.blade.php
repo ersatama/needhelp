@@ -140,8 +140,8 @@
                             @if($question->{Contract::IS_PAID})
                                 <div
                                     class="@if($question->{Contract::STATUS} === 2) bg-success @elseif($question->{Contract::STATUS} === 1) bg-info @else bg-danger @endif rounded text-center mb-2">{{ $status[$question->{Contract::STATUS}] }}</div>
-                                @if($question->{Contract::PAYMENT_ID})
-                                    <div class="font-weight-bold">{{ $question->{Contract::PAYMENT_ID} }}</div>
+                                @if($question->{Contract::WOOPPAY})
+                                    <div class="font-weight-bold">{{ $question->{Contract::WOOPPAY}->{Contract::OPERATION_ID} }}</div>
                                 @endif
                             @else
                                 <div class="bg-secondary rounded text-center mb-2">Не оплачено</div>

@@ -86,6 +86,7 @@ class QuestionCrudController extends CrudController
             ->label('Вопрос')->limit(1000000);
         CRUD::column(Contract::PRICE)
             ->label('Цена');
+
         CRUD::column(Contract::IS_IMPORTANT)
             ->type('select_from_array')
             ->label('Срочный вопрос')->options([
