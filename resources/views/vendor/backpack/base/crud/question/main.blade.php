@@ -232,7 +232,7 @@
                                     <div class="modal-body-item-key text-muted">Цена</div>
                                     <div class="modal-body-item-value">@{{ answered_view.price }}</div>
                                 </div>
-                                <div class="modal-body-item" v-if="answered_view.wooppay">
+                                <div class="modal-body-item border-top" v-if="answered_view.wooppay">
                                     <div class="modal-body-item-key text-muted">ID платежа (wooppay)</div>
                                     <div class="modal-body-item-value">@{{ answered_view.wooppay.operation_id }}</div>
                                 </div>
