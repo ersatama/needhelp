@@ -29,3 +29,7 @@ Route::get('/terms', function () {
         'content-type'=>'application/pdf',
     ]);
 });
+
+Route::get('/privacy', function() {
+    return view('privacy.index');
+});
