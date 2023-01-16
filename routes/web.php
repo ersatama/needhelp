@@ -25,7 +25,7 @@ Route::controller(AuthController::class)->group(function() {
 });
 
 Route::get('/terms', function () {
-    return Response::make(file_get_contents('docs/terms-01.pdf'), 200, [
+    return Response::make(file_get_contents('docs/terms.pdf'), 200, [
         'content-type'=>'application/pdf',
     ]);
 });
