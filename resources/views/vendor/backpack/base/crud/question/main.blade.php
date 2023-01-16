@@ -134,12 +134,12 @@
                                 </div>
                             </div>
                             <div class="h6 font-weight-bold mb-2 text-center">Вопрос</div>
-                            <div class="modal-body-title text-muted mb-2" v-if="(view.lawyer_id && user_id === view.lawyer_id) || ['admin','moderator'].includes(role)">@{{view.title.trim()}}</div>
-                            <div class="modal-body-title text-muted mb-2" v-else>@{{view.title.trim().substr(0,100)}} ...</div>
+                            <div class="modal-body-title text-muted mb-2" v-if="(view.lawyer_id && user_id === view.lawyer_id) || ['admin','moderator'].includes(role)">@{{view.title}}</div>
+                            <div class="modal-body-title text-muted mb-2" v-else>@{{view.title.substr(0,100)}} ...</div>
                             <template v-if="role === 'lawyer'">
                                 <template v-if="view.answered_at">
                                     <div class="h6 font-weight-bold mb-2 text-center">Ответ</div>
-                                    <div class="modal-body-title" v-if="view.lawyer_id && user_id === view.lawyer_id">@{{view.answer.trim()}}</div>
+                                    <div class="modal-body-title" v-if="view.lawyer_id && user_id === view.lawyer_id">@{{view.answer}}</div>
                                     <div class="p-3 text-center border bg-secondary text-dark rounded h6 m-0 mt-4 font-weight-bold" v-else>Ждет ответа</div>
                                 </template>
                                 <template v-else>
@@ -156,7 +156,7 @@
                             <template v-else>
                                 <template v-if="view.answered_at">
                                     <div class="h6 font-weight-bold mb-2 text-center">Ответ</div>
-                                    <div class="modal-body-title">@{{  view.answer.trim() }}</div>
+                                    <div class="modal-body-title">@{{  view.answer }}</div>
                                 </template>
                                 <template v-else>
                                     <div class="p-3 text-center border bg-secondary text-dark rounded h6 m-0 mt-4 font-weight-bold">Ждет ответа</div>
@@ -242,10 +242,10 @@
                                 </div>
                             </div>
                             <div class="h6 font-weight-bold mb-2 text-center">Вопрос</div>
-                            <div class="modal-body-title text-muted mb-2">@{{answered_view.title.trim()}}</div>
+                            <div class="modal-body-title text-muted mb-2">@{{answered_view.title}}</div>
                             <template v-if="answered_view.answered_at">
                                 <div class="h6 font-weight-bold mb-2 text-center">Ответ</div>
-                                <div class="modal-body-title">@{{  answered_view.answer.trim() }}</div>
+                                <div class="modal-body-title">@{{  answered_view.answer }}</div>
                             </template>
                             <template v-else>
                                 <div class="p-3 text-center border bg-secondary text-dark rounded h6 m-0 mt-4 font-weight-bold">Ждет ответа</div>
