@@ -12,6 +12,7 @@ use App\Domain\Services\PaymentService;
 use App\Domain\Services\QuestionService;
 use App\Domain\Services\UserService;
 use App\Domain\Services\WooppayService;
+use App\Events\QuestionEvent;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Question\QuestionCollection;
 use App\Http\Resources\Question\QuestionResource;
@@ -179,12 +180,13 @@ class QuestionController extends Controller
     public function update($id, UpdateRequest $updateRequest): Response|QuestionResource|Application|ResponseFactory
     {
         $data   =    $updateRequest->checked();
+
         if ($question = $this->questionService->questionRepository->firstById($id)) {
             if ($question->{Contract::ANSWER} && $question->{Contract::ANSWERED_AT}) {
                 return response(ErrorContract::QUESTION_ALREADY_ANSWERED, 400);
             } else {
                 $question   =   $this->questionService->questionRepository->update($id, $data);
-                QuestionJob::dispatch($question);
+                event(new QuestionEvent($question));
             }
             return new QuestionResource($question);
         }

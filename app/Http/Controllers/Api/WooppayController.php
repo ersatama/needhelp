@@ -6,6 +6,7 @@ use App\Domain\Contracts\Contract;
 use App\Domain\Helpers\Wooppay;
 use App\Domain\Services\QuestionService;
 use App\Domain\Services\WooppayService;
+use App\Events\QuestionEvent;
 use App\Http\Controllers\Controller;
 use App\Jobs\QuestionJob;
 use Illuminate\Http\Request;
@@ -37,13 +38,13 @@ class WooppayController extends Controller
                             Contract::IS_PAID   =>  true,
                             Contract::STATUS    =>  1
                         ]);
-                        QuestionJob::dispatch($question);
+                        event(new QuestionEvent($question));
                     } elseif (in_array($wooppayStatus,[17,20])) {
                         $question   =   $this->questionService->questionRepository->update($questionId,[
                             Contract::IS_PAID   =>  false,
                             Contract::STATUS    =>  0
                         ]);
-                        QuestionJob::dispatch($question);
+                        event(new QuestionEvent($question));
                     }
                 }
             }

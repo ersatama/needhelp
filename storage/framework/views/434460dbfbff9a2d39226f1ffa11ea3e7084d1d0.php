@@ -122,6 +122,10 @@
                                     <div class="modal-body-item-key text-muted">Цена</div>
                                     <div class="modal-body-item-value">{{ view.price }}</div>
                                 </div>
+                                <div class="modal-body-item border-top" v-if="view.wooppay">
+                                    <div class="modal-body-item-key text-muted">ID платежа (wooppay)</div>
+                                    <div class="modal-body-item-value">{{ view.wooppay.operation_id }}</div>
+                                </div>
                                 <div class="modal-body-item border-top" v-if="view.lawyer">
                                     <div class="modal-body-item-key text-muted">Юрист</div>
                                     <div class="modal-body-item-value">{{ view.lawyer.name }} {{ view.lawyer.surname }}</div>
@@ -230,7 +234,7 @@
                                     <div class="modal-body-item-key text-muted">Цена</div>
                                     <div class="modal-body-item-value">{{ answered_view.price }}</div>
                                 </div>
-                                <div class="modal-body-item" v-if="answered_view.wooppay">
+                                <div class="modal-body-item border-top" v-if="answered_view.wooppay">
                                     <div class="modal-body-item-key text-muted">ID платежа (wooppay)</div>
                                     <div class="modal-body-item-value">{{ answered_view.wooppay.operation_id }}</div>
                                 </div>
@@ -461,6 +465,13 @@
                     this.getQuestions();
                     this.getAnsweredQuestions();
                 },
+                questionRemove(question) {
+                    for (let key in this.questions) {
+                        if (question.id === this.questions[key].id) {
+                            this.questions.splice(key, 1);
+                        }
+                    }
+                },
                 questionReplace(question) {
                     for (let key in this.questions) {
                         if (question.id === this.questions[key].id) {
@@ -516,7 +527,12 @@
                             answer: this.view.answer,
                         })
                         .then(response => {
-                            this.questionReplace(response.data.data);
+                            this.errorMessage   =   false;
+                            if (response.data.data.status === 2) {
+                                this.questionRemove(response.data.data);
+                            } else {
+                                this.questionReplace(response.data.data);
+                            }
                             this.refresh();
                         })
                         .catch(error => {
@@ -532,6 +548,9 @@
                             is_paid: this.is_paid,
                             status: 1,
                         };
+                        if (this.role === 'lawyer') {
+                            data.lawyer_id  =   null;
+                        }
                         if (this.search.trim() !== '') {
                             data.search =   this.search;
                         }
