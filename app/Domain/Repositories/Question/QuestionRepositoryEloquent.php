@@ -65,9 +65,7 @@ class QuestionRepositoryEloquent implements QuestionRepositoryInterface
 
     public function getWhere($where): Collection|array
     {
-        DB::enableQueryLog();
         $query = $this->getBuilder($where);
-        dd($query->toSql());
 
 
         return $query->get();
