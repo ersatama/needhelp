@@ -288,12 +288,12 @@ class QuestionRepositoryEloquent implements QuestionRepositoryInterface
             $query->orWhere(array_merge($arr, [
                 [Contract::TITLE, 'like', $where[Contract::SEARCH] . '%']
             ]));
+        } else if (array_key_exists(Contract::LAWYER_ID, $where)) {
+            $query->orWhere(array_merge($arr,[
+                [Contract::LAWYER_ID, null]
+            ]));
         } else {
-            if (array_key_exists(Contract::LAWYER_ID, $where)) {
-                $query->orWhere(array_merge($arr,[
-                    [Contract::LAWYER_ID, null]
-                ]));
-            }
+            $query->where($where);
         }
         return $query;
     }

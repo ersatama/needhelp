@@ -548,7 +548,7 @@
                     if (this.questionAjaxStatus) {
                         this.questionAjaxStatus =   false;
                         let data    =   {
-                            is_paid: this.is_paid,
+                            is_paid: true,
                             status: 1,
                         };
                         if (this.role === 'lawyer') {
