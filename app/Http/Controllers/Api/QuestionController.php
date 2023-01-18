@@ -186,8 +186,8 @@ class QuestionController extends Controller
                 return response(ErrorContract::QUESTION_ALREADY_ANSWERED, 400);
             } else {
                 $question   =   $this->questionService->questionRepository->update($id, $data);
-                event(new QuestionEvent($question));
             }
+            event(new QuestionEvent($question));
             return new QuestionResource($question);
         }
         return response(ErrorContract::NOT_FOUND, 404);
