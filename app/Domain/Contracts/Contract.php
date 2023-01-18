@@ -112,6 +112,7 @@ abstract class Contract
     const TIMER_TEXT    =   'timerText';
     const WOOPPAY   =   'wooppay';
     const TIMEZONE  =   'timezone';
+    const TIMEZONE_TIMER    =   'timezone_timer';
     const MANAGER   =   'manager';
     const USER  =   'user';
     const SURNAME   =   'surname';

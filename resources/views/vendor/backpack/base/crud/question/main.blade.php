@@ -355,7 +355,7 @@
                     }
                 },
                 getTimeDiff(item) {
-                    let timezone    =   new Date(item.timezone);
+                    let timezone    =   new Date(item.timezone_timer);
                     let now         =   new Date();
                     let secs        =   Math.floor((now.getTime() - timezone.getTime()) / 1000);
                     let limit       =   item.is_important?1800:3600;
