@@ -274,9 +274,11 @@ class QuestionRepositoryEloquent implements QuestionRepositoryInterface
         $query = $this->model::with('user', 'lawyer')->withoutGlobalScope(IsPaid::class);
 
         $arr    =   $data;
-        $query->where(array_merge($arr, [
-            [Contract::LAWYER_ID, $where[Contract::LAWYER_ID]]
-        ]));
+        if (array_key_exists(Contract::LAWYER_ID, $where)) {
+            $query->where(array_merge($arr, [
+                [Contract::LAWYER_ID, $where[Contract::LAWYER_ID]]
+            ]));
+        }
         $arr    =   $data;
         if (array_key_exists(Contract::SEARCH, $where)) {
             $query->orWhere(array_merge($arr, [
@@ -287,9 +289,11 @@ class QuestionRepositoryEloquent implements QuestionRepositoryInterface
                 [Contract::TITLE, 'like', $where[Contract::SEARCH] . '%']
             ]));
         } else {
-            $query->orWhere(array_merge($arr,[
-                [Contract::LAWYER_ID, null]
-            ]));
+            if (array_key_exists(Contract::LAWYER_ID, $where)) {
+                $query->orWhere(array_merge($arr,[
+                    [Contract::LAWYER_ID, null]
+                ]));
+            }
         }
         return $query;
     }
