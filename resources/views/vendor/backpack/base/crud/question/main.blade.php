@@ -396,6 +396,8 @@
                 checkQuestion(question) {
                     if (question.status === 2 || (question.lawyer_id !== parseInt(this.user_id) && question.lawyer_id)) {
                         this.questionRemove(question);
+                        this.status =   false;
+                        this.errorMessage   =   false;
                     } else {
                         this.questionReplace(question);
                     }
@@ -405,7 +407,6 @@
                         .get('/api/v1/question/firstById/'+data.data.id+'?timezone='+Intl.DateTimeFormat().resolvedOptions().timeZone)
                         .then(response => {
                             this.checkQuestion(response.data.data);
-                            this.refresh();
                         })
                         .catch(error => {
                             console.log(error);
@@ -500,8 +501,6 @@
                             lawyer_id: null,
                         })
                         .then(response => {
-                            this.status =   false;
-                            this.errorMessage   =   false;
                             this.checkQuestion(response.data.data);
                         })
                         .catch(error => {
@@ -518,8 +517,6 @@
                             lawyer_id: this.user_id,
                         })
                         .then(response => {
-                            this.status =   false;
-                            this.errorMessage   =   false;
                             this.checkQuestion(response.data.data);
                         })
                         .catch(error => {
@@ -554,7 +551,6 @@
                             is_paid: this.is_paid,
                             status: 1,
                         };
-                        console.log(this.role);
                         if (this.role === 'lawyer') {
                             data.lawyer_id  =   this.user_id;
                         }
