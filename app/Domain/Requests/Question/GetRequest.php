@@ -12,7 +12,8 @@ class GetRequest extends MainRequest
         return [
             Contract::IS_PAID   =>  'nullable|boolean',
             Contract::STATUS    =>  'nullable',
-            Contract::SEARCH    =>  'nullable'
+            Contract::SEARCH    =>  'nullable',
+            Contract::LAWYER_ID =>  'nullable|exists:users,id'
         ];
     }
 

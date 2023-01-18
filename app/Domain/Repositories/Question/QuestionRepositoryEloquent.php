@@ -9,6 +9,7 @@ use App\Models\Question;
 use Carbon\Carbon;
 use DateTime;
 use Exception;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
 
@@ -257,17 +258,21 @@ class QuestionRepositoryEloquent implements QuestionRepositoryInterface
 
     /**
      * @param $where
-     * @return \Illuminate\Database\Eloquent\Builder
+     * @return Builder
      */
-    public function getBuilder($where): \Illuminate\Database\Eloquent\Builder
+    public function getBuilder($where): Builder
     {
         $data = [];
         foreach ($where as $key => $value) {
-            if ($key !== Contract::SEARCH) {
+            if ($key !== Contract::SEARCH && $key !== Contract::LAWYER_ID) {
                 $data[] = [$key, $value];
             }
         }
         $query = $this->model::with('user', 'lawyer');
+        if (array_key_exists(Contract::LAWYER_ID, $where)) {
+            $query->whereIn(Contract::LAWYER_ID, $where[Contract::LAWYER_ID]);
+            $query->orWhereNotNull(Contract::LAWYER_ID);
+        }
         if (array_key_exists(Contract::SEARCH, $where)) {
             $query->where(array_merge($data, [
                 [Contract::ID, 'like', $where[Contract::SEARCH] . '%']

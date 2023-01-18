@@ -548,8 +548,9 @@
                             is_paid: this.is_paid,
                             status: 1,
                         };
+                        console.log(this.role);
                         if (this.role === 'lawyer') {
-                            data.lawyer_id  =   null;
+                            data.lawyer_id  =   this.user_id;
                         }
                         if (this.search.trim() !== '') {
                             data.search =   this.search;
