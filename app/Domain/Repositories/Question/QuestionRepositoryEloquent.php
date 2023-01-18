@@ -276,19 +276,21 @@ class QuestionRepositoryEloquent implements QuestionRepositoryInterface
             $query->orWhereNull(Contract::LAWYER_ID);
         }
         if (array_key_exists(Contract::SEARCH, $where)) {
-            $query->where(array_merge($data, [
+            $arr    =   $data;
+            $query->where(array_merge($arr, [
                 [Contract::ID, 'like', $where[Contract::SEARCH] . '%']
             ]));
-            $query->orWhere(array_merge($data, [
+            $arr    =   $data;
+            $query->orWhere(array_merge($arr, [
                 [Contract::ANSWER, 'like', $where[Contract::SEARCH] . '%']
             ]));
-            $query->orWhere(array_merge($data, [
+            $arr    =   $data;
+            $query->orWhere(array_merge($arr, [
                 [Contract::TITLE, 'like', $where[Contract::SEARCH] . '%']
             ]));
         } else {
             $query->where($data);
         }
-        dd($query->toSql());
         return $query;
     }
 }
