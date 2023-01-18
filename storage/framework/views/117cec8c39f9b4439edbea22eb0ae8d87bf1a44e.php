@@ -27,7 +27,7 @@
                         'type'          => 'progress_white',
                         'class'         => 'card mb-2',
                         'wrapper'       =>  ['class' => 'col-sm-3'],
-                        'value'         =>  '<span class="text-primary">' . UserRepositoryEloquent::count([Contract::ROLE=>Contract::LAWYER]) . '</span>',
+                        'value'         =>  '<span class="text-info">' . UserRepositoryEloquent::count([Contract::ROLE=>Contract::LAWYER]) . '</span>',
                         'description'   => 'Юристов в системе',
                         'progress'      => 100, // integer
                         'progressClass' => 'progress-bar bg-info',
@@ -50,7 +50,7 @@
                         'value'         =>  '<span class="text-warning">' . QuestionRepositoryEloquent::countQuestionToday() . '</span>',
                         'description'   => 'Закрытых вопрос за сегодня',
                         'progress'      => 100, // integer
-                        'progressClass' => 'progress-bar bg-danger',
+                        'progressClass' => 'progress-bar bg-warning',
                     ],
                 ],
             ];

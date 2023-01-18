@@ -185,6 +185,9 @@ class QuestionController extends Controller
             if ($question->{Contract::ANSWER} && $question->{Contract::ANSWERED_AT}) {
                 return response(ErrorContract::QUESTION_ALREADY_ANSWERED, 400);
             } else {
+                if (array_key_exists(Contract::ANSWER, $data)) {
+                    $data[Contract::STATUS] =   2;
+                }
                 $question   =   $this->questionService->questionRepository->update($id, $data);
             }
             event(new QuestionEvent($question));

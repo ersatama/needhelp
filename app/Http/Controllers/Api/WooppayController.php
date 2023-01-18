@@ -38,7 +38,7 @@ class WooppayController extends Controller
                             Contract::CREATED_AT    =>  date('Y-m-d H:i:s'),
                             Contract::IS_PAID   =>  true,
                             Contract::STATUS    =>  1
-                        ], false);
+                        ]);
                         event(new QuestionEvent($question));
                     } elseif (in_array($wooppayStatus,[17,20])) {
                         $question   =   $this->questionService->questionRepository->update($questionId,[
