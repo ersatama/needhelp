@@ -4,6 +4,7 @@ namespace App\Domain\Repositories\Question;
 
 use App\Domain\Contracts\Contract;
 use App\Domain\Repositories\RepositoryEloquent;
+use App\Domain\Scopes\IsPaid;
 use App\Domain\Scopes\Page;
 use App\Models\Question;
 use Carbon\Carbon;
@@ -268,7 +269,7 @@ class QuestionRepositoryEloquent implements QuestionRepositoryInterface
                 $data[] = [$key, $value];
             }
         }
-        $query = $this->model::with('user', 'lawyer');
+        $query = $this->model::with('user', 'lawyer')->withoutGlobalScope(IsPaid::class);
 
         if (array_key_exists(Contract::LAWYER_ID, $where)) {
             $query->where(Contract::LAWYER_ID, $where[Contract::LAWYER_ID]);
