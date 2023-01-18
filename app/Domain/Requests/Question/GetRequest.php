@@ -10,7 +10,6 @@ class GetRequest extends MainRequest
     public function rules():array
     {
         return [
-            Contract::IS_PAID   =>  'nullable|boolean',
             Contract::STATUS    =>  'nullable',
             Contract::SEARCH    =>  'nullable',
             Contract::LAWYER_ID =>  'nullable|exists:users,id'

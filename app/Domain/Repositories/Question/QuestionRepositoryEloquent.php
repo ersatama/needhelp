@@ -269,7 +269,7 @@ class QuestionRepositoryEloquent implements QuestionRepositoryInterface
                 $data[] = [$key, $value];
             }
         }
-        $query = $this->model::with('user', 'lawyer')->withoutGlobalScope(IsPaid::class);
+        $query = $this->model::with('user', 'lawyer');
 
         if (array_key_exists(Contract::LAWYER_ID, $where)) {
             $query->where(Contract::LAWYER_ID, $where[Contract::LAWYER_ID]);
@@ -288,6 +288,7 @@ class QuestionRepositoryEloquent implements QuestionRepositoryInterface
         } else {
             $query->where($data);
         }
+        dd($query->toSql());
         return $query;
     }
 }
