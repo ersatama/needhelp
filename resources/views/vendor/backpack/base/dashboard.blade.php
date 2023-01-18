@@ -16,7 +16,7 @@
                     [
                         'type'          => 'progress_white',
                         'class'         => 'card mb-2',
-                        'wrapper'       =>  ['class' => 'col-sm-4'],
+                        'wrapper'       =>  ['class' => 'col-sm-3'],
                         'value'         =>  '<span class="text-primary">' . UserRepositoryEloquent::count([
                             Contract::ROLE  =>  Contract::USER
 ]) . '</span>',
@@ -27,22 +27,31 @@
                     [
                         'type'          => 'progress_white',
                         'class'         => 'card mb-2',
-                        'wrapper'       =>  ['class' => 'col-sm-4'],
-                        'value'         =>  '<span class="text-primary">' . UserRepositoryEloquent::count([Contract::ROLE=>Contract::LAWYER]) . '</span>',
+                        'wrapper'       =>  ['class' => 'col-sm-3'],
+                        'value'         =>  '<span class="text-info">' . UserRepositoryEloquent::count([Contract::ROLE=>Contract::LAWYER]) . '</span>',
                         'description'   => 'Юристов в системе',
                         'progress'      => 100, // integer
-                        'progressClass' => 'progress-bar bg-primary',
+                        'progressClass' => 'progress-bar bg-info',
                     ],
                     [
                         'type'          => 'progress_white',
                         'class'         => 'card mb-2',
-                        'wrapper'       =>  ['class' => 'col-sm-4'],
+                        'wrapper'       =>  ['class' => 'col-sm-3'],
                         'value'         =>  '<span class="text-danger">' . QuestionRepositoryEloquent::count([
                             Contract::IS_PAID   =>  true
 ]) . '</span>',
                         'description'   => 'Вопросов за все время',
                         'progress'      => 100, // integer
                         'progressClass' => 'progress-bar bg-danger',
+                    ],
+                    [
+                        'type'          => 'progress_white',
+                        'class'         => 'card mb-2',
+                        'wrapper'       =>  ['class' => 'col-sm-3'],
+                        'value'         =>  '<span class="text-warning">' . QuestionRepositoryEloquent::countQuestionToday() . '</span>',
+                        'description'   => 'Закрытых вопрос за сегодня',
+                        'progress'      => 100, // integer
+                        'progressClass' => 'progress-bar bg-warning',
                     ],
                 ],
             ];
