@@ -65,7 +65,11 @@ class QuestionRepositoryEloquent implements QuestionRepositoryInterface
 
     public function getWhere($where): Collection|array
     {
+        DB::enableQueryLog();
         $query = $this->getBuilder($where);
+        dd($query->toSql());
+
+
         return $query->get();
     }
 
@@ -265,31 +269,29 @@ class QuestionRepositoryEloquent implements QuestionRepositoryInterface
     {
         $data = [];
         foreach ($where as $key => $value) {
-            if ($key !== Contract::SEARCH && $key !== Contract::LAWYER_ID) {
+            if ($key !== Contract::SEARCH && $key !== Contract::LAWYER_ID ) {
                 $data[] = [$key, $value];
             }
         }
-        $query = $this->model::with('user', 'lawyer');
+        $query = $this->model::with('user', 'lawyer')->withoutGlobalScope(IsPaid::class);
 
-        if (array_key_exists(Contract::LAWYER_ID, $where)) {
-            $query->where(Contract::LAWYER_ID, $where[Contract::LAWYER_ID]);
-            $query->orWhereNull(Contract::LAWYER_ID);
-        }
+        $arr    =   $data;
+        $query->where(array_merge($arr, [
+            [Contract::LAWYER_ID, $where[Contract::LAWYER_ID]]
+        ]));
+        $arr    =   $data;
         if (array_key_exists(Contract::SEARCH, $where)) {
-            $arr    =   $data;
-            $query->where(array_merge($arr, [
-                [Contract::ID, 'like', $where[Contract::SEARCH] . '%']
-            ]));
-            $arr    =   $data;
             $query->orWhere(array_merge($arr, [
-                [Contract::ANSWER, 'like', $where[Contract::SEARCH] . '%']
+                [Contract::LAWYER_ID, $where[Contract::LAWYER_ID]]
             ]));
             $arr    =   $data;
             $query->orWhere(array_merge($arr, [
                 [Contract::TITLE, 'like', $where[Contract::SEARCH] . '%']
             ]));
         } else {
-            $query->where($data);
+            $query->orWhere(array_merge($arr,[
+                [Contract::LAWYER_ID, null]
+            ]));
         }
         return $query;
     }
