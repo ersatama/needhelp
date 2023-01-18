@@ -269,9 +269,10 @@ class QuestionRepositoryEloquent implements QuestionRepositoryInterface
             }
         }
         $query = $this->model::with('user', 'lawyer');
+
         if (array_key_exists(Contract::LAWYER_ID, $where)) {
-            $query->whereIn(Contract::LAWYER_ID, $where[Contract::LAWYER_ID]);
-            $query->orWhereNotNull(Contract::LAWYER_ID);
+            $query->where(Contract::LAWYER_ID, $where[Contract::LAWYER_ID]);
+            $query->orWhereNull(Contract::LAWYER_ID);
         }
         if (array_key_exists(Contract::SEARCH, $where)) {
             $query->where(array_merge($data, [

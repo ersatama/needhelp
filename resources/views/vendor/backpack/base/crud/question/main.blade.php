@@ -530,7 +530,7 @@
                         })
                         .then(response => {
                             this.errorMessage   =   false;
-                            if (response.data.data.status === 2) {
+                            if (response.data.data.status === 2 || (response.data.data.lawyer_id !== parseInt(this.user_id) && response.data.data.lawyer_id)) {
                                 this.questionRemove(response.data.data);
                             } else {
                                 this.questionReplace(response.data.data);
