@@ -393,11 +393,19 @@
                         console.log(e);
                     }
                 },
+                checkQuestion(question) {
+                    if (question.status === 2 || (question.lawyer_id !== parseInt(this.user_id) && question.lawyer_id)) {
+                        this.questionRemove(question);
+                    } else {
+                        this.questionReplace(question);
+                    }
+                },
                 newQuestion(data) {
                     axios
                         .get('/api/v1/question/firstById/'+data.data.id+'?timezone='+Intl.DateTimeFormat().resolvedOptions().timeZone)
                         .then(response => {
-                            this.updateQuestion(response.data.data);
+                            this.checkQuestion(response.data.data);
+                            this.refresh();
                         })
                         .catch(error => {
                             console.log(error);
@@ -494,7 +502,7 @@
                         .then(response => {
                             this.status =   false;
                             this.errorMessage   =   false;
-                            this.questionReplace(response.data.data);
+                            this.checkQuestion(response.data.data);
                         })
                         .catch(error => {
                             this.errorMessage   =   true;
@@ -512,7 +520,7 @@
                         .then(response => {
                             this.status =   false;
                             this.errorMessage   =   false;
-                            this.questionReplace(response.data.data);
+                            this.checkQuestion(response.data.data);
                         })
                         .catch(error => {
                             this.errorMessage   =   true;
@@ -530,11 +538,7 @@
                         })
                         .then(response => {
                             this.errorMessage   =   false;
-                            if (response.data.data.status === 2 || (response.data.data.lawyer_id !== parseInt(this.user_id) && response.data.data.lawyer_id)) {
-                                this.questionRemove(response.data.data);
-                            } else {
-                                this.questionReplace(response.data.data);
-                            }
+                            this.checkQuestion(response.data.data);
                             this.refresh();
                         })
                         .catch(error => {
