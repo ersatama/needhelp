@@ -40,8 +40,7 @@ trait RepositoryEloquent
 
     public function update($id, $data)
     {
-        $query  =   $this->model::where(Contract::ID, $id)->withoutGlobalScope(IsPaid::class)->first();
-        $query->update($data);
+        $this->model::where(Contract::ID, $id)->withoutGlobalScope(IsPaid::class)->update($data);
         return $this->firstById($id);
     }
 

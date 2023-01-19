@@ -8,6 +8,7 @@ use App\Domain\Helpers\Wooppay;
 use App\Domain\Requests\Question\CreateRequest;
 use App\Domain\Requests\Question\GetRequest;
 use App\Domain\Requests\Question\UpdateRequest;
+use App\Domain\Services\NotificationService;
 use App\Domain\Services\PaymentService;
 use App\Domain\Services\QuestionService;
 use App\Domain\Services\UserService;
@@ -32,14 +33,16 @@ class QuestionController extends Controller
     protected PaymentService $paymentService;
     protected WooppayService $wooppayService;
     protected Wooppay $wooppay;
+    protected NotificationService $notificationService;
 
-    public function __construct(QuestionService $questionService, UserService $userService, PaymentService $paymentService, WooppayService $wooppayService, Wooppay $wooppay)
+    public function __construct(QuestionService $questionService, UserService $userService, PaymentService $paymentService, WooppayService $wooppayService, Wooppay $wooppay, NotificationService $notificationService)
     {
         $this->questionService  =   $questionService;
         $this->userService      =   $userService;
         $this->paymentService   =   $paymentService;
         $this->wooppayService   =   $wooppayService;
         $this->wooppay          =   $wooppay;
+        $this->notificationService  =   $notificationService;
     }
 
     /**
@@ -189,6 +192,12 @@ class QuestionController extends Controller
                     $data[Contract::STATUS] =   2;
                 }
                 $question   =   $this->questionService->questionRepository->update($id, $data);
+                $this->notificationService->notificationRepository->create([
+                    Contract::USER_ID   =>  $question->{Contract::USER_ID},
+                    Contract::TYPE  =>  1,
+                    Contract::QUESTION_ID   =>  $question->{Contract::ID},
+                    Contract::STATUS    =>  true
+                ]);
             }
             event(new QuestionEvent($question));
             return new QuestionResource($question);
