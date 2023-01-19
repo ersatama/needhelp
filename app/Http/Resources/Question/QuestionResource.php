@@ -23,10 +23,10 @@ class QuestionResource extends JsonResource
             Contract::WOOPPAY   =>  new WooppayResource($this->{Contract::WOOPPAY})
         ];
         if (request()->has(Contract::TIMEZONE)) {
-            $arr[Contract::TIMEZONE]    =   Carbon::createFromTimestamp(strtotime($this->{Contract::UPDATED_AT}))
+            $arr[Contract::TIMEZONE_TIMER]    =   Carbon::createFromTimestamp(strtotime($this->{Contract::CREATED_AT}))
                 ->timezone(request()->input(Contract::TIMEZONE))
                 ->toDateTimeString();
-            $arr[Contract::TIMEZONE_TIMER]    =   Carbon::createFromTimestamp(strtotime($this->{Contract::CREATED_AT}))
+            $arr[Contract::TIMEZONE]    =   Carbon::createFromTimestamp(strtotime($this->{Contract::UPDATED_AT}))
                 ->timezone(request()->input(Contract::TIMEZONE))
                 ->toDateTimeString();
             $arr[Contract::CREATED_AT]  =   Carbon::createFromTimestamp(strtotime($this->{Contract::CREATED_AT}))
