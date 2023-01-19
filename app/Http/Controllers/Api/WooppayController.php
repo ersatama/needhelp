@@ -33,20 +33,23 @@ class WooppayController extends Controller
                 $status =   $this->wooppay->status($wooppay);
                 if (array_key_exists(Contract::STATUS, $status)) {
                     $wooppayStatus  =   (int) $status[Contract::STATUS];
-                    if (in_array($wooppayStatus,[19,14])) {
-                        $question   =   $this->questionService->questionRepository->update($questionId,[
-                            Contract::CREATED_AT    =>  date('Y-m-d H:i:s'),
-                            Contract::IS_PAID   =>  true,
-                            Contract::STATUS    =>  1
-                        ]);
-                        event(new QuestionEvent($question));
-                    } elseif (in_array($wooppayStatus,[17,20])) {
-                        $question   =   $this->questionService->questionRepository->update($questionId,[
-                            Contract::CREATED_AT    =>  date('Y-m-d H:i:s'),
-                            Contract::IS_PAID   =>  false,
-                            Contract::STATUS    =>  0
-                        ]);
-                        event(new QuestionEvent($question));
+                    $question   =   $this->questionService->questionRepository->firstById($questionId);
+                    if ($question->{Contract::STATUS} !== 2) {
+                        if (in_array($wooppayStatus,[19,14])) {
+                            $question   =   $this->questionService->questionRepository->update($questionId,[
+                                Contract::CREATED_AT    =>  date('Y-m-d H:i:s'),
+                                Contract::IS_PAID   =>  true,
+                                Contract::STATUS    =>  1
+                            ]);
+                            event(new QuestionEvent($question));
+                        } elseif (in_array($wooppayStatus,[17,20])) {
+                            $question   =   $this->questionService->questionRepository->update($questionId,[
+                                Contract::CREATED_AT    =>  date('Y-m-d H:i:s'),
+                                Contract::IS_PAID   =>  false,
+                                Contract::STATUS    =>  0
+                            ]);
+                            event(new QuestionEvent($question));
+                        }
                     }
                 }
             }
