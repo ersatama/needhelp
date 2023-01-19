@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="60px" height="60px" viewBox="0 0 60 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon</title>
+    <g id="Landing-Page" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Landing---Finance-App" transform="translate(-875.000000, -1116.000000)">
+            <g id="Feature" transform="translate(0.000000, 911.000000)">
+                <g id="content" transform="translate(293.000000, 80.000000)">
+                    <g id="features" transform="translate(0.000000, 125.000000)">
+                        <g id="icon" transform="translate(582.000000, 0.000000)">
+                            <path d="M30,60 C46.5685425,60 60,46.5685425 60,30 C60,13.4314575 46.5685425,0 30,0 C13.4314575,0 0,13.4314575 0,30 C0,46.5685425 13.4314575,60 30,60 Z" id="BG" fill="#FABB18" opacity="0.200000003"></path>
+                            <g id="rotate-lock" transform="translate(15.000000, 15.000000)" stroke="#FABB18" stroke-linecap="round" stroke-width="2.25">
+                                <path d="M12,12 L12,10.5 C12,8.843145 13.3431,7.5 15,7.5 L15,7.5 C16.6569,7.5 18,8.843145 18,10.5 L18,12" id="Path" stroke-linejoin="round"></path>
+                                <path d="M18,12 L12,12 C10.343145,12 9,13.3431 9,15 L9,18 C9,19.6569 10.343145,21 12,21 L18,21 C19.6569,21 21,19.6569 21,18 L21,15 C21,13.3431 19.6569,12 18,12 Z" id="Path" stroke-linejoin="round"></path>
+                                <path d="M30,15 C30,6.715725 23.2842,0 15,0 C6.715725,0 0,6.715725 0,15 C0,23.2842 6.715725,30 15,30 C20.8896,30 25.9863,26.6058 28.44075,21.6666" id="Path"></path>
+                                <line x1="30" y1="15" x2="25.5" y2="13.5" id="Path" stroke-linejoin="round"></line>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
