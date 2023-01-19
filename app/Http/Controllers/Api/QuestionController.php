@@ -187,23 +187,21 @@ class QuestionController extends Controller
         if ($question = $this->questionService->questionRepository->firstById($id)) {
             if ($question->{Contract::ANSWER} && $question->{Contract::ANSWERED_AT}) {
                 return response(ErrorContract::QUESTION_ALREADY_ANSWERED, 400);
-            } else {
-                if ($question->{Contract::STATUS} !== 2) {
-                    if (array_key_exists(Contract::ANSWER, $data)) {
-                        $data[Contract::STATUS] =   2;
-                    }
-                    $question   =   $this->questionService->questionRepository->update($id, $data);
-                    if (array_key_exists(Contract::ANSWER, $data)) {
-                        $this->notificationService->notificationRepository->create([
-                            Contract::USER_ID   =>  $question->{Contract::USER_ID},
-                            Contract::TYPE  =>  1,
-                            Contract::QUESTION_ID   =>  $question->{Contract::ID},
-                            Contract::STATUS    =>  true
-                        ]);
-                    }
+            } elseif ($question->{Contract::STATUS} !== 2) {
+                if (array_key_exists(Contract::ANSWER, $data)) {
+                    $data[Contract::STATUS] =   2;
                 }
+                $question   =   $this->questionService->questionRepository->update($id, $data);
+                if (array_key_exists(Contract::ANSWER, $data)) {
+                    $this->notificationService->notificationRepository->create([
+                        Contract::USER_ID   =>  $question->{Contract::USER_ID},
+                        Contract::TYPE  =>  1,
+                        Contract::QUESTION_ID   =>  $question->{Contract::ID},
+                        Contract::STATUS    =>  true
+                    ]);
+                }
+                event(new QuestionEvent($question));
             }
-            event(new QuestionEvent($question));
             return new QuestionResource($question);
         }
         return response(ErrorContract::NOT_FOUND, 404);
