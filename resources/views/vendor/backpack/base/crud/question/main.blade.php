@@ -485,10 +485,15 @@
                     }
                 },
                 questionReplace(question) {
+                    let status  =   true;
                     for (let key in this.questions) {
                         if (question.id === this.questions[key].id) {
                             this.questions.splice(key, 1, question);
+                            status  =   false;
                         }
+                    }
+                    if (status) {
+                        this.updateQuestion(question);
                     }
                     if (this.view.id === question.id) {
                         this.detail(question.id);

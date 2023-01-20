@@ -1,1 +1,0 @@
-</<?php echo e($widget['wrapper']['element'] ?? 'div'); ?>><?php /**PATH C:\Projects\needhelp\resources\views/vendor/backpack/base/widgets/inc/wrapper_end.blade.php ENDPATH**/ ?>
