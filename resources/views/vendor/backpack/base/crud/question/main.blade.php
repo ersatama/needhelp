@@ -495,6 +495,7 @@
                     if (status) {
                         this.updateQuestion(question);
                     }
+
                     if (this.view.id === question.id) {
                         this.detail(question.id);
                     }
