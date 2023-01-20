@@ -353,7 +353,8 @@
                     }
                 },
                 getTimeDiff(item) {
-                    let timezone    =   new Date(item.timezone);
+                    console.log(item.timezone_timer);
+                    let timezone    =   new Date(item.timezone_timer);
                     let now         =   new Date();
                     let secs        =   Math.floor((now.getTime() - timezone.getTime()) / 1000);
                     let limit       =   item.is_important?1800:3600;
@@ -546,7 +547,7 @@
                     if (this.questionAjaxStatus) {
                         this.questionAjaxStatus =   false;
                         let data    =   {
-                            is_paid: this.is_paid,
+                            is_paid: true,
                             status: 1,
                         };
                         if (this.role === 'lawyer') {

@@ -37,14 +37,12 @@ class WooppayController extends Controller
                     if ($question->{Contract::STATUS} !== 2) {
                         if (in_array($wooppayStatus,[19,14])) {
                             $question   =   $this->questionService->questionRepository->update($questionId,[
-                                Contract::CREATED_AT    =>  date('Y-m-d H:i:s'),
                                 Contract::IS_PAID   =>  true,
                                 Contract::STATUS    =>  1
                             ]);
                             event(new QuestionEvent($question));
                         } elseif (in_array($wooppayStatus,[17,20])) {
                             $question   =   $this->questionService->questionRepository->update($questionId,[
-                                Contract::CREATED_AT    =>  date('Y-m-d H:i:s'),
                                 Contract::IS_PAID   =>  false,
                                 Contract::STATUS    =>  0
                             ]);

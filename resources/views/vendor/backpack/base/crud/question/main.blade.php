@@ -355,6 +355,7 @@
                     }
                 },
                 getTimeDiff(item) {
+                    console.log(item.timezone_timer);
                     let timezone    =   new Date(item.timezone_timer);
                     let now         =   new Date();
                     let secs        =   Math.floor((now.getTime() - timezone.getTime()) / 1000);
