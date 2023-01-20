@@ -364,7 +364,11 @@
                         return '00:00';
                     }
                     let diff    =   limit - secs;
-                    return Math.floor(diff / 60) + ':' + (diff % 60);
+                    let min     =   Math.floor(diff / 60);
+                    min         =   (min.toString().length === 1)?('0'+min):min;
+                    let sec     =   (diff % 60);
+                    sec         =   (sec.toString().length === 1)?('0'+sec):sec;
+                    return min + ':' + sec;
                 },
                 timerCheck() {
                     this.questions.forEach((item,key) => {
