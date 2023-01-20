@@ -368,7 +368,6 @@
                 },
                 timerCheck() {
                     this.questions.forEach((item,key) => {
-
                         this.questions[key].timerText  =   this.getTimeDiff(item);
                     });
                     setTimeout(() => {
