@@ -26,9 +26,18 @@ class NotificationController extends Controller
      *
      * @group Notification
      */
-    public function getByUserId($userId): NotificationCollection
+    public function getByUserId($userId): Response|Application|ResponseFactory
     {
-        return new NotificationCollection($this->notificationService->notificationRepository->getByUserId($userId));
+        return response([
+            Contract::COUNT =>  $this->notificationService->notificationRepository->count([
+                Contract::USER_ID   =>  $userId
+            ]),
+            Contract::UNVIEWED  =>  $this->notificationService->notificationRepository->count([
+                Contract::USER_ID   =>  $userId,
+                Contract::STATUS    =>  true
+            ]),
+            Contract::DATA  =>  new NotificationCollection($this->notificationService->notificationRepository->getByUserId($userId))
+        ]);
     }
 
     /**

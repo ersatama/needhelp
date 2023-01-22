@@ -43,6 +43,7 @@ abstract class Contract
     const IS_NEW    =   'is_new';
     const DATE  =   'date';
     const COUNT =   'count';
+    const UNVIEWED  =   'unviewed';
     const AVERAGE   =   'average';
     const DATA  =   'data';
     const READONLY  =   'readonly';

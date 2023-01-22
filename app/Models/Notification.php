@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Domain\Contracts\Contract;
 use App\Domain\Contracts\NotificationContract;
 use App\Domain\Scopes\OrderBy;
 use App\Domain\Scopes\Page;
@@ -24,6 +25,6 @@ class Notification extends Model
 
     public function question(): BelongsTo
     {
-        return $this->belongsTo(Question::class);
+        return $this->belongsTo(Question::class)->withoutGlobalScopes([Page::class, OrderBy::class]);
     }
 }
