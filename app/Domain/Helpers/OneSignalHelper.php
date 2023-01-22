@@ -19,35 +19,43 @@ class OneSignalHelper
     public function send(Notification $notification)
     {
         if ($user = $this->userService->userRepository->firstById($notification->{Contract::USER_ID}) ) {
-            $title  =   '';
-            if ($user->{Contract::LANGUAGE_ID} === 1) {
-                $title  =   'На Ваш вопрос пришел ответ от юриста';
-            } else if ($user->{Contract::LANGUAGE_ID} === 2) {
-                $title  =   'Answer to you question received from lawyer';
-            } else {
-                $title  =   'Заңгер сіздің сұрағыңызға жауап берді';
+            if ($user->{Contract::PUSH_NOTIFICATION}) {
+                $title  =   '';
+                if ($user->{Contract::LANGUAGE_ID} === 1) {
+                    $title  =   'На Ваш вопрос пришел ответ от юриста';
+                } else if ($user->{Contract::LANGUAGE_ID} === 2) {
+                    $title  =   'Answer to you question received from lawyer';
+                } else {
+                    $title  =   'Заңгер сіздің сұрағыңызға жауап берді';
+                }
+                OneSignal::sendNotificationUsingTags(
+                    $title,
+                    [
+                        [
+                            Contract::FIELD =>  Contract::TAG,
+                            Contract::KEY   =>  Contract::USER_ID,
+                            Contract::RELATION  =>  '=',
+                            Contract::VALUE =>  $notification->{Contract::USER_ID},
+                        ],
+                        [
+                            Contract::FIELD =>  Contract::TAG,
+                            Contract::KEY   =>  Contract::QUESTION_ID,
+                            Contract::RELATION  =>  '=',
+                            Contract::VALUE =>  $notification->{Contract::QUESTION_ID},
+                        ],
+                        [
+                            Contract::FIELD =>  Contract::TAG,
+                            Contract::KEY   =>  Contract::STATUS,
+                            Contract::RELATION  =>  '=',
+                            Contract::VALUE =>  1,
+                        ],
+                    ],
+                    $url = null,
+                    $data = null,
+                    $buttons = null,
+                    $schedule = null
+                );
             }
-            OneSignal::sendNotificationUsingTags(
-                $title,
-                [
-                    [
-                        Contract::FIELD =>  Contract::TAG,
-                        Contract::KEY   =>  Contract::USER_ID,
-                        Contract::RELATION  =>  '=',
-                        Contract::VALUE =>  $notification->{Contract::USER_ID},
-                    ],
-                    [
-                        Contract::FIELD =>  Contract::TAG,
-                        Contract::KEY   =>  Contract::STATUS,
-                        Contract::RELATION  =>  '=',
-                        Contract::VALUE =>  1,
-                    ],
-                ],
-                $url = null,
-                $data = null,
-                $buttons = null,
-                $schedule = null
-            );
         }
     }
 }
