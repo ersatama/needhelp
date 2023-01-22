@@ -32,8 +32,7 @@ class NotificationController extends Controller
      */
     public function onesignal()
     {
-         $this->oneSignalHelper->send($this->notificationService->notificationRepository->firstById(189500));
-         return true;
+         return $this->oneSignalHelper->send($this->notificationService->notificationRepository->firstById(189500));
     }
 
     /**

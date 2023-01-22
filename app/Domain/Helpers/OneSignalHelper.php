@@ -16,7 +16,7 @@ class OneSignalHelper
         $this->userService  =   $userService;
     }
 
-    public function send(Notification $notification): void
+    public function send(Notification $notification)
     {
         if ($user = $this->userService->userRepository->firstById($notification->{Contract::USER_ID}) ) {
             $title  =   '';
@@ -54,6 +54,8 @@ class OneSignalHelper
                 $buttons = null,
                 $schedule = null
             );
+            return 'success';
         }
+        return 'failure';
     }
 }
