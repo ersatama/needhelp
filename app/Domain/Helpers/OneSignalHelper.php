@@ -55,7 +55,9 @@ class OneSignalHelper
                     $buttons = null,
                     $schedule = null
                 );
+                return true;
             }
         }
+        return false;
     }
 }
