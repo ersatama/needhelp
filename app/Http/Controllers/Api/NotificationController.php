@@ -26,8 +26,9 @@ class NotificationController extends Controller
      *
      * @group Notification
      */
-    public function getByUserId($userId): NotificationCollection
+    public function getByUserId($userId)
     {
+        return 'hello world!';
         return new NotificationCollection($this->notificationService->notificationRepository->getByUserId($userId));
     }
 
