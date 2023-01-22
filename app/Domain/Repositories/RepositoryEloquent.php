@@ -98,7 +98,7 @@ trait RepositoryEloquent
 
     public function getByUserId($userId)
     {
-        return $this->model::where(Contract::USER_ID,$userId)->get();
+        return $this->model::where(Contract::USER_ID, $userId)->get();
     }
 
     public function get()

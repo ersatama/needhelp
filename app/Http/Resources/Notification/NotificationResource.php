@@ -16,7 +16,7 @@ class NotificationResource extends JsonResource
             Contract::ID    =>  $this->{Contract::ID},
             Contract::CREATED_AT    =>  $this->{Contract::CREATED_AT},
             Contract::UPDATED_AT    =>  $this->{Contract::UPDATED_AT},
-            Contract::QUESTION  => $this->{Contract::QUESTION}
+            Contract::QUESTION  =>  new QuestionResource($this->{Contract::QUESTION})
         ];
         foreach (NotificationContract::FILLABLE as &$value) {
             $arr[$value]    =   $this->{$value};

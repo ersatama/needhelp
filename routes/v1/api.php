@@ -83,8 +83,8 @@ Route::controller(WooppayController::class)->group(function() {
 
 Route::controller(NotificationController::class)->group(function() {
     Route::prefix('notification')->group(function() {
-        Route::get('getByUserId/{userId}','getByUserId')->name('history.getByUserId');
-        Route::get('firstById/{id}','firstById')->name('history.firstById');
+        Route::get('getByUserId/{userId}','getByUserId')->name('notification.getByUserId');
+        Route::get('firstById/{id}','firstById')->name('notification.firstById');
     });
 });
 
