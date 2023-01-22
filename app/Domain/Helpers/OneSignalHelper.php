@@ -19,7 +19,7 @@ class OneSignalHelper
     public function send(Notification $notification)
     {
         if ($user = $this->userService->userRepository->firstById($notification->{Contract::USER_ID}) ) {
-            if ($user->{Contract::PUSH_NOTIFICATION}) {
+            if ((bool)$user->{Contract::PUSH_NOTIFICATION}) {
                 $title  =   '';
                 if ($user->{Contract::LANGUAGE_ID} === 1) {
                     $title  =   'На Ваш вопрос пришел ответ от юриста';
