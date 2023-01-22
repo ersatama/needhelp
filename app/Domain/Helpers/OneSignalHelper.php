@@ -45,13 +45,7 @@ class OneSignalHelper
                 ],
                 $url = null,
                 $data = (object)[
-                    [
-                        Contract::FIELD =>  Contract::TAG,
-                        Contract::KEY   =>  Contract::QUESTION_ID,
-                        Contract::RELATION  =>  '=',
-                        Contract::VALUE =>  $notification->{Contract::QUESTION_ID},
-                    ],
-
+                    Contract::QUESTION_ID   =>  $notification->{Contract::QUESTION_ID}
                 ],
                 $buttons = null,
                 $schedule = null
