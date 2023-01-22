@@ -35,7 +35,7 @@ return [
     'edit'                                    => 'Τροποποίηση',
     'save'                                    => 'Αποθήκευση',
 
-    // CRUD table view
+    // CRUD table views
     'all'                                     => '',
     'in_the_database'                         => 'της βάσης δεδομένων',
     'list'                                    => 'Λίστα',
@@ -86,7 +86,7 @@ return [
     'insert_success'                          => 'Το αντικείμενο προστέθηκε με επιτυχία.',
     'update_success'                          => 'Το αντικείμενο τροποποιήθηκε με επιτυχία.',
 
-    // CRUD reorder view
+    // CRUD reorder views
     'reorder'                                 => 'Αλλαγή σειράς εμφάνισης',
     'reorder_text'                            => 'Χρησιμοποιήστε drag&drop για αλλαγή σειράς εμφάνισης.',
     'reorder_success_title'                   => 'Πραγματοποιήθηκε',

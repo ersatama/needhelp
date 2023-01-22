@@ -34,7 +34,7 @@ return [
     'edit_translations' => 'Переклад',
     'language'          => 'Мова',
 
-    // CRUD table view
+    // CRUD table views
     'all'                       => 'Всі ',
     'in_the_database'           => 'в базі даних',
     'list'                      => 'Список',
@@ -120,7 +120,7 @@ return [
     'insert_success' => 'Запис успішно додано.',
     'update_success' => 'Запис успішно змінено.',
 
-    // CRUD reorder view
+    // CRUD reorder views
     'reorder'                      => 'Змінити порядок',
     'reorder_text'                 => 'Використовуйте перетягування, щоб змінити порядок.',
     'reorder_success_title'        => 'Готово',
@@ -132,7 +132,7 @@ return [
     'yes' => 'Так',
     'no'  => 'Ні',
 
-    // CRUD filters navbar view
+    // CRUD filters navbar views
     'filters'        => 'Фільтри',
     'toggle_filters' => 'Переключити фільтри',
     'remove_filters' => 'Очистити фільтри',

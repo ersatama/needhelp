@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Domain\Contracts\NotificationContract;
+use App\Domain\Scopes\OrderBy;
 use App\Domain\Scopes\Page;
 use Illuminate\Database\Eloquent\Concerns\HasEvents;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -18,10 +19,11 @@ class Notification extends Model
     protected static function booted(): void
     {
         static::addGlobalScope(new Page);
+        static::addGlobalScope(new OrderBy);
     }
 
     public function question(): BelongsTo
     {
-        return $this->belongsTo(Question::class)->withoutGlobalScope(Page::class);
+        return $this->belongsTo(Question::class);
     }
 }

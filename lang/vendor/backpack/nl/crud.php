@@ -34,7 +34,7 @@ return [
     'edit_translations' => 'Vertaling wijzigen',
     'language'          => 'Taal',
 
-    // CRUD table view
+    // CRUD table views
     'all'                       => 'Alles ',
     'in_the_database'           => 'in de database',
     'list'                      => 'Lijst',
@@ -120,7 +120,7 @@ return [
     'insert_success' => 'Het item is succesvol toegevoegd.',
     'update_success' => 'Het item is succesvol bewerkt.',
 
-    // CRUD reorder view
+    // CRUD reorder views
     'reorder'                      => 'Rangschik',
     'reorder_text'                 => 'Gebruik drag&drop om te rangschikken.',
     'reorder_success_title'        => 'Klaar',
@@ -132,7 +132,7 @@ return [
     'yes' => 'Ja',
     'no'  => 'Nee',
 
-    // CRUD filters navbar view
+    // CRUD filters navbar views
     'filters'        => 'Filters',
     'toggle_filters' => 'Schakel filters',
     'remove_filters' => 'Verwijder filters',

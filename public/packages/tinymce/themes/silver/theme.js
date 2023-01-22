@@ -24926,7 +24926,7 @@
       }
     });
 
-    var defaultMenubar = 'file edit view insert format tools table help';
+    var defaultMenubar = 'file edit views insert format tools table help';
     var defaultMenus = {
       file: {
         title: 'File',
@@ -31108,7 +31108,7 @@
     };
 
     var SendDataToSectionChannel = 'send-data-to-section';
-    var SendDataToViewChannel = 'send-data-to-view';
+    var SendDataToViewChannel = 'send-data-to-views';
     var renderTabPanel = function (spec, backstage) {
       var storedValue = Cell({});
       var updateDataWithForm = function (form) {

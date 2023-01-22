@@ -2220,7 +2220,7 @@
             {
               type: 'textarea',
               name: 'code',
-              label: 'Code view'
+              label: 'Code views'
             }
           ]
         },

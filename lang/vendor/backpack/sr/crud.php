@@ -34,7 +34,7 @@ return [
     'edit_translations' => 'Prevod',
     'language'          => 'Jezik',
 
-    // CRUD table view
+    // CRUD table views
     'all'                       => 'Sve ',
     'in_the_database'           => 'u bazi',
     'list'                      => 'Lista',
@@ -112,7 +112,7 @@ return [
     'insert_success' => 'Stavka je uspešno dodata.',
     'update_success' => 'Stavka je uspešno izmenjena.',
 
-    // CRUD reorder view
+    // CRUD reorder views
     'reorder'                      => 'Promeni redosled',
     'reorder_text'                 => 'Koristite drag&drop za promenu redosleda.',
     'reorder_success_title'        => 'Gotovo',
@@ -124,7 +124,7 @@ return [
     'yes' => 'Da',
     'no'  => 'Ne',
 
-    // CRUD filters navbar view
+    // CRUD filters navbar views
     'filters'        => 'Filteri',
     'toggle_filters' => 'Prikaz filtera',
     'remove_filters' => 'Ukloni filtere',

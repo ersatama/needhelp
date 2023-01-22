@@ -34,7 +34,7 @@ return [
     'edit_translations' => '翻译',
     'language'          => '语言',
 
-    // CRUD table view
+    // CRUD table views
     'all'                       => '全部 ',
     'in_the_database'           => '在数据库中',
     'list'                      => '列表',
@@ -120,7 +120,7 @@ return [
     'insert_success' => '插入成功。',
     'update_success' => '更新成功。',
 
-    // CRUD reorder view
+    // CRUD reorder views
     'reorder'                      => '重新排序',
     'reorder_text'                 => '请以拖放 (drag and drop) 的放式重新排序。',
     'reorder_success_title'        => '完成',
@@ -132,7 +132,7 @@ return [
     'yes' => 'Yes',
     'no'  => 'No',
 
-    // CRUD filters navbar view
+    // CRUD filters navbar views
     'filters'        => '筛选条件',
     'toggle_filters' => '切换筛选条件',
     'remove_filters' => '移除筛选条件',

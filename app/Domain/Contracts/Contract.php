@@ -50,7 +50,7 @@ abstract class Contract
     const Q =   'q';
     const PAGE  =   'page';
     const SELECT_FROM_ARRAY =   'select_from_array';
-    const VIEW  =   'view';
+    const VIEW  =   'views';
     const NOTIFICATION_ID   =   'notification_id';
     const IS_PAID   =   'is_paid';
     const IS_IMPORTANT  =   'is_important';

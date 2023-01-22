@@ -34,7 +34,7 @@ return [
     'edit_translations' => 'অনুবাদ',
     'language'          => 'ভাষা',
 
-    // CRUD table view
+    // CRUD table views
     'all'                       => 'সবগুলি ',
     'in_the_database'           => 'ডাটাবেসে',
     'list'                      => 'তালিকা',
@@ -120,7 +120,7 @@ return [
     'insert_success' => 'আইটেমটি সফলভাবে যুক্ত করা হয়েছে।',
     'update_success' => 'আইটেমটি সফলভাবে পরিবর্তিত হয়েছে।',
 
-    // CRUD reorder view
+    // CRUD reorder views
     'reorder'                      => 'পুনঃক্রম',
     'reorder_text'                 => 'পুনরায় অর্ডার করতে ড্রাগ এবং ড্রপ ব্যবহার করুন।',
     'reorder_success_title'        => 'সম্পন্ন',
@@ -132,7 +132,7 @@ return [
     'yes' => 'হ্যাঁ',
     'no'  => 'না',
 
-    // CRUD filters navbar view
+    // CRUD filters navbar views
     'filters'        => 'ফিল্টার',
     'toggle_filters' => 'ফিল্টারগুলি টগল করুন',
     'remove_filters' => 'ফিল্টারগুলি সরান',

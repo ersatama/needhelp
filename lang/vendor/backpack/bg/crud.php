@@ -35,7 +35,7 @@ return [
     'edit'                 => 'Поправи',
     'save'                 => 'Запиши',
 
-    // CRUD table view
+    // CRUD table views
     'all'                       => 'Всички ',
     'in_the_database'           => 'В базите данни',
     'list'                      => 'Лист',
@@ -86,7 +86,7 @@ return [
     'insert_success' => 'Елементът е добавен успешно.',
     'update_success' => 'Елементът е променен успешно.',
 
-    // CRUD reorder view
+    // CRUD reorder views
     'reorder'                      => 'Пренареждане',
     'reorder_text'                 => 'Използвайте влачене и пускане, за да пренаредите.',
     'reorder_success_title'        => 'Готово',

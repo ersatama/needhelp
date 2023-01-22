@@ -654,7 +654,7 @@
             'stop',
             'stop-circle',
             'stop-circle-o',
-            'street-view',
+            'street-views',
             'strikethrough',
             'stumbleupon',
             'stumbleupon-circle',

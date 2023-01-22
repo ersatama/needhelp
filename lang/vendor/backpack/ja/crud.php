@@ -34,7 +34,7 @@ return [
     'edit_translations'                       => '翻訳を編集',
     'language'                                => '言語',
 
-    // CRUD table view
+    // CRUD table views
     'all'                                     => '全 ',
     'in_the_database'                         => 'データベース上の',
     'list'                                    => '一覧',
@@ -120,7 +120,7 @@ return [
     'insert_success'                          => 'データは正常に追加されました。',
     'update_success'                          => 'データは正常に更新されました。',
 
-    // CRUD reorder view
+    // CRUD reorder views
     'reorder'                                 => '並び替え',
     'reorder_text'                            => 'ドラッグアンドドロップで並び替え可能です。',
     'reorder_success_title'                   => '完了',
@@ -132,7 +132,7 @@ return [
     'yes'                                     => 'はい',
     'no'                                      => 'いいえ',
 
-    // CRUD filters navbar view
+    // CRUD filters navbar views
     'filters'                                 => 'フィルター',
     'toggle_filters'                          => 'フィルター切り替え',
     'remove_filters'                          => '全フィルターを削除',

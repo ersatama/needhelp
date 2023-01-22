@@ -34,7 +34,7 @@ return [
     'edit_translations' => '翻譯',
     'language'          => '語言',
 
-    // CRUD table view
+    // CRUD table views
     'all'                       => '全部 ',
     'in_the_database'           => '在資料庫中',
     'list'                      => '清單',
@@ -120,7 +120,7 @@ return [
     'insert_success' => '已成功新增此紀錄。',
     'update_success' => '已成功更新此紀錄。',
 
-    // CRUD reorder view
+    // CRUD reorder views
     'reorder'                      => '重新排序',
     'reorder_text'                 => '請以拖曳的方式重新排序。',
     'reorder_success_title'        => '完成',
@@ -132,7 +132,7 @@ return [
     'yes' => '確定',
     'no'  => '取消',
 
-    // CRUD filters navbar view
+    // CRUD filters navbar views
     'filters'        => '篩選',
     'toggle_filters' => '切換篩選',
     'remove_filters' => '移除篩選',

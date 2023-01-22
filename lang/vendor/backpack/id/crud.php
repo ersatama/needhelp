@@ -34,7 +34,7 @@ return [
     'edit_translations' => 'Terjemahan',
     'language'          => 'Bahasa',
 
-    // CRUD table view
+    // CRUD table views
     'all'                       => 'Semua ',
     'in_the_database'           => 'di database',
     'list'                      => 'Daftar',
@@ -113,7 +113,7 @@ return [
     'insert_success' => 'Item berhasil ditambahkan.',
     'update_success' => 'Item berhasil diubah.',
 
-    // CRUD reorder view
+    // CRUD reorder views
     'reorder'                      => 'Susun ulang',
     'reorder_text'                 => 'Gunakan seret & lepas untuk menyusun ulang.',
     'reorder_success_title'        => 'Selesai',
@@ -125,7 +125,7 @@ return [
     'yes' => 'Ya',
     'no'  => 'Tidak',
 
-    // CRUD filters navbar view
+    // CRUD filters navbar views
     'filters'        => 'Filter',
     'toggle_filters' => 'Alihkan filter',
     'remove_filters' => 'Hapus filter',

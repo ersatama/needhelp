@@ -34,7 +34,7 @@ return [
     'edit_translations'    => 'ÜBERSETZUNG BEARBEITEN',
     'language'             => 'Sprache',
 
-    // CRUD table view
+    // CRUD table views
     'all'                       => 'Alle ',
     'in_the_database'           => 'in der Datenbank',
     'list'                      => 'Liste',
@@ -97,7 +97,7 @@ return [
     'insert_success' => 'Der Eintrag wurde erfolgreich angelegt.',
     'update_success' => 'Der Eintrag wurde erfolgreich geändert.',
 
-    // CRUD reorder view
+    // CRUD reorder views
     'reorder'                      => 'Sortiere',
     'reorder_text'                 => 'Zum Ändern der Reihenfolge Einträge verschieben. (Drag&Drop)',
     'reorder_success_title'        => 'Fertig',
@@ -109,7 +109,7 @@ return [
     'yes' => 'Ja',
     'no'  => 'Nein',
 
-    // CRUD filters navbar view
+    // CRUD filters navbar views
     'filters'        => 'Filter',
     'toggle_filters' => 'Filter umschalten',
     'remove_filters' => 'Filter entfernen',

@@ -22,7 +22,7 @@ return [
     'edit_translations' => 'EDIT TRANSLATIONS',
     'language'          => 'Language',
 
-    // CRUD table view
+    // CRUD table views
     'all'                       => 'Tümü ',
     'in_the_database'           => 'Veritabanında',
     'list'                      => 'Liste',
@@ -98,7 +98,7 @@ return [
     'insert_success' => 'Öğe başarıyla eklendi.',
     'update_success' => 'Öğe başarıyla değiştirildi.',
 
-    // CRUD reorder view
+    // CRUD reorder views
     'reorder'                      => 'Tekrar Sırala',
     'reorder_text'                 => 'Sürükle&bırak olarak sırala.',
     'reorder_success_title'        => 'Tamam',
@@ -110,7 +110,7 @@ return [
     'yes' => 'Evet',
     'no'  => 'Hayır',
 
-    // CRUD filters navbar view
+    // CRUD filters navbar views
     'filters'        => 'Filtreler',
     'toggle_filters' => 'Geçiş filtreleri',
     'remove_filters' => 'Silme filtreleri',

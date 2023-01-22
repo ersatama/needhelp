@@ -299,7 +299,7 @@
             'video',
             'video-alt',
             'video-chat',
-            'view-mode',
+            'views-mode',
             'vimeo',
             'vkontakte',
             'volume-down',

@@ -34,7 +34,7 @@ return [
     'edit_translations' => 'Fordítások',
     'language'          => 'Nyelv',
 
-    // CRUD table view
+    // CRUD table views
     'all'                       => 'Összes ',
     'in_the_database'           => 'az adatbázisban',
     'list'                      => 'Listázás',
@@ -120,7 +120,7 @@ return [
     'insert_success' => 'Sikeresen hozzáadva.',
     'update_success' => 'Sikeres szerkesztés.',
 
-    // CRUD reorder view
+    // CRUD reorder views
     'reorder'                      => 'Átrendezés',
     'reorder_text'                 => 'Használd a fogd és vidd módszert az átrendezéshez.',
     'reorder_success_title'        => 'Kész',
@@ -132,7 +132,7 @@ return [
     'yes' => 'Igen',
     'no'  => 'Nem',
 
-    // CRUD filters navbar view
+    // CRUD filters navbar views
     'filters'        => 'Szűrők',
     'toggle_filters' => 'Szűrők váltása',
     'remove_filters' => 'Szűrők eltávolítása',
