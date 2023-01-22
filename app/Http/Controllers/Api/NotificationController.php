@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Domain\Contracts\Contract;
 use App\Domain\Contracts\ErrorContract;
+use App\Domain\Helpers\OneSignalHelper;
 use App\Domain\Services\NotificationService;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Notification\NotificationCollection;
@@ -16,9 +17,23 @@ use Illuminate\Http\Response;
 class NotificationController extends Controller
 {
     protected NotificationService $notificationService;
-    public function __construct(NotificationService $notificationService)
+    protected OneSignalHelper $oneSignalHelper;
+    public function __construct(NotificationService $notificationService, OneSignalHelper $oneSignalHelper)
     {
         $this->notificationService  =   $notificationService;
+        $this->oneSignalHelper      =   $oneSignalHelper;
+    }
+
+    /**
+     * @hideFromAPIDocumentation
+     * onesignal - Notifications
+     *
+     * @group Notifications
+     */
+    public function onesignal()
+    {
+         $this->oneSignalHelper->send($this->notificationService->notificationRepository->firstById(189500));
+         return true;
     }
 
     /**

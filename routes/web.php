@@ -20,6 +20,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+Route::controller(\App\Http\Controllers\Api\NotificationController::class)->group(function() {
+    Route::get('/onesignal', 'onesignal');
+});
+
 Route::controller(AuthController::class)->group(function() {
     Route::post('login','login')->name('backpack.auth.login');
 });
