@@ -28,6 +28,6 @@ class NotificationRepositoryProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Notification::observe(NotificationObserver::class);
+        //Notification::observe(NotificationObserver::class);
     }
 }
