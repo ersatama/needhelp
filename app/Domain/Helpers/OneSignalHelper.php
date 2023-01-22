@@ -42,12 +42,6 @@ class OneSignalHelper
                         Contract::RELATION  =>  '=',
                         Contract::VALUE =>  1,
                     ],
-                    [
-                        Contract::FIELD =>  Contract::TAG,
-                        Contract::KEY   =>  Contract::QUESTION_ID,
-                        Contract::RELATION  =>  '=',
-                        Contract::VALUE =>  $notification->{Contract::QUESTION_ID},
-                    ]
                 ],
                 $url = null,
                 $data = null,
