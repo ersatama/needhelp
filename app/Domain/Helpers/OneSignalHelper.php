@@ -58,6 +58,7 @@ class OneSignalHelper
                 );
                 return 'success';
             }
+            return $user;
         }
         return 'failure';
     }
