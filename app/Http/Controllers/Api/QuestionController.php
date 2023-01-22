@@ -117,7 +117,7 @@ class QuestionController extends Controller
      */
     public function countDateBetween($start,$end)
     {
-        return $this->questionService->questionRepository::countDateBetween($start,$end);
+        $this->questionService->questionRepository::countDateBetween($start,$end);
     }
 
     /**
