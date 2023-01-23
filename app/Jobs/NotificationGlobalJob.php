@@ -27,15 +27,7 @@ class NotificationGlobalJob implements ShouldQueue
 
     public function handle(UserService $userService, NotificationService $notificationService, OneSignalHelper $oneSignalHelper): void
     {
-        $notification   =   $notificationService->notificationRepository->create([
-            Contract::USER_ID   =>  74,
-            Contract::TYPE  =>  2,
-            Contract::NOTIFICATION_GLOBAL_ID    =>  $this->notificationGlobal->{Contract::ID},
-            Contract::STATUS    =>  true
-        ]);
-        $oneSignalHelper->send($notification);
-        /*
-         if ($this->notificationGlobal->{Contract::ROLE} !== Contract::ALL) {
+        if ($this->notificationGlobal->{Contract::ROLE} !== Contract::ALL) {
             $users  =   $userService->userRepository->getByRole($this->notificationGlobal->{Contract::ROLE});
         } else {
             $users  =   $userService->userRepository->get();
@@ -49,6 +41,5 @@ class NotificationGlobalJob implements ShouldQueue
             ]);
             $oneSignalHelper->send($notification);
         }
-         */
     }
 }
