@@ -9,6 +9,7 @@ class NotificationContract extends Contract
         self::USER_ID,
         self::TYPE,
         self::QUESTION_ID,
+        self::NOTIFICATION_GLOBAL_ID,
         self::STATUS,
     ];
 }

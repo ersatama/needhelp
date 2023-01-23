@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\DB;
 
 trait RepositoryEloquent
 {
+    public function getByRole($role)
+    {
+        return $this->model::where(Contract::ROLE, $role)->get();
+    }
+
     public function firstByQuestionId($questionId)
     {
         return $this->model::where(Contract::QUESTION_ID, $questionId)->withoutGlobalScope(IsPaid::class)->first();

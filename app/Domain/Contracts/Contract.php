@@ -35,6 +35,7 @@ abstract class Contract
     const ORDER_BY_TYPE =   'order_by_type';
     const ORDER_BY  =   'order_by';
     const QUESTION_ID   =   'question_id';
+    const NOTIFICATION_GLOBAL_ID    =   'notification_global_id';
     const DESC  =   'desc';
     const IP    =   'ip';
     const G_RECAPTCHA_RESPONSE  =   'g-recaptcha-response';
@@ -87,6 +88,7 @@ abstract class Contract
     const DELETED_AT    =   'deleted_at';
     const BLOCKED_AT    =   'blocked_at';
     const QUESTION  =   'question';
+    const NOTIFICATION_GLOBAL   =   'notificationGlobal';
     const BLOCKED_REASON    =   'blocked_reason';
     const LAST_AUTH =   'last_auth';
     const MESSAGE   =   'message';
@@ -99,6 +101,8 @@ abstract class Contract
     const TYPE  =   'type';
     const HIDDEN    =   'hidden';
     const TEXT  =   'text';
+    const TEXT_KZ   =   'text_kz';
+    const TEXT_EN   =   'text_en';
     const SELECT2_FROM_AJAX =   'select2_from_ajax';
     const ENTITY    =   'entity';
     const PLACEHOLDER   =   'placeholder';
@@ -108,6 +112,7 @@ abstract class Contract
     const ROLE  =   'role';
     const FULLNAME  =   'fullname';
     const ADMIN =   'admin';
+    const ALL   =   'all';
     const MODERATOR =   'moderator';
     const LAWYER    =   'lawyer';
     const TIMER_TEXT    =   'timerText';

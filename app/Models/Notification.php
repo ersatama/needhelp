@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Notification extends Model
 {
     use HasFactory, HasEvents;
+
     protected $table    =   NotificationContract::TABLE;
     protected $fillable =   NotificationContract::FILLABLE;
 
@@ -26,5 +27,11 @@ class Notification extends Model
     public function question(): BelongsTo
     {
         return $this->belongsTo(Question::class)->withoutGlobalScopes([Page::class, OrderBy::class]);
+    }
+
+    public function notificationGlobal(): BelongsTo
+    {
+        return $this->belongsTo(NotificationGlobal::class, Contract::NOTIFICATION_GLOBAL_ID, Contract::ID)
+            ->withoutGlobalScopes([Page::class, OrderBy::class]);
     }
 }
