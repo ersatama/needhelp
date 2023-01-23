@@ -32,7 +32,7 @@ class UserRequest extends FormRequest
             Contract::SURNAME   =>  'required',
             Contract::PHONE =>  'required|unique:users,phone,'.$this->{Contract::ID}.',id',
             Contract::EMAIL =>  'nullable|unique:users,email,'.$this->{Contract::ID}.',id',
-            Contract::PASSWORD  =>  'required|min:8',
+            Contract::PASSWORD  =>  'nullable|min:8',
         ];
     }
 
