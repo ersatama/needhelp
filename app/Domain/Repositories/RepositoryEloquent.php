@@ -111,6 +111,11 @@ trait RepositoryEloquent
         return $this->model::get();
     }
 
+    public function firstWhere($where)
+    {
+        return $this->model::where($where)->first();
+    }
+
     public function getWhereWith($where,$with)
     {
         return $this->model::with($with)->where($where)->get();
