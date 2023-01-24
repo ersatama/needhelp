@@ -22,15 +22,18 @@ class NotificationGlobalCrudController extends CrudController
 
     protected function setupShowOperation()
     {
-        $this->setupListOperation();
+        CRUD::column(Contract::ID)->label('ID');
+        CRUD::column(Contract::TEXT)->type('textarea')->label('Текст уведомления');
+        CRUD::column(Contract::TEXT_KZ)->type('textarea')->label('Текст уведомления (на казахском)');
+        CRUD::column(Contract::TEXT_EN)->type('textarea')->label('Текст уведомления (на английском)');
     }
 
     protected function setupListOperation()
     {
         CRUD::column(Contract::ID)->label('ID');
-        CRUD::column(Contract::TEXT)->type('textarea')->label('Текст уведомления');
-        CRUD::column(Contract::TEXT_KZ)->type('textarea')->label('Текст уведомления (на казахском)');
-        CRUD::column(Contract::TEXT_EN)->type('textarea')->label('Текст уведомления (на английском)');
+        CRUD::column(Contract::TEXT)->label('Текст уведомления');
+        CRUD::column(Contract::TEXT_KZ)->label('Текст уведомления (на казахском)');
+        CRUD::column(Contract::TEXT_EN)->label('Текст уведомления (на английском)');
     }
 
     protected function setupCreateOperation(): void
