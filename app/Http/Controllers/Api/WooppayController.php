@@ -46,7 +46,6 @@ class WooppayController extends Controller
                                 Contract::IS_PAID   =>  false,
                                 Contract::STATUS    =>  0
                             ]);
-                            event(new QuestionEvent($question));
                         }
                     }
                 }
