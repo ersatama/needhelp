@@ -6,6 +6,7 @@ use App\Domain\Contracts\Contract;
 use App\Domain\Contracts\NotificationContract;
 use App\Domain\Scopes\OrderBy;
 use App\Domain\Scopes\Page;
+use App\Domain\Scopes\Type;
 use Illuminate\Database\Eloquent\Concerns\HasEvents;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -22,6 +23,7 @@ class Notification extends Model
     {
         static::addGlobalScope(new Page);
         static::addGlobalScope(new OrderBy);
+        static::addGlobalScope(new Type);
     }
 
     public function question(): BelongsTo

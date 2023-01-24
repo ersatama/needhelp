@@ -28,15 +28,6 @@ class NotificationGlobalCrudController extends CrudController
     protected function setupListOperation()
     {
         CRUD::column(Contract::ID)->label('ID');
-        CRUD::column(Contract::ROLE)->label('Кому отправлена уведомление')
-            ->type(Contract::SELECT_FROM_ARRAY)
-            ->options([
-                Contract::ALL       =>  'Всем',
-                Contract::ADMIN     =>  'Администраторам',
-                Contract::MODERATOR =>  'Модераторам',
-                Contract::LAWYER    =>  'Юристам',
-                Contract::USER      =>  'Пользователям'
-            ]);
         CRUD::column(Contract::TEXT)->type('textarea')->label('Текст уведомления');
         CRUD::column(Contract::TEXT_KZ)->type('textarea')->label('Текст уведомления (на казахском)');
         CRUD::column(Contract::TEXT_EN)->type('textarea')->label('Текст уведомления (на английском)');
@@ -46,14 +37,8 @@ class NotificationGlobalCrudController extends CrudController
     {
         CRUD::setValidation(NotificationGlobalRequest::class);
         CRUD::field(Contract::ROLE)->label('Кому отправить уведомление')
-            ->type(Contract::SELECT_FROM_ARRAY)
-            ->options([
-                Contract::ALL       =>  'Всем',
-                Contract::ADMIN     =>  'Администраторам',
-                Contract::MODERATOR =>  'Модераторам',
-                Contract::LAWYER    =>  'Юристам',
-                Contract::USER      =>  'Пользователям'
-            ])->default(Contract::ALL);
+            ->type(Contract::HIDDEN)
+            ->value(Contract::ALL);
         CRUD::field(Contract::TEXT)->type('textarea')->label('Текст уведомления');
         CRUD::field(Contract::TEXT_KZ)->type('textarea')->label('Текст уведомления (на казахском)');
         CRUD::field(Contract::TEXT_EN)->type('textarea')->label('Текст уведомления (на английском)');
