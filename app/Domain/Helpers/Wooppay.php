@@ -87,7 +87,7 @@ class Wooppay
                     Contract::DEATH_DATE        =>  date('Y-m-d H:i:s', strtotime("+1 day")),
                 ]));
                 $invoice    =   json_decode($invoice, true);
-                if (array_key_exists(Contract::OPERATION_URL, $invoice) && array_key_exists(Contract::RESPONSE, $invoice)) {
+                if ($invoice && array_key_exists(Contract::OPERATION_URL, $invoice) && array_key_exists(Contract::RESPONSE, $invoice)) {
                     return $invoice;
                 }
             } catch (Exception $exception) {
