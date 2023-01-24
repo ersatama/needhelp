@@ -40,13 +40,13 @@ class WooppayController extends Controller
                                 Contract::IS_PAID   =>  true,
                                 Contract::STATUS    =>  1
                             ]);
-                            event(new QuestionEvent($question));
+                            broadcast(new QuestionEvent($question));
                         } elseif (in_array($wooppayStatus,[17,20])) {
                             $question   =   $this->questionService->questionRepository->update($questionId,[
                                 Contract::IS_PAID   =>  false,
                                 Contract::STATUS    =>  0
                             ]);
-                            event(new QuestionEvent($question));
+                            broadcast(new QuestionEvent($question));
                         }
                     }
                 }

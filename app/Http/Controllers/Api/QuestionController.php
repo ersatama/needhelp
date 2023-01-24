@@ -204,7 +204,7 @@ class QuestionController extends Controller
                     ]);
                     $this->oneSignalHelper->send($notification);
                 }
-                event(new QuestionEvent($question));
+                broadcast(new QuestionEvent($question));
             }
             return new QuestionResource($question);
         }
