@@ -48,7 +48,7 @@
                                 </div>
                             </div>
                         </div>
-
+                        <input type="hidden" value="{{ env('GOOGLE_RECAPTCHA_KEY') }}">
                         <div class="form-group">
                             <div>
                                 <div class="g-recaptcha" data-sitekey="{{ env('GOOGLE_RECAPTCHA_KEY') }}" data-type="image"></div>
