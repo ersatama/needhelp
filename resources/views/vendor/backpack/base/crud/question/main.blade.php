@@ -287,6 +287,7 @@
         });
 
         let channel = pusher.subscribe('question-channel');
+        channel.unbind();
         channel.bind('question-event', function(data) {
             app.newQuestion(data);
         });
