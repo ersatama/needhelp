@@ -51,7 +51,7 @@
                         <input type="hidden" value="{{ env('GOOGLE_RECAPTCHA_KEY') }}">
                         <div class="form-group">
                             <div>
-                                <div class="g-recaptcha" data-sitekey="{{ env('GOOGLE_RECAPTCHA_KEY') }}" data-type="image"></div>
+                                <div class="g-recaptcha" data-sitekey="6LchdHgjAAAAABPfCMwPsXC01VGVZASvni8N8wF-" data-type="image"></div>
                                 @if ($errors->has('g-recaptcha-response'))
                                     <span class="invalid-feedback">
                                         <strong>{{ $errors->first('g-recaptcha-response') }}</strong>

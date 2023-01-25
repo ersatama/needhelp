@@ -168,7 +168,7 @@ class QuestionController extends Controller
         if ($question = $this->questionService->questionRepository->create($createRequest->checked())) {
             $user   =   $this->userService->userRepository->firstById($question->{Contract::USER_ID});
             $wooppayInvoice = $this->wooppay->invoice($question, $user);
-            if ($user && $question->{Contract::PAYMENT_ID} === 1 && $wooppayInvoice) {
+            if ($user && $wooppayInvoice) {
                 $this->wooppayService->invoiceCreate($question, $wooppayInvoice);
                 return new QuestionResource($question);
             }

@@ -1,10 +1,8 @@
-@extends(backpack_view('blank'))
+<?php $__env->startSection('header'); ?>
 
-@section('header')
+<?php $__env->stopSection(); ?>
 
-@endsection
-
-@section('content')
+<?php $__env->startSection('content'); ?>
     <div id="app" class="my-4">
         <audio src="/audio/1.wav" ref="audio" preload="auto"></audio>
         <modal v-if="showModal" @close="showModal = false" @answer="answer" @accept="accept" @reject="reject" :user_id="user_id" :view="view" :status="status" :role="role" :agree="agree" :error-message="errorMessage" @checkbox="agree = !agree" ></modal>
@@ -12,7 +10,7 @@
         <div class="bg-white border rounded">
             <div class="border-bottom p-2">
                 <div class="m-0 p-3 d-flex justify-content-center header-flex" style="gap: 20px;">
-                    @if(backpack_user()->{\App\Domain\Contracts\Contract::ROLE} !== 'lawyer')
+                    <?php if(backpack_user()->{\App\Domain\Contracts\Contract::ROLE} !== 'lawyer'): ?>
                         <div class="header-switcher d-flex">
                             <div class="header-switcher-item text-muted" :class="{'header-switcher-item-sel':(type)}" @click="type = true">В обработке</div>
                             <div class="header-switcher-item text-muted" :class="{'header-switcher-item-sel':(!type)}" @click="type = false">Закрытые</div>
@@ -21,7 +19,7 @@
                             <div class="header-search-icon"></div>
                             <input type="text" class="header-search-input" placeholder="id, вопрос, ответ" v-model="search">
                         </div>
-                    @endif
+                    <?php endif; ?>
                 </div>
             </div>
             <div class="questions" v-if="type">
@@ -31,24 +29,24 @@
                             <div class="question-header-icon" v-if="!question.is_important">?</div>
                             <div class="question-header-icon question-header-icon-fire" v-else></div>
                             <div class="question-header-content">
-                                <div class="question-header-content-title font-weight-bold">#@{{ question.id }}</div>
-                                <div class="question-header-content-description text-muted">@{{ question.created_at_readable }}</div>
+                                <div class="question-header-content-title font-weight-bold">#{{ question.id }}</div>
+                                <div class="question-header-content-description text-muted">{{ question.created_at_readable }}</div>
                             </div>
-                            <div class="question-header-timer" v-show="question.timerText">@{{ question.timerText }}</div>
+                            <div class="question-header-timer" v-show="question.timerText">{{ question.timerText }}</div>
                         </div>
                         <div class="question-main flex-grow-1">
-                            <div class="question-main-title" v-if="['admin','moderator'].includes(role) || question.lawyer_id === user_id">@{{ question.title }}...</div>
-                            <div class="question-main-title" v-else>@{{ question.title.substr(0,100) }}...</div>
-                            <div class="question-main-detail" v-if="question.answered_at">@{{ question.answer }}</div>
+                            <div class="question-main-title" v-if="['admin','moderator'].includes(role) || question.lawyer_id === user_id">{{ question.title }}...</div>
+                            <div class="question-main-title" v-else>{{ question.title.substr(0,100) }}...</div>
+                            <div class="question-main-detail" v-if="question.answered_at">{{ question.answer }}</div>
                         </div>
                         <div class="question-body">
                             <div class="question-body-user" v-if="question.user">
-                                <div class="question-body-user-icon">@{{ question.user.name[0] }}</div>
-                                <div class="question-body-user-title">@{{ question.user.name }} @{{ question.user.surname }}</div>
+                                <div class="question-body-user-icon">{{ question.user.name[0] }}</div>
+                                <div class="question-body-user-title">{{ question.user.name }} {{ question.user.surname }}</div>
                             </div>
                             <div class="question-body-user" v-if="question.lawyer">
-                                <div class="question-body-user-icon question-body-user-icon-lawyer">@{{ question.lawyer.name[0] }}</div>
-                                <div class="question-body-user-title question-body-user-title-lawyer">@{{ question.lawyer.name }} @{{ question.lawyer.surname }}</div>
+                                <div class="question-body-user-icon question-body-user-icon-lawyer">{{ question.lawyer.name[0] }}</div>
+                                <div class="question-body-user-title question-body-user-title-lawyer">{{ question.lawyer.name }} {{ question.lawyer.surname }}</div>
                             </div>
                         </div>
                         <div class="question-button">
@@ -73,22 +71,22 @@
                             <div class="question-header-icon" v-if="!question.is_important">?</div>
                             <div class="question-header-icon question-header-icon-fire" v-else></div>
                             <div class="question-header-content">
-                                <div class="question-header-content-title font-weight-bold">#@{{ question.id }}</div>
-                                <div class="question-header-content-description text-muted">@{{ question.created_at_readable }}</div>
+                                <div class="question-header-content-title font-weight-bold">#{{ question.id }}</div>
+                                <div class="question-header-content-description text-muted">{{ question.created_at_readable }}</div>
                             </div>
                         </div>
                         <div class="question-main flex-grow-1">
-                            <div class="question-main-title">@{{ question.title }}</div>
-                            <div class="question-main-detail" v-if="question.answered_at">@{{ question.answer }}</div>
+                            <div class="question-main-title">{{ question.title }}</div>
+                            <div class="question-main-detail" v-if="question.answered_at">{{ question.answer }}</div>
                         </div>
                         <div class="question-body">
                             <div class="question-body-user" v-if="question.user">
-                                <div class="question-body-user-icon">@{{ question.user.name[0] }}</div>
-                                <div class="question-body-user-title">@{{ question.user.name }} @{{ question.user.surname }}</div>
+                                <div class="question-body-user-icon">{{ question.user.name[0] }}</div>
+                                <div class="question-body-user-title">{{ question.user.name }} {{ question.user.surname }}</div>
                             </div>
                             <div class="question-body-user" v-if="question.lawyer">
-                                <div class="question-body-user-icon question-body-user-icon-lawyer">@{{ question.lawyer.name[0] }}</div>
-                                <div class="question-body-user-title question-body-user-title-lawyer">@{{ question.lawyer.name }} @{{ question.lawyer.surname }}</div>
+                                <div class="question-body-user-icon question-body-user-icon-lawyer">{{ question.lawyer.name[0] }}</div>
+                                <div class="question-body-user-title question-body-user-title-lawyer">{{ question.lawyer.name }} {{ question.lawyer.surname }}</div>
                             </div>
                         </div>
                         <div class="question-button">
@@ -100,8 +98,8 @@
             </div>
         </div>
     </div>
-@endsection
-@section('after_scripts')
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('after_scripts'); ?>
     <script type="text/x-template" id="modal-template">
         <transition name="modal">
             <div class="modal-mask">
@@ -109,41 +107,41 @@
                     <div class="modal-container" v-if="view">
                         <div class="modal-header-icon modal-header-icon-important" v-if="view.is_important"></div>
                         <div class="modal-header-icon" v-else>?</div>
-                        <div class="modal-header d-flex align-items-center justify-content-center pt-5 border-0 h5 m-0 pb-0" style="gap: 10px;">Вопрос <span class="font-weight-bold">#@{{view.id}}</span></div>
+                        <div class="modal-header d-flex align-items-center justify-content-center pt-5 border-0 h5 m-0 pb-0" style="gap: 10px;">Вопрос <span class="font-weight-bold">#{{view.id}}</span></div>
                         <div class="modal-body">
                             <div class="modal-body-card border mb-3">
                                 <div class="modal-body-item border-bottom">
                                     <div class="modal-body-item-key text-muted">Дата создания</div>
-                                    <div class="modal-body-item-value">@{{ view.created_at_readable }}</div>
+                                    <div class="modal-body-item-value">{{ view.created_at_readable }}</div>
                                 </div>
                                 <div class="modal-body-item border-bottom">
                                     <div class="modal-body-item-key text-muted">Пользователь</div>
-                                    <div class="modal-body-item-value">@{{ view.user.name }} @{{ view.user.surname }}</div>
+                                    <div class="modal-body-item-value">{{ view.user.name }} {{ view.user.surname }}</div>
                                 </div>
                                 <div class="modal-body-item">
                                     <div class="modal-body-item-key text-muted">Цена</div>
-                                    <div class="modal-body-item-value">@{{ view.price }}</div>
+                                    <div class="modal-body-item-value">{{ view.price }}</div>
                                 </div>
                                 <div class="modal-body-item border-top" v-if="view.wooppay">
                                     <div class="modal-body-item-key text-muted">ID платежа (wooppay)</div>
-                                    <div class="modal-body-item-value">@{{ view.wooppay.operation_id }}</div>
+                                    <div class="modal-body-item-value">{{ view.wooppay.operation_id }}</div>
                                 </div>
                                 <div class="modal-body-item border-top" v-if="view.lawyer">
                                     <div class="modal-body-item-key text-muted">Юрист</div>
-                                    <div class="modal-body-item-value">@{{ view.lawyer.name }} @{{ view.lawyer.surname }}</div>
+                                    <div class="modal-body-item-value">{{ view.lawyer.name }} {{ view.lawyer.surname }}</div>
                                 </div>
                                 <div class="modal-body-item border-top" v-if="view.answered_at">
                                     <div class="modal-body-item-key text-muted">Отвечено</div>
-                                    <div class="modal-body-item-value">@{{ view.updated_at_readable }}</div>
+                                    <div class="modal-body-item-value">{{ view.updated_at_readable }}</div>
                                 </div>
                             </div>
                             <div class="h6 font-weight-bold mb-2 text-center">Вопрос</div>
-                            <div class="modal-body-title text-muted mb-2" v-if="(view.lawyer_id && user_id === view.lawyer_id) || ['admin','moderator'].includes(role)">@{{view.title}}</div>
-                            <div class="modal-body-title text-muted mb-2" v-else>@{{view.title.substr(0,100)}} ...</div>
+                            <div class="modal-body-title text-muted mb-2" v-if="(view.lawyer_id && user_id === view.lawyer_id) || ['admin','moderator'].includes(role)">{{view.title}}</div>
+                            <div class="modal-body-title text-muted mb-2" v-else>{{view.title.substr(0,100)}} ...</div>
                             <template v-if="role === 'lawyer'">
                                 <template v-if="view.answered_at">
                                     <div class="h6 font-weight-bold mb-2 text-center">Ответ</div>
-                                    <div class="modal-body-title" v-if="view.lawyer_id && user_id === view.lawyer_id">@{{view.answer}}</div>
+                                    <div class="modal-body-title" v-if="view.lawyer_id && user_id === view.lawyer_id">{{view.answer}}</div>
                                     <div class="p-3 text-center border bg-secondary text-dark rounded h6 m-0 mt-4 font-weight-bold" v-else>Ждет ответа</div>
                                 </template>
                                 <template v-else>
@@ -160,7 +158,7 @@
                             <template v-else>
                                 <template v-if="view.answered_at">
                                     <div class="h6 font-weight-bold mb-2 text-center">Ответ</div>
-                                    <div class="modal-body-title">@{{  view.answer }}</div>
+                                    <div class="modal-body-title">{{  view.answer }}</div>
                                 </template>
                                 <template v-else>
                                     <div class="p-3 text-center border bg-secondary text-dark rounded h6 m-0 mt-4 font-weight-bold">Ждет ответа</div>
@@ -221,39 +219,39 @@
                     <div class="modal-container" v-if="answered_view">
                         <div class="modal-header-icon modal-header-icon-important" v-if="answered_view.is_important"></div>
                         <div class="modal-header-icon" v-else>?</div>
-                        <div class="modal-header d-flex align-items-center justify-content-center pt-5 border-0 h5 m-0 pb-0" style="gap: 10px;">Вопрос <span class="font-weight-bold">#@{{answered_view.id}}</span></div>
+                        <div class="modal-header d-flex align-items-center justify-content-center pt-5 border-0 h5 m-0 pb-0" style="gap: 10px;">Вопрос <span class="font-weight-bold">#{{answered_view.id}}</span></div>
                         <div class="modal-body">
                             <div class="modal-body-card border mb-3">
                                 <div class="modal-body-item border-bottom">
                                     <div class="modal-body-item-key text-muted">Дата создания</div>
-                                    <div class="modal-body-item-value">@{{ answered_view.created_at_readable }}</div>
+                                    <div class="modal-body-item-value">{{ answered_view.created_at_readable }}</div>
                                 </div>
                                 <div class="modal-body-item border-bottom">
                                     <div class="modal-body-item-key text-muted">Пользователь</div>
-                                    <div class="modal-body-item-value">@{{ answered_view.user.name }} @{{ answered_view.user.surname }}</div>
+                                    <div class="modal-body-item-value">{{ answered_view.user.name }} {{ answered_view.user.surname }}</div>
                                 </div>
                                 <div class="modal-body-item">
                                     <div class="modal-body-item-key text-muted">Цена</div>
-                                    <div class="modal-body-item-value">@{{ answered_view.price }}</div>
+                                    <div class="modal-body-item-value">{{ answered_view.price }}</div>
                                 </div>
                                 <div class="modal-body-item border-top" v-if="answered_view.wooppay">
                                     <div class="modal-body-item-key text-muted">ID платежа (wooppay)</div>
-                                    <div class="modal-body-item-value">@{{ answered_view.wooppay.operation_id }}</div>
+                                    <div class="modal-body-item-value">{{ answered_view.wooppay.operation_id }}</div>
                                 </div>
                                 <div class="modal-body-item border-top" v-if="answered_view.lawyer">
                                     <div class="modal-body-item-key text-muted">Юрист</div>
-                                    <div class="modal-body-item-value">@{{ answered_view.lawyer.name }} @{{ answered_view.lawyer.surname }}</div>
+                                    <div class="modal-body-item-value">{{ answered_view.lawyer.name }} {{ answered_view.lawyer.surname }}</div>
                                 </div>
                                 <div class="modal-body-item border-top" v-if="answered_view.answered_at">
                                     <div class="modal-body-item-key text-muted">Отвечено</div>
-                                    <div class="modal-body-item-value">@{{ answered_view.updated_at_readable }}</div>
+                                    <div class="modal-body-item-value">{{ answered_view.updated_at_readable }}</div>
                                 </div>
                             </div>
                             <div class="h6 font-weight-bold mb-2 text-center">Вопрос</div>
-                            <div class="modal-body-title text-muted mb-2">@{{answered_view.title}}</div>
+                            <div class="modal-body-title text-muted mb-2">{{answered_view.title}}</div>
                             <template v-if="answered_view.answered_at">
                                 <div class="h6 font-weight-bold mb-2 text-center">Ответ</div>
-                                <div class="modal-body-title">@{{  answered_view.answer }}</div>
+                                <div class="modal-body-title">{{  answered_view.answer }}</div>
                             </template>
                             <template v-else>
                                 <div class="p-3 text-center border bg-secondary text-dark rounded h6 m-0 mt-4 font-weight-bold">Ждет ответа</div>
@@ -320,8 +318,8 @@
                 is_paid: true,
                 take: 20,
 
-                user_id:  {{ backpack_user()->{\App\Domain\Contracts\Contract::ID} }},
-                role:  '{{ backpack_user()->{\App\Domain\Contracts\Contract::ROLE} }}',
+                user_id:  <?php echo e(backpack_user()->{\App\Domain\Contracts\Contract::ID}); ?>,
+                role:  '<?php echo e(backpack_user()->{\App\Domain\Contracts\Contract::ROLE}); ?>',
 
                 search: '',
                 timeout: null,
@@ -620,9 +618,9 @@
                         let data    =   {
                             is_paid: this.is_paid,
                             status: 2,
-                            @if (backpack_user()->{\App\Domain\Contracts\Contract::ROLE} === 'lawyer')
-                            lawyer_id: {{backpack_user()->{\App\Domain\Contracts\Contract::ID} }},
-                            @endif
+                            <?php if(backpack_user()->{\App\Domain\Contracts\Contract::ROLE} === 'lawyer'): ?>
+                            lawyer_id: <?php echo e(backpack_user()->{\App\Domain\Contracts\Contract::ID}); ?>,
+                            <?php endif; ?>
                         };
                         if (this.search.trim() !== '') {
                             data.search =   this.search;
@@ -669,8 +667,8 @@
             },
         })
     </script>
-@endsection
-@section('after_styles')
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('after_styles'); ?>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
         .header-search-icon {
@@ -1024,5 +1022,7 @@
             transform: scale(1.1);
         }
     </style>
-@endsection
+<?php $__env->stopSection(); ?>
 
+
+<?php echo $__env->make(backpack_view('blank'), \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Projects\needhelp\resources\views/vendor/backpack/base/crud/question/main.blade.php ENDPATH**/ ?>
