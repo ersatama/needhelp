@@ -117,7 +117,7 @@
                                     <div class="modal-body-item-value">@{{ view.created_at_readable }}</div>
                                 </div>
 
-                                {{-- Here added item of timer to selected question, for this here used view.timerText --}}
+                                {{-- Here added item of timer to selected question, for this used view.timerText --}}
                                 <div class="modal-body-item border-bottom">
                                     <div class="modal-body-item-key text-muted">Оставшееся время</div>
                                     <div class="modal-body-item-value">@{{ view.timerText }}</div>
