@@ -601,8 +601,11 @@
                                 this.hide();
                                 this.timerCheck();
                                 this.page  =    this.page + 1;
+                                console.log(response.data.data.length, this.take);
                                 if (response.data.data.length === this.take) {
                                     this.questionAjaxStatus =   true;
+                                } else {
+
                                 }
                             });
                     }
