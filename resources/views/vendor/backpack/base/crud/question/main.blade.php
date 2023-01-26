@@ -408,15 +408,35 @@
                         this.questionReplace(question);
                     }
                 },
+                checkNewQuestion(data) {
+                    let status = true;
+                    this.questions.forEach(question => {
+                        if (question.id === data.id) {
+                            if (data.status === 1) {
+                                status = false;
+                            }
+                        }
+                    });
+                    this.answeredQuestions.forEach(question => {
+                        if (question.id === data.id) {
+                            if (data.status === 2) {
+                                status = false;
+                            }
+                        }
+                    });
+                    return status;
+                },
                 newQuestion(data) {
-                    axios
-                        .get('/api/v1/question/firstById/'+data.data.id+'?timezone='+Intl.DateTimeFormat().resolvedOptions().timeZone)
-                        .then(response => {
-                            this.checkQuestion(response.data.data);
-                        })
-                        .catch(error => {
-                            console.log(error);
-                        });
+                    if (this.checkNewQuestion(data.data)) {
+                        axios
+                            .get('/api/v1/question/firstById/'+data.data.id+'?timezone='+Intl.DateTimeFormat().resolvedOptions().timeZone)
+                            .then(response => {
+                                this.checkQuestion(response.data.data);
+                            })
+                            .catch(error => {
+                                console.log(error);
+                            });
+                    }
                 },
                 updateQuestion(question) {
                     let status, key, index;
