@@ -497,7 +497,9 @@
                     }
                 },
                 refresh() {
+                    this.questionAjaxStatus =   true;
                     this.getQuestions();
+                    this.answeredQuestionAjaxStatus =   true;
                     this.getAnsweredQuestions();
                 },
                 questionRemove(question) {
