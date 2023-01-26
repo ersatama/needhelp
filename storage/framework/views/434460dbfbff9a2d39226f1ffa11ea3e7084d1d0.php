@@ -284,10 +284,8 @@
         let pusher = new Pusher('80efb945f55e47c2cc1d', {
             cluster: 'ap2'
         });
-        pusher.unsubscribe('question-channel');
         let channel = pusher.subscribe('question-channel');
-        channel.unbind();
-        channel.bind('question-event', function(data) {
+        channel.unbind('question-event').bind('question-event', function(data) {
             app.newQuestion(data);
         });
 
@@ -381,10 +379,8 @@
                     let bottomOfWindow = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop) + window.innerHeight > (document.documentElement.offsetHeight - 150)
                     if (bottomOfWindow) {
                         if (this.type) {
-                            this.questionAjaxStatus =   true;
                             this.getQuestions();
                         } else {
-                            this.answeredQuestionAjaxStatus =   true;
                             this.getAnsweredQuestions();
                         }
                     }
@@ -409,11 +405,11 @@
                 checkNewQuestion(data) {
                     let status = true;
                     this.questions.forEach(question => {
-                       if (question.id === data.id) {
-                           if (data.status === 1) {
-                               status = false;
-                           }
-                       }
+                        if (question.id === data.id) {
+                            if (data.status === 1) {
+                                status = false;
+                            }
+                        }
                     });
                     this.answeredQuestions.forEach(question => {
                         if (question.id === data.id) {
@@ -497,7 +493,9 @@
                     }
                 },
                 refresh() {
+                    this.questionAjaxStatus =   true;
                     this.getQuestions();
+                    this.answeredQuestionAjaxStatus =   true;
                     this.getAnsweredQuestions();
                 },
                 questionRemove(question) {
@@ -599,7 +597,12 @@
                                 this.hide();
                                 this.timerCheck();
                                 this.page  =    this.page + 1;
-                                this.questionAjaxStatus =   true;
+                                console.log(response.data.data.length, this.take);
+                                if (response.data.data.length === this.take) {
+                                    this.questionAjaxStatus =   true;
+                                } else {
+
+                                }
                             });
                     }
                 },
@@ -656,7 +659,9 @@
                                 this.answeredCount  =   response.data.count;
                                 this.showAnsweredModal   =   false;
                                 this.answered_page  =   this.answered_page + 1;
-                                this.answeredQuestionAjaxStatus =   true;
+                                if (response.data.data.length === this.take) {
+                                    this.answeredQuestionAjaxStatus =   true;
+                                }
                             });
                     }
                 },

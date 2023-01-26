@@ -286,10 +286,8 @@
         let pusher = new Pusher('80efb945f55e47c2cc1d', {
             cluster: 'ap2'
         });
-        pusher.unsubscribe('question-channel');
         let channel = pusher.subscribe('question-channel');
-        channel.unbind('question-event');
-        channel.bind('question-event', function(data) {
+        channel.unbind('question-event').bind('question-event', function(data) {
             app.newQuestion(data);
         });
 
