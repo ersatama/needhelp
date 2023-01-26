@@ -282,11 +282,13 @@
 
         Pusher.logToConsole = true;
 
+
         let pusher = new Pusher('80efb945f55e47c2cc1d', {
             cluster: 'ap2'
         });
-
+        pusher.unsubscribe('question-channel');
         let channel = pusher.subscribe('question-channel');
+        channel.unbind('question-event');
         channel.bind('question-event', function(data) {
             app.newQuestion(data);
         });
@@ -363,12 +365,7 @@
                         return '00:00';
                     }
                     let diff    =   limit - secs;
-                    // return Math.floor(diff / 60) + ':' + (diff % 60);
-                    let min = Math.floor(diff/60);
-                    min = (min.toString().length === 1)?('0'+min):min;
-                    let sec = (diff%60);
-                    sec = (sec.toString().length ===1)?('0'+sec):sec;
-                    return min + ':' + sec;
+                    return Math.floor(diff / 60) + ':' + (diff % 60);
                 },
                 timerCheck() {
                     this.questions.forEach((item,key) => {
@@ -382,10 +379,8 @@
                     let bottomOfWindow = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop) + window.innerHeight > (document.documentElement.offsetHeight - 150)
                     if (bottomOfWindow) {
                         if (this.type) {
-                            this.questionAjaxStatus =   true;
                             this.getQuestions();
                         } else {
-                            this.answeredQuestionAjaxStatus =   true;
                             this.getAnsweredQuestions();
                         }
                     }
@@ -407,15 +402,35 @@
                         this.questionReplace(question);
                     }
                 },
+                checkNewQuestion(data) {
+                    let status = true;
+                    this.questions.forEach(question => {
+                        if (question.id === data.id) {
+                            if (data.status === 1) {
+                                status = false;
+                            }
+                        }
+                    });
+                    this.answeredQuestions.forEach(question => {
+                        if (question.id === data.id) {
+                            if (data.status === 2) {
+                                status = false;
+                            }
+                        }
+                    });
+                    return status;
+                },
                 newQuestion(data) {
-                    axios
-                        .get('/api/v1/question/firstById/'+data.data.id+'?timezone='+Intl.DateTimeFormat().resolvedOptions().timeZone)
-                        .then(response => {
-                            this.checkQuestion(response.data.data);
-                        })
-                        .catch(error => {
-                            console.log(error);
-                        });
+                    if (this.checkNewQuestion(data.data)) {
+                        axios
+                            .get('/api/v1/question/firstById/'+data.data.id+'?timezone='+Intl.DateTimeFormat().resolvedOptions().timeZone)
+                            .then(response => {
+                                this.checkQuestion(response.data.data);
+                            })
+                            .catch(error => {
+                                console.log(error);
+                            });
+                    }
                 },
                 updateQuestion(question) {
                     let status, key, index;
@@ -478,7 +493,9 @@
                     }
                 },
                 refresh() {
+                    this.questionAjaxStatus =   true;
                     this.getQuestions();
+                    this.answeredQuestionAjaxStatus =   true;
                     this.getAnsweredQuestions();
                 },
                 questionRemove(question) {
@@ -489,15 +506,10 @@
                     }
                 },
                 questionReplace(question) {
-                    let status = true;
                     for (let key in this.questions) {
                         if (question.id === this.questions[key].id) {
                             this.questions.splice(key, 1, question);
-                            status = false;
                         }
-                    }
-                    if(status){
-                        this.updateQuestion(question);
                     }
                     if (this.view.id === question.id) {
                         this.detail(question.id);
@@ -580,7 +592,6 @@
                                 this.timerCheck();
                                 this.page  =    this.page + 1;
                                 this.questionAjaxStatus =   true;
-                                // this.search = data;
                             });
                     }
                 },
@@ -637,7 +648,9 @@
                                 this.answeredCount  =   response.data.count;
                                 this.showAnsweredModal   =   false;
                                 this.answered_page  =   this.answered_page + 1;
-                                this.answeredQuestionAjaxStatus =   true;
+                                if (response.data.data.length === this.take) {
+                                    this.answeredQuestionAjaxStatus =   true;
+                                }
                             });
                     }
                 },

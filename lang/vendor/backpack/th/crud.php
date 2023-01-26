@@ -34,7 +34,7 @@ return [
     'edit_translations' => 'การแปล',
     'language'          => 'ภาษา',
 
-    // CRUD table view
+    // CRUD table views
     'all'                       => 'รายการทั้งหมด ',
     'in_the_database'           => 'ในฐานข้อมูล',
     'list'                      => 'รายการ',
@@ -120,7 +120,7 @@ return [
     'insert_success' => 'การเพิ่มข้อมูลสำเร็จ',
     'update_success' => 'การแก้ไขข้อมูลสำเร็จ',
 
-    // CRUD reorder view
+    // CRUD reorder views
     'reorder'                      => 'จัดเรียง',
     'reorder_text'                 => 'ลากและวางเพื่อจัดเรียงใหม่',
     'reorder_success_title'        => 'สำเร็จ',
@@ -132,7 +132,7 @@ return [
     'yes' => 'ใช่',
     'no'  => 'ไม่ใช่',
 
-    // CRUD filters navbar view
+    // CRUD filters navbar views
     'filters'        => 'ตัวกรอง',
     'toggle_filters' => 'เปิดปิดตัวกรอง',
     'remove_filters' => 'ล้างตัวกรอง',

@@ -31,26 +31,26 @@ class WooppayController extends Controller
             $questionId =   (int) $request->input(Contract::ID);
             if ($wooppay = $this->wooppayService->wooppayRepository->firstByQuestionId($questionId)) {
                 $status =   $this->wooppay->status($wooppay);
-                if (array_key_exists(Contract::STATUS, $status)) {
+                if ($status && array_key_exists(Contract::STATUS, $status)) {
                     $wooppayStatus  =   (int) $status[Contract::STATUS];
                     $question   =   $this->questionService->questionRepository->firstById($questionId);
                     if ($question->{Contract::STATUS} !== 2) {
                         if (in_array($wooppayStatus,[19,14])) {
                             $question   =   $this->questionService->questionRepository->update($questionId,[
-                                Contract::CREATED_AT    =>  date('Y-m-d H:i:s'),
                                 Contract::IS_PAID   =>  true,
                                 Contract::STATUS    =>  1
                             ]);
-                            event(new QuestionEvent($question));
+                            broadcast(new QuestionEvent($question));
                         } elseif (in_array($wooppayStatus,[17,20])) {
                             $question   =   $this->questionService->questionRepository->update($questionId,[
-                                Contract::CREATED_AT    =>  date('Y-m-d H:i:s'),
                                 Contract::IS_PAID   =>  false,
                                 Contract::STATUS    =>  0
                             ]);
-                            event(new QuestionEvent($question));
+                            broadcast(new QuestionEvent($question));
                         }
                     }
+                } else {
+                    Log::info('wooppay-status',[$status]);
                 }
             }
         }
@@ -58,6 +58,6 @@ class WooppayController extends Controller
 
     public function back(Request $request)
     {
-        Log::info('back', [$request->all()]);
+
     }
 }

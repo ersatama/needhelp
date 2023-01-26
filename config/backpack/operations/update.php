@@ -8,7 +8,7 @@
 
 return [
     // Define the size/looks of the content div for all CRUDs
-    // To override per view use $this->crud->setEditContentClass('class-string')
+    // To override per views use $this->crud->setEditContentClass('class-string')
     'contentClass' => 'col-md-8 bold-labels',
 
     // When using tabbed forms (create & update), what kind of tabs would you like?

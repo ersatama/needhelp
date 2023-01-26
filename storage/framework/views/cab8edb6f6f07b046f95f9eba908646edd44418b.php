@@ -48,10 +48,10 @@
                                 </div>
                             </div>
                         </div>
-
+                        <input type="hidden" value="<?php echo e(env('GOOGLE_RECAPTCHA_KEY')); ?>">
                         <div class="form-group">
                             <div>
-                                <div class="g-recaptcha" data-sitekey="<?php echo e(env('GOOGLE_RECAPTCHA_KEY')); ?>" data-type="image"></div>
+                                <div class="g-recaptcha" data-sitekey="6LchdHgjAAAAABPfCMwPsXC01VGVZASvni8N8wF-" data-type="image"></div>
                                 <?php if($errors->has('g-recaptcha-response')): ?>
                                     <span class="invalid-feedback">
                                         <strong><?php echo e($errors->first('g-recaptcha-response')); ?></strong>

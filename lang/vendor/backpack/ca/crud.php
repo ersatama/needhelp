@@ -34,7 +34,7 @@ return [
     'edit_translations'    => 'EDITAR TRADUCCIONS',
     'language'             => 'Idioma',
 
-    // CRUD table view
+    // CRUD table views
     'all'                       => 'Tots els registres de ',
     'in_the_database'           => 'a la base de dades',
     'list'                      => 'Llistar',
@@ -120,7 +120,7 @@ return [
     'insert_success' => 'L\'element ha sigut afegit correctament.',
     'update_success' => 'L\'element ha sigut modificat correctament.',
 
-    // CRUD reorder view
+    // CRUD reorder views
     'reorder'                      => 'Reordenar',
     'reorder_text'                 => 'Arrossegar i deixar anar per reordenar.',
     'reorder_success_title'        => 'Fet',
@@ -132,7 +132,7 @@ return [
     'yes' => 'Sí',
     'no'  => 'No',
 
-    // CRUD filters navbar view
+    // CRUD filters navbar views
     'filters'        => 'Filtres',
     'toggle_filters' => 'Alternar filtres',
     'remove_filters' => 'Eliminar filtres',

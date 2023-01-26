@@ -34,7 +34,7 @@ return [
     'edit_translations' => 'ဘာသာပြန်ကို တည်းဖြတ်ပါ။',
     'language'          => 'ဘာသာစကား',
 
-    // CRUD table view
+    // CRUD table views
     'all'                       => 'အားလုံး ',
     'in_the_database'           => 'in the database',
     'list'                      => 'စာရင်း',
@@ -120,7 +120,7 @@ return [
     'insert_success' => 'ဒေတာကို အောင်မြင်စွာ ထည့်သွင်းခဲ့သည်။',
     'update_success' => 'ဒေတာကို အောင်မြင်စွာ မွမ်းမံပြီးပါပြီ။',
 
-    // CRUD reorder view
+    // CRUD reorder views
     'reorder'                      => 'ပြန်စီပါ။',
     'reorder_text'                 => 'Use drag&drop to reorder.',
     'reorder_success_title'        => 'ပြီးစီးခြင်း။',
@@ -132,7 +132,7 @@ return [
     'yes' => 'ဟုတ်ကဲ့',
     'no'  => 'မလုပ်ပါ',
 
-    // CRUD filters navbar view
+    // CRUD filters navbar views
     'filters'        => 'စစ်ထုတ်မှု',
     'toggle_filters' => 'စစ်ထုတ်မှုပြောင်းခြင်း။',
     'remove_filters' => 'စစ်ထုတ်မှုအားလုံးကို ဖယ်ရှားပါ။',

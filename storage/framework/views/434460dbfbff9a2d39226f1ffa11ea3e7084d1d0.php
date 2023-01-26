@@ -280,11 +280,13 @@
 
         Pusher.logToConsole = true;
 
+
         let pusher = new Pusher('80efb945f55e47c2cc1d', {
             cluster: 'ap2'
         });
-
+        pusher.unsubscribe('question-channel');
         let channel = pusher.subscribe('question-channel');
+        channel.unbind();
         channel.bind('question-event', function(data) {
             app.newQuestion(data);
         });
@@ -353,7 +355,7 @@
                     }
                 },
                 getTimeDiff(item) {
-                    let timezone    =   new Date(item.timezone);
+                    let timezone    =   new Date(item.timezone_timer);
                     let now         =   new Date();
                     let secs        =   Math.floor((now.getTime() - timezone.getTime()) / 1000);
                     let limit       =   item.is_important?1800:3600;
@@ -361,7 +363,11 @@
                         return '00:00';
                     }
                     let diff    =   limit - secs;
-                    return Math.floor(diff / 60) + ':' + (diff % 60);
+                    let min     =   Math.floor(diff / 60);
+                    min         =   (min.toString().length === 1)?('0'+min):min;
+                    let sec     =   (diff % 60);
+                    sec         =   (sec.toString().length === 1)?('0'+sec):sec;
+                    return min + ':' + sec;
                 },
                 timerCheck() {
                     this.questions.forEach((item,key) => {
@@ -400,15 +406,35 @@
                         this.questionReplace(question);
                     }
                 },
+                checkNewQuestion(data) {
+                    let status = true;
+                    this.questions.forEach(question => {
+                       if (question.id === data.id) {
+                           if (data.status === 1) {
+                               status = false;
+                           }
+                       }
+                    });
+                    this.answeredQuestions.forEach(question => {
+                        if (question.id === data.id) {
+                            if (data.status === 2) {
+                                status = false;
+                            }
+                        }
+                    });
+                    return status;
+                },
                 newQuestion(data) {
-                    axios
-                        .get('/api/v1/question/firstById/'+data.data.id+'?timezone='+Intl.DateTimeFormat().resolvedOptions().timeZone)
-                        .then(response => {
-                            this.checkQuestion(response.data.data);
-                        })
-                        .catch(error => {
-                            console.log(error);
-                        });
+                    if (this.checkNewQuestion(data.data)) {
+                        axios
+                            .get('/api/v1/question/firstById/'+data.data.id+'?timezone='+Intl.DateTimeFormat().resolvedOptions().timeZone)
+                            .then(response => {
+                                this.checkQuestion(response.data.data);
+                            })
+                            .catch(error => {
+                                console.log(error);
+                            });
+                    }
                 },
                 updateQuestion(question) {
                     let status, key, index;
@@ -482,11 +508,17 @@
                     }
                 },
                 questionReplace(question) {
+                    let status  =   true;
                     for (let key in this.questions) {
                         if (question.id === this.questions[key].id) {
                             this.questions.splice(key, 1, question);
+                            status  =   false;
                         }
                     }
+                    if (status) {
+                        this.updateQuestion(question);
+                    }
+
                     if (this.view.id === question.id) {
                         this.detail(question.id);
                     }
@@ -546,7 +578,7 @@
                     if (this.questionAjaxStatus) {
                         this.questionAjaxStatus =   false;
                         let data    =   {
-                            is_paid: this.is_paid,
+                            is_paid: true,
                             status: 1,
                         };
                         if (this.role === 'lawyer') {

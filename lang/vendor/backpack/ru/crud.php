@@ -34,7 +34,7 @@ return [
     'edit_translations'                       => 'Перевод',
     'language'                                => 'Язык',
 
-    // CRUD table view
+    // CRUD table views
     'all'                                     => 'Все ',
     'in_the_database'                         => 'в базе данных',
     'list'                                    => 'Список',
@@ -120,7 +120,7 @@ return [
     'insert_success'                          => 'Запись была успешно добавлена.',
     'update_success'                          => 'Запись была успешно изменена.',
 
-    // CRUD reorder view
+    // CRUD reorder views
     'reorder'                                 => 'Изменить порядок',
     'reorder_text'                            => 'Используйте drag&drop для изменения порядка.',
     'reorder_success_title'                   => 'Готово',
@@ -132,7 +132,7 @@ return [
     'yes'                                     => 'Да',
     'no'                                      => 'Нет',
 
-    // CRUD filters navbar view
+    // CRUD filters navbar views
     'filters'                                 => 'Фильтры',
     'toggle_filters'                          => 'Переключить фильтры',
     'remove_filters'                          => 'Очистить фильтры',

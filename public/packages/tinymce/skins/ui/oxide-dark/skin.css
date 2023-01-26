@@ -408,7 +408,7 @@ button::-moz-focus-inner {
   min-width: 36px;
 }
 .tox .tox-checkbox__input {
-  /* Hide from view but visible to screen readers */
+  /* Hide from views but visible to screen readers */
   height: 1px;
   overflow: hidden;
   position: absolute;

@@ -507,7 +507,7 @@
             'step-forward',
             'stethoscope',
             'stop',
-            'street-view',
+            'street-views',
             'strikethrough',
             'stumbleupon',
             'stumbleupon-circle',

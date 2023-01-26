@@ -34,7 +34,7 @@ return [
     'edit_translations' => 'Bản dịch',
     'language'          => 'Ngôn ngữ',
 
-    // CRUD table view
+    // CRUD table views
     'all'                       => 'Tất cả ',
     'in_the_database'           => 'trong cơ sở dữ liệu',
     'list'                      => 'Danh sách',
@@ -120,7 +120,7 @@ return [
     'insert_success' => 'Bản ghi đã được thêm mới thành công.',
     'update_success' => 'Bản ghi đã được cập nhật thành công.',
 
-    // CRUD reorder view
+    // CRUD reorder views
     'reorder'                      => 'Sắp xếp',
     'reorder_text'                 => 'Kéo & Thả để sắp xếp.',
     'reorder_success_title'        => 'Hoàn tất',
@@ -132,7 +132,7 @@ return [
     'yes' => 'Có',
     'no'  => 'Không',
 
-    // CRUD filters navbar view
+    // CRUD filters navbar views
     'filters'        => 'Bộ lọc',
     'toggle_filters' => 'Bật tắt bộ lọc',
     'remove_filters' => 'Gỡ bỏ bộ lọc',

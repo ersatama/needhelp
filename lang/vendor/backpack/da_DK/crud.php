@@ -32,7 +32,7 @@ return [
     'edit_translations' => 'rediger oversættelser',
     'language'          => 'Sprog',
 
-    // CRUD table view
+    // CRUD table views
     'all'                       => 'Alle ',
     'in_the_database'           => 'i databasen',
     'list'                      => 'Liste',
@@ -83,7 +83,7 @@ return [
     'insert_success' => 'emnet er tilføjet.',
     'update_success' => 'emner er ændret.',
 
-    // CRUD reorder view
+    // CRUD reorder views
     'reorder'                      => 'skift rækkefølge',
     'reorder_text'                 => 'træk og slip for at skifte rækkefølge.',
     'reorder_success_title'        => 'færdig',
@@ -95,7 +95,7 @@ return [
     'yes' => 'Ja',
     'no'  => 'Nej',
 
-    // CRUD filters navbar view
+    // CRUD filters navbar views
     'filters'        => 'Filtre',
     'toggle_filters' => 'vis/skjul filtre',
     'remove_filters' => 'fjern filtre',

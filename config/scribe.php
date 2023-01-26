@@ -136,7 +136,7 @@ return [
     /*
      * The type of documentation output to generate.
      * - "static" will generate a static HTMl page in the /public/docs folder,
-     * - "laravel" will generate the documentation as a Blade view, so you can add routing and authentication.
+     * - "laravel" will generate the documentation as a Blade views, so you can add routing and authentication.
      */
     'type' => 'static',
 
@@ -156,7 +156,7 @@ return [
      */
     'laravel' => [
         /*
-         * Whether to automatically create a docs endpoint for you to view your generated docs.
+         * Whether to automatically create a docs endpoint for you to views your generated docs.
          * If this is false, you can still set up routing manually.
          */
         'add_routes' => true,

@@ -33,7 +33,7 @@ return [
     'edit_translations' => 'UPRAVIT PŘEKLADY',
     'language'          => 'Jazyk',
 
-    // CRUD table view
+    // CRUD table views
     'all'                       => 'Veškeré ',
     'in_the_database'           => 'v databázi',
     'list'                      => 'Seznam',
@@ -108,7 +108,7 @@ return [
     'insert_success' => 'Položka byla úspěšně přidána.',
     'update_success' => 'Položka byla úspěšně upravena.',
 
-    // CRUD reorder view
+    // CRUD reorder views
     'reorder'                      => 'Změna pořadí pro',
     'reorder_text'                 => 'Použijte drag & drop pro změnu pořadí',
     'reorder_success_title'        => 'Uloženo',
@@ -120,7 +120,7 @@ return [
     'yes' => 'Ano',
     'no'  => 'Ne',
 
-    // CRUD filters navbar view
+    // CRUD filters navbar views
     'filters'        => 'Filtry',
     'toggle_filters' => 'Přepnout filtry',
     'remove_filters' => 'Odstranit filtry',

@@ -62,7 +62,7 @@
                         		}, \Backpack\CRUD\ViewNamespaces::getFor('columns'));
 
                         		// but always fall back to the stock 'text' column
-                        		// if a view doesn't exist
+                        		// if a views doesn't exist
                         		if (!in_array('crud::columns.text', $columnPaths)) {
                         			$columnPaths[] = 'crud::columns.text';
                         		}

@@ -118,7 +118,7 @@ return [
     'ajax_error_title' => 'خطا',
     'ajax_error_text'  => 'خطا عند تحميل الصفحة. من فضلك جرب مرة اخري.',
 
-    // CRUD filters navbar view
+    // CRUD filters navbar views
     'apply' => 'تطبيق',
 
     //filters language strings

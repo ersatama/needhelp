@@ -578,7 +578,7 @@
             'sticky-note',
             'sticky-note-o',
             'stop',
-            'street-view',
+            'street-views',
             'strikethrough',
             'stumbleupon',
             'stumbleupon-circle',

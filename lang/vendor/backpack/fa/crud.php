@@ -33,7 +33,7 @@ return [
     'edit_translations' => 'ترجمه',
     'language'          => 'زبان',
 
-    // CRUD table view
+    // CRUD table views
     'all'                       => 'همه ',
     'in_the_database'           => 'در پایگاه داده',
     'list'                      => 'لیست',
@@ -108,7 +108,7 @@ return [
     'insert_success' => 'مورد مورد نظر با موفقیت اضافه شد.',
     'update_success' => 'مورد با موفقیت تغییر یافت.',
 
-    // CRUD reorder view
+    // CRUD reorder views
     'reorder'                      => 'ترتیب دوباره',
     'reorder_text'                 => 'Use drag&drop to reorder.',
     'reorder_success_title'        => 'انجام شد',
@@ -120,7 +120,7 @@ return [
     'yes' => 'Yes',
     'no'  => 'No',
 
-    // CRUD filters navbar view
+    // CRUD filters navbar views
     'filters'        => 'فیلترها',
     'toggle_filters' => 'تغییر فیلترها',
     'remove_filters' => 'حذف فیلترها',

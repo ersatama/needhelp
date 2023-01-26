@@ -34,7 +34,7 @@ return [
     'edit_translations' => 'LABOT TULKOJUMUS',
     'language'          => 'Valoda',
 
-    // CRUD table view
+    // CRUD table views
     'all'                       => 'Visi ',
     'in_the_database'           => 'datubāzē',
     'list'                      => 'Saraksts',
@@ -113,7 +113,7 @@ return [
     'insert_success' => 'Ieraksts tika veiksmīgi pievienots.',
     'update_success' => 'Ieraksts tika veiksmīgi modificēts.',
 
-    // CRUD reorder view
+    // CRUD reorder views
     'reorder'                 => 'Pārkārtot',
     'reorder_text'            => 'Izmantojiet drag&drop lai pārkārtotu.',
     'reorder_success_title'   => 'Gatavs',
@@ -125,7 +125,7 @@ return [
     'yes' => 'Jā',
     'no'  => 'Nē',
 
-    // CRUD filters navbar view
+    // CRUD filters navbar views
     'filters'        => 'Filtri',
     'toggle_filters' => 'Pārslēgt filtrus',
     'remove_filters' => 'Noņemt filtrus',

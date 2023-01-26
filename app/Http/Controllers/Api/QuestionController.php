@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Domain\Contracts\Contract;
 use App\Domain\Contracts\ErrorContract;
+use App\Domain\Helpers\OneSignalHelper;
 use App\Domain\Helpers\Wooppay;
 use App\Domain\Requests\Question\CreateRequest;
 use App\Domain\Requests\Question\GetRequest;
@@ -34,8 +35,9 @@ class QuestionController extends Controller
     protected WooppayService $wooppayService;
     protected Wooppay $wooppay;
     protected NotificationService $notificationService;
+    protected OneSignalHelper $oneSignalHelper;
 
-    public function __construct(QuestionService $questionService, UserService $userService, PaymentService $paymentService, WooppayService $wooppayService, Wooppay $wooppay, NotificationService $notificationService)
+    public function __construct(QuestionService $questionService, UserService $userService, PaymentService $paymentService, WooppayService $wooppayService, Wooppay $wooppay, NotificationService $notificationService, OneSignalHelper $oneSignalHelper)
     {
         $this->questionService  =   $questionService;
         $this->userService      =   $userService;
@@ -43,6 +45,7 @@ class QuestionController extends Controller
         $this->wooppayService   =   $wooppayService;
         $this->wooppay          =   $wooppay;
         $this->notificationService  =   $notificationService;
+        $this->oneSignalHelper  =   $oneSignalHelper;
     }
 
     /**
@@ -114,7 +117,7 @@ class QuestionController extends Controller
      */
     public function countDateBetween($start,$end)
     {
-        return $this->questionService->questionRepository::countDateBetween($start,$end);
+        $this->questionService->questionRepository::countDateBetween($start,$end);
     }
 
     /**
@@ -165,7 +168,7 @@ class QuestionController extends Controller
         if ($question = $this->questionService->questionRepository->create($createRequest->checked())) {
             $user   =   $this->userService->userRepository->firstById($question->{Contract::USER_ID});
             $wooppayInvoice = $this->wooppay->invoice($question, $user);
-            if ($user && $question->{Contract::PAYMENT_ID} === 1 && $wooppayInvoice) {
+            if ($user && $wooppayInvoice) {
                 $this->wooppayService->invoiceCreate($question, $wooppayInvoice);
                 return new QuestionResource($question);
             }
@@ -185,7 +188,7 @@ class QuestionController extends Controller
         $data   =    $updateRequest->checked();
 
         if ($question = $this->questionService->questionRepository->firstById($id)) {
-            if ($question->{Contract::ANSWER} && $question->{Contract::ANSWERED_AT}) {
+            if ($question->{Contract::ANSWER}) {
                 return response(ErrorContract::QUESTION_ALREADY_ANSWERED, 400);
             } elseif ($question->{Contract::STATUS} !== 2) {
                 if (array_key_exists(Contract::ANSWER, $data)) {
@@ -193,14 +196,15 @@ class QuestionController extends Controller
                 }
                 $question   =   $this->questionService->questionRepository->update($id, $data);
                 if (array_key_exists(Contract::ANSWER, $data)) {
-                    $this->notificationService->notificationRepository->create([
+                    $notification   =   $this->notificationService->notificationRepository->create([
                         Contract::USER_ID   =>  $question->{Contract::USER_ID},
                         Contract::TYPE  =>  1,
                         Contract::QUESTION_ID   =>  $question->{Contract::ID},
                         Contract::STATUS    =>  true
                     ]);
+                    $this->oneSignalHelper->send($notification);
                 }
-                event(new QuestionEvent($question));
+                broadcast(new QuestionEvent($question));
             }
             return new QuestionResource($question);
         }

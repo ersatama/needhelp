@@ -39,7 +39,7 @@ class Wooppay
                     Contract::PASSWORD  =>  $payment->{Contract::PASSWORD}
                 ]));
                 $auth   =   json_decode($auth, true);
-                if (array_key_exists(Contract::LOGIN, $auth) && array_key_exists(Contract::TOKEN, $auth)) {
+                if ($auth && array_key_exists(Contract::LOGIN, $auth) && array_key_exists(Contract::TOKEN, $auth)) {
                     if ($wooppay) {
                         $this->temporaryVariableService->temporaryVariableRepository->update($wooppay->{Contract::ID},[
                             Contract::VALUE =>  json_encode([
@@ -60,8 +60,9 @@ class Wooppay
                     }
                     return $auth;
                 }
+                Log::info('wooppay helper auth', [$auth]);
             } catch (Exception $exception) {
-
+                Log::info('wooppay helper', [$exception->getMessage()]);
             }
         }
         return false;
@@ -87,7 +88,7 @@ class Wooppay
                     Contract::DEATH_DATE        =>  date('Y-m-d H:i:s', strtotime("+1 day")),
                 ]));
                 $invoice    =   json_decode($invoice, true);
-                if (array_key_exists(Contract::OPERATION_URL, $invoice) && array_key_exists(Contract::RESPONSE, $invoice)) {
+                if ($invoice && array_key_exists(Contract::OPERATION_URL, $invoice) && array_key_exists(Contract::RESPONSE, $invoice)) {
                     return $invoice;
                 }
             } catch (Exception $exception) {
@@ -107,9 +108,10 @@ class Wooppay
                 ],[
                     Contract::OPERATION_IDS =>  [$wooppayModel->{Contract::OPERATION_ID}]
                 ]));
-                $status =   json_decode($status, true);
-                if (sizeof($status) > 0) {
-                    return $status[0];
+                if ($status = json_decode($status, true)) {
+                    if (sizeof($status) > 0) {
+                        return $status[0];
+                    }
                 }
             } catch (Exception $exception) {
 

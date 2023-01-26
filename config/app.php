@@ -209,6 +209,7 @@ return [
         App\Providers\Repositories\PriceRepositoryProvider::class,
         App\Providers\Repositories\WooppayRepositoryProvider::class,
         App\Providers\Repositories\TemporaryVariableRepositoryProvider::class,
+        App\Providers\Repositories\NotificationGlobalRepositoryProvider::class,
     ],
 
     /*

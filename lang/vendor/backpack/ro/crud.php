@@ -34,7 +34,7 @@ return [
     'edit_translations'                       => 'EDITEAZĂ TRADUCERILE',
     'language'                                => 'Limbă',
 
-    // CRUD table view
+    // CRUD table views
     'all'                                     => 'Toate ',
     'in_the_database'                         => 'din baza de date',
     'list'                                    => 'Listă',
@@ -95,7 +95,7 @@ return [
     'insert_success'                          => 'Intrarea a fost adăugată cu succes.',
     'update_success'                          => 'Intrarea a fost modificată cu succes.',
 
-    // CRUD reorder view
+    // CRUD reorder views
     'reorder'                                 => 'Reordonare',
     'reorder_text'                            => 'Folosește drag&drop pentru a reordona.',
     'reorder_success_title'                   => 'Terminat',
@@ -107,7 +107,7 @@ return [
     'yes'                                     => 'Da',
     'no'                                      => 'Nu',
 
-    // CRUD filters navbar view
+    // CRUD filters navbar views
     'filters'                                 => 'Filtre',
     'toggle_filters'                          => 'Comutare filtre',
     'remove_filters'                          => 'Anulează filtre',
