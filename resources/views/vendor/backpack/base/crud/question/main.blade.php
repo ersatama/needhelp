@@ -288,7 +288,7 @@
         });
         pusher.unsubscribe('question-channel');
         let channel = pusher.subscribe('question-channel');
-        channel.unbind();
+        channel.unbind('question-event');
         channel.bind('question-event', function(data) {
             app.newQuestion(data);
         });

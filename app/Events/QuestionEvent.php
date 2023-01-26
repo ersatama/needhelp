@@ -22,7 +22,8 @@ class QuestionEvent implements ShouldBroadcast
     {
         $this->data =   [
             Contract::ID    =>  $question->{Contract::ID},
-            Contract::IS_PAID   =>  $question->{Contract::IS_PAID}
+            Contract::IS_PAID   =>  $question->{Contract::IS_PAID},
+            Contract::STATUS    =>  $question->{Contract::STATUS}
         ];
     }
 
