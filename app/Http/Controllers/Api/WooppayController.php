@@ -39,15 +39,15 @@ class WooppayController extends Controller
                     $question   =   $this->questionService->questionRepository->firstById($questionId);
                     if ($question->{Contract::STATUS} !== 2) {
                         if (in_array($wooppayStatus,[19,14])) {
+                            $question   =   $this->questionService->questionRepository->update($questionId,[
+                                Contract::IS_PAID   =>  true,
+                                Contract::STATUS    =>  1
+                            ]);
                             if (!$this->notificationEventService->notificationEventRepository->firstWhere([
                                 Contract::QUESTION_ID   =>  $question->{Contract::ID},
                                 Contract::IS_PAID   =>  true,
                                 Contract::STATUS    =>  1
                             ])) {
-                                $question   =   $this->questionService->questionRepository->update($questionId,[
-                                    Contract::IS_PAID   =>  true,
-                                    Contract::STATUS    =>  1
-                                ]);
                                 $this->notificationEventService->notificationEventRepository->create([
                                     Contract::QUESTION_ID   =>  $question->{Contract::ID},
                                     Contract::IS_PAID   =>  true,
@@ -56,15 +56,15 @@ class WooppayController extends Controller
                                 broadcast(new QuestionEvent($question));
                             }
                         } elseif (in_array($wooppayStatus,[17,20])) {
+                            $question   =   $this->questionService->questionRepository->update($questionId,[
+                                Contract::IS_PAID   =>  false,
+                                Contract::STATUS    =>  0
+                            ]);
                             if (!$this->notificationEventService->notificationEventRepository->firstWhere([
                                 Contract::QUESTION_ID   =>  $question->{Contract::ID},
                                 Contract::IS_PAID   =>  false,
                                 Contract::STATUS    =>  0
                             ])) {
-                                $question   =   $this->questionService->questionRepository->update($questionId,[
-                                    Contract::IS_PAID   =>  false,
-                                    Contract::STATUS    =>  0
-                                ]);
                                 $this->notificationEventService->notificationEventRepository->create([
                                     Contract::QUESTION_ID   =>  $question->{Contract::ID},
                                     Contract::IS_PAID   =>  false,
