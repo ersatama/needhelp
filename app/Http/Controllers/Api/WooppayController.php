@@ -49,6 +49,8 @@ class WooppayController extends Controller
                             broadcast(new QuestionEvent($question));
                         }
                     }
+                } else {
+                    Log::info('wooppay-status',[$status]);
                 }
             }
         }
@@ -56,6 +58,6 @@ class WooppayController extends Controller
 
     public function back(Request $request)
     {
-        Log::info('back', [$request->all()]);
+
     }
 }
