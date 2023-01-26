@@ -14,7 +14,8 @@ use Illuminate\Queue\SerializesModels;
 class QuestionJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
-
+    public int $timeout = 1;
+    public int $tries = 1;
     public Question $question;
 
     public function __construct(Question $question)

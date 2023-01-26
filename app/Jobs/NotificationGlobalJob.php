@@ -17,7 +17,8 @@ use Illuminate\Queue\SerializesModels;
 class NotificationGlobalJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
-
+    public int $timeout = 1;
+    public int $tries = 1;
     protected NotificationGlobal $notificationGlobal;
 
     public function __construct(NotificationGlobal $notificationGlobal)
