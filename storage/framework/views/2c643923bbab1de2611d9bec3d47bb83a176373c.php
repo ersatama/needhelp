@@ -114,10 +114,14 @@
                                     <div class="modal-body-item-key text-muted">Дата создания</div>
                                     <div class="modal-body-item-value">{{ view.created_at_readable }}</div>
                                 </div>
+
+                                
                                 <div class="modal-body-item border-bottom">
                                     <div class="modal-body-item-key text-muted">Оставшееся время</div>
                                     <div class="modal-body-item-value">{{ view.timerText }}</div>
                                 </div>
+
+
                                 <div class="modal-body-item border-bottom">
                                     <div class="modal-body-item-key text-muted">Пользователь</div>
                                     <div class="modal-body-item-value">{{ view.user.name }} {{ view.user.surname }}</div>
