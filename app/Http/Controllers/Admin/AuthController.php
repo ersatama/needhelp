@@ -31,14 +31,16 @@ class AuthController extends BackPackLoginController
         $request->validate([
             'email' => 'required|email|exists:users,email',
             'password' => 'required',
-            'g-recaptcha-response' => ['required', new ReCaptcha]
+            // 'g-recaptcha-response' => ['required', new ReCaptcha]
         ]);
         $user   =   $this->userService->userRepository->firstByEmail($request->input(Contract::EMAIL));
         if (Hash::check($request->input(Contract::PASSWORD), $user->{Contract::PASSWORD})) {
             backpack_auth()->login($user);
             if (backpack_user()->{Contract::ROLE} === 'lawyer' || backpack_user()->{Contract::ROLE} === 'moderator') {
+                // return view('vendor.backpack.base.crud.question.main');
                 return redirect('question');
             }
+            // return view('vendor.backpack.base.crud.question.main');
             return redirect('dashboard');
         }
         return view('vendor.backpack.base.auth.login',['username'=>'email']);

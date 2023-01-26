@@ -18,7 +18,8 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             LanguageSeeder::class,
             PaymentSeeder::class,
-            PriceSeeder::class
+            PriceSeeder::class,
+            QuestionSeeder::class
         ]);
     }
 }
