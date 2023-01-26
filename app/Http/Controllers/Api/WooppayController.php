@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Domain\Contracts\Contract;
 use App\Domain\Helpers\Wooppay;
+use App\Domain\Services\NotificationEventService;
 use App\Domain\Services\QuestionService;
 use App\Domain\Services\WooppayService;
 use App\Events\QuestionEvent;
@@ -17,12 +18,14 @@ class WooppayController extends Controller
     protected WooppayService $wooppayService;
     protected QuestionService $questionService;
     protected Wooppay $wooppay;
+    protected NotificationEventService $notificationEventService;
 
-    public function __construct(WooppayService $wooppayService, Wooppay $wooppay, QuestionService $questionService)
+    public function __construct(WooppayService $wooppayService, Wooppay $wooppay, QuestionService $questionService, NotificationEventService $notificationEventService)
     {
         $this->wooppayService   =   $wooppayService;
         $this->questionService  =   $questionService;
         $this->wooppay          =   $wooppay;
+        $this->notificationEventService =   $notificationEventService;
     }
 
     public function request(Request $request)
@@ -36,21 +39,41 @@ class WooppayController extends Controller
                     $question   =   $this->questionService->questionRepository->firstById($questionId);
                     if ($question->{Contract::STATUS} !== 2) {
                         if (in_array($wooppayStatus,[19,14])) {
-                            $question   =   $this->questionService->questionRepository->update($questionId,[
+                            if (!$this->notificationEventService->notificationEventRepository->firstWhere([
+                                Contract::QUESTION_ID   =>  $question->{Contract::ID},
                                 Contract::IS_PAID   =>  true,
                                 Contract::STATUS    =>  1
-                            ]);
-                            broadcast(new QuestionEvent($question));
+                            ])) {
+                                $question   =   $this->questionService->questionRepository->update($questionId,[
+                                    Contract::IS_PAID   =>  true,
+                                    Contract::STATUS    =>  1
+                                ]);
+                                $this->notificationEventService->notificationEventRepository->create([
+                                    Contract::QUESTION_ID   =>  $question->{Contract::ID},
+                                    Contract::IS_PAID   =>  true,
+                                    Contract::STATUS    =>  1
+                                ]);
+                                broadcast(new QuestionEvent($question));
+                            }
                         } elseif (in_array($wooppayStatus,[17,20])) {
-                            $question   =   $this->questionService->questionRepository->update($questionId,[
+                            if (!$this->notificationEventService->notificationEventRepository->firstWhere([
+                                Contract::QUESTION_ID   =>  $question->{Contract::ID},
                                 Contract::IS_PAID   =>  false,
                                 Contract::STATUS    =>  0
-                            ]);
-                            broadcast(new QuestionEvent($question));
+                            ])) {
+                                $question   =   $this->questionService->questionRepository->update($questionId,[
+                                    Contract::IS_PAID   =>  false,
+                                    Contract::STATUS    =>  0
+                                ]);
+                                $this->notificationEventService->notificationEventRepository->create([
+                                    Contract::QUESTION_ID   =>  $question->{Contract::ID},
+                                    Contract::IS_PAID   =>  false,
+                                    Contract::STATUS    =>  0
+                                ]);
+                                broadcast(new QuestionEvent($question));
+                            }
                         }
                     }
-                } else {
-                    Log::info('wooppay-status',[$status]);
                 }
             }
         }

@@ -210,6 +210,7 @@ return [
         App\Providers\Repositories\WooppayRepositoryProvider::class,
         App\Providers\Repositories\TemporaryVariableRepositoryProvider::class,
         App\Providers\Repositories\NotificationGlobalRepositoryProvider::class,
+        App\Providers\Repositories\NotificationEventRepositoryProvider::class,
     ],
 
     /*
