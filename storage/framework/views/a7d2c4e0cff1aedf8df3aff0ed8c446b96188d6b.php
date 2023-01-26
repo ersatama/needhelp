@@ -1,3 +1,5 @@
+
+
 <?php $__env->startSection('content'); ?>
     <div class="row justify-content-center">
         <div class="col-12 col-md-8 col-lg-4">
@@ -49,7 +51,7 @@
                             </div>
                         </div>
 
-                        
+
 
                         <div class="form-group">
                             <div>

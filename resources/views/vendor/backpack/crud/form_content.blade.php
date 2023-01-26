@@ -190,7 +190,7 @@
                         $('[name="' + normalizedProperty + '[]"]') :
                         $('[name="' + normalizedProperty + '"]'),
                         container = field.parent('.form-group');
-          
+
             // iterate the inputs to add invalid classes to fields and red text to the field container.
             container.children('input, textarea, select').each(function() {
                 let containerField = $(this);
@@ -213,7 +213,7 @@
                 if(!container.hasClass('repeatable-group') && !container.hasClass('no-error-display')){
                   row.appendTo(container);
                 }
-                
+
 
                 // highlight its parent tab
                 @if ($crud->tabsEnabled())

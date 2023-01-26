@@ -8,6 +8,7 @@
 
     <li class="nav-title">Основное</li>
 
+    <li class="nav-item"><a class="nav-link" href="<?php echo e(backpack_url('notification-global')); ?>"><i class="nav-icon lar la-bell"></i> Уведомления</a></li>
     <li class="nav-item"><a class="nav-link" href="<?php echo e(backpack_url('admin')); ?>"><i class="nav-icon la la-group"></i> Администраторы</a></li>
     <li class="nav-item"><a class="nav-link" href="<?php echo e(backpack_url('moderator')); ?>"><i class="nav-icon la la-group"></i> Модераторы</a></li>
     <li class="nav-item"><a class="nav-link" href="<?php echo e(backpack_url('user')); ?>"><i class="nav-icon la la-group"></i> Пользователи</a></li>
