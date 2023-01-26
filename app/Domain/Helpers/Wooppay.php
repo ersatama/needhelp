@@ -39,7 +39,7 @@ class Wooppay
                     Contract::PASSWORD  =>  $payment->{Contract::PASSWORD}
                 ]));
                 $auth   =   json_decode($auth, true);
-                if (array_key_exists(Contract::LOGIN, $auth) && array_key_exists(Contract::TOKEN, $auth)) {
+                if ($auth && array_key_exists(Contract::LOGIN, $auth) && array_key_exists(Contract::TOKEN, $auth)) {
                     if ($wooppay) {
                         $this->temporaryVariableService->temporaryVariableRepository->update($wooppay->{Contract::ID},[
                             Contract::VALUE =>  json_encode([
