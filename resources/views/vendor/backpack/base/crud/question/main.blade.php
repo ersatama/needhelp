@@ -601,7 +601,9 @@
                                 this.hide();
                                 this.timerCheck();
                                 this.page  =    this.page + 1;
-                                this.questionAjaxStatus =   true;
+                                if (response.data.data.length === this.take) {
+                                    this.questionAjaxStatus =   true;
+                                }
                             });
                     }
                 },
@@ -658,7 +660,9 @@
                                 this.answeredCount  =   response.data.count;
                                 this.showAnsweredModal   =   false;
                                 this.answered_page  =   this.answered_page + 1;
-                                this.answeredQuestionAjaxStatus =   true;
+                                if (response.data.data.length === this.take) {
+                                    this.answeredQuestionAjaxStatus =   true;
+                                }
                             });
                     }
                 },
