@@ -112,6 +112,8 @@ class Wooppay
                     if (sizeof($status) > 0) {
                         return $status[0];
                     }
+                } else {
+                    Log::info('wooppay-answer', [$status]);
                 }
             } catch (Exception $exception) {
 
