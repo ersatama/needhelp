@@ -60,8 +60,9 @@ class Wooppay
                     }
                     return $auth;
                 }
+                Log::info('wooppay helper auth', [$auth]);
             } catch (Exception $exception) {
-
+                Log::info('wooppay helper', [$exception->getMessage()]);
             }
         }
         return false;
