@@ -38,6 +38,7 @@ class Wooppay
                     Contract::LOGIN     =>  $payment->{Contract::LOGIN},
                     Contract::PASSWORD  =>  $payment->{Contract::PASSWORD}
                 ]));
+                Log::info('wooppay helper auth', [$auth]);
                 $auth   =   json_decode($auth, true);
                 if ($auth && array_key_exists(Contract::LOGIN, $auth) && array_key_exists(Contract::TOKEN, $auth)) {
                     if ($wooppay) {
@@ -60,7 +61,7 @@ class Wooppay
                     }
                     return $auth;
                 }
-                Log::info('wooppay helper auth', [$auth]);
+
             } catch (Exception $exception) {
                 Log::info('wooppay helper', [$exception->getMessage()]);
             }
