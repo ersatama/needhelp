@@ -26,6 +26,7 @@
             </div>
             <div class="questions" v-if="type">
                 <template v-if="questions.length > 0">
+                    {{-- here i added questions-blink param for our div--}}
                     <div questions-blink="" class="question" v-for="(question,key) in questions" :key="key">
                         <div class="question-header">
                             <div class="question-header-icon" v-if="!question.is_important">?</div>
@@ -68,6 +69,7 @@
             </div>
             <div class="questions" v-else>
                 <template v-if="answeredQuestions.length > 0">
+                    {{-- here i added questions-blink param for our div--}}
                     <div questions-blink="" class="question" v-for="(question,key) in answeredQuestions" :key="key">
                         <div class="question-header">
                             <div class="question-header-icon" v-if="!question.is_important">?</div>
@@ -370,6 +372,11 @@
                     let secs        =   Math.floor((now.getTime() - timezone.getTime()) / 1000);
                     let limit       =   item.is_important?1800:3600;
                     let diff    =   limit - secs;
+
+                    /*  for realization of task about changing background of question when
+                        time less than 15min i called var(questions-blink) and via css method
+                        which provided by jQuery set new color
+                    */
                     var $divblink = $('[questions-blink]');
 
                     if(diff<900){

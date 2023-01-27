@@ -42,6 +42,7 @@ class QuestionRepositoryEloquent implements QuestionRepositoryInterface
 
     /*
         To return count of questions in process i just return questions with status 1
+        and is_paid status true. This method created on a base of countQuestionToday function
     */
     public static function countInProcessQuestion(){
         return Question::where([
