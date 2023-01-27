@@ -24,7 +24,6 @@ class OneSignalHelper
     public function send(Notification $notification): void
     {
         if ($user = User::where(Contract::ID, $notification->{Contract::USER_ID})->withoutGlobalScope(Page::class)->first() ) {
-            Log::info('onesignal-user', [$user]);
             $title  =   '';
             $data   =   [];
             if ($notification->{Contract::TYPE} === 1) {

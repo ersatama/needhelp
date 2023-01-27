@@ -96,6 +96,11 @@ trait RepositoryEloquent
         return $this->model::where(Contract::PHONE,$phone)->first();
     }
 
+    public function firstByOperationId($operationId)
+    {
+        return $this->model::where(Contract::OPERATION_ID, $operationId)->first();
+    }
+
     public function firstById($id)
     {
         return $this->model::where(Contract::ID,$id)->withoutGlobalScope(IsPaid::class)->first();

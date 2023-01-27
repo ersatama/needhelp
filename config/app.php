@@ -211,6 +211,7 @@ return [
         App\Providers\Repositories\TemporaryVariableRepositoryProvider::class,
         App\Providers\Repositories\NotificationGlobalRepositoryProvider::class,
         App\Providers\Repositories\NotificationEventRepositoryProvider::class,
+        App\Providers\Repositories\WooppayStatusArchiveRepositoryProvider::class,
     ],
 
     /*

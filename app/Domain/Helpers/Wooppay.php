@@ -5,6 +5,7 @@ namespace App\Domain\Helpers;
 use App\Domain\Contracts\Contract;
 use App\Domain\Services\PaymentService;
 use App\Domain\Services\TemporaryVariableService;
+use App\Domain\Services\WooppayArchiveService;
 use App\Models\Payment;
 use App\Models\Question;
 use App\Models\User;
@@ -17,11 +18,13 @@ class Wooppay
     const PAYMENT_ID    =   1;
     protected PaymentService $paymentService;
     protected TemporaryVariableService $temporaryVariableService;
+    protected WooppayArchiveService $wooppayArchiveService;
 
-    public function __construct(PaymentService $paymentService, TemporaryVariableService $temporaryVariableService)
+    public function __construct(PaymentService $paymentService, TemporaryVariableService $temporaryVariableService, WooppayArchiveService $wooppayArchiveService)
     {
         $this->paymentService           =   $paymentService;
         $this->temporaryVariableService =   $temporaryVariableService;
+        $this->wooppayArchiveService    =   $wooppayArchiveService;
     }
 
     public function auth(Payment $payment): bool|array
@@ -103,6 +106,11 @@ class Wooppay
     {
         if ($wooppay = $this->auth($this->paymentService->paymentRepository->firstById(self::PAYMENT_ID))) {
             try {
+                if ($wooppayStatusArchive = $this->wooppayArchiveService->wooppayStatusArchiveRepository->firstByOperationId($wooppayModel->{Contract::OPERATION_ID})) {
+                    if ($wooppayStatusArchive->{Contract::DATA}) {
+                        return json_decode($wooppayStatusArchive->{Contract::DATA}, true);
+                    }
+                }
                 $status =   Curl::withOpt($this->requestBody(config('wooppay.status'),[
                     'Authorization: '.$wooppay[Contract::TOKEN],
                     'Content-Type: application/json'
@@ -111,8 +119,11 @@ class Wooppay
                 ]));
                 $data = json_decode($status, true);
                 if ($data) {
-                    Log::info('wooppay-answer-data', [$data]);
                     if (sizeof($data) > 0) {
+                        $this->wooppayArchiveService->wooppayStatusArchiveRepository->create([
+                            Contract::OPERATION_ID  =>  $wooppayModel->{Contract::OPERATION_ID},
+                            Contract::DATA  =>  json_encode($data[0])
+                        ]);
                         return $data[0];
                     }
                 } else {
