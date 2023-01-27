@@ -45,7 +45,8 @@ class QuestionRepositoryEloquent implements QuestionRepositoryInterface
     */
     public static function countInProcessQuestion(){
         return Question::where([
-            [Contract::STATUS, 1]
+            [Contract::STATUS, 1],
+            [Contract::IS_PAID, true],
         ])
             ->withoutGlobalScope(Page::class)->count();
     }
