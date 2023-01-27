@@ -108,6 +108,7 @@ class Wooppay
             try {
                 if ($wooppayStatusArchive = $this->wooppayArchiveService->wooppayStatusArchiveRepository->firstByOperationId($wooppayModel->{Contract::OPERATION_ID})) {
                     if ($wooppayStatusArchive->{Contract::DATA}) {
+                        Log::info('wooppay-archive',[json_decode($wooppayStatusArchive->{Contract::DATA}, true)]);
                         return json_decode($wooppayStatusArchive->{Contract::DATA}, true);
                     }
                 }
