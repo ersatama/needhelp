@@ -15,6 +15,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Log;
 
 class NotificationGlobalJob implements ShouldQueue
 {
@@ -43,6 +44,7 @@ class NotificationGlobalJob implements ShouldQueue
                 Contract::NOTIFICATION_GLOBAL_ID    =>  $this->notificationGlobal->{Contract::ID},
                 Contract::STATUS    =>  true
             ]);
+            Log::info('notification-global',[$notification]);
             $oneSignalHelper->send($notification);
             //NotificationGlobalUserJob::dispatch($this->notificationGlobal, $user);
         }
