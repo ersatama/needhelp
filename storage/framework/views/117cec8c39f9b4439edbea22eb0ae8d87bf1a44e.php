@@ -1,3 +1,4 @@
+
 <?php
     use App\Domain\Repositories\User\UserRepositoryEloquent;
     use App\Domain\Repositories\Question\QuestionRepositoryEloquent;
@@ -51,6 +52,19 @@
                         'description'   => 'Закрытых вопрос за сегодня',
                         'progress'      => 100, // integer
                         'progressClass' => 'progress-bar bg-warning',
+                    ],
+
+                    /*
+                        By the above examples added one more item for questions in process
+                    */
+                    [
+                        'type'          => 'progress_white',
+                        'class'         => 'card mb-2',
+                        'wrapper'       => ['class'=>'col-sm-3'],
+                        'value'         => '<span class="text-success">'. QuestionRepositoryEloquent::countInProcessQuestion() . '</span>',
+                        'description'   => 'Вопросы в обработке',
+                        'progress'      => 100, //integer
+                        'progressClass' => 'progress-bar bg-success',
                     ],
                 ],
             ];

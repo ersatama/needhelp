@@ -30,4 +30,5 @@ Route::group([
     Route::crud('payment', 'PaymentCrudController');
     Route::crud('price', 'PriceCrudController');
     Route::crud('moderator', 'ModeratorCrudController');
+    Route::crud('notification-global', 'NotificationGlobalCrudController');
 }); // this should be the absolute last line of this file
