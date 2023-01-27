@@ -26,7 +26,7 @@
             </div>
             <div class="questions" v-if="type">
                 <template v-if="questions.length > 0">
-                    <div class="question" v-for="(question,key) in questions" :key="key">
+                    <div questions-blink="" class="question" v-for="(question,key) in questions" :key="key">
                         <div class="question-header">
                             <div class="question-header-icon" v-if="!question.is_important">?</div>
                             <div class="question-header-icon question-header-icon-fire" v-else></div>
@@ -68,7 +68,7 @@
             </div>
             <div class="questions" v-else>
                 <template v-if="answeredQuestions.length > 0">
-                    <div class="question" v-for="(question,key) in answeredQuestions" :key="key">
+                    <div questions-blink="" class="question" v-for="(question,key) in answeredQuestions" :key="key">
                         <div class="question-header">
                             <div class="question-header-icon" v-if="!question.is_important">?</div>
                             <div class="question-header-icon question-header-icon-fire" v-else></div>
@@ -369,10 +369,17 @@
                     let now         =   new Date();
                     let secs        =   Math.floor((now.getTime() - timezone.getTime()) / 1000);
                     let limit       =   item.is_important?1800:3600;
+                    let diff    =   limit - secs;
+                    var $divblink = $('[questions-blink]');
+
+                    if(diff<900){
+                        $divblink.css("background-color", "#FF9A9A");
+                    }
+
                     if (secs > limit) {
                         return '00:00';
                     }
-                    let diff    =   limit - secs;
+
                     return Math.floor(diff / 60) + ':' + (diff % 60);
                 },
                 timerCheck() {

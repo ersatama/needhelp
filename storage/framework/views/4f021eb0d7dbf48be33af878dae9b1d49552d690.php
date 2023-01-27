@@ -52,6 +52,10 @@
                         'progress'      => 100, // integer
                         'progressClass' => 'progress-bar bg-warning',
                     ],
+
+                    /*
+                        By the above examples added one more item for questions in process
+                    */
                     [
                         'type'          => 'progress_white',
                         'class'         => 'card mb-2',
