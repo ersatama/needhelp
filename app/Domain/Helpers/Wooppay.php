@@ -113,7 +113,7 @@ class Wooppay
                 if ($data) {
                     Log::info('wooppay-answer-data', [$data]);
                     if (sizeof($data) > 0) {
-                        return $status[0];
+                        return $data[0];
                     }
                 } else {
                     Log::info('wooppay-answer-error', [$status]);
