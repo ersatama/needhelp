@@ -7,6 +7,7 @@ use App\Domain\Scopes\Page;
 use App\Domain\Services\NotificationGlobalService;
 use App\Domain\Services\UserService;
 use App\Models\Notification;
+use App\Models\User;
 use Illuminate\Support\Facades\Log;
 use OneSignal;
 
