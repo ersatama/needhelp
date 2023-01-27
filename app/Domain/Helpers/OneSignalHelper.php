@@ -35,7 +35,6 @@ class OneSignalHelper
         $notificationGlobal =   $this->notificationGlobalService->notificationGlobalRepository->firstById($notificationGlobal->{Contract::ID});
         $notifications  =   DB::table(NotificationContract::TABLE)->where(Contract::NOTIFICATION_GLOBAL_ID, $notificationGlobal->{Contract::ID})->get();
         foreach ($notifications as &$notification) {
-            Log::info('notification-send-all',[$notification]);
             $user   =   User::where(Contract::ID, $notification->{Contract::USER_ID})->withoutGlobalScope(Page::class)->first();
             if ($user->{Contract::LANGUAGE_ID} === 1) {
                 $title  =   $notificationGlobal->{Contract::TEXT};
