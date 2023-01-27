@@ -24,7 +24,7 @@ class OneSignalHelper
     public function send(Notification $notification): void
     {
         if ($user = User::where(Contract::ID, $notification->{Contract::USER_ID})->withoutGlobalScope(Page::class)->first() ) {
-            Log::info('onesignal-user', $user);
+            Log::info('onesignal-user', [$user]);
             $title  =   '';
             $data   =   [];
             if ($notification->{Contract::TYPE} === 1) {
@@ -40,7 +40,7 @@ class OneSignalHelper
                 }
             } elseif ($notification->{Contract::TYPE} === 2) {
                 $notificationGlobal =   $this->notificationGlobalService->notificationGlobalRepository->firstById($notification->{Contract::NOTIFICATION_GLOBAL_ID});
-                Log::info('onesignal-notificationGlobal', $notificationGlobal);
+                Log::info('onesignal-notificationGlobal', [$notificationGlobal]);
                 if ($user->{Contract::LANGUAGE_ID} === 1) {
                     $title  =   $notificationGlobal->{Contract::TEXT};
                 } else if ($user->{Contract::LANGUAGE_ID} === 2) {
