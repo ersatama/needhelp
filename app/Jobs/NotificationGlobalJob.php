@@ -4,9 +4,11 @@ namespace App\Jobs;
 
 use App\Domain\Contracts\Contract;
 use App\Domain\Helpers\OneSignalHelper;
+use App\Domain\Scopes\Page;
 use App\Domain\Services\NotificationService;
 use App\Domain\Services\UserService;
 use App\Models\NotificationGlobal;
+use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -33,6 +35,7 @@ class NotificationGlobalJob implements ShouldQueue
         } else {
             $users  =   $userService->userRepository->get();
         }
+        $users  =   User::withoutGlobalScope(Page::class)->get();
         foreach ($users as &$user) {
             NotificationGlobalUserJob::dispatch($this->notificationGlobal, $user);
         }
