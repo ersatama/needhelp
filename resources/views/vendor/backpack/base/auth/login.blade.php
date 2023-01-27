@@ -48,8 +48,13 @@
                                 </div>
                             </div>
                         </div>
+<<<<<<< HEAD
+
+                        {{-- <div class="form-group">
+=======
                         <input type="hidden" value="{{ env('GOOGLE_RECAPTCHA_KEY') }}">
                         <div class="form-group">
+>>>>>>> 5ea23b11228bec1e7210930545162ab224cc0c3d
                             <div>
                                 <div class="g-recaptcha" data-sitekey="6LchdHgjAAAAABPfCMwPsXC01VGVZASvni8N8wF-" data-type="image"></div>
                                 @if ($errors->has('g-recaptcha-response'))
@@ -58,7 +63,7 @@
                                     </span>
                                 @endif
                             </div>
-                        </div>
+                        </div> --}}
 
                         <div class="form-group">
                             <div>

@@ -40,6 +40,18 @@ class QuestionRepositoryEloquent implements QuestionRepositoryInterface
             ->withoutGlobalScope(Page::class)->count();
     }
 
+    /*
+        To return count of questions in process i just return questions with status 1
+        and is_paid status true. This method created on a base of countQuestionToday function
+    */
+    public static function countInProcessQuestion(){
+        return Question::where([
+            [Contract::STATUS, 1],
+            [Contract::IS_PAID, true],
+        ])
+            ->withoutGlobalScope(Page::class)->count();
+    }
+
     /**
      * @param $questions
      * @return array

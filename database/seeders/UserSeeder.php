@@ -36,5 +36,14 @@ class UserSeeder extends Seeder
             Contract::PASSWORD =>  'password',//password
             Contract::REMEMBER_TOKEN   =>  Str::random(10),
         ]);
+        User::factory()->create([
+            Contract::ROLE =>  Contract::USER,
+            Contract::NAME =>  Contract::USER,
+            Contract::SURNAME  =>  Contract::USER,
+            Contract::PHONE    =>  null,
+            Contract::EMAIL    =>  'user@needhelp.com',
+            Contract::PASSWORD =>  'password',//password
+            Contract::REMEMBER_TOKEN   =>  Str::random(10),
+        ]);
     }
 }

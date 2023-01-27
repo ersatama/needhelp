@@ -1,14 +1,13 @@
-@extends(backpack_view('blank'))
-@php
+<?php
     use App\Domain\Repositories\User\UserRepositoryEloquent;
     use App\Domain\Repositories\Question\QuestionRepositoryEloquent;
     use App\Domain\Contracts\Contract;
     use App\Charts\UserChart;
-@endphp
+?>
 
-@section('content')
-    @if(backpack_user()->{Contract::ROLE} === Contract::ADMIN)
-        @php
+<?php $__env->startSection('content'); ?>
+    <?php if(backpack_user()->{Contract::ROLE} === Contract::ADMIN): ?>
+        <?php
             $widgets['before_content'][]    =   [
             'type'    => 'div',
             'class'   => 'row',
@@ -69,9 +68,9 @@
                 ],
             ];
 
-        @endphp
-    @else
-        @php
+        ?>
+    <?php else: ?>
+        <?php
             $widgets['after_content'][]    =   [
             'type'    => 'div',
             'class'   => 'row',
@@ -86,12 +85,12 @@
                     ],
                 ],
             ];
-        @endphp
-    @endif
+        ?>
+    <?php endif; ?>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>
     <script src="https://cdnjs.com/libraries/Chart.js"></script>
 
-    @if(backpack_user()->{Contract::ROLE} === Contract::ADMIN)
+    <?php if(backpack_user()->{Contract::ROLE} === Contract::ADMIN): ?>
         <div class="h4 font-weight-bold text-center mt-4">Пользователей в системе</div>
         <div class="row">
             <div class="col-12 col-lg-4">
@@ -100,18 +99,19 @@
                         За последние 7 дней
                     </div>
                     <div class="card-body">
-                        @php
+                        <?php
                             $users  =   UserRepositoryEloquent::userLastWeek();
-                        @endphp
+                        ?>
                         <canvas id="user-last-week" width="400" height="220" role="img"></canvas>
                         <script>
                             let data = [
-                                    @foreach( $users as &$user)
+                                    <?php $__currentLoopData = $users; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as &$user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 {
-                                    day: '{{ \Carbon\Carbon::parse($user['date'])->diffForHumans() }}',
-                                    count: {{ $user['count'] }}
+                                    day: '<?php echo e(\Carbon\Carbon::parse($user['date'])->diffForHumans()); ?>',
+                                    count: <?php echo e($user['count']); ?>
+
                                 },
-                                @endforeach
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             ];
                             new Chart(
                                 document.getElementById('user-last-week'),
@@ -144,18 +144,19 @@
                         За последние 30 дней
                     </div>
                     <div class="card-body">
-                        @php
+                        <?php
                             $userMonth  =   UserRepositoryEloquent::userLastMonth();
-                        @endphp
+                        ?>
                         <canvas id="user-last-month" width="400" height="220"></canvas>
                         <script>
                             data = [
-                                    @foreach( $userMonth as &$user)
+                                    <?php $__currentLoopData = $userMonth; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as &$user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 {
-                                    day: '{{ \Carbon\Carbon::parse($user['date'])->diffForHumans() }}',
-                                    count: {{ $user['count'] }}
+                                    day: '<?php echo e(\Carbon\Carbon::parse($user['date'])->diffForHumans()); ?>',
+                                    count: <?php echo e($user['count']); ?>
+
                                 },
-                                @endforeach
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             ];
                             new Chart(
                                 document.getElementById('user-last-month'),
@@ -184,27 +185,28 @@
             </div>
             <div class="col-12 col-lg-4">
                 <div class="card mt-4">
-                    @php
+                    <?php
                         $before =   date("Y-m-d", strtotime("-365 day"));
                         $after  =   date("Y-m-d");
                         $userBetween    =   UserRepositoryEloquent::userDateBetween($before,$after);
-                    @endphp
+                    ?>
                     <div class="card-header text-center d-flex align-items-center justify-content-center head-date">
                         <label for="from" class="h6 m-0">От</label>
-                        <input type="text" class="input-date" id="from" name="from" value="{{$before}}" readonly>
+                        <input type="text" class="input-date" id="from" name="from" value="<?php echo e($before); ?>" readonly>
                         <label for="to" class="h6 m-0">До</label>
-                        <input type="text" class="input-date" id="to" name="to" value="{{$after}}" readonly>
+                        <input type="text" class="input-date" id="to" name="to" value="<?php echo e($after); ?>" readonly>
                     </div>
                     <div class="card-body">
                         <canvas id="user-date-between" width="400" height="220"></canvas>
                         <script>
                             let UserData = [
-                                    @foreach( $userBetween as &$user)
+                                    <?php $__currentLoopData = $userBetween; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as &$user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 {
-                                    date: '{{ $user['date'] }}',
-                                    count: {{ $user['count'] }}
+                                    date: '<?php echo e($user['date']); ?>',
+                                    count: <?php echo e($user['count']); ?>
+
                                 },
-                                @endforeach
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             ];
                             new Chart(
                                 document.getElementById('user-date-between'),
@@ -240,19 +242,20 @@
                         За последние 7 дней (KZT)
                     </div>
                     <div class="card-body">
-                        @php
+                        <?php
                             $notifications  =   QuestionRepositoryEloquent::priceLastWeek();
-                        @endphp
+                        ?>
                         <canvas id="payment-last-week" width="400" height="220"
                                 aria-label="Сумма выплат за последние 7 дней"></canvas>
                         <script>
                             let notifications = [
-                                    @foreach( $notifications as &$notification)
+                                    <?php $__currentLoopData = $notifications; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as &$notification): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 {
-                                    day: '{{ \Carbon\Carbon::parse($notification['date'])->diffForHumans() }}',
-                                    sum: {{ $notification['sum'] }}
+                                    day: '<?php echo e(\Carbon\Carbon::parse($notification['date'])->diffForHumans()); ?>',
+                                    sum: <?php echo e($notification['sum']); ?>
+
                                 },
-                                @endforeach
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             ];
                             new Chart(
                                 document.getElementById('payment-last-week'),
@@ -285,19 +288,20 @@
                         За последние 30 дней (KZT)
                     </div>
                     <div class="card-body">
-                        @php
+                        <?php
                             $notificationMonth  =   QuestionRepositoryEloquent::priceLastMonth();
-                        @endphp
+                        ?>
                         <canvas id="payment-last-month" width="400" height="220"
                                 aria-label="Сумма выплат за последние 30 дней"></canvas>
                         <script>
                             notifications = [
-                                    @foreach( $notificationMonth as &$notification)
+                                    <?php $__currentLoopData = $notificationMonth; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as &$notification): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 {
-                                    day: '{{ \Carbon\Carbon::parse($notification['date'])->diffForHumans() }}',
-                                    sum: {{ $notification['sum'] }}
+                                    day: '<?php echo e(\Carbon\Carbon::parse($notification['date'])->diffForHumans()); ?>',
+                                    sum: <?php echo e($notification['sum']); ?>
+
                                 },
-                                @endforeach
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             ];
                             new Chart(
                                 document.getElementById('payment-last-month'),
@@ -326,27 +330,28 @@
             </div>
             <div class="col-12 col-lg-4">
                 <div class="card mt-3">
-                    @php
+                    <?php
                         $startPrice  =   date("Y-m-d", strtotime("-365 day"));
                         $endPrice    =   date("Y-m-d");
                         $priceBetween  =   QuestionRepositoryEloquent::priceDateBetween($startPrice,$endPrice);
-                    @endphp
+                    ?>
                     <div class="card-header text-center d-flex align-items-center justify-content-center head-date">
                         <label for="from-price" class="h6 m-0">От</label>
-                        <input type="text" class="input-date" id="from_price" name="from-price" value="{{$startPrice}}" readonly>
+                        <input type="text" class="input-date" id="from_price" name="from-price" value="<?php echo e($startPrice); ?>" readonly>
                         <label for="to-price" class="h6 m-0">До</label>
-                        <input type="text" class="input-date" id="to_price" name="to-price" value="{{$endPrice}}" readonly>
+                        <input type="text" class="input-date" id="to_price" name="to-price" value="<?php echo e($endPrice); ?>" readonly>
                     </div>
                     <div class="card-body">
                         <canvas id="payment-date-between" width="400" height="220"></canvas>
                         <script>
                             let priceDate = [
-                                    @foreach( $priceBetween as &$notification)
+                                    <?php $__currentLoopData = $priceBetween; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as &$notification): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 {
-                                    date: '{{ $notification['date'] }}',
-                                    sum: {{ $notification['sum'] }}
+                                    date: '<?php echo e($notification['date']); ?>',
+                                    sum: <?php echo e($notification['sum']); ?>
+
                                 },
-                                @endforeach
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             ];
                             new Chart(
                                 document.getElementById('payment-date-between'),
@@ -382,21 +387,22 @@
                         За последние 7 дней
                     </div>
                     <div class="card-body">
-                        @php
+                        <?php
                             $notifications  =   QuestionRepositoryEloquent::countWhere([
                                 [Contract::CREATED_AT, '>', now()->subDays(7)->endOfDay()],
                                 [Contract::IS_PAID,true],
                                 [Contract::STATUS,1]]);
-                        @endphp
+                        ?>
                         <canvas id="open-question-week" width="400" height="220" aria-label="Открытые вопросы за последние 7 дней"></canvas>
                         <script>
                             notifications = [
-                                    @foreach( $notifications as &$notification)
+                                    <?php $__currentLoopData = $notifications; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as &$notification): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 {
-                                    day: '{{ \Carbon\Carbon::parse($notification['date'])->diffForHumans() }}',
-                                    count: {{ $notification['count'] }}
+                                    day: '<?php echo e(\Carbon\Carbon::parse($notification['date'])->diffForHumans()); ?>',
+                                    count: <?php echo e($notification['count']); ?>
+
                                 },
-                                @endforeach
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             ];
                             new Chart(
                                 document.getElementById('open-question-week'),
@@ -429,21 +435,22 @@
                         За последние 30 дней
                     </div>
                     <div class="card-body">
-                        @php
+                        <?php
                             $notificationMonth  =   QuestionRepositoryEloquent::countWhere([
                                 [Contract::CREATED_AT, '>', now()->subDays(30)->endOfDay()],
                                 [Contract::IS_PAID,true],
                                 [Contract::STATUS,1]]);
-                        @endphp
+                        ?>
                         <canvas id="open-question-month" width="400" height="220" aria-label="Открытые вопросы за последние 30 дней"></canvas>
                         <script>
                             notifications = [
-                                    @foreach( $notificationMonth as &$notification)
+                                    <?php $__currentLoopData = $notificationMonth; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as &$notification): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 {
-                                    day: '{{ \Carbon\Carbon::parse($notification['date'])->diffForHumans() }}',
-                                    count: {{ $notification['count'] }}
+                                    day: '<?php echo e(\Carbon\Carbon::parse($notification['date'])->diffForHumans()); ?>',
+                                    count: <?php echo e($notification['count']); ?>
+
                                 },
-                                @endforeach
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             ];
                             new Chart(
                                 document.getElementById('open-question-month'),
@@ -472,27 +479,28 @@
             </div>
             <div class="col-12 col-lg-4">
                 <div class="card mt-3">
-                    @php
+                    <?php
                         $startOpen  =   date("Y-m-d", strtotime("-365 day"));
                         $endOpen    =   date("Y-m-d");
                         $priceBetween  =   QuestionRepositoryEloquent::countDateBetween($startOpen,$endOpen);
-                    @endphp
+                    ?>
                     <div class="card-header text-center d-flex align-items-center justify-content-center head-date">
                         <label for="from-open" class="h6 m-0">От</label>
-                        <input type="text" class="input-date" id="from_open" name="from-open" value="{{$startOpen}}" readonly>
+                        <input type="text" class="input-date" id="from_open" name="from-open" value="<?php echo e($startOpen); ?>" readonly>
                         <label for="to-open" class="h6 m-0">До</label>
-                        <input type="text" class="input-date" id="to_open" name="to-open" value="{{$endOpen}}" readonly>
+                        <input type="text" class="input-date" id="to_open" name="to-open" value="<?php echo e($endOpen); ?>" readonly>
                     </div>
                     <div class="card-body">
                         <canvas id="open-question-between" width="400" height="220"></canvas>
                         <script>
                             let openDate = [
-                                    @foreach( $priceBetween as &$notification)
+                                    <?php $__currentLoopData = $priceBetween; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as &$notification): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 {
-                                    date: '{{ $notification['date'] }}',
-                                    count: {{ $notification['count'] }}
+                                    date: '<?php echo e($notification['date']); ?>',
+                                    count: <?php echo e($notification['count']); ?>
+
                                 },
-                                @endforeach
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             ];
                             new Chart(
                                 document.getElementById('open-question-between'),
@@ -528,21 +536,22 @@
                         За последние 7 дней
                     </div>
                     <div class="card-body">
-                        @php
+                        <?php
                             $notifications  =   QuestionRepositoryEloquent::countWhere([
                                 [Contract::CREATED_AT, '>', now()->subDays(7)->endOfDay()],
                                 [Contract::IS_PAID,true],
                                 [Contract::STATUS,2]]);
-                        @endphp
+                        ?>
                         <canvas id="closed-question-week" width="400" height="220" aria-label="Закрытые вопросы за последние 7 дней"></canvas>
                         <script>
                             notifications = [
-                                    @foreach( $notifications as &$notification)
+                                    <?php $__currentLoopData = $notifications; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as &$notification): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 {
-                                    day: '{{ \Carbon\Carbon::parse($notification['date'])->diffForHumans() }}',
-                                    count: {{ $notification['count'] }}
+                                    day: '<?php echo e(\Carbon\Carbon::parse($notification['date'])->diffForHumans()); ?>',
+                                    count: <?php echo e($notification['count']); ?>
+
                                 },
-                                @endforeach
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             ];
                             new Chart(
                                 document.getElementById('closed-question-week'),
@@ -575,21 +584,22 @@
                         За последние 30 дней
                     </div>
                     <div class="card-body">
-                        @php
+                        <?php
                             $notificationMonth  =   QuestionRepositoryEloquent::countWhere([
                                 [Contract::CREATED_AT, '>', now()->subDays(30)->endOfDay()],
                                 [Contract::IS_PAID,true],
                                 [Contract::STATUS,2]]);
-                        @endphp
+                        ?>
                         <canvas id="closed-question-month" width="400" height="220" aria-label="Закрытые вопросы за последние 30 дней"></canvas>
                         <script>
                             notifications = [
-                                    @foreach( $notificationMonth as &$notification)
+                                    <?php $__currentLoopData = $notificationMonth; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as &$notification): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 {
-                                    day: '{{ \Carbon\Carbon::parse($notification['date'])->diffForHumans() }}',
-                                    count: {{ $notification['count'] }}
+                                    day: '<?php echo e(\Carbon\Carbon::parse($notification['date'])->diffForHumans()); ?>',
+                                    count: <?php echo e($notification['count']); ?>
+
                                 },
-                                @endforeach
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             ];
                             new Chart(
                                 document.getElementById('closed-question-month'),
@@ -618,27 +628,28 @@
             </div>
             <div class="col-12 col-lg-4">
                 <div class="card mt-3">
-                    @php
+                    <?php
                         $startClosed  =   date("Y-m-d", strtotime("-365 day"));
                         $endClosed    =   date("Y-m-d");
                         $countEndBetween  =   QuestionRepositoryEloquent::countDateBetweenClosed($startClosed,$endClosed);
-                    @endphp
+                    ?>
                     <div class="card-header text-center d-flex align-items-center justify-content-center head-date">
                         <label for="from_close" class="h6 m-0">От</label>
-                        <input type="text" class="input-date" id="from_close" name="from-close" value="{{$startClosed}}" readonly>
+                        <input type="text" class="input-date" id="from_close" name="from-close" value="<?php echo e($startClosed); ?>" readonly>
                         <label for="to_close" class="h6 m-0">До</label>
-                        <input type="text" class="input-date" id="to_close" name="to-close" value="{{$endClosed}}" readonly>
+                        <input type="text" class="input-date" id="to_close" name="to-close" value="<?php echo e($endClosed); ?>" readonly>
                     </div>
                     <div class="card-body">
                         <canvas id="closed-question-between" width="400" height="220"></canvas>
                         <script>
                             let closeDate = [
-                                    @foreach( $countEndBetween as &$notification)
+                                    <?php $__currentLoopData = $countEndBetween; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as &$notification): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 {
-                                    date: '{{ $notification['date'] }}',
-                                    count: {{ $notification['count'] }}
+                                    date: '<?php echo e($notification['date']); ?>',
+                                    count: <?php echo e($notification['count']); ?>
+
                                 },
-                                @endforeach
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             ];
                             new Chart(
                                 document.getElementById('closed-question-between'),
@@ -674,22 +685,23 @@
                         Среднее время на ответ за последние 7 дней
                     </div>
                     <div class="card-body">
-                        @php
+                        <?php
                             $notifications  =   QuestionRepositoryEloquent::averageTime([
                                 [Contract::CREATED_AT, '>', now()->subDays(7)->endOfDay()],
                                 [Contract::IS_PAID,true],
                                 [Contract::STATUS,2]
                                 ]);
-                        @endphp
+                        ?>
                         <canvas id="average-week" width="400" height="220" aria-label="Среднее время на ответ 7 дней"></canvas>
                         <script>
                             notifications = [
-                                    @foreach( $notifications as &$value)
+                                    <?php $__currentLoopData = $notifications; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as &$value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 {
-                                    day: '{{ \Carbon\Carbon::parse($value['date'])->diffForHumans() }} • {{ $value['average'] }}',
-                                    count: {{ $value['count'] }}
+                                    day: '<?php echo e(\Carbon\Carbon::parse($value['date'])->diffForHumans()); ?> • <?php echo e($value['average']); ?>',
+                                    count: <?php echo e($value['count']); ?>
+
                                 },
-                                @endforeach
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             ];
                             new Chart(
                                 document.getElementById('average-week'),
@@ -722,22 +734,23 @@
                         Среднее время на ответ за последние 30 дней
                     </div>
                     <div class="card-body">
-                        @php
+                        <?php
                             $notifications  =   QuestionRepositoryEloquent::averageTime([
                                 [Contract::CREATED_AT, '>', now()->subDays(30)->endOfDay()],
                                 [Contract::IS_PAID,true],
                                 [Contract::STATUS,2]
                                 ]);
-                        @endphp
+                        ?>
                         <canvas id="average-month" width="400" height="220" aria-label="Среднее время на ответ 7 дней"></canvas>
                         <script>
                             notifications = [
-                                    @foreach( $notifications as &$value)
+                                    <?php $__currentLoopData = $notifications; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as &$value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 {
-                                    day: '{{ \Carbon\Carbon::parse($value['date'])->diffForHumans() }} • {{ $value['average'] }}',
-                                    count: {{ $value['count'] }}
+                                    day: '<?php echo e(\Carbon\Carbon::parse($value['date'])->diffForHumans()); ?> • <?php echo e($value['average']); ?>',
+                                    count: <?php echo e($value['count']); ?>
+
                                 },
-                                @endforeach
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             ];
                             new Chart(
                                 document.getElementById('average-month'),
@@ -766,30 +779,31 @@
             </div>
             <div class="col-12 col-lg-4">
                 <div class="card mt-3">
-                    @php
+                    <?php
                         $startClosed  =   date("Y-m-d", strtotime("-365 day"));
                         $endClosed    =   date("Y-m-d");
                         $averageEndBetween  =   QuestionRepositoryEloquent::averageTimeBetweenClosedWhere($startClosed,$endClosed,[
                             [Contract::IS_PAID,true],
                             [Contract::STATUS,2]
                         ]);
-                    @endphp
+                    ?>
                     <div class="card-header text-center d-flex align-items-center justify-content-center head-date">
                         <label for="from-average" class="h6 m-0">От</label>
-                        <input type="text" class="input-date" id="from-average" name="from-lawyer-average" value="{{$startClosed}}" readonly>
+                        <input type="text" class="input-date" id="from-average" name="from-lawyer-average" value="<?php echo e($startClosed); ?>" readonly>
                         <label for="to-average" class="h6 m-0">До</label>
-                        <input type="text" class="input-date" id="to-average" name="to-lawyer-average" value="{{$endClosed}}" readonly>
+                        <input type="text" class="input-date" id="to-average" name="to-lawyer-average" value="<?php echo e($endClosed); ?>" readonly>
                     </div>
                     <div class="card-body">
                         <canvas id="average-between" width="400" height="220"></canvas>
                         <script>
                             let averageDate = [
-                                    @foreach( $averageEndBetween as &$value)
+                                    <?php $__currentLoopData = $averageEndBetween; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as &$value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 {
-                                    date: '{{ $value['date'] }} • {{ $value['average'] }}',
-                                    count: {{ $value['count'] }}
+                                    date: '<?php echo e($value['date']); ?> • <?php echo e($value['average']); ?>',
+                                    count: <?php echo e($value['count']); ?>
+
                                 },
-                                @endforeach
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             ];
                             new Chart(
                                 document.getElementById('average-between'),
@@ -825,7 +839,7 @@
                         За последние 7 дней
                     </div>
                     <div class="card-body">
-                        @php
+                        <?php
                             $notificationWeek  =   QuestionRepositoryEloquent::openClosedPercentage([
                                 [Contract::IS_PAID,true],
                                 [Contract::CREATED_AT, '>', now()->subDays(7)->endOfDay()]
@@ -834,16 +848,17 @@
                                 false => 'Обычные вопросы',
                                 true => 'Срочные вопросы',
                             ];
-                        @endphp
+                        ?>
                         <canvas id="doughnut-week" width="400" height="220"></canvas>
                         <script>
                             notifications = [
-                                @foreach( $notificationWeek as &$notification)
+                                <?php $__currentLoopData = $notificationWeek; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as &$notification): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 {
-                                    is_important: '{{ $status[$notification['is_important']] }}',
-                                    count: {{ $notification['count'] }}
+                                    is_important: '<?php echo e($status[$notification['is_important']]); ?>',
+                                    count: <?php echo e($notification['count']); ?>
+
                                 },
-                                @endforeach
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             ];
                             new Chart(
                                 document.getElementById('doughnut-week'),
@@ -874,21 +889,22 @@
                         За последние 30 дней
                     </div>
                     <div class="card-body">
-                        @php
+                        <?php
                             $notificationMonth  =   QuestionRepositoryEloquent::openClosedPercentage([
                                 [Contract::IS_PAID,true],
                                 [Contract::CREATED_AT, '>', now()->subDays(30)->endOfDay()]
                             ]);
-                        @endphp
+                        ?>
                         <canvas id="doughnut-month" width="400" height="220"></canvas>
                         <script>
                             notMonth = [
-                                    @foreach( $notificationMonth as &$notification)
+                                    <?php $__currentLoopData = $notificationMonth; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as &$notification): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 {
-                                    is_important: '{{ $status[$notification['is_important']] }}',
-                                    count: {{ $notification['count'] }}
+                                    is_important: '<?php echo e($status[$notification['is_important']]); ?>',
+                                    count: <?php echo e($notification['count']); ?>
+
                                 },
-                                @endforeach
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             ];
                             new Chart(
                                 document.getElementById('doughnut-month'),
@@ -913,7 +929,7 @@
                 </div>
             </div>
         </div>
-    @else
+    <?php else: ?>
         <div class="h4 font-weight-bold text-center">Вопросы со статусом “Закрыт”</div>
         <div class="row">
             <div class="col-12 col-lg-4">
@@ -922,23 +938,24 @@
                         Закрытые вопросы за последние 7 дней
                     </div>
                     <div class="card-body">
-                        @php
+                        <?php
                             $notifications  =   QuestionRepositoryEloquent::countWhere([
                                 [Contract::LAWYER_ID, backpack_user()->{Contract::ID}],
                                 [Contract::CREATED_AT, '>', now()->subDays(7)->endOfDay()],
                                 [Contract::IS_PAID,true],
                                 [Contract::STATUS,2]
                                 ]);
-                        @endphp
+                        ?>
                         <canvas id="closed-question-week" width="400" height="220" aria-label="Закрытые вопросы за последние 7 дней"></canvas>
                         <script>
                             notifications = [
-                                    @foreach( $notifications as &$notification)
+                                    <?php $__currentLoopData = $notifications; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as &$notification): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 {
-                                    day: '{{ \Carbon\Carbon::parse($notification['date'])->diffForHumans() }}',
-                                    count: {{ $notification['count'] }}
+                                    day: '<?php echo e(\Carbon\Carbon::parse($notification['date'])->diffForHumans()); ?>',
+                                    count: <?php echo e($notification['count']); ?>
+
                                 },
-                                @endforeach
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             ];
                             new Chart(
                                 document.getElementById('closed-question-week'),
@@ -971,22 +988,23 @@
                         Закрытые вопросы за последние 30 дней
                     </div>
                     <div class="card-body">
-                        @php
+                        <?php
                             $notificationMonth  =   QuestionRepositoryEloquent::countWhere([
                                 [Contract::LAWYER_ID, backpack_user()->{Contract::ID}],
                                 [Contract::CREATED_AT, '>', now()->subDays(30)->endOfDay()],
                                 [Contract::IS_PAID,true],
                                 [Contract::STATUS,2]]);
-                        @endphp
+                        ?>
                         <canvas id="closed-question-month" width="400" height="220" aria-label="Закрытые вопросы за последние 30 дней"></canvas>
                         <script>
                             notifications = [
-                                    @foreach( $notificationMonth as &$notification)
+                                    <?php $__currentLoopData = $notificationMonth; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as &$notification): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 {
-                                    day: '{{ \Carbon\Carbon::parse($notification['date'])->diffForHumans() }}',
-                                    count: {{ $notification['count'] }}
+                                    day: '<?php echo e(\Carbon\Carbon::parse($notification['date'])->diffForHumans()); ?>',
+                                    count: <?php echo e($notification['count']); ?>
+
                                 },
-                                @endforeach
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             ];
                             new Chart(
                                 document.getElementById('closed-question-month'),
@@ -1015,7 +1033,7 @@
             </div>
             <div class="col-12 col-lg-4">
                 <div class="card mt-3">
-                    @php
+                    <?php
                         $startClosed  =   date("Y-m-d", strtotime("-365 day"));
                         $endClosed    =   date("Y-m-d");
                         $countEndBetween  =   QuestionRepositoryEloquent::countDateBetweenClosedWhere($startClosed,$endClosed,[
@@ -1023,23 +1041,24 @@
                             [Contract::IS_PAID,true],
                             [Contract::STATUS,2]
                         ]);
-                    @endphp
+                    ?>
                     <div class="card-header text-center d-flex align-items-center justify-content-center head-date">
                         <label for="from-lawyer-close" class="h6 m-0">От</label>
-                        <input type="text" class="input-date" id="from-lawyer-close" name="from-lawyer-close" value="{{$startClosed}}" readonly>
+                        <input type="text" class="input-date" id="from-lawyer-close" name="from-lawyer-close" value="<?php echo e($startClosed); ?>" readonly>
                         <label for="to-lawyer-close" class="h6 m-0">До</label>
-                        <input type="text" class="input-date" id="to-lawyer-close" name="to-lawyer-close" value="{{$endClosed}}" readonly>
+                        <input type="text" class="input-date" id="to-lawyer-close" name="to-lawyer-close" value="<?php echo e($endClosed); ?>" readonly>
                     </div>
                     <div class="card-body">
                         <canvas id="closed-question-between-lawyer" width="400" height="220"></canvas>
                         <script>
                             let closeDate = [
-                                    @foreach( $countEndBetween as &$notification)
+                                    <?php $__currentLoopData = $countEndBetween; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as &$notification): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 {
-                                    date: '{{ $notification['date'] }}',
-                                    count: {{ $notification['count'] }}
+                                    date: '<?php echo e($notification['date']); ?>',
+                                    count: <?php echo e($notification['count']); ?>
+
                                 },
-                                @endforeach
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             ];
                             new Chart(
                                 document.getElementById('closed-question-between-lawyer'),
@@ -1075,23 +1094,24 @@
                         Среднее время на ответ за последние 7 дней
                     </div>
                     <div class="card-body">
-                        @php
+                        <?php
                             $notifications  =   QuestionRepositoryEloquent::averageTime([
                                 [Contract::LAWYER_ID, backpack_user()->{Contract::ID}],
                                 [Contract::CREATED_AT, '>', now()->subDays(7)->endOfDay()],
                                 [Contract::IS_PAID,true],
                                 [Contract::STATUS,2]
                                 ]);
-                        @endphp
+                        ?>
                         <canvas id="average-week-lawyer" width="400" height="220" aria-label="Среднее время на ответ 7 дней"></canvas>
                         <script>
                             notifications = [
-                                @foreach( $notifications as &$value)
+                                <?php $__currentLoopData = $notifications; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as &$value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 {
-                                    day: '{{ \Carbon\Carbon::parse($value['date'])->diffForHumans() }} • {{ $value['average'] }}',
-                                    count: {{ $value['count'] }}
+                                    day: '<?php echo e(\Carbon\Carbon::parse($value['date'])->diffForHumans()); ?> • <?php echo e($value['average']); ?>',
+                                    count: <?php echo e($value['count']); ?>
+
                                 },
-                                @endforeach
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             ];
                             new Chart(
                                 document.getElementById('average-week-lawyer'),
@@ -1125,23 +1145,24 @@
                         Среднее время на ответ за последние 30 дней
                     </div>
                     <div class="card-body">
-                        @php
+                        <?php
                             $notifications  =   QuestionRepositoryEloquent::averageTime([
                                 [Contract::LAWYER_ID, backpack_user()->{Contract::ID}],
                                 [Contract::CREATED_AT, '>', now()->subDays(30)->endOfDay()],
                                 [Contract::IS_PAID,true],
                                 [Contract::STATUS,2]
                                 ]);
-                        @endphp
+                        ?>
                         <canvas id="average-month-lawyer" width="400" height="220" aria-label="Среднее время на ответ 7 дней"></canvas>
                         <script>
                             notifications = [
-                                    @foreach( $notifications as &$value)
+                                    <?php $__currentLoopData = $notifications; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as &$value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 {
-                                    day: '{{ \Carbon\Carbon::parse($value['date'])->diffForHumans() }} • {{ $value['average'] }}',
-                                    count: {{ $value['count'] }}
+                                    day: '<?php echo e(\Carbon\Carbon::parse($value['date'])->diffForHumans()); ?> • <?php echo e($value['average']); ?>',
+                                    count: <?php echo e($value['count']); ?>
+
                                 },
-                                @endforeach
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             ];
                             new Chart(
                                 document.getElementById('average-month-lawyer'),
@@ -1171,7 +1192,7 @@
             </div>
             <div class="col-12 col-lg-4">
                 <div class="card mt-3">
-                    @php
+                    <?php
                         $startClosed  =   date("Y-m-d", strtotime("-365 day"));
                         $endClosed    =   date("Y-m-d");
                         $averageEndBetween  =   QuestionRepositoryEloquent::averageTimeBetweenClosedWhere($startClosed,$endClosed,[
@@ -1179,23 +1200,24 @@
                             [Contract::IS_PAID,true],
                             [Contract::STATUS,2]
                         ]);
-                    @endphp
+                    ?>
                     <div class="card-header text-center d-flex align-items-center justify-content-center head-date">
                         <label for="from-lawyer-average" class="h6 m-0">От</label>
-                        <input type="text" class="input-date" id="from-lawyer-average" name="from-lawyer-average" value="{{$startClosed}}" readonly>
+                        <input type="text" class="input-date" id="from-lawyer-average" name="from-lawyer-average" value="<?php echo e($startClosed); ?>" readonly>
                         <label for="to-lawyer-average" class="h6 m-0">До</label>
-                        <input type="text" class="input-date" id="to-lawyer-average" name="to-lawyer-average" value="{{$endClosed}}" readonly>
+                        <input type="text" class="input-date" id="to-lawyer-average" name="to-lawyer-average" value="<?php echo e($endClosed); ?>" readonly>
                     </div>
                     <div class="card-body">
                         <canvas id="average-lawyer-between" width="400" height="220"></canvas>
                         <script>
                             let averageDate = [
-                                    @foreach( $averageEndBetween as &$value)
+                                    <?php $__currentLoopData = $averageEndBetween; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as &$value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 {
-                                    date: '{{ $value['date'] }} • {{ $value['average'] }}',
-                                    count: {{ $value['count'] }}
+                                    date: '<?php echo e($value['date']); ?> • <?php echo e($value['average']); ?>',
+                                    count: <?php echo e($value['count']); ?>
+
                                 },
-                                @endforeach
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             ];
                             new Chart(
                                 document.getElementById('average-lawyer-between'),
@@ -1223,9 +1245,9 @@
                 </div>
             </div>
         </div>
-    @endif
-@endsection
-@section('after_scripts')
+    <?php endif; ?>
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('after_scripts'); ?>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <script>
@@ -1523,7 +1545,7 @@
         function getCloseLawyerDate() {
             let closeStart   =   $( "#from-lawyer-close" ).val();
             let closeEnd     =   $( "#to-lawyer-close" ).val();
-            let lawyer       =   '{{ backpack_user()->{Contract::ID} }}';
+            let lawyer       =   '<?php echo e(backpack_user()->{Contract::ID}); ?>';
             if (closeStart !== '' && closeEnd !== '') {
                 $.get( "/api/v1/question/countDateLawyerBetweenClosed/"+lawyer+"/"+closeStart+"/"+closeEnd, function( data ) {
                     closeDate = data;
@@ -1555,7 +1577,7 @@
         function getAverageLawyerDate() {
             let closeStart   =   $( "#from-lawyer-average" ).val();
             let closeEnd     =   $( "#to-lawyer-average" ).val();
-            let lawyer       =   '{{ backpack_user()->{Contract::ID} }}';
+            let lawyer       =   '<?php echo e(backpack_user()->{Contract::ID}); ?>';
             if (closeStart !== '' && closeEnd !== '') {
                 $.get( "/api/v1/question/countDateAverageBetweenClosed/"+lawyer+"/"+closeStart+"/"+closeEnd, function( data ) {
                     let averageLawyer = data;
@@ -1624,5 +1646,7 @@
         }
 
     </script>
-@endsection
+<?php $__env->stopSection(); ?>
 
+
+<?php echo $__env->make(backpack_view('blank'), \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\Duman\Desktop\needhelp\onlinelawyer\resources\views/vendor/backpack/base/dashboard.blade.php ENDPATH**/ ?>
