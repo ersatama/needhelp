@@ -28,16 +28,23 @@ class NotificationGlobalJob implements ShouldQueue
         $this->notificationGlobal   =   $notificationGlobal;
     }
 
-    public function handle(UserService $userService): void
+    public function handle(UserService $userService, NotificationService $notificationService, OneSignalHelper $oneSignalHelper): void
     {
-        if ($this->notificationGlobal->{Contract::ROLE} !== Contract::ALL) {
+        /*if ($this->notificationGlobal->{Contract::ROLE} !== Contract::ALL) {
             $users  =   $userService->userRepository->getByRole($this->notificationGlobal->{Contract::ROLE});
         } else {
             $users  =   $userService->userRepository->get();
-        }
+        }*/
         $users  =   User::withoutGlobalScope(Page::class)->get();
         foreach ($users as &$user) {
-            NotificationGlobalUserJob::dispatch($this->notificationGlobal, $user);
+            $notification   =   $notificationService->notificationRepository->create([
+                Contract::USER_ID   =>  $user->{Contract::ID},
+                Contract::TYPE  =>  2,
+                Contract::NOTIFICATION_GLOBAL_ID    =>  $this->notificationGlobal->{Contract::ID},
+                Contract::STATUS    =>  true
+            ]);
+            $oneSignalHelper->send($notification);
+            //NotificationGlobalUserJob::dispatch($this->notificationGlobal, $user);
         }
     }
 }
