@@ -3,6 +3,7 @@
 namespace App\Domain\Helpers;
 
 use App\Domain\Contracts\Contract;
+use App\Domain\Contracts\UserContract;
 use App\Domain\Scopes\OrderBy;
 use App\Domain\Scopes\Page;
 use App\Domain\Scopes\Type;
@@ -11,6 +12,7 @@ use App\Domain\Services\NotificationService;
 use App\Domain\Services\UserService;
 use App\Models\Notification;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use OneSignal;
 
@@ -29,9 +31,9 @@ class OneSignalHelper
     public function sendAllByNotificationGlobalId($notificationGlobalId): void
     {
         $notificationGlobal =   $this->notificationGlobalService->notificationGlobalRepository->firstById($notificationGlobalId);
-        $notifications  =   Notification::where(Contract::NOTIFICATION_GLOBAL_ID, $notificationGlobalId)->withoutGlobalScopes([Page::class, OrderBy::class, Type::class])->get();
+        $notifications  =   DB::table(UserContract::TABLE)->where(Contract::NOTIFICATION_GLOBAL_ID, $notificationGlobalId)->get();
         foreach ($notifications as &$notification) {
-            $title  =   '';
+            Log::info('notification-send-all',[$notification]);
             $user   =   User::where(Contract::ID, $notification->{Contract::USER_ID})->withoutGlobalScope(Page::class)->first();
             if ($user->{Contract::LANGUAGE_ID} === 1) {
                 $title  =   $notificationGlobal->{Contract::TEXT};
