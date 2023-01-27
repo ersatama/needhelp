@@ -111,6 +111,7 @@ class Wooppay
                 ]));
                 $data = json_decode($status, true);
                 if ($data) {
+                    Log::info('wooppay-answer-data', [$data]);
                     if (sizeof($data) > 0) {
                         return $status[0];
                     }
