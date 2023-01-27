@@ -37,8 +37,8 @@ class NotificationGlobalJob implements ShouldQueue
             $users  =   $userService->userRepository->get();
         }*/
         $users  =   User::withoutGlobalScope(Page::class)->get();
-        Log::info('notification-global-user',[$users]);
         foreach ($users as &$user) {
+            Log::info('notification-global-user',[$user]);
             $notification   =   $notificationService->notificationRepository->create([
                 Contract::USER_ID   =>  $user->{Contract::ID},
                 Contract::TYPE  =>  2,
