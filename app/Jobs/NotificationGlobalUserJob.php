@@ -40,8 +40,7 @@ class NotificationGlobalUserJob implements ShouldQueue
                 Contract::NOTIFICATION_GLOBAL_ID    =>  $this->notificationGlobal->{Contract::ID},
                 Contract::STATUS    =>  true
             ]);
-            Log::info('one-signal-user', [$notification]);
-            //$oneSignalHelper->send($notification);
+            $oneSignalHelper->send($notification);
         }
     }
 }
