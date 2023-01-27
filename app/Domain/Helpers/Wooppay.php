@@ -109,9 +109,9 @@ class Wooppay
                 ],[
                     Contract::OPERATION_IDS =>  [$wooppayModel->{Contract::OPERATION_ID}]
                 ]));
-                $status = json_decode($status, true);
-                if ($status) {
-                    if (sizeof($status) > 0) {
+                $data = json_decode($status, true);
+                if ($data) {
+                    if (sizeof($data) > 0) {
                         return $status[0];
                     }
                 } else {
