@@ -21,7 +21,7 @@ class NotificationResource extends JsonResource
         if ($this->{Contract::TYPE} === 1) {
             $arr[Contract::QUESTION]    =   new QuestionResource($this->{Contract::QUESTION});
         } else if ($this->{Contract::TYPE} === 2) {
-            $arr[Contract::NOTIFICATION_GLOBAL] =   new QuestionResource($this->{Contract::NOTIFICATION_GLOBAL});
+            $arr[Contract::NOTIFICATION_GLOBAL] =   new NotificationGlobalResource($this->{Contract::NOTIFICATION_GLOBAL});
         }
         foreach (NotificationContract::FILLABLE as &$value) {
             $arr[$value]    =   $this->{$value};
