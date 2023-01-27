@@ -3,6 +3,7 @@
 namespace App\Domain\Helpers;
 
 use App\Domain\Contracts\Contract;
+use App\Domain\Scopes\Page;
 use App\Domain\Services\NotificationGlobalService;
 use App\Domain\Services\UserService;
 use App\Models\Notification;
@@ -21,7 +22,7 @@ class OneSignalHelper
 
     public function send(Notification $notification): void
     {
-        if ($user = $this->userService->userRepository->firstById($notification->{Contract::USER_ID}) ) {
+        if ($user = User::where(Contract::ID, $notification->{Contract::USER_ID})->withoutGlobalScope(Page::class)->first() ) {
             $title  =   '';
             $data   =   [];
             if ($notification->{Contract::TYPE} === 1) {
