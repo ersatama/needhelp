@@ -3,8 +3,11 @@
 namespace App\Domain\Helpers;
 
 use App\Domain\Contracts\Contract;
+use App\Domain\Scopes\OrderBy;
 use App\Domain\Scopes\Page;
+use App\Domain\Scopes\Type;
 use App\Domain\Services\NotificationGlobalService;
+use App\Domain\Services\NotificationService;
 use App\Domain\Services\UserService;
 use App\Models\Notification;
 use App\Models\User;
@@ -15,10 +18,53 @@ class OneSignalHelper
 {
     protected UserService $userService;
     protected NotificationGlobalService $notificationGlobalService;
-    public function __construct(UserService $userService, NotificationGlobalService $notificationGlobalService)
+    protected NotificationService $notificationService;
+    public function __construct(UserService $userService, NotificationService $notificationService, NotificationGlobalService $notificationGlobalService)
     {
         $this->userService  =   $userService;
         $this->notificationGlobalService    =   $notificationGlobalService;
+        $this->notificationService  =   $notificationService;
+    }
+
+    public function sendAllByNotificationGlobalId($notificationGlobalId): void
+    {
+        $notificationGlobal =   $this->notificationGlobalService->notificationGlobalRepository->firstById($notificationGlobalId);
+        $notifications  =   Notification::where(Contract::NOTIFICATION_GLOBAL_ID, $notificationGlobalId)->withoutGlobalScopes([Page::class, OrderBy::class, Type::class])->get();
+        foreach ($notifications as &$notification) {
+            $title  =   '';
+            $user   =   User::where(Contract::ID, $notification->{Contract::USER_ID})->withoutGlobalScope(Page::class)->first();
+            if ($user->{Contract::LANGUAGE_ID} === 1) {
+                $title  =   $notificationGlobal->{Contract::TEXT};
+            } else if ($user->{Contract::LANGUAGE_ID} === 2) {
+                $title  =   $notificationGlobal->{Contract::TEXT_EN};
+            } else {
+                $title  =   $notificationGlobal->{Contract::TEXT_KZ};
+            }
+            $data   =   [
+                Contract::NOTIFICATION_GLOBAL_ID    =>  $notificationGlobalId,
+            ];
+            OneSignal::sendNotificationUsingTags(
+                $title,
+                [
+                    [
+                        Contract::FIELD =>  Contract::TAG,
+                        Contract::KEY   =>  Contract::USER_ID,
+                        Contract::RELATION  =>  '=',
+                        Contract::VALUE =>  $notification->{Contract::USER_ID},
+                    ],
+                    [
+                        Contract::FIELD =>  Contract::TAG,
+                        Contract::KEY   =>  Contract::STATUS,
+                        Contract::RELATION  =>  '=',
+                        Contract::VALUE =>  1,
+                    ],
+                ],
+                $url = null,
+                $data = (object) $data,
+                $buttons = null,
+                $schedule = null
+            );
+        }
     }
 
     public function send(Notification $notification): void
@@ -39,7 +85,7 @@ class OneSignalHelper
                 }
             } elseif ($notification->{Contract::TYPE} === 2) {
                 $notificationGlobal =   $this->notificationGlobalService->notificationGlobalRepository->firstById($notification->{Contract::NOTIFICATION_GLOBAL_ID});
-                Log::info('onesignal-notificationGlobal', [$notificationGlobal]);
+
                 if ($user->{Contract::LANGUAGE_ID} === 1) {
                     $title  =   $notificationGlobal->{Contract::TEXT};
                 } else if ($user->{Contract::LANGUAGE_ID} === 2) {
@@ -47,7 +93,6 @@ class OneSignalHelper
                 } else {
                     $title  =   $notificationGlobal->{Contract::TEXT_KZ};
                 }
-                Log::info('onesignal-global-notification-title',[$title]);
                 $data   =   [
                     Contract::NOTIFICATION_GLOBAL_ID    =>  $notification->{Contract::NOTIFICATION_GLOBAL_ID},
                 ];
