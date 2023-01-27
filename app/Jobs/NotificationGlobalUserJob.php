@@ -19,16 +19,15 @@ class NotificationGlobalUserJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
     protected NotificationGlobal $notificationGlobal;
-    protected User $user;
-    public function __construct(NotificationGlobal $notificationGlobal, User $user)
+    public function __construct(NotificationGlobal $notificationGlobal)
     {
         $this->notificationGlobal   =   $notificationGlobal;
-        $this->user =   $user;
     }
 
-    public function handle(NotificationService $notificationService, OneSignalHelper $oneSignalHelper)
+    public function handle(OneSignalHelper $oneSignalHelper)
     {
-        if (!$notificationService->notificationRepository->firstWhere([
+        $oneSignalHelper->sendAllByNotificationGlobalId($this->notificationGlobal->{Contract::ID});
+        /*if (!$notificationService->notificationRepository->firstWhere([
             Contract::USER_ID   =>  $this->user->{Contract::ID},
             Contract::NOTIFICATION_GLOBAL_ID    =>  $this->notificationGlobal->{Contract::ID},
         ])) {
@@ -39,6 +38,6 @@ class NotificationGlobalUserJob implements ShouldQueue
                 Contract::STATUS    =>  true
             ]);
             $oneSignalHelper->send($notification);
-        }
+        }*/
     }
 }

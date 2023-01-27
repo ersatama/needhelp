@@ -45,6 +45,6 @@ class NotificationGlobalJob implements ShouldQueue
                 Contract::STATUS    =>  true
             ]);
         }
-        $oneSignalHelper->sendAllByNotificationGlobalId($this->notificationGlobal->{Contract::ID});
+        NotificationGlobalUserJob::dispatch($this->notificationGlobal);
     }
 }

@@ -11,6 +11,7 @@ use App\Domain\Services\NotificationGlobalService;
 use App\Domain\Services\NotificationService;
 use App\Domain\Services\UserService;
 use App\Models\Notification;
+use App\Models\NotificationGlobal;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -28,10 +29,10 @@ class OneSignalHelper
         $this->notificationService  =   $notificationService;
     }
 
-    public function sendAllByNotificationGlobalId($notificationGlobalId): void
+    public function sendAllByNotificationGlobalId(NotificationGlobal $notificationGlobal): void
     {
-        $notificationGlobal =   $this->notificationGlobalService->notificationGlobalRepository->firstById($notificationGlobalId);
-        $notifications  =   DB::table(UserContract::TABLE)->where(Contract::NOTIFICATION_GLOBAL_ID, $notificationGlobalId)->get();
+        $notificationGlobal =   $this->notificationGlobalService->notificationGlobalRepository->firstById($notificationGlobal->{Contract::ID});
+        $notifications  =   DB::table(UserContract::TABLE)->where(Contract::NOTIFICATION_GLOBAL_ID, $notificationGlobal->{Contract::ID})->get();
         foreach ($notifications as &$notification) {
             Log::info('notification-send-all',[$notification]);
             $user   =   User::where(Contract::ID, $notification->{Contract::USER_ID})->withoutGlobalScope(Page::class)->first();
@@ -43,7 +44,7 @@ class OneSignalHelper
                 $title  =   $notificationGlobal->{Contract::TEXT_KZ};
             }
             $data   =   [
-                Contract::NOTIFICATION_GLOBAL_ID    =>  $notificationGlobalId,
+                Contract::NOTIFICATION_GLOBAL_ID    =>  $notificationGlobal->{Contract::ID},
             ];
             OneSignal::sendNotificationUsingTags(
                 $title,
