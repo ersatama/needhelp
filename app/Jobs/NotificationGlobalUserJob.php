@@ -26,7 +26,7 @@ class NotificationGlobalUserJob implements ShouldQueue
 
     public function handle(OneSignalHelper $oneSignalHelper)
     {
-        $oneSignalHelper->sendAllByNotificationGlobalId($this->notificationGlobal->{Contract::ID});
+        $oneSignalHelper->sendAllByNotificationGlobalId($this->notificationGlobal);
         /*if (!$notificationService->notificationRepository->firstWhere([
             Contract::USER_ID   =>  $this->user->{Contract::ID},
             Contract::NOTIFICATION_GLOBAL_ID    =>  $this->notificationGlobal->{Contract::ID},
