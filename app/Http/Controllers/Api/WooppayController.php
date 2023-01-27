@@ -34,7 +34,7 @@ class WooppayController extends Controller
             $questionId =   (int) $request->input(Contract::ID);
             if ($wooppay = $this->wooppayService->wooppayRepository->firstByQuestionId($questionId)) {
                 $status =   $this->wooppay->status($wooppay);
-                if (is_array($status) && array_key_exists(Contract::STATUS, $status)) {
+                if (array_key_exists(Contract::STATUS, $status)) {
                     $wooppayStatus  =   (int) $status[Contract::STATUS];
                     $question   =   $this->questionService->questionRepository->firstById($questionId);
                     if ($question->{Contract::STATUS} !== 2) {
