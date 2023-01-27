@@ -47,6 +47,7 @@ class OneSignalHelper
                 } else {
                     $title  =   $notificationGlobal->{Contract::TEXT_KZ};
                 }
+                Log::info('onesignal-global-notification-title',[$title]);
                 $data   =   [
                     Contract::NOTIFICATION_GLOBAL_ID    =>  $notification->{Contract::NOTIFICATION_GLOBAL_ID},
                 ];

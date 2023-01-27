@@ -20,8 +20,6 @@ class NotificationGlobalUserJob implements ShouldQueue
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
     protected NotificationGlobal $notificationGlobal;
     protected User $user;
-    public int $timeout = 1;
-    public int $tries = 1;
     public function __construct(NotificationGlobal $notificationGlobal, User $user)
     {
         $this->notificationGlobal   =   $notificationGlobal;
