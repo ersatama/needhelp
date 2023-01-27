@@ -73,6 +73,8 @@ class OneSignalHelper
                 $buttons = null,
                 $schedule = null
             );
+        } else {
+            Log::info('onesignal-helper-error',['user',$notification->{Contract::USER_ID}]);
         }
     }
 }
