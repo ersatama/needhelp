@@ -131,7 +131,7 @@ class Wooppay
                     Log::info('wooppay-answer-error', [$status]);
                 }
             } catch (Exception $exception) {
-
+                return $this->status($wooppayModel);
             }
         }
         return false;
