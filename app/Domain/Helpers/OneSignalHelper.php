@@ -3,6 +3,7 @@
 namespace App\Domain\Helpers;
 
 use App\Domain\Contracts\Contract;
+use App\Domain\Contracts\NotificationContract;
 use App\Domain\Contracts\UserContract;
 use App\Domain\Scopes\OrderBy;
 use App\Domain\Scopes\Page;
@@ -32,7 +33,7 @@ class OneSignalHelper
     public function sendAllByNotificationGlobalId(NotificationGlobal $notificationGlobal): void
     {
         $notificationGlobal =   $this->notificationGlobalService->notificationGlobalRepository->firstById($notificationGlobal->{Contract::ID});
-        $notifications  =   DB::table(UserContract::TABLE)->where(Contract::NOTIFICATION_GLOBAL_ID, $notificationGlobal->{Contract::ID})->get();
+        $notifications  =   DB::table(NotificationContract::TABLE)->where(Contract::NOTIFICATION_GLOBAL_ID, $notificationGlobal->{Contract::ID})->get();
         foreach ($notifications as &$notification) {
             Log::info('notification-send-all',[$notification]);
             $user   =   User::where(Contract::ID, $notification->{Contract::USER_ID})->withoutGlobalScope(Page::class)->first();
